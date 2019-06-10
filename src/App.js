@@ -9,6 +9,7 @@ function App() {
     <div className="App">
       <Menu></Menu>      
       <Seccion1 ></Seccion1>
+      
     </div>
   );
 }
