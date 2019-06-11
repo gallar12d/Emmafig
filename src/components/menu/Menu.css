@@ -5,7 +5,7 @@ nav .nav-wrapper {
 
 nav .brand-logo {
     float: left;
-    position: unset;
+    position: unset !important;
     margin-left: 10%;
 }
 
