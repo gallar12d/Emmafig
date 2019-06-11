@@ -12,39 +12,41 @@ class Menu extends Component {
 
     render() {
         return (
-            <nav className=" fixed-top  navbar navbar-expand-lg navbar-light " style={{backgroundColor: '#0f9b9b'}}>
-                <a className="navbar-brand " href="google.com">
-                    <img className=" " src={this.state.logo} alt=""></img>
-                </a>   
-                <button className="custom-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="  navbar-toggler-icon "></span>
-                </button>            
+            <div className="navbar-fixed">
+                <nav>
+                    <div className="nav-wrapper">
+                        <a href="#!" className="  brand-logo hide-on-med-and-down">
+                            <img className="" alt="logo" src={this.state.logo}>
+                            
+                            </img>
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto ml-auto ">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Calculadora <span className="sr-only">(current)</span></a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">VPH</a>
-                        </li>
+                        </a>
+                        <a href="#!" data-target="mobile-demo" className="sidenav-trigger">
+                            <i className="material-icons">menu</i>
+                        </a>
                         
-                        <li className="nav-item">
-                            <a className="nav-link " href="#">Citas</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link " href="#">FAQ</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link " href="#">Blog</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link " href="#">Contacto</a>
-                        </li>
-                    </ul>
-                    
-                </div>
-            </nav>
+                        <ul className=" menuItems right hide-on-med-and-down">
+                            <li><a href="sass.html">Calculadora</a></li>
+                            <li><a href="badges.html">VPH</a></li>
+                            <li><a href="collapsible.html">Citas</a></li>
+                            <li><a href="mobile.html">Blog</a></li>
+                            <li><a href="mobile.html">FAQ</a></li>
+                            <li><a href="mobile.html">Contacto</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <ul className="sidenav" id="mobile-demo">
+                    <li><a href="sass.html">Calculadora</a></li>
+                    <li><a href="badges.html">VPH</a></li>
+                    <li><a href="collapsible.html">Citas</a></li>
+                    <li><a href="mobile.html">Blog</a></li>
+                    <li><a href="mobile.html">FAQ</a></li>
+                    <li><a href="mobile.html">Contacto</a></li>
+                </ul>
+                
+
+            </div>
 
         );
 
