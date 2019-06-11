@@ -1,4 +1,30 @@
 .layoutSeccion{
-    background-color: rgb(243, 243, 243);
+    background-color: rgb(255, 255, 255);
     height: 350px;
 }
+.tituloCitas{
+    padding-top: 5%;
+    color: #0f9b9b;
+    font-size: 2.2em;
+    font-weight: bolder;
+    font-family: lato;
+}
+.subtituloCitas{
+        
+        color: #0f9b9b;       
+        font-family: lato;
+        font-size: 1.1em;
+}
+.parrafoCitas{
+        color: black;       
+        font-family: lato;
+        font-size: 1.1em;
+        font-weight: bold;
+        padding-left: 10%;
+        padding-right: 10%;
+}
+.selectCitas{
+    padding-left: 9%;
+    padding-right: 11%;
+}
+

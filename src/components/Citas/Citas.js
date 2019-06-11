@@ -2,52 +2,74 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Citas.css'
 
-class Citas extends Component {    
-    constructor(props) {        
-        super(props);        
-        this.state = {       
-        
-        };        
-      }      
-  render() {   
-    
-    return (
-        <section className="page-section layoutSeccion"   id="citas">    
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-lg-12 text-center">
-                        <form>
-                            <div className="form-group"> 
-                                <label htmlFor="formGroupExampleInput" className="bmd-label-floating">Example label</label>
-                                <input type="text" className="form-control" id="formGroupExampleInput"></input>
-                            </div>
-                            <div className="form-group bmd-form-group"> 
-                                <label htmlFor="formGroupExampleInput2" className="bmd-label-floating">Another label</label>
-                                <input type="text" className="form-control" id="formGroupExampleInput2"></input>
-                            </div>
-                        </form>
-                        <form className="form-inline">
-                            <div className="form-group">
-                                <label htmlFor="exampleInputName2" className="bmd-label-floating">Name</label>
-                                <input type="text" className="form-control" id="exampleInputName2"></input>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="exampleInputEmail2" className="bmd-label-floating">Email</label>
-                                <input type="email" className="form-control" id="exampleInputEmail2"></input>
-                            </div>
-                            <span className="form-group bmd-form-group"> 
-                                <button type="submit" className="btn btn-primary">Send invitation</button>
-                            </span>
-                        </form>
-                        
+class Citas extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        };
+    }
+    render() {
+
+        return (
+            <section className=" layoutSeccion" id="citas">
+                <div className="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <h4 className="tituloCitas">Consigue información personalizada</h4>
+                            <h6 className="subtituloCitas">Si te es necesario, separa tu cita yá</h6>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col s12 m12 l6">
+                        <h6 className="parrafoCitas center-align flow-text">
+                            En la Fundación innovaGen contamos con la mejor
+                            tecnologia para la detección temprana de Cáncer de
+                            Cuello Uterino, no dejes pasar esta oportunidad,
+                            ven separa tu cita...
+                        </h6>
+                        <div className="selectCitas">
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">account_circle</i>
+                                        <input id="icon_prefix" type="text" class="validate"></input>
+                                        
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">phone</i>
+                                        <select>
+                                            <option value="" disabled selected>Seleccione el punto de atención</option>
+                                            <option value="1">Popayán</option>
+                                            <option value="2">Santander de Quilichao</option>
+                                            <option value="3">Cali</option>
+                                        </select> 
+                                        
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+
+
 
                     </div>
+                    <div class="col s6">
+                    </div>
                 </div>
-            </div>
-        </section>
-      );
-    
-  }
+
+                
+
+
+
+            </section>
+        );
+
+    }
 }
 
 export default Citas; // Don’t forget to use export default!

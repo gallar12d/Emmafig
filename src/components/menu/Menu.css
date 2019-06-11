@@ -8,6 +8,9 @@ nav .brand-logo {
     position: unset !important;
     margin-left: 10%;
 }
+.logo{
+    margin-top: 16px;
+}
 
 .menuItems{
     margin-right: 10%;
