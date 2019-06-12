@@ -14,15 +14,14 @@ class Menu extends Component {
         return (
             <div id="contenedor-calculadora">
                 <div className="row">                                        
-                    <div className="col s6 offset-s3">
-                         <h5 class="left-align">  Calcula el nivel de riesgo que presentas</h5>
+                    <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
+                         <h1 id="titulo-cal" className="center-align flow-text">Calcula el nivel de riesgo que presentas</h1>
+                         <h6 id="subtitulo-cal" className="center-align ">Responde a las siguientes preguntas y obten un resultado verdadero</h6>
                     </div>                    
                 </div>
-                <div className="row justify-content-md-center">
-                    <div className="col-md-auto">
-                        Responde a las siguientes preguntas y obten un resultado verdadero
-                    </div>                    
-                </div>                
+                <div className="row">                                        
+                                     
+                </div>       
             </div>
         );
 

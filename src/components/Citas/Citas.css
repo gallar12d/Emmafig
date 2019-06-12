@@ -28,3 +28,15 @@
     padding-right: 11%;
 }
 
+.botonBuscarCitas{
+    background-color: #0f9b9b;
+    color: white;
+    height: 39px;
+    width: 50%;
+}
+
+.prefixIcon{
+    left: 10px;
+    color: #0f9b9b;
+}
+
