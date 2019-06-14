@@ -1,12 +1,22 @@
+.circulo{
+    z-index: 2;
+}
 #contenedor-calculadora{
     font-family: 'Lato';
+}
+.contenedor-linea{
+    padding: 0 !important;
 }
 .encabezado{
     color:#0F9b9b;
 }
 .item-cuestionario{
-    font-family: 'Roboto';
+    font-family: 'Roboto';    
 }
+.linea{
+    z-index: 1;
+}
+
 #titulo-cal{
     font-size: 2.5em;
     font-weight: bolder;
