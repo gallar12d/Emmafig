@@ -11,9 +11,9 @@ class Menu extends Component {
     }
 
     componentDidMount() {
-        var elemento = document.getElementById('circulo1');
+        /*var elemento = document.getElementById('circulo1');
         var posicion = elemento.getBoundingClientRect();
-        alert(posicion.top);
+        alert(posicion.top);*/
     }
 
     render() {
@@ -26,52 +26,94 @@ class Menu extends Component {
                         <h6 id="subtitulo-cal" className="center-align ">Responde a las siguientes preguntas y obten un resultado verdadero</h6>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col s1 item-cuestionario">
+                <div className="row wrapper" >
+                    <div>                        
+                    </div>
+                    <div className="item-cuestionario">
                         <svg id="circulo1" className="circulo" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                            width="70" height="70" viewBox="0 0 70 70">
-                            <circle cx="35" cy="35" r="30"
+                           viewBox="0 0 68 68" preserveAspectRatio="xMidYMid meet">
+                            <circle cx="34" cy="34" r="32.6"
                                 fill="#C6C8C7" strokeWidth="2" stroke="#C83B8D" />
                             <text x="28" y="45" fontSize="25" fill="#6f6f6e">1</text>
                         </svg>
                     </div>
-                    <div className="col s1 contenedor-linea">
+                    <div className="contenedor-linea">
                         <svg id="linea1" className="linea" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                            width="200" height="70" viewBox="0 0 200 70">
+                            viewBox="0 0 200 70">
                             <line x1="0" y1="35" x2="200" y2="35"
-                                stroke-width="2" stroke="#C83B8D" />
+                                strokeWidth="2" stroke="#C83B8D" />
                         </svg>
                     </div>
-                    <div className="col s2 left item-cuestionario center-align"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        width="70" height="70" viewBox="0 0 70 70">
-                        <circle cx="35" cy="35" r="30"
-                            fill="#C6C8C7" strokeWidth="2" stroke="#C83B8D" />
-                        <text x="28" y="45" fontSize="25" fill="#6f6f6e">2</text>
-                    </svg></div>
-                    <div className="col s2 left item-cuestionario center-align"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        width="70" height="70" viewBox="0 0 70 70">
-                        <circle cx="35" cy="35" r="30"
-                            fill="#C6C8C7" strokeWidth="2" stroke="#C83B8D" />
-                        <text x="28" y="45" fontSize="25" fill="#6f6f6e">3</text>
-                    </svg></div>
-                    <div className="col s2 left item-cuestionario center-align"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        width="70" height="70" viewBox="0 0 70 70">
-                        <circle cx="35" cy="35" r="30"
-                            fill="#C6C8C7" strokeWidth="2" stroke="#C83B8D" />
-                        <text x="28" y="45" fontSize="25" fill="#6f6f6e">4</text>
-                    </svg></div>
-                    <div className="col s2 left item-cuestionario center-align"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        width="70" height="70" viewBox="0 0 70 70">
-                        <circle cx="35" cy="35" r="30"
-                            fill="#C6C8C7" strokeWidth="2" stroke="#C83B8D" />
-                        <text x="28" y="45" fontSize="25" fill="#6f6f6e">5</text>
-                    </svg></div>
-                    <div className="col s2 left item-cuestionario center-align"><svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        width="70" height="70" viewBox="0 0 70 70">
-                        <circle cx="35" cy="35" r="30"
-                            fill="#C6C8C7" strokeWidth="2" stroke="#C83B8D" />
-                        <text x="28" y="45" fontSize="25" fill="#6f6f6e">6</text>
-                    </svg></div>
+                    <div className="item-cuestionario">
+                        <svg id="circulo1" className="circulo" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 68 68">
+                            <circle cx="34" cy="34" r="32.6"
+                                fill="#C6C8C7" strokeWidth="2" stroke="#C83B8D" />
+                            <text x="28" y="45" fontSize="25" fill="#6f6f6e">2</text>
+                        </svg>
+                    </div>
+                    <div className="contenedor-linea">
+                        <svg id="linea1" className="linea" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                           viewBox="0 0 200 70">
+                            <line x1="0" y1="35" x2="200" y2="35"
+                                strokeWidth="2" stroke="#C83B8D" />
+                        </svg>
+                    </div>
+                    <div className="item-cuestionario">
+                        <svg id="circulo1" className="circulo" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 68 68">
+                            <circle cx="34" cy="34" r="32.6"
+                                fill="#C6C8C7" strokeWidth="2" stroke="#C83B8D" />
+                            <text x="28" y="45" fontSize="25" fill="#6f6f6e">3</text>
+                        </svg>
+                    </div>
+                    <div className="contenedor-linea">
+                        <svg id="linea1" className="linea" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 200 70">
+                            <line x1="0" y1="35" x2="200" y2="35"
+                                strokeWidth="2" stroke="#C83B8D" />
+                        </svg>
+                    </div>
+                    <div className="item-cuestionario">
+                        <svg id="circulo1" className="circulo" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 68 68">
+                            <circle cx="34" cy="34" r="32.6"
+                                fill="#C6C8C7" strokeWidth="2" stroke="#C83B8D" />
+                            <text x="28" y="45" fontSize="25" fill="#6f6f6e">4</text>
+                        </svg>
+                    </div>
+                    <div className="contenedor-linea">
+                        <svg id="linea1" className="linea" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 200 70">
+                            <line x1="0" y1="35" x2="200" y2="35"
+                                strokeWidth="2" stroke="#C83B8D" />
+                        </svg>
+                    </div>
+                    <div className="item-cuestionario">
+                        <svg id="circulo1" className="circulo" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 68 68">
+                            <circle cx="34" cy="34" r="32.6"
+                                fill="#C6C8C7" strokeWidth="2" stroke="#C83B8D" />
+                            <text x="28" y="45" fontSize="25" fill="#6f6f6e">5</text>
+                        </svg>
+                    </div>
+                    <div className="contenedor-linea">
+                        <svg id="linea1" className="linea" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 200 70">
+                            <line x1="0" y1="35" x2="200" y2="35"
+                                strokeWidth="2" stroke="#C83B8D" />
+                        </svg>
+                    </div>
+                    <div className="item-cuestionario">
+                        <svg id="circulo1" className="circulo" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 68 68">
+                            <circle cx="34" cy="34" r="32.6"
+                                fill="#C6C8C7" strokeWidth="2" stroke="#C83B8D" />
+                            <text x="28" y="45" fontSize="25" fill="#6f6f6e">6</text>
+                        </svg>
+                    </div> 
+                    <div>                        
+                    </div>                                      
                 </div>
             </div>
         );
