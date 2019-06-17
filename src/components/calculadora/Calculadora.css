@@ -1,9 +1,22 @@
+.circulo{
+    z-index: 2;
+}
 #contenedor-calculadora{
     font-family: 'Lato';
+}
+.contenedor-linea{
+    /*padding: 0 !important;*/
 }
 .encabezado{
     color:#0F9b9b;
 }
+.item-cuestionario{
+    font-family: 'Roboto';    
+}
+.linea{
+    /*z-index: 1;*/
+}
+
 #titulo-cal{
     font-size: 2.5em;
     font-weight: bolder;
@@ -12,6 +25,13 @@
 #subtitulo-cal{
     /*font-size: 1.15em;*/    
     margin-top: 0.1rem;
+}
+.wrapper{
+    margin: auto;
+    width: 98%;
+    max-width: 1500px;    
+    display: grid;
+    grid-template-columns: 5% 5% 12% 5% 12% 5% 12% 5% 12% 5% 12% 5% 5%;
 }
 @media only screen and (min-width: 980px) and (max-width: 1330px){
     #titulo-cal{
