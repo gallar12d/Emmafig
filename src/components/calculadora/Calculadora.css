@@ -31,7 +31,7 @@
     width: 98%;
     max-width: 1500px;    
     display: grid;
-    grid-template-columns: 5% 5% 12% 5% 12% 5% 12% 5% 12% 5% 12% 5% 5%;
+    grid-template-columns: 5% repeat(5,minmax(45px,5%) minmax(30px,12%)) minmax(45px,5%) 5%;
 }
 @media only screen and (min-width: 980px) and (max-width: 1330px){
     #titulo-cal{
