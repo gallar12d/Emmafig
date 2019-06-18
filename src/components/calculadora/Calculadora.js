@@ -34,7 +34,7 @@ class Menu extends Component {
                            viewBox="0 0 68 68" preserveAspectRatio="xMidYMid meet">
                             <circle cx="34" cy="34" r="32.6"
                                 fill="#C6C8C7" strokeWidth="2" stroke="#C83B8D" />
-                            <text x="28" y="45" fontSize="25" fill="#6f6f6e">1</text>
+                            <text x="27" y="44" fontSize="25" fill="#6f6f6e">1</text>
                         </svg>
                     </div>
                     <div className="contenedor-linea">

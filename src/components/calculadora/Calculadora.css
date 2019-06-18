@@ -5,13 +5,17 @@
     font-family: 'Lato';
 }
 .contenedor-linea{
+    display: grid;
+    align-items: center;
     /*padding: 0 !important;*/
 }
 .encabezado{
     color:#0F9b9b;
 }
 .item-cuestionario{
-    font-family: 'Roboto';    
+    font-family: 'Roboto';  
+    display: grid;
+    align-items: center;  
 }
 .linea{
     /*z-index: 1;*/
