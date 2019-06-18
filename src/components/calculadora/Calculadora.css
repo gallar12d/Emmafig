@@ -1,13 +1,29 @@
+.btn:hover{
+    cursor: pointer;
+}
+#btn_prev:hover{    
+    content: url('../../../public/img/prev-btn-hover.svg');
+}
+#btn_next:hover{    
+    content: url('../../../public/img/next-btn-hover.svg');
+}
 .circulo{
     z-index: 2;
+}
+.contenido-pregunta, .contenido-respuesta{
+    font-size: 1.8em;
+    font-weight: bolder;
+    color:#000000;
+}
+.contenido-respuesta{
+    font-size: 1.8em !important;
 }
 #contenedor-calculadora{
     font-family: 'Lato';
 }
 .contenedor-linea{
     display: grid;
-    align-items: center;
-    /*padding: 0 !important;*/
+    align-items: center;    
 }
 .encabezado{
     color:#0F9b9b;
@@ -17,17 +33,12 @@
     display: grid;
     align-items: center;  
 }
-.linea{
-    /*z-index: 1;*/
-}
-
 #titulo-cal{
     font-size: 2.5em;
     font-weight: bolder;
     margin-bottom: 0.3rem;    
 }
-#subtitulo-cal{
-    /*font-size: 1.15em;*/    
+#subtitulo-cal{      
     margin-top: 0.1rem;
 }
 .wrapper{
