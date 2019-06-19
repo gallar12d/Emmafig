@@ -4,14 +4,18 @@ import './Calculadora.css'
 class Menu extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             value: '',
-            btn_next: process.env.PUBLIC_URL +"/img/next-btn.svg",
-            btn_prev: process.env.PUBLIC_URL +"/img/prev-btn.svg",
+            btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg",
+            btn_prev: process.env.PUBLIC_URL + "/img/prev-btn.svg",
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.nextHandleMouseOver = this.nextHandleMouseOver.bind(this);
+        this.nextHandleMouseOut = this.nextHandleMouseOut.bind(this);
+        this.prevHandleMouseOver = this.prevHandleMouseOver.bind(this);
+        this.prevHandleMouseOut = this.prevHandleMouseOut.bind(this);
     }
 
     handleChange(event) {
@@ -21,6 +25,30 @@ class Menu extends Component {
     handleSubmit(event) {
         alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
+    }
+
+    nextHandleMouseOver() {
+        this.setState({
+            btn_next: process.env.PUBLIC_URL + "/img/next-btn-hover.svg"
+        });
+    }
+
+    nextHandleMouseOut() {
+        this.setState({
+            btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg"
+        });
+    }
+
+    prevHandleMouseOver() {
+        this.setState({
+            btn_prev: process.env.PUBLIC_URL + "/img/prev-btn-hover.svg"
+        });
+    }
+
+    prevHandleMouseOut() {
+        this.setState({
+            btn_prev: process.env.PUBLIC_URL + "/img/prev-btn.svg"
+        });
     }
 
     componentDidMount() {
@@ -161,8 +189,12 @@ class Menu extends Component {
                     </div>
                 </form>
                 <div className="row">
-                    <img id="btn_prev" src={this.state.btn_prev} className="col s1 offset-s5 btn"></img>
-                    <img id="btn_next" src={this.state.btn_next} className="col s1 btn"></img>
+                    <div className="col s3 m3 l2 offset-s3 offset-m3 offset-l4">
+                        <img id="btn_prev" onMouseOver={this.prevHandleMouseOver} onMouseOut={this.prevHandleMouseOut} src={this.state.btn_prev} className="boton right-align"></img>
+                    </div>
+                    <div className="col s3 m3 l2">
+                        <img id="btn_next" onMouseOver={this.nextHandleMouseOver} onMouseOut={this.nextHandleMouseOut} src={this.state.btn_next} className="boton"></img>
+                    </div>
                 </div>
             </div >
         );

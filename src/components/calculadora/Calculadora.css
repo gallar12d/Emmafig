@@ -1,11 +1,8 @@
-.btn:hover{
-    cursor: pointer;
+.boton{
+    /*max-width: 60%;*/
 }
-#btn_prev:hover{    
-    content: url('../../../public/img/prev-btn-hover.svg');
-}
-#btn_next:hover{    
-    content: url('../../../public/img/next-btn-hover.svg');
+.boton:hover{
+    cursor: pointer;   
 }
 .circulo{
     z-index: 2;
