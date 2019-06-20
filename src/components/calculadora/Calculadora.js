@@ -41,30 +41,38 @@ class Menu extends Component {
             btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg"
         });
     }
-    nextClick(){     
-        let next = this.state.item + 1;         
-        this.setState({
-            item: next
-        })
-        const circuloOk = document.getElementById("circulo"+(next-1));
-        const textoOk = document.getElementById("texto"+(next-1));
-        const circuloActual = document.getElementById("circulo"+next);
-        const textoActual = document.getElementById("texto"+next);
-        const lineaOk = document.getElementById("linea"+(next-1));
-        const preguntaOk = document.getElementById("cont-pregunta"+(next-1));
-        const preguntaActual = document.getElementById("cont-pregunta"+next);
-        const opcRespOK = document.getElementById("opc-respuesta-pregunta"+(next-1));
-        const opcRespActual = document.getElementById("opc-respuesta-pregunta"+next);
-        circuloActual.classList.toggle("circulo-actual");
-        circuloOk.classList.toggle("circulo-ok");
-        textoActual.classList.toggle("texto-actual");
-        textoOk.classList.remove("texto-actual");
-        textoOk.classList.add("texto");
-        lineaOk.classList.toggle("linea-ok");
-        preguntaOk.style.display="none";
-        opcRespOK.style.display="none";
-        opcRespActual.style.display="block";
-        preguntaActual.style.display="block";
+    nextClick(){   
+        let next = this.state.item;
+        if(this.state.item < 6){
+            next = next + 1;
+            this.setState({
+                item: next
+            })
+            const circuloOk = document.getElementById("circulo"+(next-1));
+            const textoOk = document.getElementById("texto"+(next-1));
+            const circuloActual = document.getElementById("circulo"+next);
+            const textoActual = document.getElementById("texto"+next);
+            const lineaOk = document.getElementById("linea"+(next-1));
+            const preguntaOk = document.getElementById("cont-pregunta"+(next-1));
+            const preguntaActual = document.getElementById("cont-pregunta"+next);
+            const opcRespOK = document.getElementById("opc-respuesta-pregunta"+(next-1));
+            const opcRespActual = document.getElementById("opc-respuesta-pregunta"+next);
+            circuloActual.classList.remove("circulo");
+            circuloActual.classList.remove("circulo-ok");
+            circuloActual.classList.add("circulo-actual");
+            circuloOk.classList.remove("circulo-actual");
+            circuloOk.classList.add("circulo-ok");
+            textoActual.classList.remove("texto");
+            textoActual.classList.add("texto-actual");
+            textoOk.classList.remove("texto-actual");
+            textoOk.classList.add("texto");
+            lineaOk.classList.toggle("linea-ok");
+            preguntaOk.style.display="none";
+            opcRespOK.style.display="none";
+            opcRespActual.style.display="block";
+            preguntaActual.style.display="block";
+        }                  
+        
     }
 
     prevHandleMouseOver() {
@@ -80,29 +88,36 @@ class Menu extends Component {
     }
 
     prevClick(){
-        let next = this.state.item - 1;         
-        this.setState({
-            item: next
-        })
-        const circuloOk = document.getElementById("circulo"+(next-1));
-        const textoOk = document.getElementById("texto"+(next-1));
-        const circuloActual = document.getElementById("circulo"+next);
-        const textoActual = document.getElementById("texto"+next);
-        const lineaOk = document.getElementById("linea"+(next-1));
-        const preguntaOk = document.getElementById("cont-pregunta"+(next-1));
-        const preguntaActual = document.getElementById("cont-pregunta"+next);
-        const opcRespOK = document.getElementById("opc-respuesta-pregunta"+(next-1));
-        const opcRespActual = document.getElementById("opc-respuesta-pregunta"+next);
-        circuloActual.classList.toggle("circulo-actual");
-        circuloOk.classList.toggle("circulo-ok");
-        textoActual.classList.toggle("texto-actual");
-        textoOk.classList.remove("texto-actual");
-        textoOk.classList.add("texto");
-        lineaOk.classList.toggle("linea-ok");
-        preguntaOk.style.display="none";
-        opcRespOK.style.display="none";
-        opcRespActual.style.display="block";
-        preguntaActual.style.display="block";
+        let next = this.state.item;
+        if(this.state.item > 1){
+            next = next - 1;
+            this.setState({
+                item: next
+            })
+            const circuloOk = document.getElementById("circulo"+(next+1));
+            const textoOk = document.getElementById("texto"+(next+1));
+            const circuloActual = document.getElementById("circulo"+next);
+            const textoActual = document.getElementById("texto"+next);
+            const lineaOk = document.getElementById("linea"+(next));
+            const preguntaOk = document.getElementById("cont-pregunta"+(next+1));
+            const preguntaActual = document.getElementById("cont-pregunta"+next);
+            const opcRespOK = document.getElementById("opc-respuesta-pregunta"+(next+1));
+            const opcRespActual = document.getElementById("opc-respuesta-pregunta"+next);
+            circuloActual.classList.remove("circulo-ok");
+            circuloActual.classList.add("circulo-actual");
+            circuloOk.classList.remove("circulo-actual");
+            circuloOk.classList.add("circulo-ok");
+            textoActual.classList.remove("texto");
+            textoActual.classList.add("texto-actual");
+            textoOk.classList.remove("texto-actual");
+            textoOk.classList.add("texto");
+            lineaOk.classList.remove("linea-ok");
+            lineaOk.classList.add("linea");
+            preguntaOk.style.display="none";
+            opcRespOK.style.display="none";
+            opcRespActual.style.display="block";
+            preguntaActual.style.display="block";
+        }      
     }
 
     componentDidMount() {
