@@ -13,6 +13,7 @@ class Menu extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleOptionChange = this.handleOptionChange.bind(this);
         this.nextHandleMouseOver = this.nextHandleMouseOver.bind(this);
         this.nextHandleMouseOut = this.nextHandleMouseOut.bind(this);
         this.nextClick = this.nextClick.bind(this);
@@ -24,6 +25,16 @@ class Menu extends Component {
     handleChange(event) {
         this.setState({ value: event.target.value });
     }
+
+    handleOptionChange(event) {
+        if(event.target.id.match("op1")){
+           
+        }
+       
+        /*this.setState({
+          selectedOption: event.target.value
+        });*/
+      }
 
     handleSubmit(event) {
         alert('A name was submitted: ' + this.state.value);
@@ -41,34 +52,31 @@ class Menu extends Component {
             btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg"
         });
     }
-    nextClick(){     
-        let next = this.state.item + 1; 
-        console.log(next);
-        this.setState({
-            item: next
-        })
-        const circuloOk = document.getElementById("circulo"+(next-1));
-        const textoOk = document.getElementById("texto"+(next-1));
-        const circuloActual = document.getElementById("circulo"+next);
-        const textoActual = document.getElementById("texto"+next);
-        const lineaOk = document.getElementById("linea"+(next-1));
-        const preguntaOk = document.getElementById("cont-pregunta"+(next-1));
-        const preguntaActual = document.getElementById("cont-pregunta"+next);
-        const opcRespOK = document.getElementById("opc-respuesta-pregunta"+(next-1));
-        const opcRespActual = document.getElementById("opc-respuesta-pregunta"+next);
-        circuloActual.classList.remove("circulo");
-        circuloActual.classList.add("circulo-actual");
-        circuloOk.classList.remove("circulo-actual");        
-        circuloOk.classList.add("circulo-ok");
-        textoActual.classList.toggle("texto-actual");
-        textoOk.classList.remove("texto-actual");
-        textoOk.classList.add("texto");
-        lineaOk.classList.remove("linea");
-        lineaOk.classList.add("linea-ok");
-        preguntaOk.style.display="none";
-        opcRespOK.style.display="none";
-        opcRespActual.style.display="block";
-        preguntaActual.style.display="block";
+    nextClick(){   
+        let next = this.state.item;
+        if(this.state.item < 6){
+            next = next + 1;
+            this.setState({
+                item: next
+            })
+            const circuloPrev = document.getElementById("circulo"+(next-1));            
+            const circuloActual = document.getElementById("circulo"+next);            
+            const lineaOk = document.getElementById("linea"+(next-1));
+            const preguntaOk = document.getElementById("cont-pregunta"+(next-1));
+            const preguntaActual = document.getElementById("cont-pregunta"+next);
+            const opcRespOK = document.getElementById("opc-respuesta-pregunta"+(next-1));
+            const opcRespActual = document.getElementById("opc-respuesta-pregunta"+next);
+            circuloActual.classList.remove("circulo");
+            circuloActual.classList.remove("circulo-ok");
+            circuloActual.classList.add("circulo-actual");
+            circuloPrev.classList.remove("circulo-actual");
+            circuloPrev.classList.add("circulo");            
+            lineaOk.classList.toggle("linea-ok");
+            preguntaOk.style.display="none";
+            opcRespOK.style.display="none";
+            opcRespActual.style.display="block";
+            preguntaActual.style.display="block";
+        }             
     }
 
     prevHandleMouseOver() {
@@ -84,33 +92,30 @@ class Menu extends Component {
     }
 
     prevClick(){
-        let next = this.state.item - 1; 
-        console.log(next);
-        this.setState({
-            item: next
-        })
-        const circuloOk = document.getElementById("circulo"+(next));
-        const textoOk = document.getElementById("texto"+(next));
-        const circuloActual = document.getElementById("circulo"+(next+1));
-        const textoActual = document.getElementById("texto"+(next+1));
-        const lineaOk = document.getElementById("linea"+(next));
-        const preguntaOk = document.getElementById("cont-pregunta"+(next));
-        const preguntaActual = document.getElementById("cont-pregunta"+(next+1));
-        const opcRespOK = document.getElementById("opc-respuesta-pregunta"+(next));
-        const opcRespActual = document.getElementById("opc-respuesta-pregunta"+(next+1));
-        circuloActual.classList.remove("circulo");
-        circuloActual.classList.add("circulo-actual");
-        circuloOk.classList.remove("circulo-actual");        
-        circuloOk.classList.add("circulo-ok");
-        textoActual.classList.toggle("texto-actual");
-        textoOk.classList.remove("texto-actual");
-        textoOk.classList.add("texto");
-        lineaOk.classList.remove("linea");
-        lineaOk.classList.add("linea-ok");
-        preguntaOk.style.display="none";
-        opcRespOK.style.display="none";
-        opcRespActual.style.display="block";
-        preguntaActual.style.display="block";
+        let next = this.state.item;
+        if(this.state.item > 1){
+            next = next - 1;
+            this.setState({
+                item: next                
+            })
+            const circuloPrev = document.getElementById("circulo"+(next+1));            
+            const circuloActual = document.getElementById("circulo"+next);            
+            const lineaOk = document.getElementById("linea"+(next));
+            const preguntaOk = document.getElementById("cont-pregunta"+(next+1));
+            const preguntaActual = document.getElementById("cont-pregunta"+next);
+            const opcRespOK = document.getElementById("opc-respuesta-pregunta"+(next+1));
+            const opcRespActual = document.getElementById("opc-respuesta-pregunta"+next);
+            circuloActual.classList.remove("circulo-ok");
+            circuloActual.classList.add("circulo-actual");
+            circuloPrev.classList.remove("circulo-actual");
+            circuloPrev.classList.add("circulo");           
+            lineaOk.classList.remove("linea-ok");
+            lineaOk.classList.add("linea");
+            preguntaOk.style.display="none";
+            opcRespOK.style.display="none";
+            opcRespActual.style.display="block";
+            preguntaActual.style.display="block";
+        }      
     }
 
     componentDidMount() {
@@ -118,6 +123,8 @@ class Menu extends Component {
         var posicion = elemento.getBoundingClientRect();
         alert(posicion.top);*/
     }
+
+
 
     render() {
 
@@ -226,11 +233,11 @@ class Menu extends Component {
                     </div>
                     <div id="opc-respuesta-pregunta1" className="row" oprindex="1"> 
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input className="with-gap" name="group1" type="radio" />
+                            <input id="op11" className="with-gap" name="group1" type="radio" value="si" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Si</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input className="with-gap" name="group1" type="radio" />
+                            <input id="op12" className="with-gap" name="group1" type="radio" value="no" onChange={this.handleOptionChange}/>
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
@@ -241,11 +248,11 @@ class Menu extends Component {
                     </div>
                     <div id="opc-respuesta-pregunta2" className="row" oprindex="2">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input className="with-gap" name="group1" type="radio" />
+                            <input id="op21" className="with-gap" name="group1" type="radio" value="si" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Si</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input className="with-gap" name="group1" type="radio" />
+                            <input id="op22" className="with-gap" name="group1" type="radio" value="no" onChange={this.handleOptionChange}/>
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
@@ -256,11 +263,11 @@ class Menu extends Component {
                     </div>
                     <div id="opc-respuesta-pregunta3" className="row" oprindex="3">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input className="with-gap" name="group1" type="radio" />
+                            <input id="op31" className="with-gap" name="group1" type="radio" value="si" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Si</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input className="with-gap" name="group1" type="radio" />
+                            <input id="op31" className="with-gap" name="group1" type="radio" value="no" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
@@ -271,11 +278,11 @@ class Menu extends Component {
                     </div>
                     <div id="opc-respuesta-pregunta4" className="row" oprindex="4">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input className="with-gap" name="group1" type="radio" />
+                            <input id="op41" className="with-gap" name="group1" type="radio" value="si" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Si</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input className="with-gap" name="group1" type="radio" />
+                            <input id="op42" className="with-gap" name="group1" type="radio" value="no" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
@@ -286,11 +293,11 @@ class Menu extends Component {
                     </div>
                     <div id="opc-respuesta-pregunta5" className="row" oprindex="5">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input className="with-gap" name="group1" type="radio" />
+                            <input id="op51" className="with-gap" name="group1" type="radio" value="si" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Si</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input className="with-gap" name="group1" type="radio" />
+                            <input id="op52" className="with-gap" name="group1" type="radio" value="no" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
@@ -301,11 +308,11 @@ class Menu extends Component {
                     </div>
                     <div id="opc-respuesta-pregunta6" className="row" oprindex="6">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input className="with-gap" name="group1" type="radio" />
+                            <input id="op61" className="with-gap" name="group1" type="radio" value="si" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Si</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input className="with-gap" name="group1" type="radio" />
+                            <input id="op62" className="with-gap" name="group1" type="radio" value="no" onChange={this.handleOptionChange}/>
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
