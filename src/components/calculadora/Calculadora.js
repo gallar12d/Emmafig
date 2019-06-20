@@ -42,7 +42,8 @@ class Menu extends Component {
         });
     }
     nextClick(){     
-        let next = this.state.item + 1;         
+        let next = this.state.item + 1; 
+        console.log(next);
         this.setState({
             item: next
         })
@@ -55,12 +56,15 @@ class Menu extends Component {
         const preguntaActual = document.getElementById("cont-pregunta"+next);
         const opcRespOK = document.getElementById("opc-respuesta-pregunta"+(next-1));
         const opcRespActual = document.getElementById("opc-respuesta-pregunta"+next);
-        circuloActual.classList.toggle("circulo-actual");
-        circuloOk.classList.toggle("circulo-ok");
+        circuloActual.classList.remove("circulo");
+        circuloActual.classList.add("circulo-actual");
+        circuloOk.classList.remove("circulo-actual");        
+        circuloOk.classList.add("circulo-ok");
         textoActual.classList.toggle("texto-actual");
         textoOk.classList.remove("texto-actual");
         textoOk.classList.add("texto");
-        lineaOk.classList.toggle("linea-ok");
+        lineaOk.classList.remove("linea");
+        lineaOk.classList.add("linea-ok");
         preguntaOk.style.display="none";
         opcRespOK.style.display="none";
         opcRespActual.style.display="block";
@@ -80,25 +84,29 @@ class Menu extends Component {
     }
 
     prevClick(){
-        let next = this.state.item - 1;         
+        let next = this.state.item - 1; 
+        console.log(next);
         this.setState({
             item: next
         })
-        const circuloOk = document.getElementById("circulo"+(next-1));
-        const textoOk = document.getElementById("texto"+(next-1));
-        const circuloActual = document.getElementById("circulo"+next);
-        const textoActual = document.getElementById("texto"+next);
-        const lineaOk = document.getElementById("linea"+(next-1));
-        const preguntaOk = document.getElementById("cont-pregunta"+(next-1));
-        const preguntaActual = document.getElementById("cont-pregunta"+next);
-        const opcRespOK = document.getElementById("opc-respuesta-pregunta"+(next-1));
-        const opcRespActual = document.getElementById("opc-respuesta-pregunta"+next);
-        circuloActual.classList.toggle("circulo-actual");
-        circuloOk.classList.toggle("circulo-ok");
+        const circuloOk = document.getElementById("circulo"+(next));
+        const textoOk = document.getElementById("texto"+(next));
+        const circuloActual = document.getElementById("circulo"+(next+1));
+        const textoActual = document.getElementById("texto"+(next+1));
+        const lineaOk = document.getElementById("linea"+(next));
+        const preguntaOk = document.getElementById("cont-pregunta"+(next));
+        const preguntaActual = document.getElementById("cont-pregunta"+(next+1));
+        const opcRespOK = document.getElementById("opc-respuesta-pregunta"+(next));
+        const opcRespActual = document.getElementById("opc-respuesta-pregunta"+(next+1));
+        circuloActual.classList.remove("circulo");
+        circuloActual.classList.add("circulo-actual");
+        circuloOk.classList.remove("circulo-actual");        
+        circuloOk.classList.add("circulo-ok");
         textoActual.classList.toggle("texto-actual");
         textoOk.classList.remove("texto-actual");
         textoOk.classList.add("texto");
-        lineaOk.classList.toggle("linea-ok");
+        lineaOk.classList.remove("linea");
+        lineaOk.classList.add("linea-ok");
         preguntaOk.style.display="none";
         opcRespOK.style.display="none";
         opcRespActual.style.display="block";
