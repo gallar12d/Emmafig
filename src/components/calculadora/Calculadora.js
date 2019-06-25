@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Cuestionario from './cuestionario/Cuestionario';
 import Inicio from './inicio/Inicio';
+import Inscripcion from './inscripcion/Inscripcion';
+import Resultado from './resultado/Resultado';
 import './Calculadora.css';
 
 class Calculadora extends Component {
@@ -9,20 +11,6 @@ class Calculadora extends Component {
         this.state = {
             next: process.env.PUBLIC_URL + "/img/next-btn.svg"
         };
-        this.CuestionarioStart = this.CuestionarioStart.bind(this);
-
-
-
-
-        /*this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleOptionChange = this.handleOptionChange.bind(this);
-        this.nextHandleMouseOver = this.nextHandleMouseOver.bind(this);
-        this.nextHandleMouseOut = this.nextHandleMouseOut.bind(this);
-        this.nextClick = this.nextClick.bind(this);
-        this.prevHandleMouseOver = this.prevHandleMouseOver.bind(this);
-        this.prevHandleMouseOut = this.prevHandleMouseOut.bind(this);
-        this.prevClick = this.prevClick.bind(this);*/
     }
     CuestionarioStart(props) {
         return <Cuestionario />;
@@ -37,7 +25,9 @@ class Calculadora extends Component {
                         <img id="btn_prev" src={this.state.next} onClick={this.CuestionarioStart} className="boton center"></img>
                     </div>
                 </div>
-                
+                <Cuestionario></Cuestionario>
+                <Resultado></Resultado>
+                <Inscripcion></Inscripcion>
             </div>
         );
 

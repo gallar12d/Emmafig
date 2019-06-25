@@ -1,0 +1,68 @@
+#btn_ok{
+    max-width: 150px;
+    width: 40%;
+}
+.cont-mas{
+    margin-left: 31% !important;
+}
+#contenedor-emma{
+    grid-column: 2 / 2;
+    grid-row: 2 / 3;
+}
+#contenedor-inscripcion{
+    margin: auto;
+    width: 98%;
+    max-width: 1500px;    
+    display: grid;
+    grid-template-columns: 15% 20% auto 45% 15%;
+    grid-template-rows: 10% 40% 40% 10%; 
+}
+#contenedor-ok{
+    grid-column: 4 / 5;
+    grid-row: 3 / 4;
+}
+#contenedor-titulo-ins{
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
+    align-self: center;
+}
+#titulo-ins{
+    color: #000000;
+    font-size: 2.5em;
+    font-weight: bolder;
+    margin-bottom: 0.3rem; 
+}
+.label-res{
+    font-size: .5em;
+    font-weight: 100;
+}
+#subtitulo-res{      
+    margin-top: 0.1rem;
+}
+.texto{
+    font-family:'Roboto';
+    font-size: 25px; 
+    fill:#6f6f6e;
+}
+.texto-actual{
+    font-family:'Roboto';
+    fill: #6f6f6e;
+    font-size: 25px;
+}
+.texto-ok{    
+    font-family:'Roboto Slab';
+    fill: #FFFFFF;
+    font-size: 30px;
+}
+#titulo-res{
+    font-size: 2.5em;
+    font-weight: bolder;
+    margin-bottom: 0.3rem;    
+}
+
+
+@media only screen and (min-width: 980px) and (max-width: 1330px){
+    #titulo-cal{
+        font-size: 2.3em;
+    }
+}
