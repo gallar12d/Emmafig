@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cuestionario from './cuestionario/Cuestionario';
+import Detalle from './detalle/Detalle';
 import Inicio from './inicio/Inicio';
 import Inscripcion from './inscripcion/Inscripcion';
 import Resultado from './resultado/Resultado';
@@ -28,6 +29,7 @@ class Calculadora extends Component {
                 <Cuestionario></Cuestionario>
                 <Resultado></Resultado>
                 <Inscripcion></Inscripcion>
+                <Detalle></Detalle>
             </div>
         );
 

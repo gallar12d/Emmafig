@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
 import './Resultado.css'
+import M from 'materialize-css'
 
 class Resultado extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {            
+        this.state = {
             btn_mas_detalles: process.env.PUBLIC_URL + "/img/masdeta-btn.svg",
-            btn_conocer_mas: process.env.PUBLIC_URL + "/img/conocermas-btn_1.svg"
+            btn_conocer_mas: process.env.PUBLIC_URL + "/img/conocermas-btn_1.svg",
+            displayModal: false
         };
-       
+
         this.masHandleMouseOver = this.masHandleMouseOver.bind(this);
-        this.masHandleMouseOut = this.masHandleMouseOut.bind(this);        
+        this.masHandleMouseOut = this.masHandleMouseOut.bind(this);
         this.conocerHandleMouseOver = this.conocerHandleMouseOver.bind(this);
         this.conocerHandleMouseOut = this.conocerHandleMouseOut.bind(this);
+        this.masHandleClick = this.masHandleClick.bind(this);
     }
 
+    componentDidMount(){
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+             M.Modal.init(elems, {});
+          });
+    }
+
+    masHandleClick() {
+        this.setState({
+            displayModal: !this.state.displayModal
+        })
+    }
     masHandleMouseOver() {
         this.setState({
             btn_mas_detalles: process.env.PUBLIC_URL + "/img/masdeta-hover-btn.svg"
@@ -39,9 +54,30 @@ class Resultado extends Component {
         });
     }
     render() {
-
+        let modal = null;
+        if (this.state.displayModal) {
+            modal = (
+                <div>
+                    <h1>Hola mundo</h1>
+                    {/*{ this.state.questions.map((question, index) => {
+                      return <Question key={question.id}
+                      title={question.title} />
+                 })}*/}
+                </div>
+            )
+        }
         return (
+
             <div id="contenedor-resultado">
+                <div id="modal1" className="modal">
+                    <div className="modal-content">
+                        <h4>Modal Header</h4>
+                        <p>A bunch of text</p>
+                    </div>
+                    <div className="modal-footer">
+                        <a href="#!" className="modal-close waves-effect waves-green btn-flat">Agree</a>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
                         <h1 id="titulo-res" className="flow-text">Resultado</h1>
@@ -50,14 +86,15 @@ class Resultado extends Component {
                     </div>
                 </div>
                 <div className="cont-btn-result">
-                    <div>                        
+                    <div>
                     </div>
-                    <div>                        
-                        <img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res"></img>
+                    <div>
+                        <img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1"></img>
+                        
                     </div>
                     <div></div>
-                    <div>                        
-                        <img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>                        
+                    <div>
+                        <img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>
                     </div>
                     <div></div>
                 </div>

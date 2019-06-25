@@ -33,10 +33,10 @@ class Inscripcion extends Component {
             <div id="contenedor-inscripcion">
                 <div></div>
                 <div id="contenedor-emma">
-                    <img id="img-emmma" src={this.state.img_emma} />
+                    <img id="img-emma" src={this.state.img_emma} />
                 </div>
                 <div id="contenedor-titulo-ins" className="">
-                    <span id="titulo-ins">Se ha Realizado exitosamente tu inscripción</span>
+                    <span id="titulo-ins">Se ha realizado exitosamente tu inscripción</span>
                 </div>
                 <div id="contenedor-ok">
                     <img id="btn_ok" onMouseOver={this.okHandleMouseOver} onMouseOut={this.okHandleMouseOut} src={this.state.btn_ok} className="center" />
