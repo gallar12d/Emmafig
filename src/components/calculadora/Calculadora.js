@@ -1,31 +1,39 @@
 import React, { Component } from 'react';
-import './Calculadora.css'
+import Cuestionario from './cuestionario/Cuestionario';
+import Detalle from './detalle/Detalle';
+import Inicio from './inicio/Inicio';
+import Inscripcion from './inscripcion/Inscripcion';
+import Resultado from './resultado/Resultado';
+import './Calculadora.css';
 
-class Menu extends Component {
+class Calculadora extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            logo: process.env.PUBLIC_URL + "/img/logo-Emmafig1.png"
-
+            next: process.env.PUBLIC_URL + "/img/next-btn.svg"
         };
     }
-
+    CuestionarioStart(props) {
+        return <Cuestionario />;
+    }
     render() {
+
         return (
             <div id="contenedor-calculadora">
-                <div className="row">                                        
-                    <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
-                         <h1 id="titulo-cal" className="center-align flow-text">Calcula el nivel de riesgo que presentas</h1>
-                         <h6 id="subtitulo-cal" className="center-align ">Responde a las siguientes preguntas y obten un resultado verdadero</h6>
-                    </div>                    
+                <Inicio></Inicio>
+                <div className="row">
+                    <div className="col s4 m4 l2 offset-s4 offset-m4 offset-l5">
+                        <img id="btn_prev" src={this.state.next} onClick={this.CuestionarioStart} className="boton center"></img>
+                    </div>
                 </div>
-                <div className="row">                                        
-                                     
-                </div>       
+                <Cuestionario></Cuestionario>
+                <Resultado></Resultado>
+                <Inscripcion></Inscripcion>
+                <Detalle></Detalle>
             </div>
         );
 
     }
 }
 
-export default Menu; // Don’t forget to use export default!
+export default Calculadora; // Don’t forget to use export default!

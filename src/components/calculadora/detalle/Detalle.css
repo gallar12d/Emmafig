@@ -1,0 +1,16 @@
+
+.btn_op{
+    min-width: 80px;
+    max-width: 150px;
+    cursor: pointer;
+}
+#titulo-detalle{
+    color: #000000;
+    font-size: 2.4em;
+    font-weight: bolder;
+    margin-bottom: 0.3rem; 
+}
+
+
+
+
