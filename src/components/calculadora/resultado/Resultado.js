@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './Resultado.css'
 import M from 'materialize-css'
+import '../../../../node_modules/materialize-social/css/materialize.css'
+import '../../../../node_modules/font-awesome/css/font-awesome.min.css'
+import './materialize-social.css'
 
 class Resultado extends Component {
 
@@ -19,11 +22,11 @@ class Resultado extends Component {
         this.masHandleClick = this.masHandleClick.bind(this);
     }
 
-    componentDidMount(){
-        document.addEventListener('DOMContentLoaded', function() {
+    componentDidMount() {
+        document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.modal');
-             M.Modal.init(elems, {});
-          });
+            M.Modal.init(elems, {});
+        });
     }
 
     masHandleClick() {
@@ -69,14 +72,24 @@ class Resultado extends Component {
         return (
 
             <div id="contenedor-resultado">
-                <div id="modal1" className="modal">
+                <div id="modal1" className="modal col s10 l4">
                     <div className="modal-content">
-                        <h4>Modal Header</h4>
-                        <p>A bunch of text</p>
+                        <form action="#">
+                            <p className="center titulo-registro">Registrate</p>
+                            <p className="center">Para recibir mas detalles de tu resultado <br />totalmente gratis</p>
+                            <div className="row">
+                                <a className="waves-effect waves-light btn social facebook">
+                                    <i className="fa fa-facebook"></i> Sign in with facebook</a>
+                            </div>
+                            <div className="row">
+                                <a className="waves-effect waves-light btn social google">
+                                    <i className="fa fa-google"></i> Sign in with google</a>
+                            </div>
+                        </form>
                     </div>
-                    <div className="modal-footer">
+                    {/*<div className="modal-footer">
                         <a href="#!" className="modal-close waves-effect waves-green btn-flat">Agree</a>
-                    </div>
+                    </div>*/}
                 </div>
                 <div className="row">
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
@@ -90,7 +103,7 @@ class Resultado extends Component {
                     </div>
                     <div>
                         <img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1"></img>
-                        
+
                     </div>
                     <div></div>
                     <div>

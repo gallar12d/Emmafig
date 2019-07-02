@@ -1,6 +1,7 @@
 #btn_ok{
     max-width: 105px;
     width: 40%;
+    cursor: pointer;
 }
 #img-emma{
     max-width: 220px;

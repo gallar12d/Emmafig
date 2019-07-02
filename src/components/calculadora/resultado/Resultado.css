@@ -21,6 +21,10 @@
     font-size: .5em;
     font-weight: 100;
 }
+#modal1{
+    background: #FFFFFF;  
+    top: 30% !important; 
+}
 #subtitulo-res{      
     margin-top: 0.1rem;
 }
@@ -38,6 +42,11 @@
     font-family:'Roboto Slab';
     fill: #FFFFFF;
     font-size: 30px;
+}
+.titulo-registro{
+    color:#6f6f6e;
+    font-weight: bold;
+    font-size: 20px;
 }
 #titulo-res{
     color:#0F9b9b;
