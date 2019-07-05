@@ -1,0 +1,59 @@
+.center{
+    color: #000;
+
+}
+
+.espaciado{
+  padding: 10px;
+}
+.espaciadoTestimonios{
+    padding-right: 100px;
+    padding-left: 100px;
+}
+.parallax img{
+    display: block;
+}
+
+.tituloTestimonials{
+    margin-top: 50px;
+    color: white;
+    font-family: Lato;
+    margin-bottom: 25px;
+    font-size: -webkit-xxx-large;
+}
+.subtituloTestimonials{
+    color: white;
+    font-family: Lato;
+    margin-bottom: 25px;
+    font-size: 1.2em;
+}
+.card .card-action:last-child {
+    border-radius: inherit;
+}
+.card{
+    border-radius: 15px;
+    height: 195px;
+}
+
+p.text-green {
+    color: #0a999a !important;
+}
+ img.avatar{
+    position: absolute;
+    border: 5px solid #0f9b9b;
+    width: 30%;
+    top: 67%;
+    margin-left: 28%;
+}
+.espaciado2 {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.parallax-container {
+    height: 600px;
+  }
+  h6.nombres {
+    margin-top: 45%;
+    font-size: 2.8vh;
+
+}
