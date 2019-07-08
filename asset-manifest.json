@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Emmafig/static/css/main.c8d37963.chunk.css",
+    "main.js": "/Emmafig/static/js/main.03b9ccd4.chunk.js",
+    "main.js.map": "/Emmafig/static/js/main.03b9ccd4.chunk.js.map",
+    "runtime~main.js": "/Emmafig/static/js/runtime~main.f3466225.js",
+    "runtime~main.js.map": "/Emmafig/static/js/runtime~main.f3466225.js.map",
+    "static/css/2.5ea0e914.chunk.css": "/Emmafig/static/css/2.5ea0e914.chunk.css",
+    "static/js/2.a20b1218.chunk.js": "/Emmafig/static/js/2.a20b1218.chunk.js",
+    "static/js/2.a20b1218.chunk.js.map": "/Emmafig/static/js/2.a20b1218.chunk.js.map",
+    "index.html": "/Emmafig/index.html",
+    "precache-manifest.ff0d083768506158909dd7d4f2559afe.js": "/Emmafig/precache-manifest.ff0d083768506158909dd7d4f2559afe.js",
+    "service-worker.js": "/Emmafig/service-worker.js",
+    "static/css/2.5ea0e914.chunk.css.map": "/Emmafig/static/css/2.5ea0e914.chunk.css.map",
+    "static/css/main.c8d37963.chunk.css.map": "/Emmafig/static/css/main.c8d37963.chunk.css.map",
+    "static/media/materialize.css": "/Emmafig/static/media/Roboto-Thin.dfe56a87.eot",
+    "static/media/font-awesome.min.css": "/Emmafig/static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/slick-theme.css": "/Emmafig/static/media/slick.f97e3bbf.svg"
+  }
+}
