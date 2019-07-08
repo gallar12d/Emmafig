@@ -46,8 +46,9 @@ class Testimonios extends Component {
             dots: true,
             infinite: true,
             speed: 500,
+            centerMode: false,
             slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToScroll:2,
             responsive: [
                 {
                   breakpoint: 1024,

@@ -4,6 +4,7 @@ import Menu from './components/menu/Menu';
 import Seccion1 from './components/seccion1/Seccion1';
 import Calculadora from './components/calculadora/Calculadora';
 import Testimonios from './components/testimonios/Testimonios';
+import Footer from './components/footer/Footer';
 import './App.css';
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Seccion1 ></Seccion1>
       <Calculadora></Calculadora>
       <Testimonios></Testimonios>   
-       
+      <Footer></Footer> 
     </div>
   );
 }

@@ -38,9 +38,22 @@
 p.text-green {
     color: #0a999a !important;
 }
+.slick-current p.text-green {
+    color: white !important;
+}
+.slick-current .hoverable.card.panel_radius {
+    background-color: #c83b8d;
+}
  img.avatar{
     position: absolute;
     border: 5px solid #0f9b9b;
+    width: 30%;
+    top: 67%;
+    margin-left: 28%;
+}
+.slick-current img.avatar{
+    position: absolute;
+    border: 5px solid #c83b8d;
     width: 30%;
     top: 67%;
     margin-left: 28%;
@@ -56,4 +69,16 @@ p.text-green {
     margin-top: 45%;
     font-size: 2.8vh;
 
+}
+.slick-dots li.slick-active button:before {
+    opacity: 1 !important;
+    color: #c83b8d !important;
+}
+.slick-dots li button:before {
+    
+    font-size: 25px !important;
+    line-height: 80px !important;
+    opacity: 1 !important;
+    color: white !important;
+    
 }
