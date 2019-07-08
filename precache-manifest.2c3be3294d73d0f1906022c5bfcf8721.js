@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f8b30dbf92ac798e6f50b0ef25de1edf",
+    "revision": "ae52f7c53cdc516f75ab9063361d7a63",
     "url": "/Emmafig/index.html"
   },
   {
