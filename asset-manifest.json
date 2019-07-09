@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Emmafig/static/css/main.c8d37963.chunk.css",
-    "main.js": "/Emmafig/static/js/main.7169a732.chunk.js",
-    "main.js.map": "/Emmafig/static/js/main.7169a732.chunk.js.map",
+    "main.js": "/Emmafig/static/js/main.79a7de4f.chunk.js",
+    "main.js.map": "/Emmafig/static/js/main.79a7de4f.chunk.js.map",
     "runtime~main.js": "/Emmafig/static/js/runtime~main.f3466225.js",
     "runtime~main.js.map": "/Emmafig/static/js/runtime~main.f3466225.js.map",
     "static/css/2.5ea0e914.chunk.css": "/Emmafig/static/css/2.5ea0e914.chunk.css",
     "static/js/2.d2c7bac8.chunk.js": "/Emmafig/static/js/2.d2c7bac8.chunk.js",
     "static/js/2.d2c7bac8.chunk.js.map": "/Emmafig/static/js/2.d2c7bac8.chunk.js.map",
     "index.html": "/Emmafig/index.html",
-    "precache-manifest.af0b67d659a65d18d65dff08c1b99d49.js": "/Emmafig/precache-manifest.af0b67d659a65d18d65dff08c1b99d49.js",
+    "precache-manifest.22aadbf37f80fb4b03dd52aa58182428.js": "/Emmafig/precache-manifest.22aadbf37f80fb4b03dd52aa58182428.js",
     "service-worker.js": "/Emmafig/service-worker.js",
     "static/css/2.5ea0e914.chunk.css.map": "/Emmafig/static/css/2.5ea0e914.chunk.css.map",
     "static/css/main.c8d37963.chunk.css.map": "/Emmafig/static/css/main.c8d37963.chunk.css.map",
