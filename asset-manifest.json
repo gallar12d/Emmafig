@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Emmafig/static/css/main.e4b62f1d.chunk.css",
-    "main.js": "/Emmafig/static/js/main.378a16c7.chunk.js",
-    "main.js.map": "/Emmafig/static/js/main.378a16c7.chunk.js.map",
+    "main.css": "/Emmafig/static/css/main.0509c557.chunk.css",
+    "main.js": "/Emmafig/static/js/main.ba6b1154.chunk.js",
+    "main.js.map": "/Emmafig/static/js/main.ba6b1154.chunk.js.map",
     "runtime~main.js": "/Emmafig/static/js/runtime~main.f3466225.js",
     "runtime~main.js.map": "/Emmafig/static/js/runtime~main.f3466225.js.map",
     "static/css/2.5ea0e914.chunk.css": "/Emmafig/static/css/2.5ea0e914.chunk.css",
     "static/js/2.d2c7bac8.chunk.js": "/Emmafig/static/js/2.d2c7bac8.chunk.js",
     "static/js/2.d2c7bac8.chunk.js.map": "/Emmafig/static/js/2.d2c7bac8.chunk.js.map",
     "index.html": "/Emmafig/index.html",
-    "precache-manifest.79304057c426e83e3330211c6b136726.js": "/Emmafig/precache-manifest.79304057c426e83e3330211c6b136726.js",
+    "precache-manifest.a5c072b46078c3e80603000c1ec22424.js": "/Emmafig/precache-manifest.a5c072b46078c3e80603000c1ec22424.js",
     "service-worker.js": "/Emmafig/service-worker.js",
     "static/css/2.5ea0e914.chunk.css.map": "/Emmafig/static/css/2.5ea0e914.chunk.css.map",
-    "static/css/main.e4b62f1d.chunk.css.map": "/Emmafig/static/css/main.e4b62f1d.chunk.css.map",
+    "static/css/main.0509c557.chunk.css.map": "/Emmafig/static/css/main.0509c557.chunk.css.map",
     "static/media/materialize.css": "/Emmafig/static/media/Roboto-Thin.dfe56a87.eot",
     "static/media/font-awesome.min.css": "/Emmafig/static/media/fontawesome-webfont.fee66e71.woff",
     "static/media/slick-theme.css": "/Emmafig/static/media/slick.f97e3bbf.svg"
