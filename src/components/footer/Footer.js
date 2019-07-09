@@ -7,8 +7,12 @@ import axios from 'axios';
 import './Footer.css'
 
 const Marker = ({ src }) => <img src={src} id="marker" />;
-//const Marker = ({ txt }) => <div>{txt}</div>  ;
+/*window.addEventListener("orientationchange", function() {
+    // Announce the new orientation number
+    alert(window.orientation);
+}, false);*/
 
+//const Marker = ({ txt }) => <div>{txt}</div>  ;
 class Footer extends Component {
     static defaultProps = {
         center: {
@@ -27,12 +31,63 @@ class Footer extends Component {
             hide: 0
         }
     }
+
+
+
+
+
     hideOrShowDiv() {
 
         var info_div = document.getElementById("info_div_small");
+        var info_div_medium = document.getElementById("info_div_medium");
         var btn_animate_info_div = document.getElementById("btn_animate_info_div");
+        var btn_animate_div_medium = document.getElementById("btn_animate_info_div_medium");
         var arrow = document.getElementById("arrow_hide_or_show");
+        var arrow_medium = document.getElementById("arrow_hide_or_show_medium");
+        if (info_div_medium.classList.contains('info_div_medium') && this.state.hide === 0) {
+            arrow_medium.innerHTML = "keyboard_arrow_right";
+            info_div_medium.classList.remove("info_div_medium");
 
+            info_div_medium.classList.add("info_div_hide");
+
+            btn_animate_div_medium.classList.remove("btn_animate_div_in");
+
+            btn_animate_div_medium.classList.add("btn_animate_div_out")
+
+            this.setState({
+                hide: 1
+            })
+        } else {
+            if (this.state.hide === 0) {
+                arrow_medium.innerHTML = "keyboard_arrow_right";
+
+                info_div_medium.classList.remove("info_div_show")
+                info_div_medium.classList.add("info_div_hide");
+                info_div_medium.classList.add("show-on-small");
+                btn_animate_div_medium.classList.remove("btn_animate_div_in")
+                btn_animate_div_medium.classList.add("btn_animate_div_out")
+                this.setState({
+                    hide: 1
+                })
+
+
+            } else {
+                arrow_medium.innerHTML = "keyboard_arrow_left";
+
+                info_div_medium.classList.remove("info_div_hide");
+                info_div_medium.classList.add("info_div_show");
+                info_div_medium.classList.add("show-on-small");
+                btn_animate_div_medium.classList.remove("btn_animate_div_out")
+                btn_animate_div_medium.classList.add("btn_animate_div_in")
+                //info_div.classList.add("info_div");
+                this.setState({
+                    hide: 0
+                })
+
+            }
+
+
+        }
 
         if (info_div.classList.contains('info_div_small') && this.state.hide === 0) {
             arrow.innerHTML = "keyboard_arrow_right";
@@ -181,6 +236,8 @@ class Footer extends Component {
 
     render() {
 
+
+
         const handleApiLoaded = (map, maps) => {
             return {
                 zoomControlOptions: {
@@ -199,9 +256,6 @@ class Footer extends Component {
         return (
 
             <div>
-
-
-
                 <div className="row layoutMap" style={{ height: '85vh', width: '100%' }}>
                     <GoogleMapReact
                         options={this.createMapOptions}
@@ -225,18 +279,13 @@ class Footer extends Component {
 
 
                     </GoogleMapReact>
-                    <div className="hide-on-med-and-up">
+                    <div className="hide-on-med-and-up ">
                         <div className="info_div_small " id="info_div_small">
                             <span onClick={this.hideOrShowDiv.bind(this)} id="btn_animate_info_div" className="btn_animate_div_in ">
                                 <i className="Tiny material-icons" id="arrow_hide_or_show">keyboard_arrow_left</i>
                             </span>
-
-
-
                             <div className="row" id="head_info">
                                 <div className="col s12 m12 l12 " id="head_info_div">
-
-
                                     <span className="headline"> Horarios</span>
                                 </div>
                                 <div className="col s12 m12 l12" id="sede_div">
@@ -244,10 +293,7 @@ class Footer extends Component {
                                     <span className="headline_sede"> Sede Popayán</span>
 
                                 </div>
-
-
                             </div>
-
                             <div id="label_viernes" className="row ">
                                 <div className="col s6 m6 l6" id="col_0_pading">
                                     <span className="horariotext"> Lun - Vie</span>
@@ -269,10 +315,6 @@ class Footer extends Component {
                                     <span className="horario_hour">8AM - 12AM</span>
                                 </div>
                             </div>
-
-
-
-
 
                             <div className="row " id="sede_div_santander">
 
@@ -381,8 +423,153 @@ class Footer extends Component {
 
                     </div>
 
-                    <div className="hide-on-small-only">
-                        <div className="info_div " id="info_div">
+                    <div className="hide-on-small-only hide-on-large-only">
+                        <div className="info_div_medium " id="info_div_medium">
+                            <span onClick={this.hideOrShowDiv.bind(this)} id="btn_animate_info_div_medium" className="btn_animate_div_in ">
+                                <i className="Tiny material-icons" id="arrow_hide_or_show_medium">keyboard_arrow_left</i>
+                            </span>
+                            <div className="row" id="head_info">
+                                <div className="col s12 m12 l12 " id="head_info_div">
+                                    <span className="headline"> Horarios</span>
+                                </div>
+                                <div className="col s12 m12 l12" id="sede_div">
+
+                                    <span className="headline_sede"> Sede Popayán</span>
+
+                                </div>
+                            </div>
+                            <div id="label_viernes" className="row ">
+                                <div className="col s6 m6 l6" id="col_0_pading">
+                                    <span className="horariotext"> Lun - Vie</span>
+
+                                </div>
+                                <div className="col s6 m6 l6" id="col_0_pading">
+
+                                    <span className="horario_hour" >8AM - 6PM</span>
+                                </div>
+
+                            </div>
+                            <div className="row " id="head_info">
+
+                                <div className="col s6 m6 l6" id="col_0_pading">
+                                    <span className="horariotext"> Sábado</span>
+
+                                </div>
+                                <div className="col s6 m6 l6" id="col_0_pading">
+                                    <span className="horario_hour">8AM - 12AM</span>
+                                </div>
+                            </div>
+
+                            <div className="row " id="sede_div_santander">
+
+                                <div className="col l12" id="col_0_pading">
+
+                                    <span className="headline_sede"> Sede Santander</span>
+                                </div>
+                            </div>
+
+
+                            <div id="label_viernes" className="row ">
+                                <div className="col s6 m6 l6" id="col_0_pading">
+                                    <span className="horariotext"> Lun - Vie</span>
+
+                                </div>
+                                <div className="col s6 m6 l6" id="col_0_pading">
+
+                                    <span className="horario_hour">8AM - 6PM</span>
+                                </div>
+
+                            </div>
+                            <div className="row ">
+
+                                <div className="col s6 m6 l6" id="col_0_pading">
+                                    <span className="horariotext"> Sábado</span>
+
+                                </div>
+                                <div className="col s6 m6 l6" id="col_0_pading">
+                                    <span className="horario_hour">8AM - 12AM</span>
+                                </div>
+                            </div>
+
+
+                            <div className="row " id="head_info" >
+                                <div className="col l12  " id="col_0_pading" >
+
+
+
+                                    <h3 className="titulos">
+                                        <span className="headline">Contacto <i className="Medium material-icons">call</i></span>
+                                    </h3>
+                                </div>
+
+                            </div>
+                            <div className="row " id="head_info">
+                                <div className="col s6 m6 l12">
+                                    <div className="row" id="head_info">
+
+
+                                        <div className="col s12 l6 " id="col_0_pading">
+
+                                            <span className="horariotext"> Popayán</span>
+
+                                        </div>
+                                        <div className="col s12 l6" id="col_0_pading">
+
+                                            <span className="horario_hour">+(57) 8 392735 </span>
+                                        </div>
+                                    </div>
+                                    <div className="row  " id="head_info">
+
+                                        <div className="col s12 l6" id="col_0_pading">
+
+
+                                            <span className="horariotext"> Santander</span>
+
+                                        </div>
+                                        <div className="col s12 l6" id="col_0_pading">
+
+                                            <span className="horario_hour">+(57) 8 443333</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col s6 m6 l12">
+                                    <div className="row" id="head_info">
+
+
+                                        <div className="col s12 l6 " id="col_0_pading">
+
+                                            <span className="horariotext"> Cel. Pop</span>
+
+                                        </div>
+                                        <div className="col s12 l6" id="col_0_pading">
+
+                                            <span className="horario_hour">317 441 2170 </span>
+                                        </div>
+                                    </div>
+                                    <div className="row  " id="head_info">
+
+                                        <div className="col s12 l6" id="col_0_pading">
+
+
+                                            <span className="horariotext">  Cel. Sant</span>
+
+                                        </div>
+                                        <div className="col s12 l6" id="col_0_pading">
+
+                                            <span className="horario_hour">315 389 2600</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div className="hide-on-med-and-down">
+                        <div className="info_div " id="info_div_large">
                             <div className="row" id="head_info">
                                 <div className="col s12 m12 l12 " id="head_info_div">
 
@@ -543,28 +730,49 @@ class Footer extends Component {
                 <footer id="footer" class="page-footer">
                     <div id="footer_container" class="container">
                         <div class="row">
-                            <div class="col s4 l4">
+                            <div class="col s4 m4 l4">
+                                <div className="row">
+                                    <div className="col ">
                                 <h5 class="titulo_footer">FUNDACIÓN INNOVAGEN </h5>
-                                <p id="little_text_footer" class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit, sed do eiusmod tempor
-                                                incididunt ut labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis nostrud
-                                                exercitation ullamco laboris nisi ut aliquip ex
-                                                 ea commodo consequat
+
+
+                                    </div>
+                                    <div className="col">
+
+                                <p id="little_text_footer" class="grey-text text-lighten-4">
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                    Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex
+                                    ea commodo consequat
                                 </p>
+                                    </div>
+
+                                </div>
+
                             </div>
-                            <div class="col s4 l4">
+                            <div class="col s4 m4 l4">
+                                <div className="row">
+                                    <div className="col s12 m12 l12">
+
                                 <h5 class="titulo_footer">INFORMATE</h5>
+                                    </div>
+                                    <div className="col s12 m12 l12 ">
+
+
                                 <div class="row" id="pading_txt_row">
                                     <div class="col s12 l2" >
 
                                         <span id="txt_bold_footer">Address:</span>
                                     </div>
                                     <div class="col s12 l10 " >
-                                        <span id="txt_slim_footer">66 South Timbío
-</span><br></br>
-                                        <span id="txt_slim_footer"> Window 6 Wonderland
-</span>
+                                        <span id="txt_slim_footer">
+                                            66 South Timbío
+                                        </span><br></br>
+                                        <span id="txt_slim_footer"> 
+                                            Window 6 Wonderland
+                                        </span>
                                     </div>
                                 </div>
 
@@ -574,10 +782,12 @@ class Footer extends Component {
                                         <span id="txt_bold_footer">Phone:</span>
                                     </div>
                                     <div class="col s12 l10 " >
-                                        <span id="txt_slim_footer">+440 875369208 - Office
-</span><br></br>
-                                        <span id="txt_slim_footer"> +440 353363114 - Fax
-</span>
+                                        <span id="txt_slim_footer">
+                                            +440 875369208 - Office
+                                        </span><br></br>
+                                        <span id="txt_slim_footer"> 
+                                            +440 353363114 - Fax
+                                        </span>
                                     </div>
                                 </div>
 
@@ -591,12 +801,23 @@ class Footer extends Component {
                                     </div>
 
                                 </div>
+                                    </div>
+
+                                </div>
 
                             </div>
-                            <div class="col s4 l4">
+                            <div class="col s4 m4 l4">
+                                <div className="row">
+                                    <div className="col">
                                 <h5 class="titulo_footer">SOCIAL MEDIA</h5>
-                                <p class="grey-text text-lighten-4">Lorem Ipsum is simply dummy text of the
-printing and typesetting industry</p>
+                                <p class="grey-text text-lighten-4">
+                                    Lorem Ipsum is simply dummy text of the
+                                    printing and typesetting industry
+                                </p>
+
+                                    </div>
+
+                                </div>
                             </div>
 
 
@@ -613,8 +834,11 @@ printing and typesetting industry</p>
             </div>
 
 
+
+
         );
     }
 }
+
 
 export default Footer;

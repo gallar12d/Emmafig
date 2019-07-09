@@ -7,7 +7,11 @@
     position: relative;
     margin-top: 0px;
     margin-bottom: 0px !important;
+    height: 550px !important;
 }
+
+
+
 
 .info_div{
     position: absolute;
@@ -27,6 +31,25 @@
     text-align: start;
         
             
+}
+.info_div_medium{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding-top: 0px;
+    padding-right: 40px;
+    padding-bottom: 0px;
+    padding-left: 40px;
+    
+    width: 325px;
+    height: 100%;
+    
+    background-color: #c83b8d;
+    color: aliceblue;
+          
+    text-align: start;
+        
+
 }
 #head_info{
     margin-bottom: 8px !important; 
@@ -51,14 +74,9 @@
     transition-property: margin-left;
    transition-duration: 0.3s, 0.3s, 0.3s;
    transition-timing-function: linear, linear;
-   
-   
+
    margin-left: -366px;
-   
-   
   
-   
-   
   }
   .info_div_show{
     position: absolute;
@@ -89,6 +107,7 @@
     height: 36px;
     position: absolute;
     left: 289px;
+  
     top: 50%;
     padding: 5px;
     background-color: #0F9b9b;
@@ -266,13 +285,68 @@
 /*
 
 */
+@media only screen and (max-width:640px) and (orientation: landscape) {
+
+
+    .info_div_hide{
+        position: absolute;
+        top: 0px;
+        left: 8%;
+        width:  325px;
+        height: 100%;
+        padding-top: 0px;
+        padding-right: 40px;
+        padding-bottom: 0px;
+        padding-left: 40px;
+        background-color: #c83b8d;
+        color: aliceblue;
+      
+        text-align: start;
+      
+        transition-property: margin-left;
+       transition-duration: 0.3s, 0.3s, 0.3s;
+       transition-timing-function: linear, linear;
+        
+        
+        margin-left: -376px;
+        
+        
+      
+      }
+      .info_div_show{
+        position: absolute;
+        top: 0px;
+        left: 8%;
+        width:  325px;
+        height: 100%;
+        padding-top: 0px;
+        padding-right: 40px;
+        padding-bottom: 0px;
+        padding-left: 40px;
+        background-color: #c83b8d;
+        color: aliceblue;
+      
+        text-align: start;
+      
+        transition-property: margin-left;
+       transition-duration: 0.3s, 0.3s, 0.3s;
+       transition-timing-function: linear, linear;
+       
+       
+       margin-left: -51px;
+       
+       
+      }
+}
+
 @media screen and (max-width:640px) {
     /* reglas CSS */
-    .layoutMap{
-        position: relative;
-        margin-top: 0px;
-        margin-bottom: 0px !important;
+    .titulo_footer{
+        font-size: 15px;
+    font-weight: bolder;
+
     }
+
     .info_div_small{
         position: absolute;
         top: 0px;
@@ -324,15 +398,93 @@
     }
 
   }
-  @media screen and (max-width:1024px) and (min-width:640px) {
-    /* reglas CSS */
+  
+ 
+  @media (max-width: 480px){
+    .titulo_footer{
+        font-size: 15px;
+    font-weight: bolder;
+
+    }
+      
+ 
+      .info_div_hide{
+        position: absolute;
+        top: 0px;
+        left: 8%;
+        width:  325px;
+        height: 100%;
+        padding-top: 0px;
+        padding-right: 40px;
+        padding-bottom: 0px;
+        padding-left: 40px;
+        background-color: #c83b8d;
+        color: aliceblue;
+      
+        text-align: start;
+      
+        transition-property: margin-left;
+       transition-duration: 0.3s, 0.3s, 0.3s;
+       transition-timing-function: linear, linear;
+    
+       margin-left: -354px;
+      
+      }
     .layoutMap{
         position: relative;
         margin-top: 0px;
         margin-bottom: 0px !important;
+        height: 500px !important;
+    }
+    .info_div_small{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        padding-top: 0px;
+        padding-right: 20px;
+        padding-bottom: 0px;
+        padding-left: 20px;
+        
+        width: 250px;
+        height: 100%;
+        
+        background-color: #c83b8d;
+        color: aliceblue;
+              
+        text-align: start;
+            
+                
+    }
+    
+    .headline{
+        font-weight: bolder;
+        font-size:25px;
+       
+       
+        line-height: 1.5 !important;
+       
+    }
+    .headline_sede{
+        font-size: 20px;
+        margin-top: 30px;
+        
+        
+    }
+    .horariotext{
+        font-size: 15px;
+        
+        line-height: 1.2;
+        font-weight: bolder;
+        
+     
+    
+    }
+    .horario_hour{
+        font-size:13px;
+       font-weight: 100;
+       
+      
+       
     }
   }
-
-
-
-
+  

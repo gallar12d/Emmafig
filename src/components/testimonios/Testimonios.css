@@ -47,16 +47,16 @@ p.text-green {
  img.avatar{
     position: absolute;
     border: 5px solid #0f9b9b;
-    width: 30%;
+    width: 39%;
     top: 67%;
-    margin-left: 28%;
+    margin-left: 24%;
 }
 .slick-current img.avatar{
     position: absolute;
     border: 5px solid #c83b8d;
-    width: 30%;
-    top: 67%;
-    margin-left: 28%;
+    width: 39%;
+    top: 64%;
+    margin-left: 24%;
 }
 .espaciado2 {
     margin-left: 5%;
@@ -66,7 +66,7 @@ p.text-green {
     height: 600px;
   }
   h6.nombres {
-    margin-top: 45%;
+    margin-top: 60%;
     font-size: 2.8vh;
 
 }
@@ -81,4 +81,22 @@ p.text-green {
     opacity: 1 !important;
     color: white !important;
     
+}
+.slick-slide.slick-active.slick-center.slick-current {
+    position: relative;    
+    bottom: 17px;
+    
+}
+.slick-slide, .slick-slide *{ outline: none !important; }
+button.slick-arrow.slick-prev {
+    display: none !important;
+}
+button.slick-arrow.slick-next {
+    display: none !important;
+}
+
+@media only screen and (max-width: 700px) {
+    .parallax-container {
+        height: 630px;
+      }
 }
