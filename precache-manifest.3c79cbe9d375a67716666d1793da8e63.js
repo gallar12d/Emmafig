@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "de1293524daed20d0b897e1ad1449508",
+    "revision": "30018d40fdf8a2a09f63f3d9dc3b73b4",
     "url": "/Emmafig/index.html"
   },
   {
@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Emmafig/static/css/2.5ea0e914.chunk.css"
   },
   {
-    "revision": "202c803de08bce36dd6e",
-    "url": "/Emmafig/static/css/main.6e1ca0cf.chunk.css"
+    "revision": "6fb091a8e5ec1489e660",
+    "url": "/Emmafig/static/css/main.0a1a310c.chunk.css"
   },
   {
     "revision": "92d1d23371d483c94a3b",
     "url": "/Emmafig/static/js/2.d2c7bac8.chunk.js"
   },
   {
-    "revision": "202c803de08bce36dd6e",
-    "url": "/Emmafig/static/js/main.293e7dbb.chunk.js"
+    "revision": "6fb091a8e5ec1489e660",
+    "url": "/Emmafig/static/js/main.6fc8a75f.chunk.js"
   },
   {
     "revision": "2f57f8bde7bf997ad868",
