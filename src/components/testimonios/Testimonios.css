@@ -45,31 +45,46 @@ p.text-green {
     background-color: #c83b8d;
 }
  img.avatar{
-    position: absolute;
+    
     border: 5px solid #0f9b9b;
-    width: 39%;
-    top: 67%;
-    margin-left: 24%;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 4px;
+}
+.textofijo {
+    height: 100px;
 }
 .slick-current img.avatar{
-    position: absolute;
+    
     border: 5px solid #c83b8d;
-    width: 39%;
-    top: 64%;
-    margin-left: 24%;
+    width: 50%;
+   
+    margin-left: 25%;
+    margin-top: 4px;
 }
 .espaciado2 {
     margin-left: 5%;
     margin-right: 5%;
 }
 .parallax-container {
-    height: 600px;
+    height: 630px;
   }
-  h6.nombres {
+  h6.nombress {
     margin-top: 60%;
     font-size: 2.8vh;
+}
+h6.nombres {
+    font-size: 2.8vh;   
+    margin-top: 25%;
+    color: white !important;
+   
 
 }
+.slick-track {
+    margin-bottom: 0px;
+}
+
+
 .slick-dots li.slick-active button:before {
     opacity: 1 !important;
     color: #c83b8d !important;
@@ -95,8 +110,14 @@ button.slick-arrow.slick-next {
     display: none !important;
 }
 
-@media only screen and (max-width: 700px) {
+
+@media only screen and (max-width: 300px) {
     .parallax-container {
-        height: 630px;
+        height: 650px;
+      }
+}
+@media only screen and (max-width: 500px) {
+    .parallax-container {
+        height: 700px;
       }
 }

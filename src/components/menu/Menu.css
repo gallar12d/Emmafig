@@ -9,9 +9,14 @@ nav .brand-logo {
     margin-left: 10%;
 }
 .logo{
-    margin-top: 16px;
+    margin-top: 11px;
 }
 
 .menuItems{
     margin-right: 10%;
+}
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    
+    font-size: 40px !important;
+    
 }
