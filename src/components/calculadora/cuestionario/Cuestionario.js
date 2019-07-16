@@ -183,7 +183,7 @@ class Cuestionario extends Component {
                     <div className="contenedor-linea">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 200 70">
-                            <line id="linea2" x1="0" y1="35" x2="200" y2="35"
+                            <line id="linea2" className="linea" x1="0" y1="35" x2="200" y2="35"
                                 strokeWidth="2" stroke="#C6C8C7" />
                         </svg>
                     </div>
