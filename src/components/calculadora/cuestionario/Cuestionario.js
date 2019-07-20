@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './Cuestionario.css'
+
 
 class Cuestionario extends Component {
     constructor(props) {
@@ -93,6 +94,18 @@ class Cuestionario extends Component {
         }
     }
 
+    componentDidMount() {
+        console.log('componentDidMount')
+      }
+    
+      componentDidUpdate() {
+        console.log('componentDidUpdate')
+      }
+    
+      componentWillUnmount() {
+        console.log('componentWillUnmount')
+      }
+
     prevHandleMouseOver() {
         this.setState({
             btn_prev: process.env.PUBLIC_URL + "/img/prev-btn-hover.svg"
@@ -136,17 +149,11 @@ class Cuestionario extends Component {
         }
     }
 
-    componentDidMount() {
-        /*var elemento = document.getElementById('circulo1');
-        var posicion = elemento.getBoundingClientRect();
-        alert(posicion.top);*/
-    }
-
-
-
+    
     render() {
 
         return (
+
             <div id="contenedor-cuestionario">
                 <div className="row">
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
@@ -344,6 +351,8 @@ class Cuestionario extends Component {
                     </div>
                 </div>
             </div >
+
+
         );
 
     }

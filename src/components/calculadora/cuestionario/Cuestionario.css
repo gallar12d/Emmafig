@@ -1,3 +1,10 @@
+#contenedor-cuestionario{
+    position: absolute;
+    width: 100%;
+    height: 500px;
+       will-change: transform, opacity;      
+    background: white;
+}
 .boton{
     max-width: 140px;
     min-width: 100px;

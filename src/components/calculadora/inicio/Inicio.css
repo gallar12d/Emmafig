@@ -1,3 +1,9 @@
+#contenedor-inicio{
+    
+    will-change: transform, opacity;
+    height: 100%;
+    overflow: hidden;
+}
 #avatar_emma{
     width: 100%;
 }
