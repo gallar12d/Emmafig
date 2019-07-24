@@ -1,3 +1,7 @@
 body{
     max-height: 500px;
+
+}
+#contenedor-calculadora{
+    height: 500px;
 }

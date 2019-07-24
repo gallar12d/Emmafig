@@ -4,14 +4,17 @@ import './Cuestionario.css'
 
 class Cuestionario extends Component {
     constructor(props) {
-        super(props);
+        super(props);        
         this.state = {
             value: '',
             btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg",
             btn_prev: process.env.PUBLIC_URL + "/img/prev-btn.svg",
             item: 1,
-            selectedOptions: [0, 0, 0, 0, 0, 0]
-
+            selectedOptions: [0, 0, 0, 0, 0, 0],
+            style: {
+                opacity: 0,
+                transform: 'translate3d(50%,0,0)'
+            }
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -23,10 +26,19 @@ class Cuestionario extends Component {
         this.prevHandleMouseOver = this.prevHandleMouseOver.bind(this);
         this.prevHandleMouseOut = this.prevHandleMouseOut.bind(this);
         this.prevClick = this.prevClick.bind(this);
+        this.mountStyle = this.mountStyle.bind(this);
+        this.unMountStyle = this.unMountStyle.bind(this);
+        this.countOptSelecteds = this.countOptSelecteds.bind(this);
+        
     }
 
     handleChange(event) {
         this.setState({ value: event.target.value });
+    }
+
+    countOptSelecteds(args){                   
+        const arrSum = args.reduce((total, num) => total + num);
+        return arrSum;
     }
 
     handleOptionChange(event) {
@@ -35,10 +47,12 @@ class Cuestionario extends Component {
         let op = event.target.id.substr(2, 1);
         let opts = this.state.selectedOptions;
         opts[op - 1] = 1;
+        if(this.countOptSelecteds(opts) == 6){
+            this.props.changeComponente();
+        }
         this.setState({
             selectedOptions: opts
-        });
-        console.log(this.state.selectedOptions);
+        });        
         circuloOk = document.getElementById("circulo" + op);
         textoOk = document.getElementById("texto" + op);
         circuloOk.classList.remove("circulo");
@@ -94,18 +108,7 @@ class Cuestionario extends Component {
         }
     }
 
-    componentDidMount() {
-        console.log('componentDidMount')
-      }
     
-      componentDidUpdate() {
-        console.log('componentDidUpdate')
-      }
-    
-      componentWillUnmount() {
-        console.log('componentWillUnmount')
-      }
-
     prevHandleMouseOver() {
         this.setState({
             btn_prev: process.env.PUBLIC_URL + "/img/prev-btn-hover.svg"
@@ -122,6 +125,7 @@ class Cuestionario extends Component {
         let next = this.state.item;
         if (this.state.item > 1) {
             next = next - 1;
+
             this.setState({
                 item: next
             })
@@ -149,12 +153,39 @@ class Cuestionario extends Component {
         }
     }
 
+    componentDidMount() {
+        setTimeout(this.mountStyle, 1) //call the into animiation
+    }
+
+    
+
+    mountStyle() {
+        console.log('mount');
+        this.setState({
+            style: {
+                opacity: 1,                
+                transitionProperty: 'translate3d(100%,0,0)',
+                transitionDuration: '1s'
+            }
+        });
+    }
+    unMountStyle() {
+        this.setState({
+            style: {
+                opacity: 0,                
+                transitionProperty: 'translate3d(-50%,0,0)',
+                transitionDuration: '1s'
+            }
+        });
+    }
+
+    
     
     render() {
 
         return (
 
-            <div id="contenedor-cuestionario">
+            <div style={this.state.style} id="contenedor-cuestionario">
                 <div className="row">
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
                         <h1 id="titulo-cal" className="flow-text">Calcula el nivel de riesgo que presentas</h1>
