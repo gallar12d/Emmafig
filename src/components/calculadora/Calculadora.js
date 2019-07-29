@@ -7,6 +7,7 @@ import Detalle from './detalle/Detalle';
 import Inicio from './inicio/Inicio';
 import Inscripcion from './inscripcion/Inscripcion';
 import Resultado from './resultado/Resultado';
+import Modal from './modal/Modal';
 import './Calculadora.css';
 
 import { Transition, animated } from 'react-spring/renderprops';
@@ -27,6 +28,7 @@ class Calculadora extends Component {
         var elems = document.getElementById('modal1');
             var instances = M.Modal.init(elems, {});
             this.modal = M.Modal.getInstance(elems);
+            
         
     }
     showComponente = () => {
@@ -43,24 +45,8 @@ class Calculadora extends Component {
 
         return (
             <div id="contenedor-calculadora">
-                <div id="modal1" className="modal col s10 l4">
-                    <div className="modal-content">
-                        <form action="#">
-                            <p className="center titulo-registro">Registrate</p>
-                            <p className="center">Para recibir mas detalles de tu resultado <br />totalmente gratis</p>
-                            <div className="row">
-                                <a className="waves-effect waves-light btn social facebook" onClick={this.changeComponente}>
-                                    <i className="fa fa-facebook"></i> Sign in with facebook</a>
-                            </div>
-                            <div className="row">
-                                <a className="waves-effect waves-light btn social google" onClick={this.changeComponente}>
-                                    <i className="fa fa-google"></i> Sign in with google</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <Modal changeComponente={this.changeComponente}/>
                 {this.showComponente()}
-                             
             </div>
         );
 
