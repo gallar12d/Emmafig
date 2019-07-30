@@ -8,7 +8,7 @@ class Inicio extends Component {
         this.state = {
             img_avatar: process.env.PUBLIC_URL + "/img/avatar-section1.png",
             logo_emma: process.env.PUBLIC_URL + "/img/MarcadeAguaColor.png",
-            begin: process.env.PUBLIC_URL + "/img/btn-empezar-contexto2_1.png",
+            begin: process.env.PUBLIC_URL + "/img/fwdbotnempezar/btn-empezar1-c-2.svg",
             style: {
                 opacity: 0,
                 transform: 'translate3d(100%,0,0)'
@@ -24,13 +24,13 @@ class Inicio extends Component {
 
     beginHandleMouseOver() {
         this.setState({
-            begin: process.env.PUBLIC_URL + "/img/btn-empezar-contexto4_1.png"
+            begin: process.env.PUBLIC_URL + "/img/fwdbotnempezar/btn-empezar1-c-2-h.svg"
         });
     }
 
     beginHandleMouseOut() {
         this.setState({
-            begin: process.env.PUBLIC_URL + "/img/btn-empezar-contexto2_1.png"
+            begin: process.env.PUBLIC_URL + "/img/fwdbotnempezar/btn-empezar1-c-2.svg"
         });
     }
 
