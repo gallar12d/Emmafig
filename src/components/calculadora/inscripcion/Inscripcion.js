@@ -39,7 +39,7 @@ class Inscripcion extends Component {
                     <span id="titulo-ins">Se ha realizado exitosamente tu inscripción</span>
                 </div>
                 <div id="contenedor-ok">
-                    <img id="btn_ok" onMouseOver={this.okHandleMouseOver} onMouseOut={this.okHandleMouseOut} src={this.state.btn_ok} className="center" />
+                    <img id="btn_ok" onMouseOver={this.okHandleMouseOver} onMouseOut={this.okHandleMouseOut} src={this.state.btn_ok} onClick={this.props.changeComponente} className="center" />
                 </div>
                 <div></div>
             </div >

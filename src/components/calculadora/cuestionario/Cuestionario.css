@@ -1,5 +1,12 @@
+#contenedor-cuestionario{ 
+    /*position: absolute;   */
+    width: 100%;
+    will-change: transform, opacity;      
+    background: white;
+}
 .boton{
     max-width: 140px;
+    min-width: 100px;
 }
 .boton:hover{
     cursor: pointer;   
@@ -85,17 +92,22 @@
 #titulo-cal{
     font-size: 2.5em;
     font-weight: bolder;
-    margin-bottom: 0.3rem;    
+    margin-bottom: 0.3rem;     
 }
 .wrapper{
     margin: auto;
     width: 98%;
     max-width: 1500px;    
     display: grid;
-    grid-template-columns: 5% repeat(5,minmax(45px,5%) minmax(30px,12%)) minmax(45px,5%) 5%;
+    grid-template-columns: minmax(5px,5%) repeat(5,minmax(45px,5%) minmax(15px,12%)) minmax(45px,5%) 5px;
 }
 @media only screen and (min-width: 980px) and (max-width: 1330px){
     #titulo-cal{
         font-size: 2.3em;
+    }
+}
+@media (max-width: 780px){
+    .linea{
+        stroke-width: 20px;
     }
 }

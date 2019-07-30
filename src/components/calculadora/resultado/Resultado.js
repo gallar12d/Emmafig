@@ -12,7 +12,11 @@ class Resultado extends Component {
         this.state = {
             btn_mas_detalles: process.env.PUBLIC_URL + "/img/masdeta-btn.svg",
             btn_conocer_mas: process.env.PUBLIC_URL + "/img/conocermas-btn_1.svg",
-            displayModal: false
+            displayModal: false,
+            style: {
+                opacity: 0,
+                transform: 'translate3d(100%,0,0)'
+            }
         };
 
         this.masHandleMouseOver = this.masHandleMouseOver.bind(this);
@@ -20,13 +24,13 @@ class Resultado extends Component {
         this.conocerHandleMouseOver = this.conocerHandleMouseOver.bind(this);
         this.conocerHandleMouseOut = this.conocerHandleMouseOut.bind(this);
         this.masHandleClick = this.masHandleClick.bind(this);
+        this.mountStyle = this.mountStyle.bind(this);
+        this.unMountStyle = this.unMountStyle.bind(this);
     }
 
     componentDidMount() {
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.modal');
-            M.Modal.init(elems, {});
-        });
+        
+        setTimeout(this.mountStyle, 10) //call the into animiation
     }
 
     masHandleClick() {
@@ -56,41 +60,32 @@ class Resultado extends Component {
             btn_conocer_mas: process.env.PUBLIC_URL + "/img/conocermas-btn_1.svg"
         });
     }
+    mountStyle() {
+        
+        this.setState({
+            style: {
+                opacity: 1,                
+                transitionProperty: 'translate3d(100%,0,0)',
+                transitionDuration: '1s'
+            }
+        });
+    }
+    unMountStyle() {
+        this.setState({
+            style: {
+                opacity: 0,                
+                transitionProperty: 'translate3d(-50%,0,0)',
+                transitionDuration: '1s'
+            }
+        });
+    }
+    
     render() {
-        let modal = null;
-        if (this.state.displayModal) {
-            modal = (
-                <div>
-                    <h1>Hola mundo</h1>
-                    {/*{ this.state.questions.map((question, index) => {
-                      return <Question key={question.id}
-                      title={question.title} />
-                 })}*/}
-                </div>
-            )
-        }
+        
         return (
 
-            <div id="contenedor-resultado">
-                <div id="modal1" className="modal col s10 l4">
-                    <div className="modal-content">
-                        <form action="#">
-                            <p className="center titulo-registro">Registrate</p>
-                            <p className="center">Para recibir mas detalles de tu resultado <br />totalmente gratis</p>
-                            <div className="row">
-                                <a className="waves-effect waves-light btn social facebook">
-                                    <i className="fa fa-facebook"></i> Sign in with facebook</a>
-                            </div>
-                            <div className="row">
-                                <a className="waves-effect waves-light btn social google">
-                                    <i className="fa fa-google"></i> Sign in with google</a>
-                            </div>
-                        </form>
-                    </div>
-                    {/*<div className="modal-footer">
-                        <a href="#!" className="modal-close waves-effect waves-green btn-flat">Agree</a>
-                    </div>*/}
-                </div>
+            <div style={this.state.style} id="contenedor-resultado">
+                
                 <div className="row">
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
                         <h1 id="titulo-res" className="flow-text">Resultado</h1>
@@ -102,12 +97,12 @@ class Resultado extends Component {
                     <div>
                     </div>
                     <div>
-                        <img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1"></img>
+                        <img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1" />
 
                     </div>
                     <div></div>
                     <div>
-                        <img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>
+                        <img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res modal-trigger" href="#modal1"></img>
                     </div>
                     <div></div>
                 </div>

@@ -1,35 +1,52 @@
 import React, { Component } from 'react';
+
+
+import M from 'materialize-css'
 import Cuestionario from './cuestionario/Cuestionario';
 import Detalle from './detalle/Detalle';
 import Inicio from './inicio/Inicio';
 import Inscripcion from './inscripcion/Inscripcion';
 import Resultado from './resultado/Resultado';
+import Modal from './modal/Modal';
 import './Calculadora.css';
 
+import { Transition, animated } from 'react-spring/renderprops';
+
 class Calculadora extends Component {
+    
     constructor(props) {
         super(props);
-        this.state = {
-            next: process.env.PUBLIC_URL + "/img/next-btn.svg"
-        };
+        this.modal = 1;
+        this.state = {            
+            componente : 1           
+        } 
+        this.showComponente = this.showComponente.bind(this);
+        this.changeComponente = this.changeComponente.bind(this);
+    }    
+    changeComponente = e => this.setState({componente: this.state.componente + 1});    
+    componentDidMount(){
+        var elems = document.getElementById('modal1');
+            var instances = M.Modal.init(elems, {});
+            this.modal = M.Modal.getInstance(elems);
+            
+        
     }
-    CuestionarioStart(props) {
-        return <Cuestionario />;
+    showComponente = () => {
+        switch(this.state.componente){
+            case 1: return <Inicio changeComponente={this.changeComponente} />                     
+            case 2: return <Cuestionario changeComponente={this.changeComponente}/>
+            case 3: return <Resultado />
+            case 4: this.modal.close()                    
+                    return <Inscripcion changeComponente={this.changeComponente} />
+            case 5: return <Detalle />
+        }
     }
     render() {
 
         return (
             <div id="contenedor-calculadora">
-                <Inicio></Inicio>
-                <div className="row">
-                    <div className="col s4 m4 l2 offset-s4 offset-m4 offset-l5">
-                        <img id="btn_prev" src={this.state.next} onClick={this.CuestionarioStart} className="boton center"></img>
-                    </div>
-                </div>
-                <Cuestionario></Cuestionario>
-                <Resultado></Resultado>
-                <Inscripcion></Inscripcion>
-                <Detalle></Detalle>
+                <Modal changeComponente={this.changeComponente}/>
+                {this.showComponente()}
             </div>
         );
 
