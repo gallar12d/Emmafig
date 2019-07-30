@@ -99,7 +99,7 @@ class Footer extends Component {
 
                     </div>
                 </div>
-                <img src={'https://www.iconsdb.com/icons/preview/white/facebook-xxl.png'}></img>
+                
                 <div id="footer_copyright" class="footer-copyright">
                     <div class="container">
                         <p >Con cariño para las mujeres del mundo; FUNDACION INNOVAGEN y SENA SECCIONAL - POPAYÁN 2019</p>

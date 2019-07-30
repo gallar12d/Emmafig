@@ -27,6 +27,7 @@ class Menu extends Component {
                             <ul className=" menuItems right hide-on-med-and-down">
                                 <li><a href="#!">Calculadora</a></li>
                                 <li><a href="#!">Citas</a></li>
+                                <li><a href="#!">Testimonios</a></li>
                                 <li><a href="#!">Contacto</a></li>
                                 <li><a href="#!">FAQ</a></li>
                                 <li><a href="#!">Blog</a></li>
@@ -43,6 +44,7 @@ class Menu extends Component {
                     <li><a href="#!">Calculadora</a></li>
                     <li><a href="#!">Citas</a></li>
                     <li><a href="#!">Contacto</a></li>
+                    <li><a href="#!">Testimonios</a></li>
                     <li><a href="#!">FAQ</a></li>
                     <li><a href="#!">Blog</a></li>
                 </ul>
