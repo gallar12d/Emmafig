@@ -4,7 +4,7 @@
         width: 85%;
     }
     .container.headcitas {
-        margin-top: 60px;
+        padding-top: 35px;;
     }
     .titulocitas{
         font-size: 2.5em;
@@ -20,3 +20,19 @@
     div#citas {
         background-color: #f3f3f3;
     }
+
+    .moreServices{
+        padding-bottom: 20px;
+
+    }
+
+    .moreServices a {
+        color: #c73a8c;
+        font-family: lato;
+        font-size: 1.3rem;
+        font-weight: bolder;
+    }
+    .moreServices a:hover {
+        text-decoration: underline;
+    }
+
