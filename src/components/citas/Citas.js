@@ -22,10 +22,10 @@ class Citas extends Component {
                     
                 </div>
                 <div className="row espacioPack">
-                        <Paquete></Paquete>
-                        <Paquete></Paquete>
-                        <Paquete></Paquete>
-                        <Paquete></Paquete>
+                        <Paquete titulo={'Citología en base líquida'}></Paquete>
+                        <Paquete  titulo={'Prueba de ADN-VPH'}></Paquete>
+                        <Paquete  titulo={'Cotest: Citología + VPH'}></Paquete>
+                        <Paquete  titulo={'Paquete preventivo'}></Paquete>
                 </div>
 
             </div>

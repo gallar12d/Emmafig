@@ -4,7 +4,9 @@ import './Paquete.css'
 class Paquete extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            titulo: ''
+        };
     }
 
     render() {
@@ -15,7 +17,7 @@ class Paquete extends Component {
                     <div className="card ">
                         <div class="card-title white-text">
                             
-                            <h4 className="tituloServicio">Citología en Base Líquida</h4>
+                            <h4 className="center-align tituloServicio">{this.props.titulo}</h4>
                         </div>
                         <div className="card-content white-text">
                             <h4>$ 190.000</h4>
