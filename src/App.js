@@ -5,6 +5,7 @@ import Seccion1 from './components/seccion1/Seccion1';
 import Calculadora from './components/calculadora/Calculadora';
 import Testimonios from './components/testimonios/Testimonios';
 import Footer from './components/footer/Footer';
+import Citas from './components/citas/Citas';
 import Contacto from './components/contacto/Contacto';
 import './App.css';
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Menu></Menu>      
       <Seccion1 ></Seccion1>
       <Calculadora></Calculadora>
+      <Citas></Citas>
       <Testimonios></Testimonios>   
       <Contacto></Contacto> 
       <Footer></Footer> 
