@@ -1,4 +1,7 @@
-
+#contenedor-detalles{
+    padding-top: 15px;
+    margin-bottom: 0;
+}
 .btn_op{
     min-width: 80px;
     max-width: 150px;

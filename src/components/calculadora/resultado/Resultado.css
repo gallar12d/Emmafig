@@ -1,6 +1,7 @@
 #contenedor-resultado{
     /*position: absolute;*/
     width: 100%;
+    padding-bottom: 15px;
 }
 .boton-res{
     cursor: pointer;

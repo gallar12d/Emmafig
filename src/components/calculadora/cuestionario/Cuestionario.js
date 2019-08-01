@@ -373,7 +373,7 @@ class Cuestionario extends Component {
                         </label>
                     </div>
                 </form>
-                <div className="row">
+                <div id="contenedor-botones" className="row">
                     <div className="col s3 m3 l2 offset-s3 offset-m3 offset-l4">
                         <img id="btn_prev" onMouseOver={this.prevHandleMouseOver} onMouseOut={this.prevHandleMouseOut} onClick={this.prevClick} src={this.state.btn_prev} className="boton right"></img>
                     </div>
@@ -381,7 +381,7 @@ class Cuestionario extends Component {
                         <img id="btn_next" onMouseOver={this.nextHandleMouseOver} onMouseOut={this.nextHandleMouseOut} onClick={this.nextClick} src={this.state.btn_next} className="boton left"></img>
                     </div>
                 </div>
-            </div >
+            </div>
 
 
         );

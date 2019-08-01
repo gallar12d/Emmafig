@@ -16,7 +16,7 @@ function App() {
       <Seccion1 ></Seccion1>
       <Calculadora></Calculadora>
       <Citas></Citas>
-      <Testimonios></Testimonios>   
+      <Testimonios></Testimonios> 
       <Contacto></Contacto> 
       <Footer></Footer> 
     </div>

@@ -60,7 +60,7 @@ class Inicio extends Component {
                         <h6 id="subtitulo-cal" className="center-align ">Responde a las siguientes preguntas y obten un resultado verdadero</h6>
                     </div>
                 </div>
-                <div className="row">
+                <div id="inicio-imagenes" className="row">
                     <div className="col s5 l3 offset-l2 offset-s1">
                         <img id="logo_emmafig" src={this.state.logo_emma}></img>
                         <img id="btn_begin" onMouseOver={this.beginHandleMouseOver} onMouseOut={this.beginHandleMouseOut} onClick={this.props.changeComponente} src={this.state.begin}></img>
