@@ -9,6 +9,7 @@
     "font-awesome": "^4.7.0",
     "gh-pages": "^2.0.1",
     "google-map-react": "^1.1.4",
+    "jquery": "^3.4.1",
     "materialize-css": "^1.0.0",
     "materialize-social": "^1.0.3",
     "react": "^16.8.6",

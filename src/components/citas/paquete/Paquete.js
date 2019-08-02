@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Paquete.css'
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
+import $ from 'jquery';
 
 class Paquete extends Component {
     constructor(props) {
@@ -15,8 +16,13 @@ class Paquete extends Component {
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.modal');
             M.Modal.init(elems, {});
+            console.log(elems)
           });
+
+          $('.modal').append('<button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">x</button>');
     }
+
+    
    
 
     
