@@ -14,7 +14,7 @@ function App() {
      
       <Menu></Menu>      
       <Seccion1 ></Seccion1>
-      <Calculadora></Calculadora>
+      <Calculadora></Calculadora>     
       <Citas></Citas>
       <Testimonios></Testimonios>   
       <Contacto></Contacto> 

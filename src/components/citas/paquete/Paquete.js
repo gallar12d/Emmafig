@@ -24,7 +24,7 @@ class Paquete extends Component {
     render() {
         return (
             <div>
-                <div className="col s12 m3 l3">
+                <div className="col s12 m6 l3">
                     <div className="card ">
                         <div className="card-title white-text">                            
                             <h4 className="center-align tituloServicio">{this.props.titulo}</h4>

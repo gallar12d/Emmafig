@@ -27,10 +27,10 @@
     margin-bottom: 25px;
     font-size: 1.2em;
 }
-.card .card-action:last-child {
+.espaciado2 .card .card-action:last-child {
     border-radius: inherit;
 }
-.card{
+.espaciado2 .card{
     border-radius: 15px;
     height: 195px;
 }
@@ -67,7 +67,7 @@ p.text-green {
     margin-right: 5%;
 }
 .parallax-container {
-    height: 630px;
+    height: 630px !important;
   }
   h6.nombress {
     margin-top: 60%;
