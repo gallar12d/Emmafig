@@ -255,7 +255,7 @@ class Contacto extends Component {
 
         return (
 
-            <div>
+            <div id="contacto">
                 <div className="row layoutMap" style={{ height: '85vh', width: '100%' }}>
                     <GoogleMapReact
                         options={this.createMapOptions}
