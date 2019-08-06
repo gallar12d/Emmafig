@@ -36,10 +36,10 @@ function App() {
      
       <Menu></Menu>      
       <Seccion1 ></Seccion1>
-      <Calculadora ></Calculadora>     
-      <Citas ></Citas>
-      <Testimonios ></Testimonios>   
-      <Contacto ></Contacto> 
+      <Calculadora></Calculadora>
+      <Citas></Citas>
+      <Testimonios></Testimonios> 
+      <Contacto></Contacto> 
       <Footer></Footer> 
     </div>
    

@@ -16,7 +16,7 @@ class Footer extends Component {
                         <div class="col s6 m6 l3">
                             <div className="row">
                                 <div className="col ">
-                                    <h5 class="titulo_footer">FUNDACIÓN INNOVAGEN </h5>
+                                    <h5 className="titulo_footer">FUNDACIÓN INNOVAGEN </h5>
 
 
                                 </div>
@@ -113,75 +113,32 @@ class Footer extends Component {
                             </div>
 
                         </div>
-                        <div class="col s6 m6 l3">
+                        <div className="col s4 m4 l4">
                             <div className="row">
-                                <div className="col s12 m12 l12">
-                                    <h5 class="titulo_footer">ENLACES DE INTERES</h5>
-
-                                </div>
-                                <div className="col s12 m6 l12">
-                                    <div className="row" id="listPruebas">
-                                        <div className="col s2 m2 l1">
-
-
-                                    <i class="tiny material-icons" id="iconFooter">fiber_manual_record</i>
-                                        </div>
-                                    <div className="col s10 m10 l11">
-
-                                    <a href="#" class="r-link ai-element ai-element_type2 ai-element3" id="linksFooter">
-                                        Blog
-                                    </a>
-                                    </div>
-
-                                    </div>
-                                </div>
-                                <div className="col s12 m12 l12">
-                                <div className="row" id="listPruebas">
-                                        <div className="col s2 m2 l1">
-
-
-                                    <i class="tiny material-icons" id="iconFooter">fiber_manual_record</i>
-                                        </div>
-                                    <div className="col s10 m10 l11">
-
-                                    
-                                    <a class="r-link ai-element ai-element_type2 ai-element3" id="linksFooter">
-                                        Preguntas y respuestas frecuentes
-                                    </a>
-                                    </div>
-
-                                    </div>
-                                </div>
-                                <div className="col s12 m12 l12">
-                                <div className="row" id="listPruebas">
-                                        <div className="col s2 m2 l1">
-
-
-                                    <i class="tiny material-icons" id="iconFooter">fiber_manual_record</i>
-                                        </div>
-                                    <div className="col s10 m10 l11">
-                                    <a href="http://fig.org.co/pgnafig/" target="_blank" class="r-link ai-element ai-element_type2 ai-element3" id="linksFooter">
-                                        Fundacion Innovagen
-                                    </a>
-                                    </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col s6 m6 l3">
-                            <div className="row">
-                                <div className="col s12 m12 l12">
-                                    <h5 class="titulo_footer">SOCIAL MEDIA</h5>
-                                    <p class="grey-text text-lighten-4">
+                                <div className="col">
+                                    <h5 className="titulo_footer">SOCIAL MEDIA</h5>
+                                    <p className="grey-text text-lighten-4">
                                         Lorem Ipsum is simply dummy text of the
                                         printing and typesetting industry
-                                </p>
-                                <img src={this.state.logoFacebook}/>
-                                
+                                    </p>
                                 </div>
-
+                            </div>
+                            <div className="row">
+                                <div className="col">
+                                    <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
+                                        <i className="fa fa-facebook fa-lg"></i>
+                                    </a>
+                                </div>
+                                <div className="col">
+                                    <a href="https://instagram.com/funinnovagen?igshid=1i9a8bm9m2kck" target="_blank">
+                                        <i className="fa fa-instagram fa-lg"></i>
+                                    </a>
+                                </div>
+                                <div className="col">
+                                    <a href="https://api.whatsapp.com/send?phone=573174412170" target="_blank">
+                                        <i className="fa fa-whatsapp fa-lg"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
 

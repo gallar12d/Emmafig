@@ -4,7 +4,7 @@ import './Cuestionario.css'
 
 class Cuestionario extends Component {
     constructor(props) {
-        super(props);        
+        super(props);
         this.state = {
             value: '',
             btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg",
@@ -29,16 +29,22 @@ class Cuestionario extends Component {
         this.mountStyle = this.mountStyle.bind(this);
         this.unMountStyle = this.unMountStyle.bind(this);
         this.countOptSelecteds = this.countOptSelecteds.bind(this);
-        
+        this.closeInfo= this.closeInfo.bind(this);
+
     }
 
     handleChange(event) {
         this.setState({ value: event.target.value });
     }
 
-    countOptSelecteds(args){                   
+    countOptSelecteds(args) {
         const arrSum = args.reduce((total, num) => total + num);
         return arrSum;
+    }
+
+    closeInfo(event){
+        let info_end = document.getElementById("info-fin-cuestionario");
+        info_end.style.clipPath = "circle(0%)";
     }
 
     handleOptionChange(event) {
@@ -46,13 +52,17 @@ class Cuestionario extends Component {
         let textoOk;
         let op = event.target.id.substr(2, 1);
         let opts = this.state.selectedOptions;
+        let info_end = document.getElementById("info-fin-cuestionario");
+
         opts[op - 1] = 1;
-        if(this.countOptSelecteds(opts) == 6){
-            this.props.changeComponente();
+        if (this.countOptSelecteds(opts) == 6) {
+            info_end.style.clipPath = "circle(75%)";
+            //info_end.classList.add('info-fin-show');
+            //this.props.changeComponente();
         }
         this.setState({
             selectedOptions: opts
-        });        
+        });
         circuloOk = document.getElementById("circulo" + op);
         textoOk = document.getElementById("texto" + op);
         circuloOk.classList.remove("circulo");
@@ -79,36 +89,65 @@ class Cuestionario extends Component {
         });
     }
     nextClick() {
+
         let next = this.state.item;
-        if (this.state.item < 6) {
-            next = next + 1;
-            this.setState({
-                item: next
-            })
-            let opts = this.state.selectedOptions;
-            const circuloPrev = document.getElementById("circulo" + (next - 1));
-            const circuloActual = document.getElementById("circulo" + next);
-            const lineaOk = document.getElementById("linea" + (next - 1));
-            const preguntaOk = document.getElementById("cont-pregunta" + (next - 1));
-            const preguntaActual = document.getElementById("cont-pregunta" + next);
-            const opcRespOK = document.getElementById("opc-respuesta-pregunta" + (next - 1));
-            const opcRespActual = document.getElementById("opc-respuesta-pregunta" + next);
-            if (opts[next - 1] == 0) {
-                circuloActual.classList.remove("circulo");
-                circuloActual.classList.remove("circulo-ok");
-                circuloActual.classList.add("circulo-actual");
+        const cont_btn_ant = document.getElementById("cont_btn_prev");
+        const cont_btn_next = document.getElementById("cont_btn_next");
+        const btn_next = document.getElementById("btn_next");
+
+        let opts = this.state.selectedOptions;
+
+        let item = this.state.item;
+
+        const info = document.getElementById("info" + item);
+        if (opts[item - 1] == 1) {
+            info.style.display = "none";
+            if (this.state.item < 6) {
+                next = next + 1;
+                this.setState({
+                    item: next
+                })
+
+                cont_btn_ant.style.display = "block";
+                cont_btn_next.classList.remove("offset-l5");
+                btn_next.classList.remove("center");
+                btn_next.classList.add("left");
+                const circuloPrev = document.getElementById("circulo" + (next - 1));
+                const circuloActual = document.getElementById("circulo" + next);
+                const lineaOk = document.getElementById("linea" + (next - 1));
+                const preguntaOk = document.getElementById("cont-pregunta" + (next - 1));
+                const preguntaActual = document.getElementById("cont-pregunta" + next);
+                const opcRespOK = document.getElementById("opc-respuesta-pregunta" + (next - 1));
+                const opcRespActual = document.getElementById("opc-respuesta-pregunta" + next);
+                if (opts[next - 1] == 0) {
+                    circuloActual.classList.remove("circulo");
+                    circuloActual.classList.add("circulo-actual");
+                } else {
+                    circuloActual.classList.add("circulo-ok-actual");
+                }
+                circuloPrev.classList.remove("circulo-ok-actual");
+                circuloPrev.classList.remove("circulo-actual");
+                circuloPrev.classList.add("circulo");
+                lineaOk.classList.toggle("linea-ok");
+                preguntaOk.style.display = "none";
+                opcRespOK.style.display = "none";
+                opcRespActual.style.display = "block";
+                preguntaActual.style.display = "block";
+            }else if (this.countOptSelecteds(opts) == 6) {
+                this.props.changeComponente();
             }
-            circuloPrev.classList.remove("circulo-actual");
-            circuloPrev.classList.add("circulo");
-            lineaOk.classList.toggle("linea-ok");
-            preguntaOk.style.display = "none";
-            opcRespOK.style.display = "none";
-            opcRespActual.style.display = "block";
-            preguntaActual.style.display = "block";
+        } else {
+            info.style.display = "block";
+            info.classList.remove("info-animation");
+            void info.offsetWidth;
+            info.classList.add("info-animation");
+
+
         }
+
     }
 
-    
+
     prevHandleMouseOver() {
         this.setState({
             btn_prev: process.env.PUBLIC_URL + "/img/prev-btn-hover.svg"
@@ -122,13 +161,26 @@ class Cuestionario extends Component {
     }
 
     prevClick() {
+        console.log(this.state.item);
         let next = this.state.item;
+        const cont_btn_ant = document.getElementById("cont_btn_prev");
+        const cont_btn_next = document.getElementById("cont_btn_next");
+        const btn_next = document.getElementById("btn_next");
         if (this.state.item > 1) {
+            cont_btn_ant.style.display = "block";
+            cont_btn_next.classList.add("left");
+            btn_next.classList.remove("offset-l5");
+            btn_next.classList.remove("center");
             next = next - 1;
-
             this.setState({
                 item: next
-            })
+            });
+            if (next == 1) {
+                cont_btn_ant.style.display = "none";
+                cont_btn_next.classList.add("offset-l5");
+                btn_next.classList.remove("left");
+                btn_next.classList.add("center");
+            }
             let opts = this.state.selectedOptions;
             const circuloPrev = document.getElementById("circulo" + (next + 1));
             const circuloActual = document.getElementById("circulo" + next);
@@ -142,6 +194,10 @@ class Cuestionario extends Component {
                 circuloActual.classList.remove("circulo-ok");
                 circuloActual.classList.add("circulo-actual");
             }
+            else {
+                circuloActual.classList.add("circulo-ok-actual");
+            }
+            circuloPrev.classList.remove("circulo-ok-actual");
             circuloPrev.classList.remove("circulo-actual");
             circuloPrev.classList.add("circulo");
             lineaOk.classList.remove("linea-ok");
@@ -155,15 +211,21 @@ class Cuestionario extends Component {
 
     componentDidMount() {
         setTimeout(this.mountStyle, 1) //call the into animiation
+        const cont_btn_ant = document.getElementById("cont_btn_prev");
+        const cont_btn_next = document.getElementById("cont_btn_next");
+        const btn_next = document.getElementById("btn_next");
+        cont_btn_ant.style.display = "none";
+        cont_btn_next.classList.add("offset-l5");
+        btn_next.classList.remove("left");
+        btn_next.classList.add("center");
     }
 
-    
+
 
     mountStyle() {
-        console.log('mount');
         this.setState({
             style: {
-                opacity: 1,                
+                opacity: 1,
                 transitionProperty: 'translate3d(100%,0,0)',
                 transitionDuration: '1s'
             }
@@ -172,20 +234,29 @@ class Cuestionario extends Component {
     unMountStyle() {
         this.setState({
             style: {
-                opacity: 0,                
+                opacity: 0,
                 transitionProperty: 'translate3d(-50%,0,0)',
                 transitionDuration: '1s'
             }
         });
     }
 
-    
-    
+
+
     render() {
 
         return (
 
             <div style={this.state.style} id="contenedor-cuestionario">
+                <div id="info-fin-cuestionario" className="info-fin-cuestionario">
+                    <span>
+                        <i id="close-info" className="small material-icons" onClick={this.closeInfo}>highlight_off</i>
+                    </span>
+                    <p>
+                        !Felicitaciones¡
+                    </p>
+                    <p>Has terminado el cuestionario por favor presione siguiente para obtener el resultado</p>
+                </div>
                 <div className="row">
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
                         <h1 id="titulo-cal" className="flow-text">Calcula el nivel de riesgo que presentas</h1>
@@ -285,6 +356,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta1" className="row" pgindex="1">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta1" className="center-align contenido-pregunta">1. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <p id="info1" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta1" className="row" oprindex="1">
@@ -300,6 +372,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta2" className="row" pgindex="2">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta2" className="center-align contenido-pregunta">2. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <p id="info2" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta2" className="row" oprindex="2">
@@ -315,6 +388,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta3" className="row" pgindex="3">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta3" className="center-align contenido-pregunta">3. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <p id="info3" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta3" className="row" oprindex="3">
@@ -330,6 +404,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta4" className="row" pgindex="4">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta4" className="center-align contenido-pregunta">4. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <p id="info4" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta4" className="row" oprindex="4">
@@ -345,6 +420,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta5" className="row" pgindex="5">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta5" className="center-align contenido-pregunta">5. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <p id="info5" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta5" className="row" oprindex="5">
@@ -360,6 +436,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta6" className="row" pgindex="6">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta6" className="center-align contenido-pregunta">6. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <p id="info6" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta6" className="row" oprindex="6">
@@ -373,15 +450,15 @@ class Cuestionario extends Component {
                         </label>
                     </div>
                 </form>
-                <div className="row">
-                    <div className="col s3 m3 l2 offset-s3 offset-m3 offset-l4">
+                <div id="contenedor-botones" className="row">
+                    <div id="cont_btn_prev" className="col s3 m3 l2 offset-s3 offset-m3 offset-l4">
                         <img id="btn_prev" onMouseOver={this.prevHandleMouseOver} onMouseOut={this.prevHandleMouseOut} onClick={this.prevClick} src={this.state.btn_prev} className="boton right"></img>
                     </div>
-                    <div className="col s3 m3 l2">
+                    <div id="cont_btn_next" className="col s3 m3 l2">
                         <img id="btn_next" onMouseOver={this.nextHandleMouseOver} onMouseOut={this.nextHandleMouseOut} onClick={this.nextClick} src={this.state.btn_next} className="boton left"></img>
                     </div>
                 </div>
-            </div >
+            </div>
 
 
         );

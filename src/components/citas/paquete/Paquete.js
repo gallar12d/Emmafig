@@ -47,7 +47,8 @@ class Paquete extends Component {
             <div>
                 <div className="col s12 m6 l3">
                     <div className="card ">
-                        <div className="card-title white-text">                            
+                        <div className="card-title white-text">
+                            
                             <h4 className="center-align tituloServicio">{this.props.titulo}</h4>
                         </div>
                         <div className="card-content white-text">
