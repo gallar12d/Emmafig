@@ -107,7 +107,7 @@ class Testimonios extends Component {
     const listItems = this.state.testimonios.map((d) => <CustomSlide key={d.id_testimonio} texto={d.texto} imagen={d.url_imagen} nombres={d.nombre} profesion={d.profesion}></CustomSlide>);
 
     return (
-      <div className="parallax-container">
+      <div className="parallax-container" id="testimonios">
         <div className="parallax">
           <img alt="algo" src={this.state.background}></img>
         </div>

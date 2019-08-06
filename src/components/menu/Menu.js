@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link} from "react-scroll";
 import './Menu.css'
 
 class Menu extends Component {
@@ -16,23 +17,90 @@ class Menu extends Component {
                 <div className="navbar-fixed">
                     <nav>
                         <div className="nav-wrapper">
+                        <Link
+                                activateClass = "activate"
+                                to ="seccion1"
+                                spy={true}
+                                smooth={true}
+                                offset={-70}
+                                duration={500}
+                                >
+                            
                             <a href="#!" className="  brand-logo hide-on-med-and-down">
                                 <img className="logo" alt="logo" src={this.state.logo}>
 
                                 </img>
                             </a>
+                            </Link>
                             <a href="#!" data-target="mobile-demo" className="sidenav-trigger">
                                 <i className="material-icons">menu</i>
                             </a>
                             <ul className=" menuItems right hide-on-med-and-down">
-                                <li><a href="#!">Calculadora</a></li>
-                                <li><a href="#!">Citas</a></li>
-                                <li><a href="#!">Testimonios</a></li>
-                                <li><a href="#!">Contacto</a></li>
-                                <li><a href="#!">FAQ</a></li>
-                                <li><a href="#!">Blog</a></li>
+                                <li>
+                                
+                                <Link
+                                activateClass = "activate"
+                                to ="contenedor-inicio"
+                                spy={true}
+                                smooth={true}
+                                offset={-46}
+                                duration={500}
+                                >
+                                Calculadora
+                                </Link>
+                                </li>
+                                <li>
 
+                                <Link
+                                activateClass = "activate"
+                                to ="citas"
+                                spy={true}
+                                smooth={true}
+                                offset={-46}
+                                duration={500}
+                                >
+                                Citas
+                                </Link>
+                                </li>
+                                <li>
 
+                                <Link
+                                activateClass = "activate"
+                                to ="testimonios"
+                                spy={true}
+                                smooth={true}
+                                offset={-46}
+                                duration={500}
+                                >
+                                Testimonios
+                                </Link>
+                                </li>
+                                <li>
+
+                                <Link
+                                activateClass = "activate"
+                                to ="contacto"
+                                spy={true}
+                                smooth={true}
+                                offset={-46}
+                                duration={500}
+                                >
+                                    Contacto
+                                </Link>
+                                </li>
+
+                                <li>
+                                <a href="#!"> FAQ</a>
+                               
+                               
+                               
+                                </li>
+                                <li>
+
+                               
+                                <a href="#!"> BLOG</a>
+                                
+                                </li>
                             </ul>
 
                         </div>
@@ -41,12 +109,71 @@ class Menu extends Component {
 
                 </div>
                 <ul className="sidenav" id="mobile-demo">
-                    <li><a href="#!">Calculadora</a></li>
-                    <li><a href="#!">Citas</a></li>
-                    <li><a href="#!">Contacto</a></li>
-                    <li><a href="#!">Testimonios</a></li>
-                    <li><a href="#!">FAQ</a></li>
-                    <li><a href="#!">Blog</a></li>
+                <li>
+                                
+                                <Link
+                                activateClass = "activate"
+                                to ="contenedor-inicio"
+                                spy={true}
+                                smooth={true}
+                                offset={-46}
+                                duration={500}
+                                >
+                                Calculadora
+                                </Link>
+                                </li>
+                                <li>
+
+                                <Link
+                                activateClass = "activate"
+                                to ="citas"
+                                spy={true}
+                                smooth={true}
+                                offset={-46}
+                                duration={500}
+                                >
+                                Citas
+                                </Link>
+                                </li>
+                                <li>
+
+                                <Link
+                                activateClass = "activate"
+                                to ="testimonios"
+                                spy={true}
+                                smooth={true}
+                                offset={-46}
+                                duration={500}
+                                >
+                                Testimonios
+                                </Link>
+                                </li>
+                                <li>
+
+                                <Link
+                                activateClass = "activate"
+                                to ="contacto"
+                                spy={true}
+                                smooth={true}
+                                offset={-46}
+                                duration={500}
+                                >
+                                    Contacto
+                                </Link>
+                                </li>
+
+                                <li>
+                                <a href="#!"> FAQ</a>
+                               
+                               
+                               
+                                </li>
+                                <li>
+
+                               
+                                <a href="#!"> BLOG</a>
+                                
+                                </li>
                 </ul>
 
             </div>
