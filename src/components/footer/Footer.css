@@ -9,6 +9,9 @@
     text-align: start;
     
 }
+#footer a{
+    color: #ffffff;
+}
 #footer_container{
     width: 100%;
     padding: 18px !important;

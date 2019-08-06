@@ -63,13 +63,14 @@ class Inicio extends Component {
                 <div id="inicio-imagenes" className="row">
                     <div className="col s5 l3 offset-l2 offset-s1">
                         <img id="logo_emmafig" src={this.state.logo_emma}></img>
-                        <img id="btn_begin" onMouseOver={this.beginHandleMouseOver} onMouseOut={this.beginHandleMouseOut} onClick={this.props.changeComponente} src={this.state.begin}></img>
+                        {/*<img id="btn_begin" onMouseOver={this.beginHandleMouseOver} onMouseOut={this.beginHandleMouseOut} onClick={this.props.changeComponente} src={this.state.begin}></img>*/}
+                        <svg id="btn_begin" onClick={this.props.changeComponente} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 369.85 125.52"><g id="Capa_2" data-name="Capa 2"><g id="_1200" data-name="1200"><path className="cls-1" d="M369.85,63.92v3.4a32.15,32.15,0,0,1-32.16,32.15h-224a62.76,62.76,0,1,1,3.67-67.71H337.69A32.16,32.16,0,0,1,369.85,63.92Z"/><path className="cls-2" d="M103.44,66,49.38,103.8a2.39,2.39,0,0,1-3.76-2V26.31a2.39,2.39,0,0,1,3.76-2l54.06,37.76A2.4,2.4,0,0,1,103.44,66Z"/><text className="cls-3" transform="translate(141.29 79.89)"><tspan className="cls-4">Empezar</tspan></text></g></g></svg>
                     </div>
                     <div className="col s3 l2 offset-l3 offset-s1">
                         <img id="avatar_emma" src={this.state.img_avatar}></img>
                     </div>
                 </div>
-            </div >
+            </div>
         );
 
     }

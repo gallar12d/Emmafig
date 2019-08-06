@@ -89,17 +89,32 @@ class Footer extends Component {
                                     <p className="grey-text text-lighten-4">
                                         Lorem Ipsum is simply dummy text of the
                                         printing and typesetting industry
-                                </p>
-
+                                    </p>
                                 </div>
-
+                            </div>
+                            <div className="row">
+                                <div className="col">
+                                    <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
+                                        <i className="fa fa-facebook fa-lg"></i>
+                                    </a>
+                                </div>
+                                <div className="col">
+                                    <a href="https://instagram.com/funinnovagen?igshid=1i9a8bm9m2kck" target="_blank">
+                                        <i className="fa fa-instagram fa-lg"></i>
+                                    </a>
+                                </div>
+                                <div className="col">
+                                    <a href="https://api.whatsapp.com/send?phone=573174412170" target="_blank">
+                                        <i className="fa fa-whatsapp fa-lg"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
 
                     </div>
                 </div>
-                
+
                 <div id="footer_copyright" className="footer-copyright">
                     <div className="container">
                         <p >Con cariño para las mujeres del mundo; FUNDACION INNOVAGEN y SENA SECCIONAL - POPAYÁN 2019</p>
