@@ -5,20 +5,35 @@ import Paquete from '../paquete/Paquete'
 class Paquetes extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            paquetes: []
+            
+        };
     }
 
-    render() {
-        return (
-            
-                <div className="row espacioPack">
-                        <Paquete titulo={'Citología en base líquida'}></Paquete>
-                        <Paquete  titulo={'Prueba de ADN-VPH'}></Paquete>
-                        <Paquete  titulo={'Cotest: Citología + VPH'}></Paquete>
-                        <Paquete  titulo={'Paquete preventivo'}></Paquete>
-                </div>
+    componentDidMount(){
+        fetch("https://emmafig.com/api1/packs")
+            .then(res => res.json())
+            .then(
+                (result) => {                
+                    this.setState({
+                        paquetes: result
+                    });
+                   
+                },
 
-            
+                (error) => {
+                
+                }
+            )
+
+    }
+    render() {
+        const listItems = this.state.paquetes.map((d) => <Paquete item_selected = {this.props.item} id={d.id_paquete} key={d.id_paquete} titulo={d.nombre} valor={d.valor} descripcion={d.descripcion} recomendaciones={d.recomendaciones}></Paquete>);
+        return (            
+                <div className="row espacioPack">
+                       {listItems}                       
+                </div>           
 
         );
 

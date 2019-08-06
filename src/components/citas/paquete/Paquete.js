@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Paquete.css'
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
+import $ from 'jquery';
 
 class Paquete extends Component {
     constructor(props) {
@@ -9,19 +10,40 @@ class Paquete extends Component {
         this.state = {
             titulo: ''
         };
+        
     }
 
     componentDidMount(){        
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.modal');
-            M.Modal.init(elems, {});
-          });
-    }
-   
+        $(document).ready(function(){
+            var elems = document.querySelectorAll('.modal');            
+            M.Modal.init(elems, {});             
+        });
+        $('.modal').append('<button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">x</button>');
+        
+        }
+    addItem(id, nombre){
+        this.props.item_selected(id, nombre)   
 
-    
+    }
+      
+
+    formatNum(num){        
+        if(!isNaN(num)){
+            num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+            num = num.split('').reverse().join('').replace(/^[.]/,'');
+            return num;
+        }
+    }
 
     render() {
+        var whatis ;
+         if(this.props.id == 1 || this.props.id == 2){
+            whatis =  <h4>Qué es la {this.props.titulo}</h4>
+        }
+        else{
+            whatis =  <h4>Qué es el {this.props.titulo}</h4>
+
+        }
         return (
             <div>
                 <div className="col s12 m6 l3">
@@ -31,25 +53,32 @@ class Paquete extends Component {
                             <h4 className="center-align tituloServicio">{this.props.titulo}</h4>
                         </div>
                         <div className="card-content white-text">
-                            <h4>$ 190.000</h4>
+                            <h4>$ {this.formatNum(this.props.valor)}</h4>
                             <p>Si separas tu cita por este medio</p>
                         </div>
                         <div className="card-action">
-                            <button type="button">Conoce más</button>
+                            <button type="button" className=" agendarbtn btn btn-secondary  modal-trigger" href={'#Modal'+this.props.id}>Conoce más</button>                            
                             <br></br>
-                            <button type="button" className="btn btn-secondary">Separa tu cita</button>                            
+                            <button type="button" onClick={this.addItem.bind(this, this.props.id, this.props.titulo )} className="btn btn-secondary">Separa tu cita</button>                            
                         </div>
                     </div>
                 </div>
                 
-                <div id="modalPaquete" className="modal">
-                    <div className="modal-content">
-                    <h4>Modal Header</h4>
-                    <p>A bunch of text</p>
-                    </div>
-                    <div className="modal-footer">
-                    <button  className="modal-close waves-effect waves-green btn-flat">Agree</button>
-                    </div>
+                <div id={'Modal'+this.props.id} className="modal">
+                    <div className="modal-content left-align">
+                       
+                        {whatis}
+                        <p>{this.props.descripcion}</p>
+                        <hr></hr>
+                        <h4>Recomendaciones</h4>
+                        <p>{this.props.recomendaciones}</p>
+                        <hr></hr>
+                        <br></br>
+                            
+                        </div>
+                        <div className="modal-footer">
+                            <button   className="  waves-effect waves-green btn-flat">Agendar cita</button>
+                        </div>
                 </div>
             </div>
         );
