@@ -24,3 +24,19 @@
     div#citas {
         background-color: #f3f3f3;
     }
+
+    .moreServices{
+        padding-bottom: 20px;
+
+    }
+
+    .moreServices a {
+        color: #c73a8c;
+        font-family: lato;
+        font-size: 1.3rem;
+        font-weight: bolder;
+    }
+    .moreServices a:hover {
+        text-decoration: underline;
+    }
+

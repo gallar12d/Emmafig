@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Citas.css'
-import Paquete from './paquete/Paquete'
+import Paquetes from './paquetes/Paquetes'
 
 class Citas extends Component {
     constructor(props) {
@@ -16,17 +16,15 @@ class Citas extends Component {
                         <h4 className="titulocitas">
                             Consigue información personalizada
                         </h4>
-                        <h5 className="subtitleCitas">En la fundación InnovaGen contamos con la mejor tecnología para la detección temprana de Cáncer de Cuello Uterino, no dejes pasar esta oportunidad, ven separa tu cita</h5>
-                        
-                    </div>
-                    
+                        <h5 className="subtitleCitas">En la fundación InnovaGen contamos con la mejor tecnología para la detección temprana de Cáncer de Cuello Uterino, no dejes pasar esta oportunidad, ven separa tu cita</h5>                       
+                    </div>                    
                 </div>
-                <div className="row espacioPack">
-                        <Paquete titulo={'Citología en base líquida'}></Paquete>
-                        <Paquete  titulo={'Prueba de ADN-VPH'}></Paquete>
-                        <Paquete  titulo={'Cotest: Citología + VPH'}></Paquete>
-                        <Paquete  titulo={'Paquete preventivo'}></Paquete>
-                </div>
+                <Paquetes></Paquetes> 
+                <div className="moreServices">
+                <a  target="_blank" href="http://www.fig.org.co">Conoce más servicios</a>
+                    </div>               
+                
+               
 
             </div>
 
