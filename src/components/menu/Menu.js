@@ -40,7 +40,7 @@ class Menu extends Component {
                                 
                                 <Link
                                 activateClass = "activate"
-                                to ="contenedor-inicio"
+                                to ="contenedor-calculadora"
                                 spy={true}
                                 smooth={true}
                                 offset={-46}
@@ -113,7 +113,7 @@ class Menu extends Component {
                                 
                                 <Link
                                 activateClass = "activate"
-                                to ="contenedor-inicio"
+                                to ="contenedor-calculadora"
                                 spy={true}
                                 smooth={true}
                                 offset={-46}
