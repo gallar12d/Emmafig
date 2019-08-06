@@ -22,10 +22,9 @@ class Paquete extends Component {
         
         }
     addItem(id, nombre){
+        //cerrar midal
         this.props.item_selected(id, nombre)   
-
-    }
-      
+    }      
 
     formatNum(num){        
         if(!isNaN(num)){
@@ -64,19 +63,17 @@ class Paquete extends Component {
                 </div>
                 
                 <div id={'Modal'+this.props.id} className="modal">
-                    <div className="modal-content left-align">
-                       
+                    <div className="modal-content left-align">                       
                         {whatis}
                         <p>{this.props.descripcion}</p>
                         <hr></hr>
                         <h4>Recomendaciones</h4>
                         <p>{this.props.recomendaciones}</p>
                         <hr></hr>
-                        <br></br>
-                            
-                        </div>
+                        <br></br>                            
+                    </div>
                         <div className="modal-footer">
-                            <button   className="  waves-effect waves-green btn-flat">Agendar cita</button>
+                            <button onClick={this.addItem.bind(this, this.props.id, this.props.titulo )}   className="modal-close  waves-effect waves-green btn-flat">Agendar cita</button>
                         </div>
                 </div>
             </div>
