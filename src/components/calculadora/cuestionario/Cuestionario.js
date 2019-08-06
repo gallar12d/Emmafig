@@ -110,6 +110,7 @@ class Cuestionario extends Component {
 
                 cont_btn_ant.style.display = "block";
                 cont_btn_next.classList.remove("offset-l5");
+                cont_btn_next.classList.remove("offset-s4");
                 btn_next.classList.remove("center");
                 btn_next.classList.add("left");
                 const circuloPrev = document.getElementById("circulo" + (next - 1));
@@ -170,6 +171,7 @@ class Cuestionario extends Component {
             cont_btn_ant.style.display = "block";
             cont_btn_next.classList.add("left");
             btn_next.classList.remove("offset-l5");
+            btn_next.classList.remove("offset-s4");
             btn_next.classList.remove("center");
             next = next - 1;
             this.setState({
@@ -178,6 +180,7 @@ class Cuestionario extends Component {
             if (next == 1) {
                 cont_btn_ant.style.display = "none";
                 cont_btn_next.classList.add("offset-l5");
+                cont_btn_next.classList.add("offset-s4");
                 btn_next.classList.remove("left");
                 btn_next.classList.add("center");
             }
@@ -216,6 +219,7 @@ class Cuestionario extends Component {
         const btn_next = document.getElementById("btn_next");
         cont_btn_ant.style.display = "none";
         cont_btn_next.classList.add("offset-l5");
+        cont_btn_next.classList.add("offset-s4");
         btn_next.classList.remove("left");
         btn_next.classList.add("center");
     }
