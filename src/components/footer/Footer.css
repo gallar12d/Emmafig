@@ -9,6 +9,9 @@
     text-align: start;
     
 }
+#footer a{
+    color: #ffffff;
+}
 #footer_container{
     width: 100%;
     padding: 18px !important;
@@ -119,10 +122,9 @@ EFECTO HOVER LINK SOCIAL MEDIA
 */
 @media only screen and (max-width: 375px){
         
-    .titulo_footer{
-      font-size: 11px;
+      .titulo_footer{
+          font-size: 15px;
       font-weight: bolder;
-    
-    }
-    
+      
+      }
 }
