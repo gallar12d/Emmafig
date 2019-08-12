@@ -18,7 +18,7 @@ class Menu extends Component {
                     <nav>
                         <div className="nav-wrapper">
                         <Link
-                                activateClass = "activate"
+                                activateclass = "activate"
                                 to ="seccion1"
                                 spy={true}
                                 smooth={true}
@@ -26,11 +26,11 @@ class Menu extends Component {
                                 duration={500}
                                 >
                             
-                            <a href="#!" className="  brand-logo hide-on-med-and-down">
-                                <img className="logo" alt="logo" src={this.state.logo}>
+                           
+                                <img className="brand-logo hide-on-med-and-down logo" alt="logo" src={this.state.logo}>
 
                                 </img>
-                            </a>
+                          
                             </Link>
                             <a href="#!" data-target="mobile-demo" className="sidenav-trigger">
                                 <i className="material-icons">menu</i>
@@ -39,7 +39,7 @@ class Menu extends Component {
                                 <li>
                                 
                                 <Link
-                                activateClass = "activate"
+                                activateclass = "activate"
                                 to ="contenedor-calculadora"
                                 spy={true}
                                 smooth={true}
@@ -52,7 +52,7 @@ class Menu extends Component {
                                 <li>
 
                                 <Link
-                                activateClass = "activate"
+                                activateclass = "activate"
                                 to ="citas"
                                 spy={true}
                                 smooth={true}
@@ -65,7 +65,7 @@ class Menu extends Component {
                                 <li>
 
                                 <Link
-                                activateClass = "activate"
+                                activateclass = "activate"
                                 to ="testimonios"
                                 spy={true}
                                 smooth={true}
@@ -78,7 +78,7 @@ class Menu extends Component {
                                 <li>
 
                                 <Link
-                                activateClass = "activate"
+                                activateclass = "activate"
                                 to ="contacto"
                                 spy={true}
                                 smooth={true}
@@ -112,7 +112,7 @@ class Menu extends Component {
                 <li>
                                 
                                 <Link
-                                activateClass = "activate"
+                                activateclass = "activate"
                                 to ="contenedor-calculadora"
                                 spy={true}
                                 smooth={true}
@@ -125,7 +125,7 @@ class Menu extends Component {
                                 <li>
 
                                 <Link
-                                activateClass = "activate"
+                                activateclass = "activate"
                                 to ="citas"
                                 spy={true}
                                 smooth={true}
@@ -138,7 +138,7 @@ class Menu extends Component {
                                 <li>
 
                                 <Link
-                                activateClass = "activate"
+                                activateclass = "activate"
                                 to ="testimonios"
                                 spy={true}
                                 smooth={true}
@@ -151,7 +151,7 @@ class Menu extends Component {
                                 <li>
 
                                 <Link
-                                activateClass = "activate"
+                                activateclass = "activate"
                                 to ="contacto"
                                 spy={true}
                                 smooth={true}
