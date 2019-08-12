@@ -3,7 +3,7 @@ import './Resultado.css'
 import M from 'materialize-css'
 import '../../../../node_modules/materialize-social/css/materialize.css'
 import '../../../../node_modules/font-awesome/css/font-awesome.min.css'
-import './materialize-social.css'
+/*import './materialize-social.css'*/
 
 class Resultado extends Component {
 
@@ -29,7 +29,7 @@ class Resultado extends Component {
     }
 
     componentDidMount() {
-        
+
         setTimeout(this.mountStyle, 10) //call the into animiation
     }
 
@@ -61,10 +61,10 @@ class Resultado extends Component {
         });
     }
     mountStyle() {
-        
+
         this.setState({
             style: {
-                opacity: 1,                
+                opacity: 1,
                 transitionProperty: 'translate3d(100%,0,0)',
                 transitionDuration: '1s'
             }
@@ -73,19 +73,19 @@ class Resultado extends Component {
     unMountStyle() {
         this.setState({
             style: {
-                opacity: 0,                
+                opacity: 0,
                 transitionProperty: 'translate3d(-50%,0,0)',
                 transitionDuration: '1s'
             }
         });
     }
-    
+
     render() {
-        
+
         return (
 
             <div style={this.state.style} id="contenedor-resultado">
-                
+
                 <div className="row">
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
                         <h1 id="titulo-res" className="flow-text">Resultado</h1>
@@ -93,20 +93,22 @@ class Resultado extends Component {
                         <h1 id="contenido-res" className="flow-text"><span className="label-res">RESULTADO: </span>Bajo</h1>
                     </div>
                 </div>
-                <div className="cont-btn-result">
-                    <div>
+                <div className="cont-btn-result row">
+                    <div className="">
+                        {/*<img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>*/}
+                        <a id="btn_reiniciar" className="right boton-res waves-effect waves-light" href="#modal1">Reiniciar cuestionario</a>
                     </div>
                     <div>
-                        <img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1" />
+                        {/*<img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1" />*/}
+                        <a id="btn_mas_detalles" className="right boton-res waves-effect waves-light modal-trigger" href="#modal1">Más detalles de tu resultado</a>
+                    </div>
+                    <div>
+                        {/*<img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>*/}
+                        <a id="btn_conocer_mas" className="right boton-res waves-effect waves-light" href="#modal1">Conocer más</a>
+                    </div>
 
-                    </div>
-                    <div></div>
-                    <div>
-                        <img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res modal-trigger" href="#modal1"></img>
-                    </div>
-                    <div></div>
                 </div>
-            </div >
+            </div>
 
         );
 

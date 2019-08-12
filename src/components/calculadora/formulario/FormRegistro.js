@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-
+import './materialize-social.css'
+import '../../../../node_modules/materialize-social/css/materialize.css'
+import '../../../../node_modules/font-awesome/css/font-awesome.min.css'
+import './FormRegistro.css'
 class FormRegistro extends Component {
 
     constructor(props) {

@@ -1,17 +1,20 @@
-#contenedor-resultado{
-    /*position: absolute;*/
+#contenedor-resultado{    
     width: 100%;
     padding-bottom: 15px;
+    position: relative;
 }
 .boton-res{
     cursor: pointer;
+    padding: .25em .5em;
+    background-color: #0a999a;
+    color: #ffffff;
+    font-size: 1.5em;
+    border-radius: .5em;
 }
 #btn_conocer_mas{
     max-width: 170px;
 }
-#btn_mas_detalles{
-    max-width: 325px;
-}
+
 .cont-mas{
     margin-left: 31% !important;
 }
@@ -20,6 +23,35 @@
     font-size: 2.5em;
     font-weight: bolder;
     margin-bottom: 0.3rem; 
+}
+.info-reiniciar{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 20em;
+    background: #C83B8D;
+    color: #FFFFFF;
+    border-radius: 5px;
+    padding: 1em;    
+    z-index: auto;
+}
+.info-reiniciar i{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+.info-reiniciar a{
+    margin-top: .5em;
+    padding: .5em 1.5em;
+    border-radius: .3em;
+    background-color: #804B6A;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: bold;
+}
+.info-reiniciar a:hover{
+    background-color: #FF96D3;
 }
 .label-res{
     font-size: .5em;
@@ -44,11 +76,7 @@
     fill: #FFFFFF;
     font-size: 30px;
 }
-.titulo-registro{
-    color:#6f6f6e;
-    font-weight: bold;
-    font-size: 20px;
-}
+
 #titulo-res{
     color:#0F9b9b;
     font-size: 2.5em;
@@ -56,14 +84,14 @@
     margin-bottom: 0.3rem;    
 }
 
-.cont-btn-result{
+/*.cont-btn-result{
     margin: auto;
     width: 98%;
     max-width: 1500px;    
     display: grid;
     grid-template-columns: minmax(160px,30%) 25% 3% 25% minmax(0%,25%);
-    /*grid-template-columns: minmax(135px,30%) 25% 3% 32% minmax(0%,25%);*/
-}
+    /*grid-template-columns: minmax(135px,30%) 25% 3% 32% minmax(0%,25%);
+}*/
 @media only screen and (min-width: 980px) and (max-width: 1330px){
     #titulo-cal{
         font-size: 2.3em;
