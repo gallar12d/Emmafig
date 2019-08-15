@@ -8,7 +8,6 @@
     "@material-ui/core": "^4.3.1",
     "axios": "^0.19.0",
     "font-awesome": "^4.7.0",
-    "gh-pages": "^2.1.0",
     "google-map-react": "^1.1.4",
     "jquery": "^3.4.1",
     "materialize-css": "^1.0.0",
@@ -16,6 +15,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-fullpage": "^0.1.19",
+    "react-icons": "^3.7.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-scroll": "^1.7.12",
@@ -45,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
   }
 }
