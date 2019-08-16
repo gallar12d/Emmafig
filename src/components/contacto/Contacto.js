@@ -7,6 +7,8 @@ import axios from 'axios';
 import './Contacto.css'
 
 const Marker = ({ src }) => <img src={src} id="marker" />;
+
+
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 /*window.addEventListener("orientationchange", function() {
     // Announce the new orientation number
@@ -176,13 +178,13 @@ class Contacto extends Component {
 
                     <div className="hide-on-med-and-up ">
                         <div className="info_div_small " id="info_div_small">
-                        <div className="container_btn_sedes">
+                            <div className="container_btn_sedes">
 
-<button onClick={() => this.updateMap(2.451680, -76.601451)} className="btnSede" id="btnsedePopayan">Sede Popayán</button>
+                                <a onClick={() => this.updateMap(2.451680, -76.601451)} className="waves-effect waves-light btn-small" id="btnsedePopayan">Sede Popayán</a>
 
-<button onClick={() => this.updateMap(3.003815, -76.482547)} className="btnSede" id="btnsedeSantander">Sede Santander</button>
+                                <a onClick={() => this.updateMap(3.003815, -76.482547)} className="waves-effect waves-light btn-small" id="btnsedeSantander">Sede Santander</a>
 
-</div>
+                            </div>
                             <span onClick={this.hideOrShowDiv.bind(this)} id="btn_animate_info_div" className="btn_animate_div_in ">
                                 <i className="Tiny material-icons" id="arrow_hide_or_show">keyboard_arrow_left</i>
                             </span>
@@ -331,9 +333,9 @@ class Contacto extends Component {
                         <div className="info_div_medium " id="info_div_medium">
                             <div className="container_btn_sedes">
 
-                                <button onClick={() => this.updateMap(2.451680, -76.601451)} className="btnSede" id="btnsedePopayan">Sede Popayán</button>
+                                <a onClick={() => this.updateMap(2.451680, -76.601451)} className="waves-effect waves-light btn-small" id="btnsedePopayan">Popayán</a>
 
-                                <button onClick={() => this.updateMap(3.003815, -76.482547)} className="btnSede" id="btnsedeSantander">Sede Santander</button>
+                                <a onClick={() => this.updateMap(3.003815, -76.482547)} className="waves-effect waves-light btn-small" id="btnsedeSantander">Santander</a>
 
                             </div>
                             <span onClick={this.hideOrShowDiv.bind(this)} id="btn_animate_info_div_medium" className="btn_animate_div_in ">
@@ -475,27 +477,21 @@ class Contacto extends Component {
 
                             </div>
                         </div>
-                        <div className="container_btn_sedes">
-
-                            <button onClick={() => this.updateMap(2.451680, -76.601451)} className="btnSede" id="btnsedePopayan">Sede Popayán</button>
-
-                            <button onClick={() => this.updateMap(3.003815, -76.482547)} className="btnSede" id="btnsedeSantander">Sede Santander</button>
-
-                        </div>
 
                     </div>
 
 
                     <div className="hide-on-med-and-down">
                         <div className="info_div " id="info_div_large">
-                            <div className="row" id="head_info">
                             <div className="container_btn_sedes">
 
-<button onClick={() => this.updateMap(2.451680, -76.601451)} className="btnSede" id="btnsedePopayan">Sede Popayán</button>
+                                <a onClick={() => this.updateMap(2.451680, -76.601451)} className="waves-effect waves-light btn-small" id="btnsedePopayan">Popayán</a>
 
-<button onClick={() => this.updateMap(3.003815, -76.482547)} className="btnSede" id="btnsedeSantander">Sede Santander</button>
+                                <a onClick={() => this.updateMap(3.003815, -76.482547)} className="waves-effect waves-light btn-small" id="btnsedeSantander">Santander</a>
 
-</div>
+                            </div>
+                            <div className="row" id="head_info">
+
                                 <div className="col s12 m12 l12 " id="head_info_div">
 
 
@@ -640,13 +636,7 @@ class Contacto extends Component {
 
                             </div>
                         </div>
-                        <div className="container_btn_sedes">
 
-                            <button onClick={() => this.updateMap(2.451680, -76.601451)} className="btnSede" id="btnsedePopayan">Sede Popayán</button>
-
-                            <button onClick={() => this.updateMap(3.003815, -76.482547)} className="btnSede" id="btnsedeSantander">Sede Santander</button>
-
-                        </div>
 
                     </div>
 
