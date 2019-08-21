@@ -199,6 +199,40 @@ margin-left: -354px;
     /*border: black solid 2px;*/
     
 }
+/*
+
+div.container_sedes{
+    
+    position: absolute;
+    top: 96%;
+    left: 30%;
+    
+    
+}
+*/
+#btnsedeSantander{
+
+   width: 120px !important;
+   height: 30px !important;
+   
+}
+#btnsedePopayan{
+ 
+    width: 120px !important;
+    
+    height: 30px !important;
+    
+}
+div.container_btn_sedes{
+   
+  
+    position: absolute;
+    left: 324px;
+    top: 89.1%;   
+   
+
+}
+
 
 #second_text{
     font-size: 14px !important;
@@ -341,8 +375,7 @@ margin-left: -354px;
   }
 
 @media only screen and (max-width:640px) and (orientation: landscape) {
-   
-
+    
     
     .info_div_hide{
         position: absolute;
@@ -494,6 +527,7 @@ margin-left: -354px;
  
  */
  @media only screen and (max-width: 375px){
+       
     
     
   

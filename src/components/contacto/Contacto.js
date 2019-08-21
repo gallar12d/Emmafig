@@ -7,6 +7,9 @@ import axios from 'axios';
 import './Contacto.css'
 
 const Marker = ({ src }) => <img src={src} id="marker" />;
+
+
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 /*window.addEventListener("orientationchange", function() {
     // Announce the new orientation number
     alert(window.orientation);
@@ -14,13 +17,6 @@ const Marker = ({ src }) => <img src={src} id="marker" />;
 
 //const Marker = ({ txt }) => <div>{txt}</div>  ;
 class Contacto extends Component {
-    static defaultProps = {
-        center: {
-            lat: 2.451669,
-            lng: -76.601446
-        },
-        zoom: 17
-    };
 
 
 
@@ -28,9 +24,40 @@ class Contacto extends Component {
         super(props);
         this.state = {
             img_marker: process.env.PUBLIC_URL + "/img/marker.png",
-            hide: 0
+            hide: 0,
+            sede: false,
+            center: {
+                lat: 2.451669,
+                lng: -76.601446
+
+            },
+            zoom: 17,
+            lat: 2.451680,
+            lng: -76.601451
+
         }
+
     }
+
+
+    updateMap(lat, lng) {
+
+        this.setState({
+
+
+            lat: Number(lat),
+            lng: Number(lng)
+
+        });
+
+
+
+    }
+
+
+
+
+
 
 
 
@@ -141,146 +168,23 @@ class Contacto extends Component {
 
 
 
-
-
-
-    createMapOptions(maps) {
-        // next props are exposed at maps
-        // "Animation", "ControlPosition", "MapTypeControlStyle", "MapTypeId",
-        // "NavigationControlStyle", "ScaleControlStyle", "StrokePosition", "SymbolPath", "ZoomControlStyle",
-        // "DirectionsStatus", "DirectionsTravelMode", "DirectionsUnitSystem", "DistanceMatrixStatus",
-        // "DistanceMatrixElementStatus", "ElevationStatus", "GeocoderLocationType", "GeocoderStatus", "KmlLayerStatus",
-        // "MaxZoomStatus", "StreetViewStatus", "TransitMode", "TransitRoutePreference", "TravelMode", "UnitSystem"
-        return {
-            zoomControlOptions: {
-                position: maps.ControlPosition.RIGHT_CENTER,
-                style: maps.ZoomControlStyle.SMALL
-            },
-            mapTypeControlOptions: {
-                position: maps.ControlPosition.TOP_RIGHT
-            },
-            mapTypeControl: true,
-            styles: [
-                {
-                    "featureType": "landscape.natural",
-                    "elementType": "geometry.fill",
-                    "stylers": [
-                        {
-                            "visibility": "on"
-                        },
-                        {
-                            "color": "#e0efef"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "geometry.fill",
-                    "stylers": [
-                        {
-                            "visibility": "on"
-                        },
-                        {
-                            "hue": "#1900ff"
-                        },
-                        {
-                            "color": "#c0e8e8"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "lightness": 100
-                        },
-                        {
-                            "visibility": "simplified"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road",
-                    "elementType": "labels",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "transit.line",
-                    "elementType": "geometry",
-                    "stylers": [
-                        {
-                            "visibility": "on"
-                        },
-                        {
-                            "lightness": 700
-                        }
-                    ]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "color": "#7dcdcd"
-                        }
-                    ]
-                }
-            ]
-        };
-    }
-
     render() {
-
-
-
-        const handleApiLoaded = (map, maps) => {
-            return {
-                zoomControlOptions: {
-                    position: maps.ControlPosition.RIGHT_CENTER,
-                    style: maps.ZoomControlStyle.SMALL
-                },
-                mapTypeControlOptions: {
-                    position: maps.ControlPosition.TOP_RIGHT
-                },
-                mapTypeControl: true,
-
-            };
-        };
-
 
         return (
 
             <div id="contacto">
                 <div className="row layoutMap" style={{ height: '85vh', width: '100%' }}>
-                    <GoogleMapReact
-                        options={this.createMapOptions}
-                        bootstrapURLKeys={{ key: 'AIzaSyAp9u7X1d-wgHul4HPXzoDj93WxPzMqxqM' }}
-                        defaultCenter={this.props.center}
-                        defaultZoom={this.props.zoom}
-                        yesIWantToUseGoogleMapApiInternals
-                        onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
+                    <GMapReact lat={this.state.lat} lng={this.state.lng} img_marker={this.state.img_marker} center={this.state.center} />
 
-                        yesIWantToUseGoogleMapApiInternals
-                    >
-                        <Marker
-                            lat={2.451680}
-                            lng={-76.601451}
-
-                            src={this.state.img_marker}
-                        //src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/134893/pin-red.svg"
-                        //txt ="MY MARKER"
-                        />
-
-
-
-                    </GoogleMapReact>
                     <div className="hide-on-med-and-up ">
                         <div className="info_div_small " id="info_div_small">
+                            <div className="container_btn_sedes">
+
+                                <a onClick={() => this.updateMap(2.451680, -76.601451)} className="waves-effect waves-light btn-small" id="btnsedePopayan">Sede Popayán</a>
+
+                                <a onClick={() => this.updateMap(3.003815, -76.482547)} className="waves-effect waves-light btn-small" id="btnsedeSantander">Sede Santander</a>
+
+                            </div>
                             <span onClick={this.hideOrShowDiv.bind(this)} id="btn_animate_info_div" className="btn_animate_div_in ">
                                 <i className="Tiny material-icons" id="arrow_hide_or_show">keyboard_arrow_left</i>
                             </span>
@@ -419,12 +323,21 @@ class Contacto extends Component {
                                 </div>
 
                             </div>
+
+
                         </div>
 
                     </div>
 
                     <div className="hide-on-small-only hide-on-large-only">
                         <div className="info_div_medium " id="info_div_medium">
+                            <div className="container_btn_sedes">
+
+                                <a onClick={() => this.updateMap(2.451680, -76.601451)} className="waves-effect waves-light btn-small" id="btnsedePopayan">Popayán</a>
+
+                                <a onClick={() => this.updateMap(3.003815, -76.482547)} className="waves-effect waves-light btn-small" id="btnsedeSantander">Santander</a>
+
+                            </div>
                             <span onClick={this.hideOrShowDiv.bind(this)} id="btn_animate_info_div_medium" className="btn_animate_div_in ">
                                 <i className="Tiny material-icons" id="arrow_hide_or_show_medium">keyboard_arrow_left</i>
                             </span>
@@ -570,7 +483,15 @@ class Contacto extends Component {
 
                     <div className="hide-on-med-and-down">
                         <div className="info_div " id="info_div_large">
+                            <div className="container_btn_sedes">
+
+                                <a onClick={() => this.updateMap(2.451680, -76.601451)} className="waves-effect waves-light btn-small" id="btnsedePopayan">Popayán</a>
+
+                                <a onClick={() => this.updateMap(3.003815, -76.482547)} className="waves-effect waves-light btn-small" id="btnsedeSantander">Santander</a>
+
+                            </div>
                             <div className="row" id="head_info">
+
                                 <div className="col s12 m12 l12 " id="head_info_div">
 
 
@@ -716,6 +637,7 @@ class Contacto extends Component {
                             </div>
                         </div>
 
+
                     </div>
 
 
@@ -727,6 +649,149 @@ class Contacto extends Component {
 
 
         );
+    }
+}
+
+class GMapReact extends React.Component {
+
+    createMapOptions(maps) {
+        // next props are exposed at maps
+        // "Animation", "ControlPosition", "MapTypeControlStyle", "MapTypeId",
+        // "NavigationControlStyle", "ScaleControlStyle", "StrokePosition", "SymbolPath", "ZoomControlStyle",
+        // "DirectionsStatus", "DirectionsTravelMode", "DirectionsUnitSystem", "DistanceMatrixStatus",
+        // "DistanceMatrixElementStatus", "ElevationStatus", "GeocoderLocationType", "GeocoderStatus", "KmlLayerStatus",
+        // "MaxZoomStatus", "StreetViewStatus", "TransitMode", "TransitRoutePreference", "TravelMode", "UnitSystem"
+        return {
+            zoomControlOptions: {
+                position: maps.ControlPosition.RIGHT_CENTER,
+                style: maps.ZoomControlStyle.SMALL
+            },
+            mapTypeControlOptions: {
+                position: maps.ControlPosition.TOP_RIGHT
+            },
+            mapTypeControl: true,
+            styles: [
+                {
+                    "featureType": "landscape.natural",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#e0efef"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "hue": "#1900ff"
+                        },
+                        {
+                            "color": "#c0e8e8"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "lightness": 100
+                        },
+                        {
+                            "visibility": "simplified"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit.line",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "lightness": 700
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#7dcdcd"
+                        }
+                    ]
+                }
+            ]
+        };
+    }
+
+
+    render() {
+
+        const handleApiLoaded = (map, maps) => {
+            return {
+                zoomControlOptions: {
+                    position: maps.ControlPosition.RIGHT_CENTER,
+                    style: maps.ZoomControlStyle.SMALL
+                },
+                mapTypeControlOptions: {
+                    position: maps.ControlPosition.TOP_RIGHT
+                },
+                mapTypeControl: true,
+
+            };
+        };
+
+        return (
+            <GoogleMapReact
+                options={this.createMapOptions}
+                bootstrapURLKeys={{ key: 'AIzaSyAp9u7X1d-wgHul4HPXzoDj93WxPzMqxqM' }}
+                defaultCenter={{ lat: 2.451680, lng: -76.601451 }}
+                center={{ lat: this.props.lat, lng: this.props.lng }}
+                defaultZoom={17}
+                yesIWantToUseGoogleMapApiInternals
+                onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
+
+                yesIWantToUseGoogleMapApiInternals
+            >
+
+
+                <Marker
+                    lat={2.451680}
+                    lng={-76.601451}
+
+                    src={this.props.img_marker}
+                //src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/134893/pin-red.svg"
+                //txt ="MY MARKER"
+                />
+                <Marker
+                    lat={3.003815}
+                    lng={-76.482547}
+                    src={this.props.img_marker}
+                />
+
+
+            </GoogleMapReact>)
+
     }
 }
 

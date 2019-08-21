@@ -220,20 +220,6 @@ class Footer extends Component {
             </footer>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         );
     }
 }
