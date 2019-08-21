@@ -69,7 +69,7 @@
 
 
 .infoLeft {
-  position: absolute;
+  vertical-align: middle;
   width: 80%;
   max-width: 600px;
   bottom: 25%;
@@ -173,7 +173,7 @@
 
 #div-seccion1 h3 {
  
-  font-size: 2.5em !important;
+  font-size: 2.3em !important;
   font-family: arial;
   margin-block-start: 0px;
   margin-block-end: 0px !important;
@@ -182,7 +182,7 @@
 #div-seccion1 h4 {
   margin-block-start: 0px;
  
-  font-size: 1.6em !important;
+  font-size: 1.4em !important;
   font-family: arial;
   margin-block-start: 0px;
   padding: 0px !important;
