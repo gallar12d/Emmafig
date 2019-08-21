@@ -8,14 +8,17 @@
     cursor: pointer;
 }
 #titulo-detalle{
-    color: #000000;
+    color: #0f9b9b;
     font-size: 2.4em;
     font-weight: bolder;
-    margin-bottom: 0.3rem; 
+    margin-bottom: 1rem; 
 }
 #contenedor-opciones{
+    margin-top: 1em;
     padding-top: 15px;
 }
-
+#detalle-res{
+    margin-top: 1em;
+}
 
 

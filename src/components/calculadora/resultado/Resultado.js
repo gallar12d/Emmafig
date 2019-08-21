@@ -93,19 +93,19 @@ class Resultado extends Component {
                         <h1 id="contenido-res" className="flow-text"><span className="label-res">RESULTADO: </span>Bajo</h1>
                     </div>
                 </div>
-                <div className="cont-btn-result row">
-                    <div className="">
+                <div id="cont-btn-result" className="row">
+                    <div className="col s12 l3 offset-l3">
                         {/*<img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>*/}
-                        <a id="btn_reiniciar" className="right boton-res waves-effect waves-light" href="#modal1">Reiniciar cuestionario</a>
+                        <a id="btn_reiniciar" className="boton-res waves-effect waves-light" onClick={this.props.backComponente}>Reiniciar cuestionario</a>
                     </div>
-                    <div>
+                    <div className="col s12 l3">
                         {/*<img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1" />*/}
-                        <a id="btn_mas_detalles" className="right boton-res waves-effect waves-light modal-trigger" href="#modal1">Más detalles de tu resultado</a>
+                        <a id="btn_mas_detalles" className="boton-res waves-effect waves-light modal-trigger" href="#modal1">Más detalles de tu resultado</a>
                     </div>
-                    <div>
-                        {/*<img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>*/}
-                        <a id="btn_conocer_mas" className="right boton-res waves-effect waves-light" href="#modal1">Conocer más</a>
-                    </div>
+                    {/*<div className="col s12 l2">
+                        <img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>
+                        <a id="btn_conocer_mas" className="boton-res waves-effect waves-light">Conocer más</a>
+                    </div>*/}
 
                 </div>
             </div>

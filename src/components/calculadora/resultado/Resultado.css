@@ -1,7 +1,6 @@
 #contenedor-resultado{    
     width: 100%;
-    padding-bottom: 15px;
-    position: relative;
+    padding-bottom: 15px;    
 }
 .boton-res{
     cursor: pointer;
@@ -10,14 +9,9 @@
     color: #ffffff;
     font-size: 1.5em;
     border-radius: .5em;
-}
-#btn_conocer_mas{
-    max-width: 170px;
+    margin-top: .5em;
 }
 
-.cont-mas{
-    margin-left: 31% !important;
-}
 #contenido-res{
     color: #000000;
     font-size: 2.5em;
@@ -61,22 +55,6 @@
 #subtitulo-res{      
     margin-top: 0.1rem;
 }
-.texto{
-    font-family:'Roboto';
-    font-size: 25px; 
-    fill:#6f6f6e;
-}
-.texto-actual{
-    font-family:'Roboto';
-    fill: #6f6f6e;
-    font-size: 25px;
-}
-.texto-ok{    
-    font-family:'Roboto Slab';
-    fill: #FFFFFF;
-    font-size: 30px;
-}
-
 #titulo-res{
     color:#0F9b9b;
     font-size: 2.5em;
@@ -84,33 +62,3 @@
     margin-bottom: 0.3rem;    
 }
 
-/*.cont-btn-result{
-    margin: auto;
-    width: 98%;
-    max-width: 1500px;    
-    display: grid;
-    grid-template-columns: minmax(160px,30%) 25% 3% 25% minmax(0%,25%);
-    /*grid-template-columns: minmax(135px,30%) 25% 3% 32% minmax(0%,25%);
-}*/
-@media only screen and (min-width: 980px) and (max-width: 1330px){
-    #titulo-cal{
-        font-size: 2.3em;
-    }
-}
-@media (max-width: 600px){
-    .cont-btn-result{
-        grid-template-columns: 5% 56% 5% 29% 5%;
-    }
-    
-}
-@media (min-width: 600px) and (max-width:900px){
-    .cont-btn-result{
-        grid-template-columns: 10% 49% 5% 26% 10%;
-    }    
-}
-
-@media (min-width:900px){
-    .cont-btn-result{
-        grid-template-columns: 15% 40% 3% 22% 15%;
-    }
-}

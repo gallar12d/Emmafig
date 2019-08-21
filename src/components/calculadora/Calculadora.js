@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-import M from 'materialize-css'
+
 import Cuestionario from './cuestionario/Cuestionario';
 import Detalle from './detalle/Detalle';
 import Inicio from './inicio/Inicio';
@@ -31,18 +31,14 @@ class Calculadora extends Component {
     };
     backComponente = e => this.setState({ componente: this.state.componente - 1 });
     componentDidMount() {
-        var elems = document.getElementById('modal1');
-        var instances = M.Modal.init(elems, {});
-        this.modal = document.getElementById('modal1');
-
+               
     }
     showComponente = () => {
         switch (this.state.componente) {
             case 1: return <Inicio changeComponente={this.changeComponente} />
             case 2: return <Cuestionario changeComponente={this.changeComponente} />
             case 3: return <Resultado backComponente={this.backComponente} />
-            case 4: this.modal.close()
-                return <Inscripcion changeComponente={this.changeComponente} />
+            case 4: return <Inscripcion changeComponente={this.changeComponente} />
             case 5: return <Detalle />
         }
     }
