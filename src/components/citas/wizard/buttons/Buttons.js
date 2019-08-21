@@ -24,8 +24,8 @@ class Buttons extends Component {
             
 
             <div className="btn_align left-align">
-                <button className="btn " onClick={() => this.props.activate_step(this.props.step - 1)} type="button" >Anterior</button>
-                <button className="btn" onClick={() => this.props.activate_step(this.props.step + 1 )} type="button" >Siguiente</button>
+                <button className="btn " onClick={() => {this.props.activate_step(this.props.step - 1); this.props.actualizar(this.props.step - 1)}} type="button" >Anterior</button>
+                <button className="btn" onClick={() => {this.props.activate_step(this.props.step + 1 ) ; this.props.actualizar(this.props.step + 1 )} } type="button" >Siguiente</button>
             </div>
 
 

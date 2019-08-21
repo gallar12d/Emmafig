@@ -188,7 +188,7 @@ class Step4 extends Component {
                             </div>
                             <div className="input-field col s6 m6">
                                 <input placeholder="" id="segundo_nombre" type="text" className="validate"></input>
-                                <label htmlFor="first_name">Segundo nombre *</label>
+                                <label htmlFor="first_name">Segundo nombre</label>
                             </div>
                             <div className="input-field col s6 m6">
                                 <input placeholder="" id="primer_apellido" type="text" className="validate"></input>
@@ -196,11 +196,11 @@ class Step4 extends Component {
                             </div>
                             <div className="input-field col s6 m6">
                                 <input placeholder="" id="segundo_apellido" type="text" className="validate"></input>
-                                <label htmlFor="first_name">Segundo apellido *</label>
+                                <label htmlFor="first_name">Segundo apellido </label>
                             </div>
                             <div className="input-field col s6 m6">
                                 <select>
-                                    <option disabled value="">Tipo de identificación</option>
+                                    <option disabled value="">Tipo de identificación *</option>
                                     <option value="1">Cédula de ciudadanía</option>
                                     <option value="2">Tarjeta de identidad</option>
                                     <option value="3">Cédula extrangera</option>

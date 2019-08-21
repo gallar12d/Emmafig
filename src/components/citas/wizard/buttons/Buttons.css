@@ -2,3 +2,7 @@
     margin-right: 1%;
     border-radius: 7px;
 }
+
+.btn_align button.btn:hover {
+    background-color: #c73a8c
+}

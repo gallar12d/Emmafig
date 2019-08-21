@@ -57,7 +57,7 @@ class Faq extends Component {
       );
     }
 
-    return <div>{pagina}</div>;
+    return <div style={{textAlign: 'center'}}>{pagina}</div>;
   }
 }
 

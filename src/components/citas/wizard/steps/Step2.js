@@ -28,9 +28,23 @@ class Step2 extends Component {
             })
 
     }
+
+    ucword(word){
+        var lsCadena = word .toLowerCase();
+         lsCadena = lsCadena .charAt(0).toUpperCase() + lsCadena .slice(1);
+ 
+     return lsCadena;
+     }
     render() {
 
-        let prof = this.state.profesionales.map(profesional => {
+        let prof = this.state.profesionales.map((profesional, index ) => {
+            let requi = '';
+            if(index == 0){
+                requi = true;
+            }
+            else{
+                requi = false;
+            }
             let nombre2 = '';
             if (profesional.segundo_nombre)
                 nombre2 = profesional.segundo_nombre
@@ -42,8 +56,8 @@ class Step2 extends Component {
                     <div  className="input-field ">
                         <div className="icon_input" >
                             <label>
-                                <input onChange = {() => { this.props.set_state('id_profesional', profesional.id_usuario); this.props.set_state('profesional', profesional.primer_nombre + ' ' + nombre2 + ' ' + profesional.primer_apellido + ' ' + apellido2)} } className="with-gap" name="id_profesional" value={profesional.id_usuario} type="radio" />
-                                <span style={{color: 'black'}}>{profesional.primer_nombre + ' ' + nombre2 + ' ' + profesional.primer_apellido + ' ' + apellido2}</span>
+                                <input   onChange = {() => { this.props.set_state('id_profesional', profesional.id_usuario); this.props.set_state('profesional', this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2))} } className="with-gap" name="id_profesional" value={profesional.id_usuario} type="radio" />
+                                <span style={{color: 'black'}}>{this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2)}</span>
                             </label>
                             <a className=" modal-trigger" href={'#Modal' + profesional.id_usuario}>
                                 <FaUserNurse className="icon" size={25} />
@@ -94,8 +108,8 @@ class Step2 extends Component {
                     <div className="input-field ">
                         <div className="icon_input" >
                             <label>
-                                <input  onChange = {() => { this.props.set_state('id_profesional', ''); this.props.set_state('profesional', ''); this.props.set_state('todos_profesionales', true)} }  className="with-gap" name="id_profesional" value="0" type="radio" />
-                                <span style={{color: 'black'}} >TODOS</span>
+                                <input   onChange = {() => { this.props.set_state('id_profesional', ''); this.props.set_state('profesional', ''); this.props.set_state('todos_profesionales', true)} }  className="with-gap" name="id_profesional" value="0" type="radio" />
+                                <span style={{color: 'black'}} >Todos</span>
                             </label>
                             <br></br>
                             <br></br>
