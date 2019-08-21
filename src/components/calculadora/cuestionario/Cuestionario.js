@@ -29,7 +29,7 @@ class Cuestionario extends Component {
         this.mountStyle = this.mountStyle.bind(this);
         this.unMountStyle = this.unMountStyle.bind(this);
         this.countOptSelecteds = this.countOptSelecteds.bind(this);
-        this.closeInfo= this.closeInfo.bind(this);
+        this.closeInfo = this.closeInfo.bind(this);
 
     }
 
@@ -42,7 +42,7 @@ class Cuestionario extends Component {
         return arrSum;
     }
 
-    closeInfo(event){
+    closeInfo(event) {
         let info_end = document.getElementById("info-fin-cuestionario");
         info_end.style.clipPath = "circle(0%)";
     }
@@ -134,7 +134,7 @@ class Cuestionario extends Component {
                 opcRespOK.style.display = "none";
                 opcRespActual.style.display = "block";
                 preguntaActual.style.display = "block";
-            }else if (this.countOptSelecteds(opts) == 6) {
+            } else if (this.countOptSelecteds(opts) == 6) {
                 this.props.changeComponente();
             }
         } else {
@@ -359,11 +359,21 @@ class Cuestionario extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div id="cont-pregunta1" className="row" pgindex="1">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta1" className="center-align contenido-pregunta">1. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <h4 id="pregunta1" className="center-align contenido-pregunta">1. ¿Eres mayor de 15 años?</h4>
                             <p id="info1" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta1" className="row" oprindex="1">
+                        {/*<div className="col l2 offset-l5">
+                            <select class="browser-default">
+                                <option value="" disabled selected>Escoge un opción</option>
+                                <option value="1">Menor de 15 años</option>
+                                <option value="2">Entre 15 y 20 años</option>
+                                <option value="3">Entre 21 y 30 años</option>
+                                <option value="4">Entre 31 y 50 años</option>
+                                <option value="5">Mayor de 50 años</option>                                
+                            </select>
+                        </div>*/}
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
                             <input id="op11" className="with-gap" name="group1" type="radio" value="si" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Si</span>
@@ -375,7 +385,7 @@ class Cuestionario extends Component {
                     </div>
                     <div id="cont-pregunta2" className="row" pgindex="2">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta2" className="center-align contenido-pregunta">2. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <h4 id="pregunta2" className="center-align contenido-pregunta">2. ¿Tienes más de tres hijos?</h4>
                             <p id="info2" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
@@ -391,7 +401,7 @@ class Cuestionario extends Component {
                     </div>
                     <div id="cont-pregunta3" className="row" pgindex="3">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta3" className="center-align contenido-pregunta">3. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <h4 id="pregunta3" className="center-align contenido-pregunta">3. ¿Haz tenido mas de dos compañeros sexuales?</h4>
                             <p id="info3" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
@@ -407,7 +417,7 @@ class Cuestionario extends Component {
                     </div>
                     <div id="cont-pregunta4" className="row" pgindex="4">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta4" className="center-align contenido-pregunta">4. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <h4 id="pregunta4" className="center-align contenido-pregunta">4. ¿Tienes pareja actualmente?</h4>
                             <p id="info4" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
@@ -423,7 +433,7 @@ class Cuestionario extends Component {
                     </div>
                     <div id="cont-pregunta5" className="row" pgindex="5">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta5" className="center-align contenido-pregunta">5. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <h4 id="pregunta5" className="center-align contenido-pregunta">5. ¿Haz tenido relaciones sexuales antes de los 15 años?</h4>
                             <p id="info5" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
@@ -439,18 +449,22 @@ class Cuestionario extends Component {
                     </div>
                     <div id="cont-pregunta6" className="row" pgindex="6">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta6" className="center-align contenido-pregunta">6. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <h4 id="pregunta6" className="center-align contenido-pregunta">6. ¿Perteneces a alguna etnia?</h4>
                             <p id="info6" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta6" className="row" oprindex="6">
-                        <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
+                        <label className="col s12 m2 l1 offset-m4 offset-l4">
                             <input id="op61" className="with-gap" name="group6" type="radio" value="si" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Si</span>
+                            <span className="contenido-respuesta">Afro</span>
                         </label>
-                        <label className="col s2 m2 l1">
+                        <label className="col s12 m2 l1">
                             <input id="op62" className="with-gap" name="group6" type="radio" value="no" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">No</span>
+                            <span className="contenido-respuesta">Indigena</span>
+                        </label>
+                        <label className="col s12 m2 l2">
+                            <input id="op62" className="with-gap" name="group6" type="radio" value="no" onChange={this.handleOptionChange} />
+                            <span className="contenido-respuesta">Ninguna</span>
                         </label>
                     </div>
                 </form>
