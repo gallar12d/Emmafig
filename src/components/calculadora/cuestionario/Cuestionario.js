@@ -376,7 +376,7 @@ class Cuestionario extends Component {
                         </div>*/}
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
                             <input id="op11" className="with-gap" name="group1" type="radio" value="si" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Si</span>
+                            <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
                             <input id="op12" className="with-gap" name="group1" type="radio" value="no" onChange={this.handleOptionChange} />
@@ -392,7 +392,7 @@ class Cuestionario extends Component {
                     <div id="opc-respuesta-pregunta2" className="row" oprindex="2">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
                             <input id="op21" className="with-gap" name="group2" type="radio" value="si" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Si</span>
+                            <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
                             <input id="op22" className="with-gap" name="group2" type="radio" value="no" onChange={this.handleOptionChange} />
@@ -408,7 +408,7 @@ class Cuestionario extends Component {
                     <div id="opc-respuesta-pregunta3" className="row" oprindex="3">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
                             <input id="op31" className="with-gap" name="group3" type="radio" value="si" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Si</span>
+                            <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
                             <input id="op31" className="with-gap" name="group3" type="radio" value="no" onChange={this.handleOptionChange} />
@@ -424,7 +424,7 @@ class Cuestionario extends Component {
                     <div id="opc-respuesta-pregunta4" className="row" oprindex="4">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
                             <input id="op41" className="with-gap" name="group4" type="radio" value="si" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Si</span>
+                            <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
                             <input id="op42" className="with-gap" name="group4" type="radio" value="no" onChange={this.handleOptionChange} />
@@ -440,7 +440,7 @@ class Cuestionario extends Component {
                     <div id="opc-respuesta-pregunta5" className="row" oprindex="5">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
                             <input id="op51" className="with-gap" name="group5" type="radio" value="si" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Si</span>
+                            <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
                             <input id="op52" className="with-gap" name="group5" type="radio" value="no" onChange={this.handleOptionChange} />
