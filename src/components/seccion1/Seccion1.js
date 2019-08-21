@@ -15,8 +15,8 @@ class CustomSlide extends Component {
   render() {
     const { id, imagen, textoppal, textosec, url_ver_mas, url_sec_boton, titulo, alineacion, ...props } = this.props;
     return (
-      <div {...props}>
-        <div className="each-fade">
+      <div  {...props}>
+        <div id="div-seccion1" className="each-fade">
           <div className="image-container">
             <img className="panel" src={'http://emmafig.com/api1/public/images/sliders/' + imagen} />
             <img className="panelFondo" src={ "img/blanco-nada"+alineacion+".png"} />

@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import './Modal.css';
+import M from 'materialize-css'
 import FormRegistro from '../formulario/FormRegistro';
-
+import $ from 'jquery';
 class Modal extends Component {
 
     constructor(props) {
         super(props);
+        this.modal = 1;
 
+    }
+    componentDidMount() {
+        
+        var elems = document.getElementById('modal1');
+        var instances = M.Modal.init(elems, {dismissible: false});
+        
     }
     render() {
 
@@ -14,7 +22,7 @@ class Modal extends Component {
 
             <div id="modal1" className="modal">
                 <div className="modal-content">
-                    <FormRegistro changeComponente={this.props.changeComponente}/>
+                    <FormRegistro changeComponente={this.props.changeComponente} modal={this.modal} />
                 </div>
             </div>
 
