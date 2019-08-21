@@ -43,7 +43,7 @@ function App() {
       <Testimonios></Testimonios> 
       <Contacto></Contacto> 
       <Footer></Footer> 
-      <Faq />
+     
     </div>
    
   );

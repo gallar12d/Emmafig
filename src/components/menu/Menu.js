@@ -98,7 +98,7 @@ class Menu extends Component {
                                 <li>
 
                                
-                                <a href="#!"> BLOG</a>
+                                <a href="#!"> Blog </a>
                                 
                                 </li>
                             </ul>
@@ -171,7 +171,7 @@ class Menu extends Component {
                                 <li>
 
                                
-                                <a href="#!"> BLOG</a>
+                                <a href="#!"> Blog</a>
                                 
                                 </li>
                 </ul>

@@ -136,7 +136,7 @@ class Step3 extends Component {
                         <div className="col col_turns m6">
                             <p>
                                 <label>
-                                    <input className="with-gap" name="group1" type="radio" />
+                                    <input required className="with-gap" name="group1" type="radio" />
                                     <span>8:00 AM</span>
                                 </label>
                             </p>

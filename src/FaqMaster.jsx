@@ -34,7 +34,7 @@ function FaqMaster() {
     <div className="FaqMaster">
      
       <Menu></Menu>    
-      <Faq />  
+      <Faq  />  
      
       <Footer></Footer> 
      
