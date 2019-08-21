@@ -90,7 +90,7 @@ class Menu extends Component {
                                 </li>
 
                                 <li>
-                                <a href="#!"> FAQ</a>
+                                <a href="#/faq"> FAQ</a>
                                
                                
                                

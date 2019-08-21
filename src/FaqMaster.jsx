@@ -1,17 +1,15 @@
 import React from 'react';
 //import logo from './logo.svg';
 import Menu from './components/menu/Menu';
-import Seccion1 from './components/seccion1/Seccion1';
-import Calculadora from './components/calculadora/Calculadora';
-import Testimonios from './components/testimonios/Testimonios';
+
 import Footer from './components/footer/Footer';
-import Citas from './components/citas/Citas';
-import Contacto from './components/contacto/Contacto';
+
+
 import Faq from './components/faq/Faq';
-import {SectionsContainer, Section} from 'react-fullpage';
+
 import './App.css';
-import ReactDOM from 'react-dom';
-const app = document.querySelector('#app');
+
+
 /*
 
 let options = {
@@ -29,21 +27,17 @@ let options = {
 };
 */
 
-function App() {
-  
+function FaqMaster() {
   
   return (
  
-    <div className="App">
+    <div className="FaqMaster">
      
-      <Menu></Menu>      
-      <Seccion1 ></Seccion1>
-      <Calculadora></Calculadora>
-      <Citas></Citas>
-      <Testimonios></Testimonios> 
-      <Contacto></Contacto> 
+      <Menu></Menu>    
+      <Faq />  
+     
       <Footer></Footer> 
-      <Faq />
+     
     </div>
    
   );
@@ -52,4 +46,4 @@ function App() {
 }
  
 
-export default App;
+export default FaqMaster;
