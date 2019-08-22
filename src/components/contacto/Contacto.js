@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import GoogleMapReact from 'google-map-react';
 
 
 import axios from 'axios';
 import './Contacto.css'
+
+import markerDescriptions from './marker_descriptions.js';
 
 const Marker = ({ src }) => <img src={src} id="marker" />;
 
@@ -16,6 +18,8 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 }, false);*/
 
 //const Marker = ({ txt }) => <div>{txt}</div>  ;
+
+
 class Contacto extends Component {
 
 
@@ -40,6 +44,7 @@ class Contacto extends Component {
     }
 
 
+
     updateMap(lat, lng) {
 
         this.setState({
@@ -51,6 +56,12 @@ class Contacto extends Component {
         });
 
 
+
+    }
+    static propTypes = {
+        onMarkerHover: PropTypes.func,
+        onChildClick: PropTypes.func,
+     
 
     }
 
@@ -166,9 +177,8 @@ class Contacto extends Component {
 
 
 
-
-
     render() {
+
 
         return (
 
@@ -180,9 +190,9 @@ class Contacto extends Component {
                         <div className="info_div_small " id="info_div_small">
                             <div className="container_btn_sedes">
 
-                                <a onClick={() => this.updateMap(2.451680, -76.601451)} className="waves-effect waves-light btn-small" id="btnsedePopayan">Sede Popayán</a>
+                                <a onClick={() => this.updateMap(2.451680, -76.601451)} className="waves-effect waves-light btn-small" id="btnsedePopayan">Popayan</a>
 
-                                <a onClick={() => this.updateMap(3.003815, -76.482547)} className="waves-effect waves-light btn-small" id="btnsedeSantander">Sede Santander</a>
+                                <a onClick={() => this.updateMap(3.003815, -76.482547)} className="waves-effect waves-light btn-small" id="btnsedeSantander">santander</a>
 
                             </div>
                             <span onClick={this.hideOrShowDiv.bind(this)} id="btn_animate_info_div" className="btn_animate_div_in ">
@@ -649,6 +659,7 @@ class Contacto extends Component {
 
 
         );
+
     }
 }
 
@@ -662,10 +673,7 @@ class GMapReact extends React.Component {
         // "DistanceMatrixElementStatus", "ElevationStatus", "GeocoderLocationType", "GeocoderStatus", "KmlLayerStatus",
         // "MaxZoomStatus", "StreetViewStatus", "TransitMode", "TransitRoutePreference", "TravelMode", "UnitSystem"
         return {
-            zoomControlOptions: {
-                position: maps.ControlPosition.RIGHT_CENTER,
-                style: maps.ZoomControlStyle.SMALL
-            },
+            
             mapTypeControlOptions: {
                 position: maps.ControlPosition.TOP_RIGHT
             },
@@ -760,6 +768,19 @@ class GMapReact extends React.Component {
 
             };
         };
+        /*
+        const Markers = 
+                
+                    <Marker
+                        // required props
+                        lat={2.451680}
+                        lng={-76.601451}
+                        src={this.props.img_marker}
+                        // any user props
+                        {...markerDescriptions}
+                        />
+        */
+               
 
         return (
             <GoogleMapReact
@@ -767,7 +788,7 @@ class GMapReact extends React.Component {
                 bootstrapURLKeys={{ key: 'AIzaSyAp9u7X1d-wgHul4HPXzoDj93WxPzMqxqM' }}
                 defaultCenter={{ lat: 2.451680, lng: -76.601451 }}
                 center={{ lat: this.props.lat, lng: this.props.lng }}
-                defaultZoom={17}
+                defaultZoom={18}
                 yesIWantToUseGoogleMapApiInternals
                 onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
 
@@ -775,19 +796,25 @@ class GMapReact extends React.Component {
             >
 
 
+
+              
+            
                 <Marker
                     lat={2.451680}
                     lng={-76.601451}
 
                     src={this.props.img_marker}
+
                 //src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/134893/pin-red.svg"
                 //txt ="MY MARKER"
+
                 />
                 <Marker
                     lat={3.003815}
                     lng={-76.482547}
                     src={this.props.img_marker}
                 />
+            
 
 
             </GoogleMapReact>)

@@ -527,8 +527,36 @@ div.container_btn_sedes{
  
  */
  @media only screen and (max-width: 375px){
+    #btnsedeSantander{
+
+        width: 80px !important;
+        height: 30px !important;
+        font-size: 11px;
+        padding: 0% 8px !important;
+        text-align: initial;
+        
+    }
+    
+   
+     #btnsedePopayan{
+      
+         width: 80px !important;
+         
+         height: 30px !important;
+         font-size: 11px;
+        padding: 0% 8px !important;
+        text-align: initial;
+     }  
+    
+    div.container_btn_sedes{
+   
+  
+        position: absolute;
+        left: 250px;
+        top: 88%;   
        
     
+    }
     
   
     .btn_animate_div_in{
