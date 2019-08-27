@@ -20,7 +20,8 @@ class Calculadora extends Component {
         super(props);
         this.modal = 1;
         this.state = {
-            componente: 1
+            componente: 1,
+            email: ''
         }
         this.showComponente = this.showComponente.bind(this);
         this.changeComponente = this.changeComponente.bind(this);
