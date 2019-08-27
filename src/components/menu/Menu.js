@@ -43,7 +43,7 @@ class Menu extends Component {
                                 to ="contenedor-calculadora"
                                 spy={true}
                                 smooth={true}
-                                offset={-46}
+                                offset={-55}
                                 duration={500}
                                 >
                                 Calculadora
@@ -56,7 +56,7 @@ class Menu extends Component {
                                 to ="citas"
                                 spy={true}
                                 smooth={true}
-                                offset={-46}
+                                offset={-60}
                                 duration={500}
                                 >
                                 Citas
@@ -69,7 +69,7 @@ class Menu extends Component {
                                 to ="testimonios"
                                 spy={true}
                                 smooth={true}
-                                offset={-46}
+                                offset={-50}
                                 duration={500}
                                 >
                                 Testimonios
@@ -82,7 +82,7 @@ class Menu extends Component {
                                 to ="contacto"
                                 spy={true}
                                 smooth={true}
-                                offset={-46}
+                                offset={-63}
                                 duration={500}
                                 >
                                     Contacto
@@ -116,7 +116,7 @@ class Menu extends Component {
                                 to ="contenedor-calculadora"
                                 spy={true}
                                 smooth={true}
-                                offset={-46}
+                                offset={-55}
                                 duration={500}
                                 >
                                 Calculadora
@@ -129,7 +129,7 @@ class Menu extends Component {
                                 to ="citas"
                                 spy={true}
                                 smooth={true}
-                                offset={-46}
+                                offset={-60}
                                 duration={500}
                                 >
                                 Citas
@@ -142,7 +142,7 @@ class Menu extends Component {
                                 to ="testimonios"
                                 spy={true}
                                 smooth={true}
-                                offset={-46}
+                                offset={-50}
                                 duration={500}
                                 >
                                 Testimonios
@@ -155,7 +155,7 @@ class Menu extends Component {
                                 to ="contacto"
                                 spy={true}
                                 smooth={true}
-                                offset={-46}
+                                offset={-63}
                                 duration={500}
                                 >
                                     Contacto
