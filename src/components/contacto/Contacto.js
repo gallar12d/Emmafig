@@ -135,6 +135,7 @@ class Contacto extends Component {
 
         } else if (sede == 2) {
             //sede santander
+           
             btnSant.classList.remove("sede_div")
             btnSant.classList.add("sede_div_clicked");
             btnSantMed.classList.remove("sede_div")
@@ -347,12 +348,12 @@ class Contacto extends Component {
                                 </div>
                                 <div className="col s12 m12 l12" id="btnSantSmall" className="sede_div" >
 
-                                    <span className="headline_sede" onClick={() => this.showHorarios(2, "8AM - 7PM", "8AM - 12AM")}>Santander</span>
+                                    <span className="headline_sede" onClick={() => this.showHorarios(2,"8AM - 6PM", "8AM - 12AM")}>Santander</span>
 
                                 </div>
                                 <div className="col s12 m12 l12" id="btnCaliSmall" className="sede_div">
 
-                                    <span className="headline_sede" onClick={() => this.showHorarios(3, "8AM - 8PM", "8AM - 12AM")}>Cali</span>
+                                    <span className="headline_sede" onClick={() => this.showHorarios(3, "8AM - 6PM", "8AM - 12AM")}>Cali</span>
 
                                 </div>
                                 <a className="routes" href={this.state.urlMap} target="_blank">¿Como llegar?</a>
@@ -464,37 +465,36 @@ class Contacto extends Component {
 
                             <div className="row" id="head_info">
 
+
+
+
                                 <div className="col s12 m12 l12 " id="head_info_div">
 
 
                                     <span className="headline"> Sedes:</span>
 
                                 </div>
+                            </div>
 
 
-                                <div className="col s12 m12 l12" id="btnPopayanMed" className="sede_div"  >
-                                    {/* 
-                                <a class="waves-effect waves-light btn-small">Sede Popayán</a>
-                                
-                            */}
-                                    <span className="headline_sede_clicked" onClick={() => this.showHorarios(1, "8AM - 6PM", "8AM - 12AM")}>Popayán</span>
+                                <div className="col s12 m12 l12" id="btnPopayanMed" className="sede_div_clicked"  >
+                              
+                                    <span className="headline_sede" onClick={() => this.showHorarios(1, "8AM - 6PM", "8AM - 12AM")}>Popayán</span>
 
                                 </div>
                                 <div className="col s12 m12 l12" id="btnSantMed" className="sede_div" >
 
-                                    <span className="headline_sede" onClick={() => this.showHorarios(2, "8AM - 7PM", "8AM - 12AM")}>Santander</span>
+                                    <span className="headline_sede" onClick={() => this.showHorarios(2, "8AM - 6PM", "8AM - 12AM")}>Santander</span>
 
                                 </div>
                                 <div className="col s12 m12 l12" id="btnCaliMed" className="sede_div">
 
-                                    <span className="headline_sede" onClick={() => this.showHorarios(3, "8AM - 8PM", "8AM - 12AM")}>Cali</span>
+                                    <span className="headline_sede" onClick={() => this.showHorarios(3, "8AM - 6PM", "8AM - 12AM")}>Cali</span>
 
                                 </div>
+                                <a className="routes" href={this.state.urlMap} target="_blank">¿Como llegar?</a>
 
 
-
-
-                            </div>
                             <div className="row " id="head_info" >
                                 <div className="col l12  " id="col_0_pading" >
 
@@ -594,14 +594,6 @@ class Contacto extends Component {
 
                                 </div>
 
-
-
-                               
-
-
-
-
-
                             </div>
                             <div className="container_sedes">
 
@@ -612,12 +604,12 @@ class Contacto extends Component {
                                 </div>
                                 <div className="col s12 m12 l12" id="btnSant" className="sede_div" >
 
-                                    <span className="headline_sede" onClick={() => this.showHorarios(2, "8AM - 7PM", "8AM - 12AM")}>Santander</span>
+                                    <span className="headline_sede" onClick={() => this.showHorarios(2, "8AM - 6PM", "8AM - 12AM")}>Santander</span>
 
                                 </div>
                                 <div className="col s12 m12 l12" id="btnCali" className="sede_div">
 
-                                    <span className="headline_sede" onClick={() => this.showHorarios(3, "8AM - 8PM", "8AM - 12AM")}>Cali</span>
+                                    <span className="headline_sede" onClick={() => this.showHorarios(3, "8AM - 6PM", "8AM - 12AM")}>Cali</span>
 
                                 </div>
                                 <a className="routes" href={this.state.urlMap} target="_blank">¿Como llegar?</a>

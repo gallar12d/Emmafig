@@ -9,6 +9,8 @@ import * as serviceWorker from './serviceWorker';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import FaqMaster from './FaqMaster';
+import PerfilMaster from './PerfilMaster';
+import EditperfilMaster from './EditPerfilMaster';
 
 
 const routing = (
@@ -16,7 +18,9 @@ const routing = (
       <div>
         <Switch>
             <Route exact path="/" component={App} /> 
-            <Route exact path="/faq" component={FaqMaster} />             
+            <Route exact path="/faq" component={FaqMaster} />
+            <Route exact path="/perfil" component={PerfilMaster} />    
+            <Route exact path="/Editperfil" component={EditperfilMaster} />           
             <Route component={NotFound} />
         </Switch>
       </div>
