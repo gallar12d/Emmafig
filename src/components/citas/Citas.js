@@ -16,9 +16,19 @@ class Citas extends Component {
             fecha_cita: '', 
             id_profesional: '', 
             profesional: '',
-            todos_profesionales: false,
+            todos_profesionales: true,
+            informacion_paciente: false,
             id_turno: '',
-            turno: ''
+            turno: '', 
+            paciente_primer_nombre: '',
+            paciente_segundo_nombre: '',
+            paciente_primer_apellido: '',
+            paciente_segundo_apellido: '',
+            paciente_tipo_identificacion: -1, 
+            paciente_numero_identificacion: '',
+            paciente_numero1: '',
+            paciente_numero2: '',
+            paciente_email: ''
 
 
 

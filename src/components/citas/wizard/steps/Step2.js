@@ -51,12 +51,17 @@ class Step2 extends Component {
             let apellido2 = '';
             if (profesional.segundo_apellido)
                 apellido2 = profesional.segundo_apellido
+
+            let check = false;
+            if(this.props.id_profesional == profesional.id_usuario){
+                check = true;
+            }
             return (
                 <div key = {profesional.id_usuario }>
                     <div  className="input-field ">
                         <div className="icon_input" >
                             <label>
-                                <input   onChange = {() => { this.props.set_state('id_profesional', profesional.id_usuario); this.props.set_state('profesional', this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2))} } className="with-gap" name="id_profesional" value={profesional.id_usuario} type="radio" />
+                                <input  checked={check}  onChange = {() => { this.props.set_state('id_profesional', profesional.id_usuario); this.props.set_state('profesional', this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2))} } className="with-gap" name="id_profesional" value={profesional.id_usuario} type="radio" />
                                 <span style={{color: 'black'}}>{this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2)}</span>
                             </label>
                             <a className=" modal-trigger" href={'#Modal' + profesional.id_usuario}>
@@ -98,7 +103,12 @@ class Step2 extends Component {
             )
         })
 
+        let todos_check = '';
+        if(this.props.id_profesional){
+            let todos_check = false;
 
+        }
+        
 
         return (
             <div className="row step2">
@@ -108,7 +118,7 @@ class Step2 extends Component {
                     <div className="input-field ">
                         <div className="icon_input" >
                             <label>
-                                <input   onChange = {() => { this.props.set_state('id_profesional', ''); this.props.set_state('profesional', ''); this.props.set_state('todos_profesionales', true)} }  className="with-gap" name="id_profesional" value="0" type="radio" />
+                                <input checked = {(this.props.id_profesional)? false: true}   onChange = {() => { this.props.set_state('id_profesional', ''); this.props.set_state('profesional', ''); this.props.set_state('todos_profesionales', true)} }  className="with-gap" name="id_profesional" value="0" type="radio" />
                                 <span style={{color: 'black'}} >Todos</span>
                             </label>
                             <br></br>

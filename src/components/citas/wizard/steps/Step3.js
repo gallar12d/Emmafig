@@ -54,7 +54,10 @@ class Step3 extends Component {
             </div>
 
         )
-
+        let profesional = 'Todos';
+        if(this.props.profesional){
+            profesional = this.props.profesional;  
+        }
 
 
         return (
@@ -102,7 +105,7 @@ class Step3 extends Component {
 
                         </div>
                         <div className='floting'>
-                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', fontStyle: 'italic' }}>{this.props.profesional}
+                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', fontStyle: 'italic' }}>{profesional}
                             </h6>
 
                         </div>

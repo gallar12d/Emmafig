@@ -19,13 +19,28 @@ class Buttons extends Component {
 
     }
 
+    validate_and_continue(){
+
+        var validate = this.props.validar(this.props.step);
+        if(validate){
+            this.props.activate_step(this.props.step + 1);
+            this.props.actualizar(this.props.step + 1);
+
+        }
+        
+    }
+    validate_and_return(){
+        this.props.activate_step(this.props.step - 1 );
+        this.props.actualizar(this.props.step - 1 )
+    }
+
     render() {
         return (
             
 
             <div className="btn_align left-align">
-                <button className="btn " onClick={() => {this.props.activate_step(this.props.step - 1); this.props.actualizar(this.props.step - 1)}} type="button" >Anterior</button>
-                <button className="btn" onClick={() => {this.props.activate_step(this.props.step + 1 ) ; this.props.actualizar(this.props.step + 1 )} } type="button" >Siguiente</button>
+                <button className="btn " onClick={this.validate_and_return.bind(this)} type="button" >Anterior</button>
+                <button className="btn" onClick={ this.validate_and_continue.bind(this) } type="button" >Siguiente</button>
             </div>
 
 

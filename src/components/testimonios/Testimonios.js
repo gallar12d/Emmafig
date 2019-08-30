@@ -41,6 +41,11 @@ class Testimonios extends Component {
     };
   }
   componentDidMount() {
+
+    var elems = document.querySelectorAll('.parallax');
+    M.Parallax.init(elems, {});
+
+
     fetch("https://emmafig.com/api1/testimonials")
       .then(res => res.json())
       .then(

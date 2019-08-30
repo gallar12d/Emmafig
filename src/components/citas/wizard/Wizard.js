@@ -25,40 +25,59 @@ class Wizard extends Component {
         };
     }
 
-    validateForm() {
-        var error = true;
-
-        var elementos = $('#formularios input');
-
-        if (elementos) {
-            $.each(elementos, function (k, v) {
-
-                if ($(v).is(':radio')) {
-
-
-                    if (!$(v).is(':checked')) {
-
-
-                        error = true;
+    validateForm(num) {
+       
+        var pasa = true;
+        switch(num){
+            case 1: 
+                
+                if(!this.props.id_sede){
+                    pasa = false;
+                }
+                if(!this.props.fecha_cita){
+                    pasa = false;
+                }
+                break
+            case 2: 
+                if(!this.props.id_profesional){
+                    pasa = false;
+                    if(!this.props.todos_profesionales){
+                        pasa = false;
+                    }
+                    else{
+                        pasa = true;
                     }
 
+                } 
+            break;
+            case 3: 
+                if(!this.props.id_turno){
+                    pasa = false;
                 }
-
-                if ($(v).is('input:text')) {
-
-
-                    var val = $(v).val();
-
-                    if (!val) {
-
-                        error = false;
-                    }
-
-
+            break
+            case 4: 
+                if(!this.props.informacion_paciente){
+                    pasa = false;
                 }
-
-            })
+            break
+                
+            default:
+            // code block
         }
+        
+
+        if(!pasa){
+            
+            $('.cuestionario-info').hide()
+            setTimeout(function(){ $('.cuestionario-info').show() }, 1);
+            
+            
+            
+            
+
+        }
+
+        return pasa;
 
 
     }
@@ -108,14 +127,15 @@ class Wizard extends Component {
     }
 
     render() {
+        $('.cuestionario-info').hide()
         let step;
 
         switch (this.props.step) {
             case 1:
-                step = (<Step1 set_state={this.props.set_state} step={this.props.step} activate_step={this.props.activate_step} />)
+                step = (<Step1  set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
                 break;
             case 2:
-                step = (<Step2 set_state={this.props.set_state} step={this.props.step} activate_step={this.props.activate_step} />)
+                step = (<Step2 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
                 break;
             case 3:
                 step = (<Step3 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
@@ -135,17 +155,17 @@ class Wizard extends Component {
             <div className="row wizardCitas">
 
                 <Steps {...this.state} />
-                <h4 onClick={this.validateForm.bind(this)} style={{ color: '#c73a8c', fontWeight: 'bolder' }}>{this.props.nombre_servicio}</h4>
+                <h4  style={{ color: '#c73a8c', fontWeight: 'bolder' }}>{this.props.nombre_servicio}</h4>
 
-                <form id="formularios">
+                
                     {step}
 
-                </form>
+                
 
                 <div className="row">
                     <div className="col s12 m4 offset-m2 ">
                         <p id="info2" className="cuestionario-info info-animation" style={{ textAlign: 'left' }}>Por favor diligencia toda la información  para continuar</p>
-                        <Buttons actualizar={this.actualizar.bind(this)} step={this.props.step} activate_step={this.props.activate_step} />
+                        <Buttons validar = {this.validateForm.bind(this)} actualizar={this.actualizar.bind(this)} step={this.props.step} activate_step={this.props.activate_step} />
 
                     </div>
                 </div>

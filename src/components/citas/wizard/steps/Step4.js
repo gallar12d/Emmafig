@@ -51,6 +51,31 @@ class Step4 extends Component {
 
     }
 
+    validate_form_user(e){
+        e.preventDefault();
+        var validity = $('#form_user')[0].checkValidity()
+
+        if(validity){
+            var elem = $('#modal_cita')
+            var instance = M.Modal.getInstance(elem);
+            this.props.set_state('informacion_paciente', true)
+            instance.close();
+
+        }
+        else{
+            $('#form_user')[0].reportValidity()
+
+
+        }
+
+        
+
+        //validate validityCheck api html5 for this form
+        //close modal
+
+
+    }
+
 
 
 
@@ -181,26 +206,27 @@ class Step4 extends Component {
                         </div>
 
                         <div className="row">
+                            <form id ="form_user">
 
                             <div className="input-field col s6 m6">
-                                <input placeholder="" id="primer_nombre" type="text" className="validate"></input>
+                                <input onChange={(e)=> console.log($(this).val()) } placeholder = {this.props.paciente_primer_nombre} required  id="primer_nombre" type="text" className="validate"></input>
                                 <label htmlFor="first_name">Primer nombre *</label>
                             </div>
                             <div className="input-field col s6 m6">
-                                <input placeholder="" id="segundo_nombre" type="text" className="validate"></input>
+                                <input placeholder = {this.props.paciente_segundo_nombre}   id="segundo_nombre" type="text" className="validate"></input>
                                 <label htmlFor="first_name">Segundo nombre</label>
                             </div>
                             <div className="input-field col s6 m6">
-                                <input placeholder="" id="primer_apellido" type="text" className="validate"></input>
+                                <input placeholder = {this.props.paciente_primer_apellido} required id="primer_apellido" type="text" className="validate"></input>
                                 <label htmlFor="first_name">Primer apellido *</label>
                             </div>
                             <div className="input-field col s6 m6">
-                                <input placeholder="" id="segundo_apellido" type="text" className="validate"></input>
+                                <input placeholder = {this.props.paciente_segundo_apellido}  id="segundo_apellido" type="text" className="validate"></input>
                                 <label htmlFor="first_name">Segundo apellido </label>
                             </div>
                             <div className="input-field col s6 m6">
-                                <select>
-                                    <option disabled value="">Tipo de identificación *</option>
+                                <select value={this.props.tipo_identificacion}>
+                                    <option disabled value="-1">Tipo de identificación *</option>
                                     <option value="1">Cédula de ciudadanía</option>
                                     <option value="2">Tarjeta de identidad</option>
                                     <option value="3">Cédula extrangera</option>
@@ -208,21 +234,22 @@ class Step4 extends Component {
 
                             </div>
                             <div className="input-field col s6 m6">
-                                <input placeholder="" id="numero_identificacion" type="text" className="validate"></input>
+                                <input placeholder = {this.props.paciente_numero_identificacion} required  id="numero_identificacion" type="text" className="validate"></input>
                                 <label htmlFor="first_name">Número de identificación *</label>
                             </div>
                             <div className="input-field col s6 m6">
-                                <input placeholder="" id="telefono1" type="text" className="validate"></input>
+                                <input placeholder = {this.props.paciente_telefono1} required  id="telefono1" type="text" className="validate"></input>
                                 <label htmlFor="first_name">Teléfono de contacto 1 *</label>
                             </div>
                             <div className="input-field col s6 m6">
-                                <input placeholder="" id="telefono2" type="text" className="validate"></input>
+                                <input placeholder = {this.props.paciente_telefono2}  id="telefono2" type="text" className="validate"></input>
                                 <label htmlFor="first_name">Teléfono de contacto 2</label>
                             </div>
                             <div className="input-field col s12 m12">
-                                <input placeholder="" id="email" type="text" className="validate"></input>
+                                <input placeholder = {this.props.paciente_email} id="email" type="text" className="validate"></input>
                                 <label htmlFor="first_name">Correo electrónico</label>
                             </div>
+                            </form>
 
 
 
@@ -232,7 +259,7 @@ class Step4 extends Component {
 
                     </div>
                     <div className="modal-footer">
-                        <button  className="btn modal-close  ">Confirmar</button>
+                        <button onClick = {this.validate_form_user.bind(this)}  className="btn   ">Confirmar</button>
                     </div>
                 </div>
 
