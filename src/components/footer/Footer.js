@@ -202,7 +202,7 @@ class Footer extends Component {
             </a>
         </div>
         <div className="col">
-            <a href="https://api.whatsapp.com/send?phone=573174412170" target="_blank">
+            <a id="iconWSP" href="https://api.whatsapp.com/send?phone=573174412170" target="_blank">
                 <i className="fa fa-whatsapp fa-lg"></i>
             </a>
         </div>
