@@ -29,7 +29,7 @@ class Cuestionario extends Component {
         this.mountStyle = this.mountStyle.bind(this);
         this.unMountStyle = this.unMountStyle.bind(this);
         this.countOptSelecteds = this.countOptSelecteds.bind(this);
-        this.closeInfo= this.closeInfo.bind(this);
+        this.closeInfo = this.closeInfo.bind(this);
 
     }
 
@@ -42,7 +42,7 @@ class Cuestionario extends Component {
         return arrSum;
     }
 
-    closeInfo(event){
+    closeInfo(event) {
         let info_end = document.getElementById("info-fin-cuestionario");
         info_end.style.clipPath = "circle(0%)";
     }
@@ -134,7 +134,7 @@ class Cuestionario extends Component {
                 opcRespOK.style.display = "none";
                 opcRespActual.style.display = "block";
                 preguntaActual.style.display = "block";
-            }else if (this.countOptSelecteds(opts) == 6) {
+            } else if (this.countOptSelecteds(opts) == 6) {
                 this.props.changeComponente();
             }
         } else {
@@ -364,14 +364,23 @@ class Cuestionario extends Component {
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta1" className="row" oprindex="1">
-                        <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
+                        <div className="col l2 offset-l5">
+                            <select class="browser-default">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                        </div>
+
+                        {/*<label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
                             <input id="op11" className="with-gap" name="group1" type="radio" value="si" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Si</span>
                         </label>
                         <label className="col s2 m2 l1">
                             <input id="op12" className="with-gap" name="group1" type="radio" value="no" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
-                        </label>
+        </label>*/}
                     </div>
                     <div id="cont-pregunta2" className="row" pgindex="2">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
