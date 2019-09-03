@@ -20,10 +20,10 @@ class Menu extends Component {
         return (
             <div>
                 <div className="navbar-fixed">
-                    <ul id="dropdown1" class="dropdown-content">
+                    <ul id="dropdown1" className="dropdown-content">
                         <li><a href="#/perfil">Perfil</a></li>
                         <li><a href="#/Editperfil">Configuracion</a></li>
-                        <li class="divider"></li>
+                        <li className="divider"></li>
                         <li><a href="#/logout">Cerrar sesion</a></li>
                     </ul>
                     <nav>
@@ -117,9 +117,9 @@ class Menu extends Component {
 
 
 
-                                    <a class="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
+                                    <a className="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
                                     
-                                        Usuario <i class="material-icons right">arrow_drop_down</i>
+                                        Usuario <i className="material-icons right">arrow_drop_down</i>
 
                                     </a>
 

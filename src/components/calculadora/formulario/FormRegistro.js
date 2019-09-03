@@ -6,7 +6,7 @@ import '../../../../node_modules/font-awesome/css/font-awesome.min.css';
 import './FormRegistro.css';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from 'react-google-login';
-
+import Axios from 'axios';
 class FormRegistro extends Component {
 
     constructor(props) {
@@ -16,9 +16,13 @@ class FormRegistro extends Component {
             showConfirmation: 0,
             celularError: 0,
             codigo: 0,
-            email: '',
+            correo: '',
             celular: '',
-            nombre: ''
+            primer_nombre: '',
+            password: '',
+            avatar: '',
+            id_social: '',
+            canal_registro: ''
         }
         this.showSocialButtons = this.showSocialButtons.bind(this);
         this.responseFacebook = this.responseFacebook.bind(this);
@@ -39,11 +43,11 @@ class FormRegistro extends Component {
             nombreError.classList.remove("celular-animation");
             void nombreError.offsetWidth;
             nombreError.classList.add("celular-animation");
-        } else if(this.validarEmail(email.value)){
+        } else if (this.validarEmail(email.value)) {
             this.nombre = nombre.value;
             this.email = email.value;
             this.closeModal();
-        }else{
+        } else {
             emailError.style.display = "block";
             emailError.classList.remove("celular-animation");
             void emailError.offsetWidth;
@@ -64,9 +68,30 @@ class FormRegistro extends Component {
     }
 
     responseGoogle = (response) => {
-        this.nombre = response.profileObj.name;
-        this.email = response.profileObj.email;
+        this.setState({
+            primer_nombre: response.profileObj.name,
+            correo: response.profileObj.email,
+            celular: this.state.celular,
+            avatar: response.profileObj.imageUrl,
+            canal_registro: 'Google',
+            id_social: response.profileObj.googleId
+        });
+        
         console.log(response.profileObj);
+        Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', { 
+            "primer_nombre" : this.state.primer_nombre,
+            "correo" : this.state.correo,
+            "password": this.state.password,
+            "celular": this.state.celular,
+            "avatar": this.state.avatar,
+            "canal_registro": this.state.canal_registro,
+            "id_social": this.state.id_social}
+            )
+            .then(res => {
+                console.log(res.data.message);
+                console.info("Respuesta api "+res);
+                console.info("Respuesta data "+res.data);
+            });
         this.closeModal();
     }
     validarCodigo = () => {
@@ -129,17 +154,18 @@ class FormRegistro extends Component {
                     case '318':
                     case '319':
                     case '350':
-                    case '351': 
+                    case '351':
                         this.celular = celular.value;
                         celular.setAttribute("disabled", "true");
                         btn_celular.style.display = "none";
                         celularError.style.display = "none";
                         this.setState({
-                            showConfirmation: 1
+                            showConfirmation: 1,
+                            celular: celular.value
                         });
                         this.showConfirmation();
                         //fetch("http://localhost/api1/sendKey.php?celular="+celular.value)
-                        fetch("https://emmafig.com/api1/sendKey.php?celular="+celular.value)
+                        fetch("https://emmafig.com/api1/sendKey.php?celular=" + celular.value)
                             .then(res => res.json())
                             .then(
                                 (result) => {
@@ -147,7 +173,7 @@ class FormRegistro extends Component {
                                     if (result.estado == 'sent') {
                                         console.log(result.codigo)
                                         this.setState({
-                                            codigo : result.codigo
+                                            codigo: result.codigo
                                         });
                                         this.setState({
                                             showConfirmation: 1
@@ -176,12 +202,12 @@ class FormRegistro extends Component {
     validarEmail = (valor) => {
         console.log(valor);
         let emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-        if (emailRegex.test(valor)){
-        
-         return true;
+        if (emailRegex.test(valor)) {
+
+            return true;
         } else {
-         
-         return false;
+
+            return false;
         }
     }
     showConfirmation = () => {
@@ -245,7 +271,7 @@ class FormRegistro extends Component {
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="small material-icons prefix">email</i>
                             <input id="email" type="email" className="validate" required="" aria-required="true" />
-                            <label htmlFor="email">Correo Personal *</label>                            
+                            <label htmlFor="email">Correo Personal *</label>
                             <p id="correo-error" className="center cel-error">Correo no válido</p>
                         </div>
                     </div>
@@ -273,7 +299,7 @@ class FormRegistro extends Component {
                         <input id="celular" type="number" className="validate" require="" aria-required="true" />
                         <label htmlFor="celular">Celular</label>
                         <p id="celular-error" className="center cel-error">Por favor digite un numero de celular para continuar</p>
-                        
+
                     </div>
                 </div>
                 <div id="btn_celular" className="row">
