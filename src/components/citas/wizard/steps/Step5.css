@@ -1,0 +1,11 @@
+
+
+#step5 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    color: #ececec;
+    margin-right: 24px;
+    transition: color .3s ease;
+    text-transform: uppercase;
+}
+#step5 span.card-title {
+    color: #146969 !important;
+}

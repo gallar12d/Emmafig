@@ -18,7 +18,7 @@ class Step2 extends Component {
     componentDidMount() {
         var elems = $('.mySelect');
         M.FormSelect.init(elems, {});
-        Axios.get(`https://emmafig.com/api1/profesionales`)
+        Axios.get(`https://emmafig.com/api1/profesionales/`+this.props.id_sede)
             .then(res => {
                 const profesionales = res.data;
                 this.setState({ profesionales });

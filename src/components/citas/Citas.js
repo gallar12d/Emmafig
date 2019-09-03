@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Citas.css'
 import Paquetes from './paquetes/Paquetes'
 import Wizard from './wizard/Wizard'
-import Step4 from './wizard/steps/Step4'
+import Step5 from './wizard/steps/Step5'
 
 class Citas extends Component {
     constructor(props) {
@@ -28,7 +28,8 @@ class Citas extends Component {
             paciente_numero_identificacion: '',
             paciente_numero1: '',
             paciente_numero2: '',
-            paciente_email: ''
+            paciente_email: '',
+            cita: false
 
 
 
@@ -86,14 +87,7 @@ class Citas extends Component {
                         <h5 className="subtitleCitas">En la fundación InnovaGen contamos con la mejor tecnología para la detección temprana de Cáncer de Cuello Uterino, no dejes pasar esta oportunidad, ven separa tu cita</h5>                       
                     </div>                    
                 </div>
-               {seccion}   
-               
-
-
-                            
-                
-               
-
+               {seccion} 
             </div>
 
         );

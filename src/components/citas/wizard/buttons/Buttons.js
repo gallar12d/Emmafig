@@ -35,12 +35,19 @@ class Buttons extends Component {
     }
 
     render() {
+
+        let mostrar  = '';
+
+        if(this.props.step != 5){
+            mostrar = <button className="btn" onClick={ this.validate_and_continue.bind(this) } type="button" >Siguiente</button>
+        }
+
         return (
             
 
             <div className="btn_align left-align">
                 <button className="btn " onClick={this.validate_and_return.bind(this)} type="button" >Anterior</button>
-                <button className="btn" onClick={ this.validate_and_continue.bind(this) } type="button" >Siguiente</button>
+                {mostrar}
             </div>
 
 

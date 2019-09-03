@@ -4,6 +4,7 @@ import Step1 from './steps/Step1';
 import Step2 from './steps/Step2';
 import Step3 from './steps/Step3';
 import Step4 from './steps/Step4';
+import Step5 from './steps/Step5';
 import Buttons from './buttons/Buttons';
 import $ from 'jquery';
 
@@ -26,54 +27,54 @@ class Wizard extends Component {
     }
 
     validateForm(num) {
-       
+
         var pasa = true;
-        switch(num){
-            case 1: 
-                
-                if(!this.props.id_sede){
+        switch (num) {
+            case 1:
+
+                if (!this.props.id_sede) {
                     pasa = false;
                 }
-                if(!this.props.fecha_cita){
+                if (!this.props.fecha_cita) {
                     pasa = false;
                 }
                 break
-            case 2: 
-                if(!this.props.id_profesional){
+            case 2:
+                if (!this.props.id_profesional) {
                     pasa = false;
-                    if(!this.props.todos_profesionales){
+                    if (!this.props.todos_profesionales) {
                         pasa = false;
                     }
-                    else{
+                    else {
                         pasa = true;
                     }
 
-                } 
-            break;
-            case 3: 
-                if(!this.props.id_turno){
+                }
+                break;
+            case 3:
+                if (!this.props.id_turno) {
                     pasa = false;
                 }
-            break
-            case 4: 
-                if(!this.props.informacion_paciente){
+                break
+            case 4:
+                if (!this.props.informacion_paciente) {
                     pasa = false;
                 }
-            break
-                
+                break
+
             default:
             // code block
         }
-        
 
-        if(!pasa){
-            
+
+        if (!pasa) {
+
             $('.cuestionario-info').hide()
-            setTimeout(function(){ $('.cuestionario-info').show() }, 1);
-            
-            
-            
-            
+            setTimeout(function () { $('.cuestionario-info').show() }, 1);
+
+
+
+
 
         }
 
@@ -132,7 +133,7 @@ class Wizard extends Component {
 
         switch (this.props.step) {
             case 1:
-                step = (<Step1  set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
+                step = (<Step1 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
                 break;
             case 2:
                 step = (<Step2 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
@@ -142,6 +143,9 @@ class Wizard extends Component {
                 break;
             case 4:
                 step = (<Step4 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
+                break;
+            case 5:
+                step = (<Step5 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
                 break;
 
             default:
@@ -155,17 +159,19 @@ class Wizard extends Component {
             <div className="row wizardCitas">
 
                 <Steps {...this.state} />
-                <h4  style={{ color: '#c73a8c', fontWeight: 'bolder' }}>{this.props.nombre_servicio}</h4>
+                <h4 style={{ color: '#c73a8c', fontWeight: 'bolder' }}>{this.props.nombre_servicio}</h4>
+
+
+                {step}
 
                 
-                    {step}
 
-                
+
 
                 <div className="row">
                     <div className="col s12 m4 offset-m2 ">
                         <p id="info2" className="cuestionario-info info-animation" style={{ textAlign: 'left' }}>Por favor diligencia toda la información  para continuar</p>
-                        <Buttons validar = {this.validateForm.bind(this)} actualizar={this.actualizar.bind(this)} step={this.props.step} activate_step={this.props.activate_step} />
+                        <Buttons validar={this.validateForm.bind(this)} actualizar={this.actualizar.bind(this)} step={this.props.step} activate_step={this.props.activate_step} />
 
                     </div>
                 </div>
