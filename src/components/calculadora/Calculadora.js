@@ -21,10 +21,12 @@ class Calculadora extends Component {
         this.modal = 1;
         this.state = {
             componente: 1,
-            email: ''
+            email: '',
+            mensaje_registro: 'Se ha realizado exitosamente tu inscripción'
         }
         this.showComponente = this.showComponente.bind(this);
         this.changeComponente = this.changeComponente.bind(this);
+        this.changeMensaje = this.changeComponente.bind(this);
         this.backComponente = this.backComponente.bind(this);
     }
     changeComponente = e => {

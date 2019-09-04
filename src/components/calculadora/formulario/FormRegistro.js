@@ -76,21 +76,27 @@ class FormRegistro extends Component {
             canal_registro: 'Google',
             id_social: response.profileObj.googleId
         });
-        
+
         console.log(response.profileObj);
-        Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', { 
-            "primer_nombre" : this.state.primer_nombre,
-            "correo" : this.state.correo,
+        Axios.post('http://localhost:8080/api1/rest-api-authentication-example/api/create_user.php', {
+            "primer_nombre": this.state.primer_nombre,
+            "correo": this.state.correo,
             "password": this.state.password,
             "celular": this.state.celular,
             "avatar": this.state.avatar,
             "canal_registro": this.state.canal_registro,
-            "id_social": this.state.id_social}
-            )
+            "id_social": this.state.id_social
+        }
+        )
             .then(res => {
-                console.log(res.data.message);
-                console.info("Respuesta api "+res);
-                console.info("Respuesta data "+res.data);
+                console.log(res.data.message);                
+            })
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
             });
         this.closeModal();
     }
