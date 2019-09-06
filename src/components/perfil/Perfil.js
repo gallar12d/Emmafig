@@ -13,12 +13,6 @@ class Perfil extends Component {
     componentDidMount() {
         M.Tabs.init(this.Tabs);
     }
-
-
-    
-
-
-
     render() {
 
         return (
@@ -51,9 +45,7 @@ class Perfil extends Component {
 
                                 </div>
                             </div>
-                            <div className="col m2">
-                                <input type="submit" className="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
-                            </div>
+                           
                         </div>
                         <div className="row">
                             
@@ -71,42 +63,42 @@ class Perfil extends Component {
                                     </div>
                                     <div id="test1" className="col s12">
                                    
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <label>User Id</label>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <p>Kshiti123</p>
                                             </div>
                                         
                                        
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <label>Name</label>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <p>Kshiti Ghelani</p>
                                             </div>
                                        
                                        
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <label>Email</label>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <p>kshitighelani@gmail.com</p>
                                             </div>
                                         
                                        
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <label>Phone</label>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <p>123 456 7890</p>
                                             </div>
                                        
                                         
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <label>Profession</label>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <p>Web Developer and Designer</p>
                                             </div>
                                        
@@ -114,42 +106,42 @@ class Perfil extends Component {
 
                                     <div id="test2" className="col s12">
                                     
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <label>Experience</label>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <p>Expert</p>
                                             </div>
                                        
                                         
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <label>Hourly Rate</label>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <p>10$/hr</p>
                                             </div>
                                       
                                         
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <label>Total Projects</label>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <p>230</p>
                                             </div>
                                       
                                         
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <label>English Level</label>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <p>Expert</p>
                                             </div>
                                       
                                         
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <label>Availability</label>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div className="col-md-6">
                                                 <p>6 months</p>
                                             </div>
                                     

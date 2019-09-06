@@ -21,12 +21,24 @@ class Calculadora extends Component {
         this.modal = 1;
         this.state = {
             componente: 1,
-            email: ''
+            email: '',
+           
         }
         this.showComponente = this.showComponente.bind(this);
         this.changeComponente = this.changeComponente.bind(this);
         this.backComponente = this.backComponente.bind(this);
     }
+/* 
+FUNCIONES PARA CALCULAR HORA ENTRE TAREA
+SE LLAMAN EN EL COMPONENTE CUESTIONARIO
+update_hi(hour){
+    this.setState({hora_i: hour})
+}
+update_hf(hour){
+    this.setState({hora_f: hour})
+}
+*/
+
     changeComponente = e => {
         this.setState({ componente: this.state.componente + 1 });        
     };
@@ -36,7 +48,7 @@ class Calculadora extends Component {
     }
     showComponente = () => {
         switch (this.state.componente) {
-            case 1: return <Inicio changeComponente={this.changeComponente} />
+            case 1: return <Inicio  changeComponente={this.changeComponente} />
             case 2: return <Cuestionario changeComponente={this.changeComponente} />
             case 3: return <Resultado backComponente={this.backComponente} />
             case 4: return <Inscripcion changeComponente={this.changeComponente} />

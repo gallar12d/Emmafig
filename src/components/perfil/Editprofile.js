@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Perfil.css'
 import M from "materialize-css";
+import axios from "axios";
 
 //cronometro entre tareas
 var endTask;
@@ -22,41 +23,56 @@ class Editprofile extends Component {
         this.state = {
             elapsed: 0,
         }
+        /*
         this.start = this.start.bind( this );
         this.stop = this.stop.bind( this );
+        */
     }
     componentDidMount() {
         M.Collapsible.init(this.Collapsible);
     }
     
+  /*
   
-    start() {
-        this.startedOn = new Date().getTime();
-        this.timer = window.setInterval( this.updateTime.bind( this ), 10 );
-        
-    }
-    updateTime() {
-        this.setState( {elapsed: new Date().getTime() - this.startedOn } );
-        time = this.state.elapsed;
-        acumularTime2 = new Date;
-        acumularTime2.setTime(time);
-        cc = Math.round(acumularTime2.getMilliseconds()/10);
-        ss = acumularTime2.getSeconds();
-        mm = acumularTime2.getMinutes();
-        hh = acumularTime2.getHours()-19;
-        if (cc < 10) {cc = "0"+cc;}
-        if (ss < 10) {ss = "0"+ss;} 
-        if (mm < 10) {mm = "0"+mm;}
-        if (hh < 10) {hh = "0"+hh;}
-        endTask = hh+" : "+mm+" : "+ss+" : "+cc;
-       
+  start() {
+      this.startedOn = new Date().getTime();
+      this.timer = window.setInterval( this.updateTime.bind( this ), 10 );
       
-    }
-    stop() {
-        window.clearInterval( this.timer );
-        alert("El usuario ha tardado "+endTask+" en completar la tarea");
-        
-    }
+  }
+  updateTime() {
+      this.setState( {elapsed: new Date().getTime() - this.startedOn } );
+      time = this.state.elapsed;
+      acumularTime2 = new Date;
+      acumularTime2.setTime(time);
+      cc = Math.round(acumularTime2.getMilliseconds()/10);
+      ss = acumularTime2.getSeconds();
+      mm = acumularTime2.getMinutes();
+      hh = acumularTime2.getHours()-19;
+      if (cc < 10) {cc = "0"+cc;}
+      if (ss < 10) {ss = "0"+ss;} 
+      if (mm < 10) {mm = "0"+mm;}
+      if (hh < 10) {hh = "0"+hh;}
+      endTask = hh+" : "+mm+" : "+ss+" : "+cc;
+     
+    
+  }
+  stop() {
+      window.clearInterval( this.timer );
+      var dataform = new FormData();
+      dataform.append("nombre", "actualizar perfil");
+      dataform.append("task_end", endTask);
+      dataform.append("version", "emmafig V1");
+      alert("El usuario ha tardado "+endTask+" en completar la tarea");
+      axios.post("http://localhost/api1/timeTask",dataform).then(
+          res =>{
+              var result = res.data;
+              console.log(result)
+          }
+      )
+      
+      
+  }
+  */
    
     
 
@@ -84,7 +100,7 @@ class Editprofile extends Component {
 
                                 </div>
 
-                                <a class="waves-effect waves-light btn" onClick={this.start}>Guardar cambios</a>
+                                <a class="waves-effect waves-light btn" >Guardar cambios</a>
                             </div>
                         </li>
                         <li>
@@ -129,7 +145,7 @@ class Editprofile extends Component {
                                     </div>
 
                                 </div>
-                                <a class="waves-effect waves-light btn" onClick={this.stop} >Guardar cambios</a>
+                                <a class="waves-effect waves-light btn" >Guardar cambios</a>
 
                             </div>
                         </li>

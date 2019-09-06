@@ -67,7 +67,7 @@ class Citas extends Component {
 
 
         return (
-            <div id="citas">
+            <div id="citas" >
                 <div className="container headcitas">
                     <div className="row ">
                         <h4 className="titulocitas">

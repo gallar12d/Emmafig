@@ -80,9 +80,7 @@ class Contacto extends Component {
         var h_semana_small = document.getElementById("horario_semana_small");
         var h_sabado_small = document.getElementById("horario_sabado_small");
 
-        var nombre_sede = document.getElementById("nombre_sede");
-        var nombre_sede_small = document.getElementById("nombre_sede_small");
-        var nombre_sede_med = document.getElementById("nombre_sede_med");
+        
         var telefono1_sede = document.getElementById("telefono1_sede");
         var telefono1_sede_small = document.getElementById("telefono1_sede_small");
         var telefono1_sede_med = document.getElementById("telefono1_sede_med");
@@ -116,15 +114,13 @@ class Contacto extends Component {
                 btnSantSmall.classList.remove("sede_div_clicked")
                 btnSantSmall.classList.add("sede_div");
             }
-            nombre_sede.innerHTML = "Popayán"
-            nombre_sede_small.innerHTML = "Popayán"
-            nombre_sede_med.innerHTML = "Popayán"
+          
 
-            telefono1_sede.innerHTML = "+(57) 8 392735"
+            telefono1_sede.innerHTML = "(2) 837 2935 - (2) 838 2135"
             telefono2_sede.innerHTML = "317 441 2170"
-            telefono1_sede_small.innerHTML = "+(57) 8 392735"
+            telefono1_sede_small.innerHTML = "(2) 837 2935 - (2) 838 2135"
             telefono2_sede_small.innerHTML = "317 441 2170"
-            telefono1_sede_med.innerHTML = "+(57) 8 392735"
+            telefono1_sede_med.innerHTML = "(2) 837 2935 - (2) 838 2135"
             telefono2_sede_med.innerHTML = "317 441 2170"
 
             this.updateMap(2.451680, -76.601451);
@@ -158,14 +154,12 @@ class Contacto extends Component {
                 btnPopayanSmall.classList.remove("sede_div_clicked")
                 btnPopayanSmall.classList.add("sede_div");
             }
-            nombre_sede.innerHTML = "Santander"
-            nombre_sede_small.innerHTML = "Santander"
-            nombre_sede_med.innerHTML = "Santander"
-            telefono1_sede.innerHTML = "+(57) 8 443333"
+            
+            telefono1_sede.innerHTML = "(2) 844 3333"
             telefono2_sede.innerHTML = "315 389 2600"
-            telefono1_sede_small.innerHTML = "+(57) 8 443333"
+            telefono1_sede_small.innerHTML = "(2) 844 3333"
             telefono2_sede_small.innerHTML = "315 389 2600"
-            telefono1_sede_med.innerHTML = "+(57) 8 443333"
+            telefono1_sede_med.innerHTML = "(2) 844 3333"
             telefono2_sede_med.innerHTML = "315 389 2600"
 
             this.updateMap(3.003815, -76.482547)
@@ -417,12 +411,12 @@ class Contacto extends Component {
 
                             <div id="label_viernes" className="row ">
                                 <div className="col s6 m6 l6" id="col_0_pading">
-                                    <span className="horariotext" id="nombre_sede_small" > Popayán</span>
+                                    <span className="horariotext"> Fijo</span>
 
                                 </div>
                                 <div className="col s6 m6 l6" id="col_0_pading">
 
-                                    <span className="horario_hour" id="telefono1_sede_small" >+(57) 8 392735</span>
+                                    <span className="horario_hour" id="telefono1_sede_small" >(2) 837 2935 - (2) 838 2135 o (2) 838 2135</span>
                                 </div>
 
                             </div>
@@ -553,12 +547,12 @@ class Contacto extends Component {
 
                             <div id="label_viernes" className="row ">
                                 <div className="col s6 m6 l6" id="col_0_pading">
-                                    <span className="horariotext" id="nombre_sede_med"> Popayán</span>
+                                    <span className="horariotext" > Fijo</span>
 
                                 </div>
                                 <div className="col s6 m6 l6" id="col_0_pading">
 
-                                    <span className="horario_hour" id="telefono1_sede_med">+(57) 8 392735</span>
+                                    <span className="horario_hour" id="telefono1_sede_med">(2) 837 2935 - (2) 838 2135</span>
                                 </div>
 
                             </div>
@@ -670,12 +664,12 @@ class Contacto extends Component {
 
                             <div id="label_viernes" className="row ">
                                 <div className="col s6 m6 l6" id="col_0_pading">
-                                    <span className="horariotext" id="nombre_sede" > Popayán</span>
+                                    <span className="horariotext" > Fijo</span>
 
                                 </div>
                                 <div className="col s6 m6 l6" id="col_0_pading">
 
-                                    <span className="horario_hour" id="telefono1_sede" >+(57) 8 392735</span>
+                                    <span className="horario_hour" id="telefono1_sede" >(2) 837 2935 - (2) 838 2135</span>
                                 </div>
 
                             </div>
