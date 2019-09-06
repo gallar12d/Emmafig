@@ -22,14 +22,20 @@ class FormRegistro extends Component {
             password: '',
             avatar: '',
             id_social: '',
-            canal_registro: ''
+            canal_registro: '',
+            registro: -1,
+            showOptions: 1
         }
         this.showSocialButtons = this.showSocialButtons.bind(this);
         this.responseFacebook = this.responseFacebook.bind(this);
         this.responseGoogle = this.responseGoogle.bind(this);
         this.validarCelular = this.validarCelular.bind(this);
         this.showConfirmation = this.showConfirmation.bind(this);
+        this.showFields = this.showFields.bind(this);
+        this.isRegistro = this.isRegistro.bind(this);
+        this.isLogin = this.isLogin.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.showOptions = this.showOptions.bind(this);
     }
 
     btnOnclick = () => {
@@ -89,7 +95,7 @@ class FormRegistro extends Component {
         }
         )
             .then(res => {
-                console.log(res.data.message);                
+                console.log(res.data.message);
             })
             .catch(function (error) {
                 if (error.response) {
@@ -122,6 +128,9 @@ class FormRegistro extends Component {
         }
     }
     validarCelular = () => {
+
+        let isValid = document.querySelector('#form_perfil').reportValidity();
+        console.log("Formulario is " + isValid);
         let errortext = "Por favor digite un numero de celular para continuar";
         let celular = document.getElementById('celular');
         let celularError = document.getElementById('celular-error');
@@ -165,11 +174,11 @@ class FormRegistro extends Component {
                         celular.setAttribute("disabled", "true");
                         btn_celular.style.display = "none";
                         celularError.style.display = "none";
-                        this.setState({
+                        /*this.setState({
                             showConfirmation: 1,
                             celular: celular.value
                         });
-                        this.showConfirmation();
+                        this.showConfirmation();*/
                         //fetch("http://localhost/api1/sendKey.php?celular="+celular.value)
                         fetch("https://emmafig.com/api1/sendKey.php?celular=" + celular.value)
                             .then(res => res.json())
@@ -214,6 +223,95 @@ class FormRegistro extends Component {
         } else {
 
             return false;
+        }
+    }
+    isRegistro = () => {
+        this.setState({
+            registro: 1,
+            showOptions: 0
+        });
+        this.showOptions()
+    }
+    isLogin = () => {
+        this.setState({
+            registro: 0,
+            showOptions: 0
+        });
+        this.showOptions()
+    }
+    showOptions = () => {
+        if (this.state.showOptions == 1) {
+            return (
+                <div>
+                    <p className="center titulo-registro">Registrate</p>
+                    <p className="center subtitulo-registro">Para recibir mas detalles de tu resultado <br />totalmente gratis</p>
+                    <div id="btn_ingresar" className="row">
+                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.isLogin}>Ingresar</a>
+                    </div>
+                    <div id="btn_registro" className="row">
+                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.isRegistro}>Registrarse</a>
+                    </div>
+                </div>
+            )
+        } else {
+            return null;
+        }
+
+    }
+
+    showFields = () => {
+        if (this.state.registro == 1) {
+            return (
+                <div id="cont_registro">
+                    <CamposPorDefecto text='Registro' />
+                    <div id="cont_celular" className="row">
+                        <div className="input-field col s12 l10 offset-l1">
+                            <i className="material-icons prefix">phone</i>
+                            <input id="celular" type="number" className="validate" required />
+                            <label htmlFor="celular">Celular *</label>
+                            <p id="celular-error" className="center cel-error">Por favor digite un numero de celular para continuar</p>
+
+                        </div>
+                    </div>
+                    <div id="cont_password" className="row">
+                        <div className="input-field col s12 l10 offset-l1">
+                            <i className="material-icons prefix">https</i>
+                            <input id="password" type="password" className="validate" required />
+                            <label htmlFor="password">Contraseña *</label>
+                            <p id="password-error" className="center cel-error">Por favor digite su contraseña</p>
+
+                        </div>
+                    </div>
+                    <div id="cont_confirm_password" className="row">
+                        <div className="input-field col s12 l10 offset-l1">
+                            <i className="material-icons prefix">https</i>
+                            <input id="confirm_password" type="password" className="validate" required />
+                            <label htmlFor="confirm_password">Confirmar contraseña *</label>
+                            <p id="password-error" className="center cel-error">Por favor digite su confirmación de password</p>
+                        </div>
+                    </div>
+                    <div id="btn_celular" className="row">
+                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.validarCelular}>Aceptar</a>
+                    </div>
+                </div>
+            )
+        } else if (this.state.registro == 0) {
+            return (
+                <div id="cont_login">
+                    <CamposPorDefecto text='Ingreso' />
+                    <div id="cont_password" className="row">
+                        <div className="input-field col s12 l10 offset-l1">
+                            <i className="material-icons prefix">https</i>
+                            <input id="password" type="number" className="validate" require="" aria-required="true" />
+                            <label htmlFor="password">Contraseña *</label>
+                            <p id="password-error" className="center cel-error">Por favor digite su contraseña</p>
+                        </div>
+                    </div>
+                    <div id="btn_celular" className="row">
+                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.validarCelular}>Aceptar</a>
+                    </div>
+                </div>
+            )
         }
     }
     showConfirmation = () => {
@@ -296,21 +394,13 @@ class FormRegistro extends Component {
 
         return (
 
-            <form /*onSubmit={this.props.changeComponente}*/>
-                <p className="center titulo-registro">Registrate</p>
-                <p className="center subtitulo-registro">Para recibir mas detalles de tu resultado <br />totalmente gratis</p>
-                <div id="cont_celular" className="row">
-                    <div className="input-field col s12 l10 offset-l1">
-                        <i className="material-icons prefix">phone</i>
-                        <input id="celular" type="number" className="validate" require="" aria-required="true" />
-                        <label htmlFor="celular">Celular</label>
-                        <p id="celular-error" className="center cel-error">Por favor digite un numero de celular para continuar</p>
-
-                    </div>
-                </div>
-                <div id="btn_celular" className="row">
-                    <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.validarCelular}>Aceptar</a>
-                </div>
+            <form id="form_perfil"/*onSubmit={this.props.changeComponente}*/>
+                {
+                    this.showOptions()
+                }
+                {
+                    this.showFields()
+                }
                 {
                     this.showConfirmation()
                 }
@@ -322,5 +412,31 @@ class FormRegistro extends Component {
 
     }
 }
+function CamposPorDefecto(props) {
+    return <div><p className="center info-codigo">!Bienvenido¡</p>
+        <p className="center info-codigo">Para continuar con el {props.text} por favor ingresa los siguientes datos</p>
 
+        <div className="row">
+            <div className="input-field col s12 l10 offset-l1">
+                <select id="tipo_identificacion" className="browser-default" required>
+                    <option value="" disabled selected>Tipo de Identifcación *</option>
+                    <option value="1">CC (Cédula de Ciudadanía)</option>
+                    <option value="2">TI (Tarjeta de Identidad)</option>
+                    <option value="3">CE (Cédula de Extranjería)</option>
+                </select>
+
+                <p id="tipo_iden_error" className="center cel-error">Por favor Escoja un tipo de Identifcación</p>
+            </div>
+        </div>
+        <div id="cont_identificacion" className="row">
+            <div className="input-field col s12 l10 offset-l1">
+                <i className="material-icons prefix">assignment_ind</i>
+                <input id="identifcacion" type="number" className="validate" required />
+                <label htmlFor="indentificacion">Identificación *</label>
+                <p id="identificacion-error" className="center cel-error">Por favor digite un numero de identificacion para continuar</p>
+
+            </div>
+        </div>
+    </div>;
+}
 export default FormRegistro; // Don’t forget to use export default!

@@ -11,6 +11,7 @@ class Cuestionario extends Component {
             btn_prev: process.env.PUBLIC_URL + "/img/prev-btn.svg",
             item: 1,
             selectedOptions: [0, 0, 0, 0, 0, 0],
+            selectedValues: [0, 0, 0, 0, 0, 0],
             style: {
                 opacity: 0,
                 transform: 'translate3d(50%,0,0)'
@@ -50,19 +51,21 @@ class Cuestionario extends Component {
     handleOptionChange(event) {
         let circuloOk;
         let textoOk;
-        let op = event.target.id.substr(2, 1);
+        let op = event.target.id.substr(2, 1);        
+        console.log(event.target.value);
         let opts = this.state.selectedOptions;
+        let values = this.state.selectedValues;
         let info_end = document.getElementById("info-fin-cuestionario");
-
-        opts[op - 1] = 1;
+        opts[op - 1] = 1;        
+        values[op -1] = event.target.value;
         if (this.countOptSelecteds(opts) == 6) {
-            info_end.style.clipPath = "circle(75%)";
-            //info_end.classList.add('info-fin-show');
-            //this.props.changeComponente();
+            info_end.style.clipPath = "circle(75%)";            
         }
         this.setState({
-            selectedOptions: opts
+            selectedOptions: opts,
+            selectedValues: values
         });
+        console.log(this.state.selectedValues);
         circuloOk = document.getElementById("circulo" + op);
         textoOk = document.getElementById("texto" + op);
         circuloOk.classList.remove("circulo");
@@ -134,18 +137,38 @@ class Cuestionario extends Component {
                 opcRespOK.style.display = "none";
                 opcRespActual.style.display = "block";
                 preguntaActual.style.display = "block";
-            } else if (this.countOptSelecteds(opts) == 6) {
-                this.props.changeComponente();
+            } else if (this.countOptSelecteds(opts) == 6) {                
+                let etnia_afro = 0;
+                let etnia_indigena = 0;
+                if(this.state.selectedValues[5] == '1'){
+                    etnia_afro = 1
+                }else if(this.state.selectedValues[5] == '2'){
+                    etnia_indigena = 1;
+                }
+                fetch("http://localhost/api1/algoritmo_prueba.php?edad="+this.state.selectedValues[0]+
+                "&hijos_may_3="+this.state.selectedValues[1]+
+                "&comp_sex_may_2="+this.state.selectedValues[2]+
+                "&con_pareja="+this.state.selectedValues[3]+
+                "&sex_antes_15="+this.state.selectedValues[4]+
+                "&etnia_afro="+etnia_afro+
+                "&etnia_indigena="+etnia_indigena)
+                            .then(res => res.json())
+                            .then(
+                                (result) => {                                    
+                                    this.props.changeComponente(result.resultado);
+                                },
+                                (error) => {
+                                    alert('Error');
+                                }
+                            )
+                            
             }
         } else {
             info.style.display = "block";
             info.classList.remove("info-animation");
             void info.offsetWidth;
             info.classList.add("info-animation");
-
-
         }
-
     }
 
 
@@ -375,11 +398,11 @@ class Cuestionario extends Component {
                             </select>
                         </div>*/}
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input id="op11" className="with-gap" name="group1" type="radio" value="si" onChange={this.handleOptionChange} />
+                            <input id="op11" className="with-gap" name="group1" type="radio" value="1" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input id="op12" className="with-gap" name="group1" type="radio" value="no" onChange={this.handleOptionChange} />
+                            <input id="op12" className="with-gap" name="group1" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
@@ -391,11 +414,11 @@ class Cuestionario extends Component {
                     </div>
                     <div id="opc-respuesta-pregunta2" className="row" oprindex="2">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input id="op21" className="with-gap" name="group2" type="radio" value="si" onChange={this.handleOptionChange} />
+                            <input id="op21" className="with-gap" name="group2" type="radio" value="1" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input id="op22" className="with-gap" name="group2" type="radio" value="no" onChange={this.handleOptionChange} />
+                            <input id="op22" className="with-gap" name="group2" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
@@ -407,11 +430,11 @@ class Cuestionario extends Component {
                     </div>
                     <div id="opc-respuesta-pregunta3" className="row" oprindex="3">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input id="op31" className="with-gap" name="group3" type="radio" value="si" onChange={this.handleOptionChange} />
+                            <input id="op31" className="with-gap" name="group3" type="radio" value="1" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input id="op31" className="with-gap" name="group3" type="radio" value="no" onChange={this.handleOptionChange} />
+                            <input id="op31" className="with-gap" name="group3" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
@@ -423,11 +446,11 @@ class Cuestionario extends Component {
                     </div>
                     <div id="opc-respuesta-pregunta4" className="row" oprindex="4">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input id="op41" className="with-gap" name="group4" type="radio" value="si" onChange={this.handleOptionChange} />
+                            <input id="op41" className="with-gap" name="group4" type="radio" value="1" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input id="op42" className="with-gap" name="group4" type="radio" value="no" onChange={this.handleOptionChange} />
+                            <input id="op42" className="with-gap" name="group4" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
@@ -439,11 +462,11 @@ class Cuestionario extends Component {
                     </div>
                     <div id="opc-respuesta-pregunta5" className="row" oprindex="5">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input id="op51" className="with-gap" name="group5" type="radio" value="si" onChange={this.handleOptionChange} />
+                            <input id="op51" className="with-gap" name="group5" type="radio" value="1" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input id="op52" className="with-gap" name="group5" type="radio" value="no" onChange={this.handleOptionChange} />
+                            <input id="op52" className="with-gap" name="group5" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
@@ -455,15 +478,15 @@ class Cuestionario extends Component {
                     </div>
                     <div id="opc-respuesta-pregunta6" className="row" oprindex="6">
                         <label className="col s12 m2 l1 offset-m4 offset-l4">
-                            <input id="op61" className="with-gap" name="group6" type="radio" value="si" onChange={this.handleOptionChange} />
+                            <input id="op61" className="with-gap" name="group6" type="radio" value="1" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Afro</span>
                         </label>
                         <label className="col s12 m2 l1">
-                            <input id="op62" className="with-gap" name="group6" type="radio" value="no" onChange={this.handleOptionChange} />
+                            <input id="op62" className="with-gap" name="group6" type="radio" value="2" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Indigena</span>
                         </label>
                         <label className="col s12 m2 l2">
-                            <input id="op62" className="with-gap" name="group6" type="radio" value="no" onChange={this.handleOptionChange} />
+                            <input id="op62" className="with-gap" name="group6" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Ninguna</span>
                         </label>
                     </div>
