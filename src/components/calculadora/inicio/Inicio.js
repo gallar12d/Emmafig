@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './Inicio.css'
 
+
+
 class Inicio extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
             img_avatar: process.env.PUBLIC_URL + "/img/avatar-section1.png",
             logo_emma: process.env.PUBLIC_URL + "/img/MarcadeAguaColor.png",
@@ -12,15 +15,32 @@ class Inicio extends Component {
             style: {
                 opacity: 0,
                 transform: 'translate3d(100%,0,0)'
-            }
+            },
+            
+
 
         };
 
         this.beginHandleMouseOver = this.beginHandleMouseOver.bind(this);
         this.beginHandleMouseOut = this.beginHandleMouseOut.bind(this);
-        this.mountStyle = this.mountStyle.bind(this);        
+        this.mountStyle = this.mountStyle.bind(this);
+
 
     }
+/*
+FUNCION ATRAPAR LA FECHA EN LA QUE INICIA EL CUESTINIOARIO
+
+getFechainicialTarea() {
+    let current_datetime = new Date()
+    let formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds();
+    
+    this.props.update_hi(formatted_date)
+    this.setState({
+        taskStart: formatted_date
+    })
+
+}
+*/
 
     beginHandleMouseOver() {
         this.setState({
@@ -38,17 +58,18 @@ class Inicio extends Component {
         setTimeout(this.mountStyle, 10) //call the into animiation
     }
 
-    
+
     mountStyle() {
         this.setState({
             style: {
-                opacity: 1,                
+                opacity: 1,
                 transitionProperty: 'translate3d(100%,0,0)',
                 transitionDuration: '1s'
             }
         });
     }
-    
+
+
     render() {
 
         return (

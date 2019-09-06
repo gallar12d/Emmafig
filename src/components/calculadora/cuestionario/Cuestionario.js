@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Cuestionario.css'
-
+import axios from "axios";
 
 class Cuestionario extends Component {
     constructor(props) {
@@ -15,7 +15,8 @@ class Cuestionario extends Component {
             style: {
                 opacity: 0,
                 transform: 'translate3d(50%,0,0)'
-            }
+            },
+            
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -33,6 +34,42 @@ class Cuestionario extends Component {
         this.closeInfo = this.closeInfo.bind(this);
 
     }
+   
+/* 
+OBTENER LA FECHA FINAL Y CALCULAR LA DIFERENCIA DE TIEMPO ENTRE LA FECHA INICIAL Y LA FINAL
+getEndTask() {
+    let current_datetime = new Date()
+    let fechaFinal = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds();
+    var fechaInicial = this.props.hora_i;
+    //console.log(fechaInicial);
+    var hora_inicial = new Date(fechaInicial);
+    var hora_final = new Date(fechaFinal);
+
+    
+
+    this.props.update_hf(fechaFinal);
+
+    var dif = hora_inicial.getTime() - hora_final.getTime()
+  
+    var Segundos_de_T1_a_T2 = dif / 1000;
+    var endTaskfinal = Math.abs(Segundos_de_T1_a_T2);
+    var dataform = new FormData();
+    dataform.append("nombre", "responder preguntas de la calculadora");
+    dataform.append("task_end", endTaskfinal+" segundos");
+    dataform.append("version", "emmafig V1");
+    axios.post("http://localhost/api1/timeTask",dataform).then(
+        res =>{
+            var result = res.data;
+            console.log(result)
+        }
+    )
+    
+
+
+}
+
+*/
+
 
     handleChange(event) {
         this.setState({ value: event.target.value });

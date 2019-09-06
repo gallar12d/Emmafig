@@ -9,6 +9,7 @@ import Citas from './components/citas/Citas';
 import Contacto from './components/contacto/Contacto';
 import Faq from './components/faq/Faq';
 import {SectionsContainer, Section} from 'react-fullpage';
+import ComponentMaster from './components/ComponentMaster'
 import './App.css';
 import ReactDOM from 'react-dom';
 const app = document.querySelector('#app');
@@ -35,7 +36,8 @@ function App() {
   return (
  
     <div className="App">
-     
+      {/* 
+      
       <Menu></Menu>      
       <Seccion1 ></Seccion1>
       <Calculadora></Calculadora>
@@ -43,7 +45,8 @@ function App() {
       <Testimonios></Testimonios> 
       <Contacto></Contacto> 
       <Footer></Footer> 
-     
+      */}
+      <ComponentMaster></ComponentMaster>
     </div>
    
   );
