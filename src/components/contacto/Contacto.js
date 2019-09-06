@@ -416,7 +416,7 @@ class Contacto extends Component {
                                 </div>
                                 <div className="col s6 m6 l6" id="col_0_pading">
 
-                                    <span className="horario_hour" id="telefono1_sede_small" >(2) 837 2935 - (2) 838 2135 o (2) 838 2135</span>
+                                    <span className="horario_hour" id="telefono1_sede_small" >(2) 837 2935 - (2) 838 2135</span>
                                 </div>
 
                             </div>

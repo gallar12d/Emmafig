@@ -74,8 +74,18 @@ class Menu extends Component {
                         <div className="nav-wrapper">
                             <Link
                                 id="inicio"
-                                ref={e => (elementInicio = e)}
-                                onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, elementInicio) }}
+                                activateclass="activate"
+                                to="seccion1"
+                                spy={true}
+                                smooth={true}
+                                offset={-70}
+                                duration={500}
+                            >
+
+                            </Link>
+                            <Link
+
+                                onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "inicio") }}
                                 activateclass="activate"
                                 to="seccion1"
                                 spy={true}
@@ -91,9 +101,25 @@ class Menu extends Component {
                                 <i className="material-icons">menu</i>
                             </a>
                             <ul className=" menuItems right hide-on-med-and-down">
+
+
                                 <li>
+                                    <Link
+                                        id="scroolCalculadora"
+                                        activateclass="activate"
+                                        to="contenedor-calculadora"
+                                        spy={true}
+                                        smooth={true}
+                                        offset={-55}
+                                        duration={500}
+                                        delay={1000}
+                                    >
+                                    </Link>
+
 
                                     <Link
+                                        onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCalculadora") }}
+
                                         activateclass="activate"
                                         to="contenedor-calculadora"
                                         spy={true}
@@ -115,6 +141,7 @@ class Menu extends Component {
                                         smooth={true}
                                         offset={-60}
                                         duration={500}
+                                        delay={1000}
                                     >
                                     </Link>
 
@@ -140,8 +167,9 @@ class Menu extends Component {
                                         to="testimonios"
                                         spy={true}
                                         smooth={true}
-                                        offset={-50}
+                                        offset={283}
                                         duration={500}
+                                        delay={1000}
                                     >
                                     </Link>
 
@@ -164,8 +192,9 @@ class Menu extends Component {
                                         to="contacto"
                                         spy={true}
                                         smooth={true}
-                                        offset={-63}
+                                        offset={283}
                                         duration={500}
+                                        delay={1000}
                                     >
 
                                     </Link>
@@ -207,19 +236,67 @@ class Menu extends Component {
 
 
                 </div>
+
+
+                <Link
+                            id="scroolCalculadora_sm"
+                            activateclass="activate"
+                            to="contenedor-calculadora"
+                            spy={true}
+                            smooth={true}
+                            offset={-55}
+                            duration={500}
+                            delay={1000}
+                        >
+                        </Link>
+                        <Link
+                            id="scroolCitas_sm"
+                            activateclass="activate"
+                            to="citas"
+                            spy={true}
+                            smooth={true}
+                            offset={-60}
+                            duration={500}
+                            delay={1000}
+                        >
+                        </Link>
+                        <Link
+                            id="scroolTestimonios_sm"
+                            activateclass="activate"
+                            to="testimonios"
+                            spy={true}
+                            smooth={true}
+                            offset={1430}
+                            duration={500}
+                            delay={1000}
+                        >
+                        </Link>
+                        <Link
+                            id="scroolContacto_sm"
+                            activateclass="activate"
+                            to="contacto"
+                            spy={true}
+                            smooth={true}
+                            offset={1423}
+                            duration={500}
+                            delay={1000}
+                        >
+                        </Link>
                 <ul className="sidenav" id="mobile-demo">
 
-                    <li>
+                    <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
+                    <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
 
-                        <a href="#/perfil">Perfil</a>
-                    </li>
-                    <li>
 
-                        <a href="#/Editperfil">Configuracion</a>
-                    </li>
+
+
                     <li>
+                  
+                        
 
                         <Link
+                            onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCalculadora_sm") }}
+
                             activateclass="activate"
                             to="contenedor-calculadora"
                             spy={true}
@@ -229,10 +306,19 @@ class Menu extends Component {
                         >
                             Calculadora
                                 </Link>
+                        
+                               
+
                     </li>
-                    <li>
+
+                    <li >
+
+                        
+
 
                         <Link
+
+                            onClick={() => {this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCitas_sm") }}
                             activateclass="activate"
                             to="citas"
                             spy={true}
@@ -241,11 +327,13 @@ class Menu extends Component {
                             duration={500}
                         >
                             Citas
-                                </Link>
+                        </Link>
+
                     </li>
                     <li>
-
+                        
                         <Link
+                            onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolTestimonios_sm") }}
                             activateclass="activate"
                             to="testimonios"
                             spy={true}
@@ -257,8 +345,11 @@ class Menu extends Component {
                                 </Link>
                     </li>
                     <li>
+                      
 
                         <Link
+
+                            onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolContacto_sm") }}
                             activateclass="activate"
                             to="contacto"
                             spy={true}
@@ -269,7 +360,6 @@ class Menu extends Component {
                             Contacto
                                 </Link>
                     </li>
-
                     <li>
                         <a href="#!"> FAQ</a>
 

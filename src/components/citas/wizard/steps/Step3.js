@@ -5,7 +5,7 @@ import $ from 'jquery';
 import { FaUserNurse } from 'react-icons/fa';
 import { MdLocationOn, MdEvent, MdAccessAlarms } from 'react-icons/md'
 import Buttons from '../buttons/Buttons'
-import Axios from 'axios';
+import axios from 'axios';
 
 
 
@@ -16,7 +16,9 @@ class Step3 extends Component {
         super(props);
         this.state = {
             imagen: process.env.PUBLIC_URL + "/img/citas_step1.svg",
-            profesionales: []
+            profesionales: [],
+            turnos: [],
+            finaliza: false
 
         };
     }
@@ -29,32 +31,90 @@ class Step3 extends Component {
 
         M.FormSelect.init(elems, {});
 
-        Axios.get(`https://emmafig.com/api1/profesionales`)
+       
+
+        const dataForm = new FormData();
+        dataForm.append("id_sede", this.props.id_sede);
+        dataForm.append("fecha", this.props.fecha_cita);
+        dataForm.append("id_profesional", this.props.id_profesional);
+        dataForm.append("todos_profesionales", this.props.todos_profesionales);
+
+
+        axios
+            .post("https://emmafig.com/api1/turnos", dataForm)
             .then(res => {
-                const profesionales = res.data;
-                this.setState({ profesionales });
-            })
+                let result = res.data;
+                this.setState({ turnos: result })
+                this.setState({ finaliza: true })
+            });
 
     }
+
+     formatAMPM(date) {
+
+        date = new Date(this.props.fecha_cita +' '+date)
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        var strTime = hours + ':' + minutes + ' ' + ampm;
+        return strTime;
+      }
 
 
 
 
     render() {
+        let turn = '';
+        let turn2 = '';
 
-        let prof = this.state.profesionales.map(profesional =>
-            <div className="input-field ">
-                <div className="icon_input">
-                    <label>
-                        <input className="with-gap" name="group1" type="radio" />
-                        <span>{profesional.primer_nombre + ' ' + profesional.segundo_nombre + ' ' + profesional.primer_apellido + ' ' + profesional.segundo_apellido}</span>
-                    </label>
-                    <FaUserNurse className="icon" size={25} />
-                </div>
-            </div>
+        if (!this.state.finaliza) {
+            turn = <h6>Cargando turnos</h6>;
 
-        )
+        }
+        else {
 
+            if (this.state.turnos.length) {
+
+                turn = this.state.turnos.map((turno, key) => {
+
+                    if (key % 2 == 0) {
+                        return (<p key={turno.id_turno}>
+                            <label>
+                                <input onClick={(e) => { this.props.set_state('id_turno', turno.id_turno); this.props.set_state('turno', this.formatAMPM(turno.hora)); }} className="with-gap" name="group1" type="radio" />
+                                <span> {this.formatAMPM(turno.hora)}</span>
+                            </label>
+                        </p>)
+
+                    }
+                })
+                turn2 = this.state.turnos.map((turno, key) => {
+
+                    if (key % 2 != 0) {
+                        return (<p key={turno.id_turno}>
+                            <label>
+                                <input onClick={(e) => { this.props.set_state('id_turno', turno.id_turno); this.props.set_state('turno', this.formatAMPM(turno.hora)); }} className="with-gap" name="group1" type="radio" />
+                                <span>{this.formatAMPM(turno.hora)}</span>
+                            </label>
+                        </p>)
+
+                    }
+                })
+
+            }
+            else{
+                turn = <h6>No existen turnos</h6>;
+
+            }
+
+        }
+
+        let profesional = 'Todos';
+        if (this.props.profesional) {
+            profesional = this.props.profesional;
+        }
 
 
         return (
@@ -102,7 +162,7 @@ class Step3 extends Component {
 
                         </div>
                         <div className='floting'>
-                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', fontStyle: 'italic' }}>{this.props.profesional}
+                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', fontStyle: 'italic' }}>{profesional}
                             </h6>
 
                         </div>
@@ -113,7 +173,7 @@ class Step3 extends Component {
 
                         </div>
                         <div style={{ width: '100%' }} className='floting'>
-                            <div  style={{ margin: '0px', color: 'black', fontFamily: 'lato', fontWeight: 'bolder'}} className="input-field ">
+                            <div style={{ margin: '0px', color: 'black', fontFamily: 'lato', fontWeight: 'bolder' }} className="input-field ">
                                 <select defaultValue={{ label: "Selecciona un turno disponible para esta fecha", value: 0 }}>
                                     <option >Selecciona un turno disponible para esta fecha</option>
 
@@ -128,52 +188,18 @@ class Step3 extends Component {
 
 
                     <br></br>
-                 
+
 
                 </div>
                 <div className="col s12 m3 offset-m1 img_step1 ">
                     <div className="row row_turns">
                         <div className="col col_turns m6">
-                            <p>
-                                <label>
-                                    <input required className="with-gap" name="group1" type="radio" />
-                                    <span>8:00 AM</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input className="with-gap" name="group1" type="radio" />
-                                    <span>8:30 AM</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input className="with-gap" name="group1" type="radio" />
-                                    <span>9:00 AM</span>
-                                </label>
-                            </p>
+                            {turn}
 
                         </div>
                         <div className="col m6 col_turns">
-                            <p>
-                                <label>
-                                    <input  onClick = {(e) => {  this.props.set_state('id_turno', 5); this.props.set_state('turno', '2:00 PM'); this.props.set_state('todos_profesionales', true)} }  className="with-gap" name="group1" type="radio" />
-                                    <span>2:00 PM</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input className="with-gap" name="group1" type="radio" />
-                                    <span>2:30 PM</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input className="with-gap" name="group1" type="radio" />
-                                    <span>3:00 PM</span>
-                                </label>
-                            </p>
-                            
+                            {turn2}
+
 
                         </div>
 

@@ -22,10 +22,11 @@ class Calculadora extends Component {
         this.state = {
             componente: 1,
             email: '',
-           
+            mensaje_registro: 'Se ha realizado exitosamente tu inscripción'
         }
         this.showComponente = this.showComponente.bind(this);
         this.changeComponente = this.changeComponente.bind(this);
+        this.changeMensaje = this.changeComponente.bind(this);
         this.backComponente = this.backComponente.bind(this);
     }
 /* 
