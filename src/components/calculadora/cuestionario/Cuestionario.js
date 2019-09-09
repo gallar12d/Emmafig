@@ -182,7 +182,7 @@ getEndTask() {
                 }else if(this.state.selectedValues[5] == '2'){
                     etnia_indigena = 1;
                 }
-                fetch("http://localhost:8080/api1/algoritmo_prueba.php?edad="+this.state.selectedValues[0]+
+                fetch("http://localhost/api1/algoritmo_prueba.php?edad="+this.state.selectedValues[0]+
                 "&hijos_may_3="+this.state.selectedValues[1]+
                 "&comp_sex_may_2="+this.state.selectedValues[2]+
                 "&con_pareja="+this.state.selectedValues[3]+
@@ -419,29 +419,29 @@ getEndTask() {
                 <form onSubmit={this.handleSubmit}>
                     <div id="cont-pregunta1" className="row" pgindex="1">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta1" className="center-align contenido-pregunta">1. ¿Eres mayor de 15 años?</h4>
+                            <h4 id="pregunta1" className="center-align contenido-pregunta">1. ¿Cuantos años tienes?</h4>                            
                             <p id="info1" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta1" className="row" oprindex="1">
-                        {/*<div className="col l2 offset-l5">
-                            <select class="browser-default">
-                                <option value="" disabled selected>Escoge un opción</option>
+                        <div className="col l2 offset-l5">
+                            <select className="browser-default selectEdad" onChange={this.handleOptionChange} defaultValue={1}>
+                                <option value="0">Escoge un opción</option>
                                 <option value="1">Menor de 15 años</option>
                                 <option value="2">Entre 15 y 20 años</option>
                                 <option value="3">Entre 21 y 30 años</option>
                                 <option value="4">Entre 31 y 50 años</option>
                                 <option value="5">Mayor de 50 años</option>                                
                             </select>
-                        </div>*/}
-                        <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
+                        </div>
+                        {/*<label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
                             <input id="op11" className="with-gap" name="group1" type="radio" value="1" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
                             <input id="op12" className="with-gap" name="group1" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
-                        </label>
+                        </label>*/}
                     </div>
                     <div id="cont-pregunta2" className="row" pgindex="2">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">

@@ -18,11 +18,16 @@ class ComponentMaster extends Component {
         this.modal = 1;
         this.state = {
             changeCompt: 0,
-            componentScroll: ""
-
+            componentScroll: "",
+            login: 0
         }
 
     }
+
+    menuChange = () => {
+
+    }
+
     changeComponente(state) {
 
         this.setState({
@@ -53,6 +58,14 @@ class ComponentMaster extends Component {
            return false;
         }
         
+    }
+
+    changeLogin(){
+        console.log('cambiando estado login ');
+        this.setState({
+            login: 1
+        })
+        console.log('cambio estado login a '+this.state.login);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -91,7 +104,7 @@ class ComponentMaster extends Component {
                 return (
                     <div className="mainpage">
                         <Seccion1 />
-                        <Calculadora />
+                        <Calculadora changeLogin={this.changeLogin.bind(this)}/>
                         <Citas />
                         <Testimonios />
                         <Contacto />
@@ -114,8 +127,7 @@ class ComponentMaster extends Component {
 
         return (
             <div className="mainComponent">
-
-                <Menu changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}></Menu>
+                <Menu login={this.state.login} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}></Menu>
                 {this.showComponent()}
             </div>
 
