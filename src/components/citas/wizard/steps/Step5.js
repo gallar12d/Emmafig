@@ -58,8 +58,11 @@ class Step5 extends Component {
         dataForm.append("telefono2", this.props.paciente_numero2)
         dataForm.append("email", this.props.paciente_email)
         dataForm.append("id_turno", this.props.id_turno);
+        dataForm.append("turno", this.props.turno);
+        dataForm.append("fecha_modificada", this.formatdate(this.props.fecha_cita));
         dataForm.append("id_paquete", this.props.iditem);
         dataForm.append("nombre_paquete", this.props.textItem);
+        dataForm.append("sede", this.props.sede);
 
 
         if (!this.props.cita) {
@@ -94,8 +97,8 @@ class Step5 extends Component {
         }
         else {
             mostrar =
-                <div class="card resume ">
-                    <div class="card-content white-text">
+                <div className="card resume ">
+                    <div className="card-content white-text">
                         <br></br>
                         <h5>{this.props.paciente_primer_nombre}, hemos agendado tu cita</h5>
                         <hr></hr>
@@ -148,8 +151,8 @@ class Step5 extends Component {
         return (
             <div id="step5">
 
-                <div class="row">
-                    <div class="col s12 m4 offset-m2  ">
+                <div className="row">
+                    <div className="col s12 m4 offset-m2  ">
                         <div className="water_mark_parent">
                             <img className="water_mark" src={this.state.water_mark} />
                             {mostrar}
@@ -157,7 +160,7 @@ class Step5 extends Component {
 
 
                     </div>
-                    <div class="col s12 m4 ">
+                    <div className="col s12 m4 ">
                         <div>
 
                             <img className="avatar_step5" src={this.state.avatar} />
