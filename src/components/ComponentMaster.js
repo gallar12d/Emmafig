@@ -9,6 +9,7 @@ import Contacto from './contacto/Contacto';
 import Perfil from './perfil/Perfil';
 import EditPerfil from './perfil/Editprofile';
 import $ from "jquery";
+import { thisTypeAnnotation } from '@babel/types';
 
 let elementMenu;
 class ComponentMaster extends Component {
@@ -23,11 +24,6 @@ class ComponentMaster extends Component {
         }
 
     }
-
-    menuChange = () => {
-
-    }
-
     changeComponente(state) {
 
         this.setState({
@@ -59,34 +55,26 @@ class ComponentMaster extends Component {
         }
         
     }
-
+    showPerfil(){
+        console.log('Entro a perfil');
+        console.log('Estado en showPERFIL '+this.state.login);
+        if(this.state.login == 0){
+            return (<h1>hola</h1>)
+        }else{
+            return (<h1>hola mundo</h1>)
+        }
+    }
     changeLogin(){
-        console.log('cambiando estado login ');
-        this.setState({
-            login: 1
-        })
-        console.log('cambio estado login a '+this.state.login);
+       
+        this.setState({login: 1})
+        alert('entra')
+        console.log('Estado actual '+this.state.login);
+        //this.showPerfil();
     }
 
     componentDidUpdate(prevProps, prevState) {
-          
+          console.log('Actualizado...');
            
-            if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
-                let simulateClick = elem => {
-                    let evt = new MouseEvent('click', {
-                        bubbles: true,
-                        view: window
-                    });
-                    elem.dispatchEvent(evt)
-                };
-                console.log(elementMenu);
-                
-                var btnMenu = document.getElementById(""+elementMenu+"");
-                simulateClick(btnMenu);
-              
-               
-                
-                //elementMenu.click();
             
             
     
@@ -94,7 +82,7 @@ class ComponentMaster extends Component {
                
     
     
-            }
+            
            
       
     }
@@ -125,9 +113,22 @@ class ComponentMaster extends Component {
 
     render() {
 
+        let mostrar = '';
+
+        if(this.state.login == 0){
+            mostrar = <h1>Hola</h1>
+
+        }
+        else{
+            mostrar = <h1>Hola mundo</h1>
+
+        }
+
         return (
             <div className="mainComponent">
-                <Menu login={this.state.login} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}></Menu>
+            {mostrar}
+
+                {/*<Menu login={this.state.login} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}></Menu>*/}
                 {this.showComponent()}
             </div>
 

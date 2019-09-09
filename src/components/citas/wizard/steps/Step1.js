@@ -56,9 +56,9 @@ class Step1 extends Component {
                             <MdRoom size={32} />
                             <select id="id_sede" name="id_sede" required onChange={ this.set_sede.bind(this)} value={punto}  className="mySelect validating">
                                 <option value ='-1' disabled >Punto de atención</option>
-                                <option value="1">Principal Popayán</option>
-                                <option value="2">Santander de Quilichao</option>
-                                <option value="3">Cali</option>
+                                
+                                <option value="1">Popayán</option>
+                                <option value="2">Santander de Quilichao</option>                                
                             </select>
 
                         </div>

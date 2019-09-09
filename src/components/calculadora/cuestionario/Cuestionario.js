@@ -85,7 +85,7 @@ getEndTask() {
         info_end.style.clipPath = "circle(0%)";
     }
 
-    handleOptionChange(event) {
+    handleOptionChange(event) {        
         let circuloOk;
         let textoOk;
         let op = event.target.id.substr(2, 1);        
@@ -425,7 +425,7 @@ getEndTask() {
                     </div>
                     <div id="opc-respuesta-pregunta1" className="row" oprindex="1">
                         <div className="col l2 offset-l5">
-                            <select className="browser-default selectEdad" onChange={this.handleOptionChange} defaultValue={1}>
+                            <select id="op11" className="browser-default selectEdad" onChange={this.handleOptionChange} defaultValue={1}>
                                 <option value="0">Escoge un opción</option>
                                 <option value="1">Menor de 15 años</option>
                                 <option value="2">Entre 15 y 20 años</option>
@@ -461,7 +461,7 @@ getEndTask() {
                     </div>
                     <div id="cont-pregunta3" className="row" pgindex="3">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta3" className="center-align contenido-pregunta">3. ¿Haz tenido mas de dos compañeros sexuales?</h4>
+                            <h4 id="pregunta3" className="center-align contenido-pregunta">3. ¿Has tenido mas de dos compañeros sexuales?</h4>
                             <p id="info3" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
@@ -493,7 +493,7 @@ getEndTask() {
                     </div>
                     <div id="cont-pregunta5" className="row" pgindex="5">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta5" className="center-align contenido-pregunta">5. ¿Haz tenido relaciones sexuales antes de los 15 años?</h4>
+                            <h4 id="pregunta5" className="center-align contenido-pregunta">5. ¿Has tenido relaciones sexuales antes de los 15 años?</h4>
                             <p id="info5" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>

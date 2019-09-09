@@ -3,7 +3,7 @@
     font-size: 24px;
     font-weight: 300;    
     border-radius: 30px 30px 0px 0px;
-    display: table;
+
     width: 100%;
     
 }
@@ -28,11 +28,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#219799', end
     width: auto;
     }
     h4.tituloServicio {
-        line-height: 30px;
         font-size: 1.7rem;
-        padding-top: 5%;
-        display: table-cell;
-        vertical-align: middle;
+        /* vertical-align: middle; */
+        /* white-space: pre-wrap; */
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 
     #citas .card-content.white-text {
@@ -44,7 +44,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#219799', end
         font-family: lato;
         font-weight: bolder;
         font-size: 3rem;        
-        padding-top: 5%;
+        padding-top: 0%;
         margin-bottom: 0px;
     }
     #citas .card-content p {
@@ -80,4 +80,28 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#219799', end
         /* border-radius: inherit; */
         border-radius: 0px 0px 30px 30px;
     }
+    #citas .linet {
+        text-decoration: line-through;
+        color: #717070;
+        padding-top: 20px;
+        margin-bottom: -14px;
+    }
+    #citas ul:not(.browser-default)>li {
+        list-style-type: initial;
+    }
+
+    .recomendations li{
+        margin-left: 18px;
+
+    }
+    #citas div.widthmodal{
+        width: 80%;
+    }
+
+    #citas div.widthmodal .btn-flat:focus, .btn-flat:hover {
+        background-color: #c73a8c;
+       
+    }
+
+   
 

@@ -29,6 +29,13 @@ class Buttons extends Component {
         }
         
     }
+
+    finish(){
+        this.props.activate_step(0);
+        this.props.actualizar(0);
+
+
+    }
     validate_and_return(){
         this.props.activate_step(this.props.step - 1 );
         this.props.actualizar(this.props.step - 1 )
@@ -39,7 +46,12 @@ class Buttons extends Component {
         let mostrar  = '';
 
         if(this.props.step != 5){
-            mostrar = <button className="btn" onClick={ this.validate_and_continue.bind(this) } type="button" >Siguiente</button>
+            mostrar = <button className="btn btn_next" onClick={ this.validate_and_continue.bind(this) } type="button" >Siguiente</button>
+        }
+
+        else if(this.props.step == 5){
+            mostrar = <button className="btn btn_next" onClick={ this.finish.bind(this) } type="button" >Aceptar</button>
+
         }
 
         return (

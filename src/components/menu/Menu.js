@@ -24,7 +24,7 @@ class Menu extends Component {
         };
     }
     componentDidMount() {
-
+        console.log('estado login '+this.props.login);
         M.Dropdown.init(this.Dropdown);
         M.Collapsible.init(this.Collapsible);
 
@@ -76,7 +76,7 @@ class Menu extends Component {
     }
     render() {
         return (
-            <div>
+            <div id="menu">
                 <div className="navbar-fixed">
                     {
                         this.showPerfil()
@@ -113,38 +113,9 @@ class Menu extends Component {
                             </a>
                             <ul className=" menuItems right hide-on-med-and-down">
 
-
                                 <li>
-                                    <Link
-                                        id="scroolCalculadora"
-                                        activateclass="activate"
-                                        to="contenedor-calculadora"
-                                        spy={true}
-                                        smooth={true}
-                                        offset={-55}
-                                        duration={500}
-                                        delay={1000}
-                                    >
-                                    </Link>
 
-
-                                    <Link
-                                        onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCalculadora") }}
-
-                                        activateclass="activate"
-                                        to="contenedor-calculadora"
-                                        spy={true}
-                                        smooth={true}
-                                        offset={-55}
-                                        duration={500}
-                                    >
-                                        Calculadora
-                                </Link>
-                                </li>
-
-                                <li >
-
-                                    <Link
+                                <Link
                                         id="scroolCitas"
                                         activateclass="activate"
                                         to="citas"
@@ -155,7 +126,6 @@ class Menu extends Component {
                                         delay={1000}
                                     >
                                     </Link>
-
 
                                     <Link
 
@@ -210,6 +180,12 @@ class Menu extends Component {
 
                                     </Link>
 
+
+                                    <a href="#!"> Blog </a>
+
+                                </li>
+                                <li>
+
                                     <Link
 
                                         ref={e => (elementContacto = e)}
@@ -224,12 +200,8 @@ class Menu extends Component {
                                         Contacto
                                 </Link>
                                 </li>
-                                <li>
 
-
-                                    <a href="#!"> Blog </a>
-
-                                </li>
+                               
                                 {
                                     this.showContentDropdown()
                                 }
@@ -352,6 +324,12 @@ class Menu extends Component {
                     <li>
 
 
+
+                        <a href="#!"> Blog </a>
+
+                    </li>
+                    <li>
+
                         <Link
 
                             onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolContacto_sm") }}
@@ -366,17 +344,23 @@ class Menu extends Component {
                                 </Link>
                     </li>
                     <li>
-                        <a href="#!"> FAQ</a>
-
-
-
+                        <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
+                            <i className="fa fa-facebook fa-lg"></i>
+                        </a>
                     </li>
                     <li>
-
-
-                        <a href="#!"> Blog </a>
-
+                        <a href="https://instagram.com/funinnovagen?igshid=1i9a8bm9m2kck" target="_blank">
+                            <i className="fa fa-instagram fa-lg"></i>
+                        </a>
                     </li>
+                    <li>
+                        <a id="iconWSP" href="https://api.whatsapp.com/send?phone=573174412170" target="_blank">
+                            <i className="fa fa-whatsapp fa-lg"></i>
+                        </a>
+                    </li>
+
+
+
 
                     <li>
 

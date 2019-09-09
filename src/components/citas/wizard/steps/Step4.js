@@ -56,6 +56,8 @@ class Step4 extends Component {
 
     validate_form_user(e) {
         e.preventDefault();
+      var next =  $('.btn_next')
+      console.log(next)
         var validity = $('#form_user')[0].checkValidity()
 
         if (validity) {
@@ -63,6 +65,13 @@ class Step4 extends Component {
             var instance = M.Modal.getInstance(elem);
             this.props.set_state('informacion_paciente', true)
             instance.close();
+
+            // 
+            //next.click();
+            this.props.activate_step(this.props.step + 1);
+            this.props.actualizar(this.props.step + 1);
+
+
 
         }
         else {
@@ -186,6 +195,7 @@ class Step4 extends Component {
                                 <h5 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#c83b8d' }}>
                                     Datos necesarios para tu cita
                               </h5>
+                              <span>Campos con un asterisco (*) son obligatorios</span>
                             </div>
 
                         </div>
@@ -235,12 +245,12 @@ class Step4 extends Component {
                                     <label className = {(this.props.paciente_numero_identificacion) ? 'active': ''} htmlFor="first_name">Número de identificación *</label>
                                 </div>
                                 <div className="input-field col s6 m6">
-                                    <input onChange={(e) => this.props.set_state('paciente_numero1', e.target.value)} defaultValue={this.props.paciente_telefono1} required id="telefono1" type="number" className="validate"></input>
-                                    <label className = {(this.props.paciente_telefono1) ? 'active': ''} htmlFor="first_name">Teléfono de contacto 1 *</label>
+                                    <input onChange={(e) => this.props.set_state('paciente_numero1', e.target.value)} defaultValue={this.props.paciente_numero1} required id="telefono1" type="number" className="validate"></input>
+                                    <label className = {(this.props.paciente_numero1) ? 'active': ''} htmlFor="first_name">Teléfono de contacto 1 *</label>
                                 </div>
                                 <div className="input-field col s6 m6">
-                                    <input onChange={(e) => this.props.set_state('paciente_numero2', e.target.value)} defaultValue={this.props.paciente_telefono2} id="telefono2" type="number" className="validate"></input>
-                                    <label className = {(this.props.paciente_telefono2) ? 'active': ''} htmlFor="first_name">Teléfono de contacto 2</label>
+                                    <input onChange={(e) => this.props.set_state('paciente_numero2', e.target.value)} defaultValue={this.props.paciente_numero2} id="telefono2" type="number" className="validate"></input>
+                                    <label className = {(this.props.paciente_numero2) ? 'active': ''} htmlFor="first_name">Teléfono de contacto 2</label>
                                 </div>
                                 <div className="input-field col s12 m12">
                                     <input onChange={(e) => this.props.set_state('paciente_email', e.target.value)} defaultValue={this.props.paciente_email} id="email" type="email" className="validate"></input>
@@ -256,7 +266,7 @@ class Step4 extends Component {
 
                     </div>
                     <div className="modal-footer">
-                        <button onClick={this.validate_form_user.bind(this)} className="btn   ">Confirmar</button>
+                        <button onClick={ this.validate_form_user.bind(this) } className="btn   ">Confirmar</button>
                     </div>
                 </div>
 
