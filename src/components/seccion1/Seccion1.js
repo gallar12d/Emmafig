@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+﻿import React, { Component } from "react";
 import "./Seccion1.css";
 import { Fade } from "react-slideshow-image";
 import M from "materialize-css";
@@ -16,33 +16,31 @@ class CustomSlide extends Component {
     const { id, imagen, textoppal, textosec, url_ver_mas, url_sec_boton, titulo, alineacion, ...props } = this.props;
     return (
       <div  {...props}>
-        <div id="div-seccion1" className="each-fade">
-          <div className="image-container">
+        <div id="div-seccion1" className= "each-fade col s3 m6 l12" >
+          <div className="image-container col s3 l3 offset-l2 offset-s1">
             <img className="panel" src={'http://emmafig.com/api1/public/images/sliders/' + imagen} />
             <img className="panelFondo" src={ "img/blanco-nada"+alineacion+".png"} />
-            console.log(imagen)
-            <div className={"info" + alineacion}>            
+            <div id ="contenidoSlider "className={"info" + alineacion}>            
                 <div className="inner">
+               
                   <div className="divTexto"><h3 className="textTitulo"><b>{titulo}</b><br /><br /></h3>
                     <h4>
-                    <b>{textoppal}</b><br />
-                      {textosec}<br />
+                    <div className="content" dangerouslySetInnerHTML={{__html: textoppal}}></div>
+                    
                     </h4>
-                    <div>
-                      <a className="waves-effect waves-light btn-small buttonSmall" href="#">Conoce más</a>
+                    <div id="PosicionButton">
+                      <a className="waves-effect waves-light btn-small buttonSmall " href="#">Conoce más</a>
                       <a className="waves-effect waves-light btn-small buttonSmall" href="#">Calcula tu riesgo</a>
-                      <br />
+                      <div>
+                      <br /><br/><br/><br/><br/>
+                      </div>
                     </div>
                   </div>
                 </div>            
             </div>
           </div>
         </div>
-        <div className="each-fade">
-          <div className="image-container">
-            <img src={fadeImages[0]} />
-          </div>
-        </div>
+    
 
       </div>
     );
@@ -88,7 +86,7 @@ class Seccion1 extends Component {
     return (
       <section className="page-section layoutSeccion1" id="seccion1">
         <div className="containerSection1">
-          <div className="col-lg-12 text-center">
+          <div className="col-lg-12 ">
             <Fade {...fadeProperties}>
               {listItems}
             </Fade>

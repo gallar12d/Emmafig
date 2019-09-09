@@ -1,44 +1,23 @@
-.layoutSeccion1 {
-  background-color: rgb(243, 243, 243);
-  height: 400px!important;
-}
-
-.oscurecer {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-}
-
-/*
-.container {
-    width: 100%;
- }*/
-
 .containerSection1 {
   width: 100%;
   min-width: 100%;
-  height: 400px!important;
+  height: 70vh!important;
   /* Font styles */
-  font-size: 1em;
+  font-size: 1.1em;
   line-height: 1.5em;
   letter-spacing: 0.01em;
+  font-family: "Arial"!important;
 }
 
 #div-seccion1 .container {
   position: relative;
 }
 
-/* Panels */
-#div-seccion1 .swipe {
-  position: relative;
-  width: 100%;
-  height: 100%; /* "min-height" doesn't work on Firefox. */
-  background: #eee;
-  overflow-x: hidden;
-}
 
 #div-seccion1 .panel {
   position: absolute;
   width: 100%;
-  min-height: 100%;
+  min-height: 70vh;
   top: 0;
   left: 0;
   padding: 0px;
@@ -47,7 +26,7 @@
 .panelFondo {
   position: absolute;
   width: 100%;
-  min-height: 100%;
+  min-height: 70vh;
   top: 0;
   left: 0;
   padding: 0px;
@@ -59,19 +38,16 @@
 .infoRight {
   position: absolute;
   width: 80%;
-  max-width: 600px;
-  bottom: 25%;
+  max-width: 650px;
   right: 0%;
   padding: 0px;
   text-align: right;
 }
 
-
-
 .infoLeft {
   vertical-align: middle;
-  width: 80%;
-  max-width: 600px;
+  width: 90%;
+  max-width: 650px;
   bottom: 25%;
   padding: 0px;
   padding-left: 40px;
@@ -80,20 +56,25 @@
 
 #div-seccion1 .inner {
   position: relative;
-  float: left;  
+  float: left;
 }
+
+
 
 .divTexto{
   vertical-align: bottom;
   width: 90%;
   float: left;  
-  padding-left: 40px;
-  padding-top: 0px;
+  padding-top: 50px;
 }
 
 .textTitulo{
   color: #0F9b9b;
 }
+
+
+
+
 
 .imagenEmma{
   position: relative;
@@ -105,22 +86,7 @@
   border: none!important;
 }
 
-/*
-.info:before {
-  content: "";
-  position: absolute;
-  width: 65%;
-  height: 80%;
-  top: 0;
-  left: 0;
-  -webkit-transform: translate(-10px, -10px);
-  -ms-transform: translate(-10px, -10px);
-  -o-transform: translate(-10px, -10px);
-  transform: translate(-10px, -10px);
-  background: #E91E63;
-  background: #3F51B5;
-}
-*/
+
 #div-seccion1 .buttons {
   position: absolute;
   bottom: -50px;
@@ -157,32 +123,26 @@
   cursor: default;
 }
 
-/* Optional content */
-.optional {
-  width: 80%;
-  max-width: 680px;
-  margin: 6em auto;
-  padding: 2em 3em;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16), 0 3px 12px rgba(0, 0, 0, 0.23);
-}
 
 #div-seccion1 .slide-container {
-  width: 100%;
-  margin: auto;
+ max-width: 100%;
+  height: auto;
 }
 
 #div-seccion1 h3 {
- 
-  font-size: 2.3em !important;
+  max-width: 100%;
+  height: auto;
+  font-size: 6vmin !important;
   font-family: arial;
   margin-block-start: 0px;
   margin-block-end: 0px !important;
   padding: 0px !important;
 }
 #div-seccion1 h4 {
+  max-width: 100%;
+  height: auto;
   margin-block-start: 0px;
- 
-  font-size: 1.4em !important;
+  font-size: 5vmin !important;
   font-family: arial;
   margin-block-start: 0px;
   padding: 0px !important;
@@ -227,19 +187,24 @@
   background: #adceed;
 }
 
+
+
+
 #div-seccion1 .buttonSmall{
   border-radius: 6px !important;
   background-color: #0F9b9b !important;
   line-height: 32.4px;
-  font-size: 14px;
+  font-size: 17px !important;
   display: inline-block;
   -moz-user-select: none;
   vertical-align: middle;
   color: #fff;
   letter-spacing: .5px;
-  padding: 0 16px;
-  margin: 6px;
-  margin-top: 25px;
+  padding: 0 14px;
+  margin: 4px;
+  margin-top: 15px;
+  text-transform: none;
+  font-weight: bolder;
 
 }
 
