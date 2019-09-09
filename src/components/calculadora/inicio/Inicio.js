@@ -77,7 +77,7 @@ getFechainicialTarea() {
             <div style={this.state.style} id="contenedor-inicio">
                 <div className="row">
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
-                        <h1 id="titulo-cal" className="flow-text">Hecho por mujeres para mujeres</h1>
+                        <h1 id="titulo-cal" className="flow-text">Calcula tu Riesgo</h1>
                         <h6 id="subtitulo-cal" className="center-align ">Responde a las siguientes preguntas y obten un resultado verdadero</h6>
                     </div>
                 </div>
