@@ -3,149 +3,159 @@ import './Perfil.css'
 import M from "materialize-css";
 import axios from "axios";
 
-//cronometro entre tareas
-var endTask;
-var ss;
-var mm;
-var hh;
-var time;
-var cc;
-var acumularTime2;
+//import { ValidatorComponent,ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 
 
 class Editprofile extends Component {
     constructor(props) {
-        
+
         super(props);
         this.timer = null;
         this.startedOn = 0;
         this.state = {
-            elapsed: 0,
+            primer_nombre: '',
+
         }
+
         /*
         this.start = this.start.bind( this );
         this.stop = this.stop.bind( this );
         */
     }
+
     componentDidMount() {
         M.Collapsible.init(this.Collapsible);
+        document.querySelector('#btnSetUserInfo').addEventListener('click', function () {
+            document.querySelector('#formPersonalInfo').reportValidity();
+
+        });
+        document.querySelector('#btnSetEmail').addEventListener('click', function () {
+            document.querySelector('#formSetEmail').reportValidity();
+
+        });
     }
-    
-  /*
-  
-  start() {
-      this.startedOn = new Date().getTime();
-      this.timer = window.setInterval( this.updateTime.bind( this ), 10 );
-      
-  }
-  updateTime() {
-      this.setState( {elapsed: new Date().getTime() - this.startedOn } );
-      time = this.state.elapsed;
-      acumularTime2 = new Date;
-      acumularTime2.setTime(time);
-      cc = Math.round(acumularTime2.getMilliseconds()/10);
-      ss = acumularTime2.getSeconds();
-      mm = acumularTime2.getMinutes();
-      hh = acumularTime2.getHours()-19;
-      if (cc < 10) {cc = "0"+cc;}
-      if (ss < 10) {ss = "0"+ss;} 
-      if (mm < 10) {mm = "0"+mm;}
-      if (hh < 10) {hh = "0"+hh;}
-      endTask = hh+" : "+mm+" : "+ss+" : "+cc;
-     
-    
-  }
-  stop() {
-      window.clearInterval( this.timer );
-      var dataform = new FormData();
-      dataform.append("nombre", "actualizar perfil");
-      dataform.append("task_end", endTask);
-      dataform.append("version", "emmafig V1");
-      alert("El usuario ha tardado "+endTask+" en completar la tarea");
-      axios.post("http://localhost/api1/timeTask",dataform).then(
-          res =>{
-              var result = res.data;
-              console.log(result)
-          }
-      )
-      
-      
-  }
-  */
-   
-    
-
-
 
 
 
     render() {
 
+
+
         return (
 
             <div className="EditProfile">
 
+
+
                 <div className="container emp-profile">
                     <h4 className="headTitle">Configuracion general de la cuenta</h4>
-                    <ul ref={Collapsible => { this.Collapsible = Collapsible }} class="collapsible">
+
+                    <ul ref={Collapsible => { this.Collapsible = Collapsible }} className="collapsible">
                         <li>
-                            <div class="collapsible-header resetBorder" id="UserName"><i class="large material-icons">person</i>Nombre de usuario</div>
-                            <div class="collapsible-body">
-                                <div class="row">
-                                    <div class="input-field col s6 ">
-                                        <input id="first_name2" type="text" class="validate" />
-                                        <label class="active" for="first_name2">Nombre de usuario</label>
+                            <div className="collapsible-header resetBorder" id="UserName"><i className="large material-icons">person</i>Informacion personal</div>
+                            <div className="collapsible-body">
+
+                                <form id="formPersonalInfo" method="post">
+
+                                    <div className="row">
+
+
+
+                                        <div className="input-field col s6 ">
+
+                                            <input id="primer_nombre" type="text" className="validate" name="primer_nombre" required maxLength="10" />
+                                            <label className="active" for="primer_nombre">Primer nombre</label>
+
+
+                                        </div>
+
+                                        <div className="input-field col s6 ">
+                                            <input id="segundo_apellido" type="text" className="validate" required maxLength="10" />
+                                            <label className="active" for="segundo_apellido">Segundo nombre</label>
+                                        </div>
+                                        <div className="input-field col s6 ">
+                                            <input id="first_apellido" type="text" className="validate" required maxLength="10" />
+                                            <label className="active" for="first_apellido">Primer apellido</label>
+                                        </div>
+                                        <div className="input-field col s6 ">
+                                            <input id="segundo_apellido" type="text" className="validate" required maxLength="10" />
+                                            <label className="active" for="segundo_apellido">Segundo apellido</label>
+                                        </div>
+
+
+
+
+
                                     </div>
+                                    <button className="waves-light btn" id="btnSetUserInfo" >Guardar cambios</button>
+                                </form>
 
-                                </div>
 
-                                <a class="waves-effect waves-light btn" >Guardar cambios</a>
+
                             </div>
                         </li>
                         <li>
-                            <div class="collapsible-header resetBorder"><i class="large material-icons">email</i>Correo</div>
-                            <div class="collapsible-body">
-                                <div class="row">
-                                    <div class="input-field col s6 ">
-                                        <input id="email" type="email" class="validate" />
-                                        <label for="email">Email</label>
+                            <div className="collapsible-header resetBorder"><i className="large material-icons">email</i>Correo</div>
+                            <div className="collapsible-body">
+                                <form id="formSetEmail">
+                                    <div className="row">
+
+
+                                        <div className="input-field col s6 ">
+                                            <input id="email" type="email" className="validate" required />
+                                            <label for="email">Email</label>
+                                        </div>
+
+
                                     </div>
-                                </div>
-                                <a class="waves-effect waves-light btn">Guardar cambios</a>
+                                    <a className="waves-light btn" id="btnSetEmail" >Guardar cambios</a>
+                                </form>
 
                             </div>
                         </li>
                         <li>
-                            <div class="collapsible-header resetBorder"><i class="large material-icons">fingerprint</i>Contraseña</div>
-                            <div class="collapsible-body">
-                                <div class="row">
-                                    <div class="input-field col s6">
-                                        <input id="password" type="password" class="validate" />
+                            <div className="collapsible-header resetBorder"><i className="large material-icons">fingerprint</i>Contraseña</div>
+                            <div className="collapsible-body">
+                                <form id="formContraseña">
+
+                                <div className="row">
+                                    <div className="input-field col s6">
+                                        <input id="password" type="password" className="validate" maxLength="10" required />
                                         <label for="password">Contraseña actual</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <input id="password" type="password" class="validate" />
+                                    <div className="row">
+                                        <div className="input-field col s12">
+                                            <p>Ingrese una contraseña de maximo 10 caracteres.</p>
+                                        </div>
+                                        <div className="input-field col s6"    >
+                                            <input id="password" type="password" className="validate" maxLength="10" required />
                                             <label for="password">Nueva contraseña</label>
+
+                                        </div>
+                                        <div className="input-field col s6"    >
+                                            <input id="password" type="password" className="validate" maxLength="10" required />
+                                            <label for="password">Confirmar contraseña</label>
+
                                         </div>
                                     </div>
                                 </div>
-                                <a class="waves-effect waves-light btn">Guardar cambios</a>
+                                <a className="waves-light btn" id="btnSetContraseña">Guardar cambios</a>
+                                </form>
 
                             </div>
                         </li>
                         <li>
-                            <div class="collapsible-header resetBorder"><i class="large material-icons">phone_android</i>Numero de telefono</div>
-                            <div class="collapsible-body">
-                                <div class="row">
-                                    <div class="input-field col s6 ">
-                                        <input id="numeroTelefono" type="number" class="validate" />
+                            <div className="collapsible-header resetBorder"><i className="large material-icons">phone_android</i>Numero de telefono</div>
+                            <div className="collapsible-body">
+                                <div className="row">
+                                    <div className="input-field col s6 ">
+                                        <input id="numeroTelefono" type="number" className="validate" />
                                         <label for="numeroTelefono">Numero de telefono</label>
                                     </div>
 
                                 </div>
-                                <a class="waves-effect waves-light btn" >Guardar cambios</a>
+                                <a className="waves-light btn" >Guardar cambios</a>
 
                             </div>
                         </li>
@@ -161,5 +171,7 @@ class Editprofile extends Component {
             </div>
         );
     }
+
+
 }
 export default Editprofile;
