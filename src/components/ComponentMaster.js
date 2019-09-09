@@ -22,6 +22,7 @@ class ComponentMaster extends Component {
             componentScroll: "",
             login: 0
         }
+        this.changeLogin = this.changeLogin.bind(this);
 
     }
     changeComponente(state) {
@@ -55,26 +56,40 @@ class ComponentMaster extends Component {
         }
         
     }
-    showPerfil(){
-        console.log('Entro a perfil');
-        console.log('Estado en showPERFIL '+this.state.login);
+    showPerfil = () => {        
         if(this.state.login == 0){
             return (<h1>hola</h1>)
         }else{
             return (<h1>hola mundo</h1>)
         }
     }
-    changeLogin(){
-       
-        this.setState({login: 1})
-        alert('entra')
-        console.log('Estado actual '+this.state.login);
-        //this.showPerfil();
+    changeLogin = () => {
+        console.log('estado actual '+this.state.login);
+        this.setState({
+            login: 1
+        });
+        
     }
 
     componentDidUpdate(prevProps, prevState) {
-          console.log('Actualizado...');
+          
            
+            if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
+                let simulateClick = elem => {
+                    let evt = new MouseEvent('click', {
+                        bubbles: true,
+                        view: window
+                    });
+                    elem.dispatchEvent(evt)
+                };
+                console.log(elementMenu);
+                
+                var btnMenu = document.getElementById(""+elementMenu+"");
+                simulateClick(btnMenu);
+              
+               
+                
+                //elementMenu.click();
             
             
     
@@ -82,7 +97,7 @@ class ComponentMaster extends Component {
                
     
     
-            
+            }
            
       
     }
@@ -92,7 +107,7 @@ class ComponentMaster extends Component {
                 return (
                     <div className="mainpage">
                         <Seccion1 />
-                        <Calculadora changeLogin={this.changeLogin.bind(this)}/>
+                        <Calculadora changeLogin={this.changeLogin}/>
                         <Citas />
                         <Testimonios />
                         <Contacto />
@@ -112,21 +127,11 @@ class ComponentMaster extends Component {
     }
 
     render() {
-
-        let mostrar = '';
-
-        if(this.state.login == 0){
-            mostrar = <h1>Hola</h1>
-
-        }
-        else{
-            mostrar = <h1>Hola mundo</h1>
-
-        }
+        
 
         return (
             <div className="mainComponent">
-            {mostrar}
+            {this.showPerfil()}
 
                 {/*<Menu login={this.state.login} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}></Menu>*/}
                 {this.showComponent()}
