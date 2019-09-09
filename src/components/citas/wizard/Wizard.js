@@ -4,6 +4,8 @@ import Step1 from './steps/Step1';
 import Step2 from './steps/Step2';
 import Step3 from './steps/Step3';
 import Step4 from './steps/Step4';
+import Step5 from './steps/Step5';
+import './Wizard.css'
 import Buttons from './buttons/Buttons';
 import $ from 'jquery';
 
@@ -25,40 +27,59 @@ class Wizard extends Component {
         };
     }
 
-    validateForm() {
-        var error = true;
+    validateForm(num) {
 
-        var elementos = $('#formularios input');
+        var pasa = true;
+        switch (num) {
+            case 1:
 
-        if (elementos) {
-            $.each(elementos, function (k, v) {
-
-                if ($(v).is(':radio')) {
-
-
-                    if (!$(v).is(':checked')) {
-
-
-                        error = true;
+                if (!this.props.id_sede) {
+                    pasa = false;
+                }
+                if (!this.props.fecha_cita) {
+                    pasa = false;
+                }
+                break
+            case 2:
+                if (!this.props.id_profesional) {
+                    pasa = false;
+                    if (!this.props.todos_profesionales) {
+                        pasa = false;
+                    }
+                    else {
+                        pasa = true;
                     }
 
                 }
-
-                if ($(v).is('input:text')) {
-
-
-                    var val = $(v).val();
-
-                    if (!val) {
-
-                        error = false;
-                    }
-
-
+                break;
+            case 3:
+                if (!this.props.id_turno) {
+                    pasa = false;
                 }
+                break
+            case 4:
+                if (!this.props.informacion_paciente) {
+                    pasa = false;
+                }
+                break
 
-            })
+            default:
+            // code block
         }
+
+
+        if (!pasa) {
+
+            $('.cuestionario-info').hide()
+            setTimeout(function () { $('.cuestionario-info').show() }, 1);
+
+
+
+
+
+        }
+
+        return pasa;
 
 
     }
@@ -108,20 +129,24 @@ class Wizard extends Component {
     }
 
     render() {
+        $('.cuestionario-info').hide()
         let step;
 
         switch (this.props.step) {
             case 1:
-                step = (<Step1 set_state={this.props.set_state} step={this.props.step} activate_step={this.props.activate_step} />)
+                step = (<Step1 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
                 break;
             case 2:
-                step = (<Step2 set_state={this.props.set_state} step={this.props.step} activate_step={this.props.activate_step} />)
+                step = (<Step2 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
                 break;
             case 3:
                 step = (<Step3 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
                 break;
             case 4:
-                step = (<Step4 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
+                step = (<Step4 actualizar={this.actualizar.bind(this)}  set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
+                break;
+            case 5:
+                step = (<Step5 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
                 break;
 
             default:
@@ -130,22 +155,35 @@ class Wizard extends Component {
         }
 
 
+        let title = this.props.nombre_servicio;
+        title = title.replace('|', '');
+
+
 
         return (
             <div className="row wizardCitas">
 
                 <Steps {...this.state} />
-                <h4 onClick={this.validateForm.bind(this)} style={{ color: '#c73a8c', fontWeight: 'bolder' }}>{this.props.nombre_servicio}</h4>
 
-                <form id="formularios">
-                    {step}
+                <div style={{marginBottom: '0px'}} className="row">
+                    <div className="col s12 m4 offset-m2  ">
+                    <h4 className="title_service_selected" style={{ color: '#c73a8c', fontWeight: 'bolder', textAlign: 'left' }}>{title}</h4>
 
-                </form>
+
+                    </div>
+                </div>
+
+
+                {step}
+
+                
+
+
 
                 <div className="row">
                     <div className="col s12 m4 offset-m2 ">
                         <p id="info2" className="cuestionario-info info-animation" style={{ textAlign: 'left' }}>Por favor diligencia toda la información  para continuar</p>
-                        <Buttons actualizar={this.actualizar.bind(this)} step={this.props.step} activate_step={this.props.activate_step} />
+                        <Buttons validar={this.validateForm.bind(this)} actualizar={this.actualizar.bind(this)} step={this.props.step} activate_step={this.props.activate_step} />
 
                     </div>
                 </div>

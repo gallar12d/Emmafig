@@ -13,6 +13,7 @@ class Resultado extends Component {
             btn_mas_detalles: process.env.PUBLIC_URL + "/img/masdeta-btn.svg",
             btn_conocer_mas: process.env.PUBLIC_URL + "/img/conocermas-btn_1.svg",
             displayModal: false,
+            textResultado : '',
             style: {
                 opacity: 0,
                 transform: 'translate3d(100%,0,0)'
@@ -28,8 +29,7 @@ class Resultado extends Component {
         this.unMountStyle = this.unMountStyle.bind(this);
     }
 
-    componentDidMount() {
-
+    componentDidMount() {        
         setTimeout(this.mountStyle, 10) //call the into animiation
     }
 
@@ -90,7 +90,7 @@ class Resultado extends Component {
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
                         <h1 id="titulo-res" className="flow-text">Resultado</h1>
                         <h6 id="subtitulo-res" className="center-align ">Tiene un riesgo de desarrollar cancer de cuello uterino</h6>
-                        <h1 id="contenido-res" className="flow-text"><span className="label-res">RESULTADO: </span>Bajo</h1>
+                        <h1 id="contenido-res" className="flow-text"><span className="label-res">RESULTADO: </span>{this.props.result}</h1>
                     </div>
                 </div>
                 <div id="cont-btn-result" className="row">

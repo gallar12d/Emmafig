@@ -35,11 +35,14 @@ class Step4 extends Component {
         M.Modal.init(elems, {});
         $('#modal_cita').append('<button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">x</button>');
 
-        Axios.get(`https://emmafig.com/api1/profesionales`)
-            .then(res => {
-                const profesionales = res.data;
-                this.setState({ profesionales });
+        $('form').on('focus', 'input[type=number]', function (e) {
+            $(this).on('mousewheel.disableScroll', function (e) {
+              e.preventDefault()
             })
+          })
+          $('form').on('blur', 'input[type=number]', function (e) {
+            $(this).off('mousewheel.disableScroll')
+          })
 
     }
     open_modal() {
@@ -51,23 +54,46 @@ class Step4 extends Component {
 
     }
 
+    validate_form_user(e) {
+        e.preventDefault();
+      var next =  $('.btn_next')
+      console.log(next)
+        var validity = $('#form_user')[0].checkValidity()
+
+        if (validity) {
+            var elem = $('#modal_cita')
+            var instance = M.Modal.getInstance(elem);
+            this.props.set_state('informacion_paciente', true)
+            instance.close();
+
+            // 
+            //next.click();
+            this.props.activate_step(this.props.step + 1);
+            this.props.actualizar(this.props.step + 1);
+
+
+
+        }
+        else {
+            $('#form_user')[0].reportValidity()
+
+
+        }
+
+
+
+        //validate validityCheck api html5 for this form
+        //close modal
+
+
+    }
+
 
 
 
     render() {
 
-        let prof = this.state.profesionales.map(profesional =>
-            <div className="input-field ">
-                <div className="icon_input">
-                    <label>
-                        <input className="with-gap" name="group1" type="radio" />
-                        <span>{profesional.primer_nombre + ' ' + profesional.segundo_nombre + ' ' + profesional.primer_apellido + ' ' + profesional.segundo_apellido}</span>
-                    </label>
-                    <FaUserNurse className="icon" size={25} />
-                </div>
-            </div>
 
-        )
 
 
 
@@ -169,60 +195,68 @@ class Step4 extends Component {
                                 <h5 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#c83b8d' }}>
                                     Datos necesarios para tu cita
                               </h5>
+                              <span>Campos con un asterisco (*) son obligatorios</span>
                             </div>
 
                         </div>
                         <div className="row">
                             <div className="col m12">
-                            <hr></hr>
+                                <hr></hr>
 
                             </div>
-                           
+
                         </div>
 
                         <div className="row">
+                            <form id="form_user">
 
-                            <div className="input-field col s6 m6">
-                                <input placeholder="" id="primer_nombre" type="text" className="validate"></input>
-                                <label htmlFor="first_name">Primer nombre *</label>
-                            </div>
-                            <div className="input-field col s6 m6">
-                                <input placeholder="" id="segundo_nombre" type="text" className="validate"></input>
-                                <label htmlFor="first_name">Segundo nombre</label>
-                            </div>
-                            <div className="input-field col s6 m6">
-                                <input placeholder="" id="primer_apellido" type="text" className="validate"></input>
-                                <label htmlFor="first_name">Primer apellido *</label>
-                            </div>
-                            <div className="input-field col s6 m6">
-                                <input placeholder="" id="segundo_apellido" type="text" className="validate"></input>
-                                <label htmlFor="first_name">Segundo apellido </label>
-                            </div>
-                            <div className="input-field col s6 m6">
-                                <select>
-                                    <option disabled value="">Tipo de identificación *</option>
-                                    <option value="1">Cédula de ciudadanía</option>
-                                    <option value="2">Tarjeta de identidad</option>
-                                    <option value="3">Cédula extrangera</option>
-                                </select>
+                                <div className="input-field col s6 m6">
+                                    <input onChange={(e) => this.props.set_state('paciente_primer_nombre', e.target.value)} defaultValue={this.props.paciente_primer_nombre} required id="primer_nombre" type="text" className="validate"></input>
+                                    <label className = {(this.props.paciente_primer_nombre) ? 'active': ''} htmlFor="first_name">Primer nombre *</label>
+                                </div>
+                                <div className="input-field col s6 m6">
+                                    <input onChange={(e) => this.props.set_state('paciente_segundo_nombre', e.target.value)} defaultValue={this.props.paciente_segundo_nombre} id="segundo_nombre" type="text" className="validate"></input>
+                                    <label className = {(this.props.paciente_segundo_nombre) ? 'active': ''} htmlFor="first_name">Segundo nombre</label>
+                                </div>
+                                <div className="input-field col s6 m6">
+                                    <input onChange={(e) => this.props.set_state('paciente_primer_apellido', e.target.value)} defaultValue={this.props.paciente_primer_apellido} required id="primer_apellido" type="text" className="validate"></input>
+                                    <label className = {(this.props.paciente_primer_apellido) ? 'active': ''} htmlFor="first_name">Primer apellido *</label>
+                                </div>
+                                <div className="input-field col s6 m6">
+                                    <input onChange={(e) => this.props.set_state('paciente_segundo_apellido', e.target.value)} defaultValue={this.props.paciente_segundo_apellido} id="segundo_apellido" type="text" className="validate"></input>
+                                    <label className = {(this.props.paciente_segundo_apellido) ? 'active': ''} htmlFor="first_name">Segundo apellido </label>
+                                </div>
+                                <div className="input-field col s6 m6">
+                                    <select  onChange={(e) => this.props.set_state('paciente_tipo_identificacion', e.target.value)} id="tipo_id" name="tipo-id" required value={this.props.paciente_tipo_identificacion}>
+                                        <option value='-1' disabled >Tipo de identificación *</option>
 
-                            </div>
-                            <div className="input-field col s6 m6">
-                                <input placeholder="" id="numero_identificacion" type="text" className="validate"></input>
-                                <label htmlFor="first_name">Número de identificación *</label>
-                            </div>
-                            <div className="input-field col s6 m6">
-                                <input placeholder="" id="telefono1" type="text" className="validate"></input>
-                                <label htmlFor="first_name">Teléfono de contacto 1 *</label>
-                            </div>
-                            <div className="input-field col s6 m6">
-                                <input placeholder="" id="telefono2" type="text" className="validate"></input>
-                                <label htmlFor="first_name">Teléfono de contacto 2</label>
-                            </div>
-                            <div className="input-field col s12 m12">
-                                <input placeholder="" id="email" type="text" className="validate"></input>
-                                <label htmlFor="first_name">Correo electrónico</label>
-                            </div>
+                                        <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+                                        <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                                        <option value="Cédula extrangera">Cédula extrangera</option>
+                                        <option value="Nit">Nit</option>
+                                        <option value="Registro civil">Registro civil</option>
+
+                                    </select>
+
+                                </div>
+
+                                <div className="input-field col s6 m6">
+                                    <input onChange={(e) => this.props.set_state('paciente_numero_identificacion', e.target.value)} defaultValue={this.props.paciente_numero_identificacion} required id="numero_identificacion" type="number" className="validate"></input>
+                                    <label className = {(this.props.paciente_numero_identificacion) ? 'active': ''} htmlFor="first_name">Número de identificación *</label>
+                                </div>
+                                <div className="input-field col s6 m6">
+                                    <input onChange={(e) => this.props.set_state('paciente_numero1', e.target.value)} defaultValue={this.props.paciente_numero1} required id="telefono1" type="number" className="validate"></input>
+                                    <label className = {(this.props.paciente_numero1) ? 'active': ''} htmlFor="first_name">Teléfono de contacto 1 *</label>
+                                </div>
+                                <div className="input-field col s6 m6">
+                                    <input onChange={(e) => this.props.set_state('paciente_numero2', e.target.value)} defaultValue={this.props.paciente_numero2} id="telefono2" type="number" className="validate"></input>
+                                    <label className = {(this.props.paciente_numero2) ? 'active': ''} htmlFor="first_name">Teléfono de contacto 2</label>
+                                </div>
+                                <div className="input-field col s12 m12">
+                                    <input onChange={(e) => this.props.set_state('paciente_email', e.target.value)} defaultValue={this.props.paciente_email} id="email" type="email" className="validate"></input>
+                                    <label className = {(this.props.paciente_email) ? 'active': ''} htmlFor="first_name">Correo electrónico</label>
+                                </div>
+                            </form>
 
 
 
@@ -232,7 +266,7 @@ class Step4 extends Component {
 
                     </div>
                     <div className="modal-footer">
-                        <button  className="btn modal-close  ">Confirmar</button>
+                        <button onClick={ this.validate_form_user.bind(this) } className="btn   ">Confirmar</button>
                     </div>
                 </div>
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Citas.css'
 import Paquetes from './paquetes/Paquetes'
 import Wizard from './wizard/Wizard'
-import Step4 from './wizard/steps/Step4'
+import Step5 from './wizard/steps/Step5'
 
 class Citas extends Component {
     constructor(props) {
@@ -16,9 +16,20 @@ class Citas extends Component {
             fecha_cita: '', 
             id_profesional: '', 
             profesional: '',
-            todos_profesionales: false,
+            todos_profesionales: true,
+            informacion_paciente: false,
             id_turno: '',
-            turno: ''
+            turno: '', 
+            paciente_primer_nombre: '',
+            paciente_segundo_nombre: '',
+            paciente_primer_apellido: '',
+            paciente_segundo_apellido: '',
+            paciente_tipo_identificacion: -1, 
+            paciente_numero_identificacion: '',
+            paciente_numero1: '',
+            paciente_numero2: '',
+            paciente_email: '',
+            cita: false
 
 
 
@@ -54,7 +65,7 @@ class Citas extends Component {
                 <Paquetes   item ={this.itemSelected}>                
                 </Paquetes>
                 <div className="moreServices">
-                    <a alt='' target="_blank" href="http://www.fig.org.co">Conoce más servicios</a>
+                    <a alt='' target="_blank" href="http://www.fig.org.co">Conoce otros servicios</a>
                 </div>       
         
             </div>
@@ -67,23 +78,18 @@ class Citas extends Component {
 
 
         return (
-            <div id="citas">
+            <div id="citas" >
                 <div className="container headcitas">
                     <div className="row ">
                         <h4 className="titulocitas">
                             Agenda tu cita
                         </h4>
-                        <h5 className="subtitleCitas">En la fundación InnovaGen contamos con la mejor tecnología para la detección temprana de Cáncer de Cuello Uterino, no dejes pasar esta oportunidad, ven separa tu cita</h5>                       
+                        <h5 className="subtitleCitas">Comprometidos con una <b> atención humanizada </b> y de <b>alta calidad</b></h5>                       
                     </div>                    
                 </div>
-               {seccion}   
+               {seccion} 
                
-
-
-                            
-                
                
-
             </div>
 
         );
