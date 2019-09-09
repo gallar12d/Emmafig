@@ -5,6 +5,7 @@ import Step2 from './steps/Step2';
 import Step3 from './steps/Step3';
 import Step4 from './steps/Step4';
 import Step5 from './steps/Step5';
+import './Wizard.css'
 import Buttons from './buttons/Buttons';
 import $ from 'jquery';
 
@@ -142,7 +143,7 @@ class Wizard extends Component {
                 step = (<Step3 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
                 break;
             case 4:
-                step = (<Step4 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
+                step = (<Step4 actualizar={this.actualizar.bind(this)}  set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
                 break;
             case 5:
                 step = (<Step5 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
@@ -154,12 +155,23 @@ class Wizard extends Component {
         }
 
 
+        let title = this.props.nombre_servicio;
+        title = title.replace('|', '');
+
+
 
         return (
             <div className="row wizardCitas">
 
                 <Steps {...this.state} />
-                <h4 style={{ color: '#c73a8c', fontWeight: 'bolder' }}>{this.props.nombre_servicio}</h4>
+
+                <div style={{marginBottom: '0px'}} className="row">
+                    <div className="col s12 m4 offset-m2  ">
+                    <h4 className="title_service_selected" style={{ color: '#c73a8c', fontWeight: 'bolder', textAlign: 'left' }}>{title}</h4>
+
+
+                    </div>
+                </div>
 
 
                 {step}
