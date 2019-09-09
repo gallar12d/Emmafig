@@ -18,7 +18,7 @@ class Menu extends Component {
 
     render() {
         return (
-            <div>
+            <div id="menu">
                 <div className="navbar-fixed">
                     <ul id="dropdown1" class="dropdown-content">
                         <li><a href="#/perfil">Perfil</a></li>
@@ -47,19 +47,7 @@ class Menu extends Component {
                                 <i className="material-icons">menu</i>
                             </a>
                             <ul className=" menuItems right hide-on-med-and-down">
-                                <li>
 
-                                    <Link
-                                        activateclass="activate"
-                                        to="contenedor-calculadora"
-                                        spy={true}
-                                        smooth={true}
-                                        offset={-55}
-                                        duration={500}
-                                    >
-                                        Calculadora
-                                </Link>
-                                </li>
                                 <li>
 
                                     <Link
@@ -88,6 +76,12 @@ class Menu extends Component {
                                 </li>
                                 <li>
 
+
+                                    <a href="#!"> Blog </a>
+
+                                </li>
+                                <li>
+
                                     <Link
                                         activateclass="activate"
                                         to="contacto"
@@ -100,30 +94,36 @@ class Menu extends Component {
                                 </Link>
                                 </li>
 
-                                <li>
-                                    <a href="#/faq"> FAQ</a>
 
 
 
-                                </li>
-                                <li>
-
-
-                                    <a href="#!"> Blog </a>
-
-                                </li>
 
                                 <li>
 
 
 
                                     <a class="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
-                                    
+
                                         Usuario <i class="material-icons right">arrow_drop_down</i>
 
                                     </a>
 
 
+                                </li>
+                                <li>
+                                    <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
+                                        <i className="fa fa-facebook fa-lg"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://instagram.com/funinnovagen?igshid=1i9a8bm9m2kck" target="_blank">
+                                        <i className="fa fa-instagram fa-lg"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a id="iconWSP" href="https://api.whatsapp.com/send?phone=573174412170" target="_blank">
+                                        <i className="fa fa-whatsapp fa-lg"></i>
+                                    </a>
                                 </li>
                                 {/*
                                 
@@ -155,19 +155,7 @@ class Menu extends Component {
 
                 </div>
                 <ul className="sidenav" id="mobile-demo">
-                    <li>
 
-                        <Link
-                            activateclass="activate"
-                            to="contenedor-calculadora"
-                            spy={true}
-                            smooth={true}
-                            offset={-55}
-                            duration={500}
-                        >
-                            Calculadora
-                                </Link>
-                    </li>
                     <li>
 
                         <Link
@@ -196,6 +184,12 @@ class Menu extends Component {
                     </li>
                     <li>
 
+
+                        <a href="#!"> Blog </a>
+
+                    </li>
+                    <li>
+
                         <Link
                             activateclass="activate"
                             to="contacto"
@@ -207,19 +201,24 @@ class Menu extends Component {
                             Contacto
                                 </Link>
                     </li>
-
                     <li>
-                        <a href="#!"> FAQ</a>
-
-
-
+                        <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
+                            <i className="fa fa-facebook fa-lg"></i>
+                        </a>
                     </li>
                     <li>
-
-
-                        <a href="#!"> Blog </a>
-
+                        <a href="https://instagram.com/funinnovagen?igshid=1i9a8bm9m2kck" target="_blank">
+                            <i className="fa fa-instagram fa-lg"></i>
+                        </a>
                     </li>
+                    <li>
+                        <a id="iconWSP" href="https://api.whatsapp.com/send?phone=573174412170" target="_blank">
+                            <i className="fa fa-whatsapp fa-lg"></i>
+                        </a>
+                    </li>
+
+
+
 
                 </ul>
 

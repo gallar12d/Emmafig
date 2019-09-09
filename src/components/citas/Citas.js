@@ -65,7 +65,7 @@ class Citas extends Component {
                 <Paquetes   item ={this.itemSelected}>                
                 </Paquetes>
                 <div className="moreServices">
-                    <a alt='' target="_blank" href="http://www.fig.org.co">Conoce más servicios</a>
+                    <a alt='' target="_blank" href="http://www.fig.org.co">Conoce otros servicios</a>
                 </div>       
         
             </div>
@@ -84,10 +84,12 @@ class Citas extends Component {
                         <h4 className="titulocitas">
                             Agenda tu cita
                         </h4>
-                        <h5 className="subtitleCitas">En la fundación InnovaGen contamos con la mejor tecnología para la detección temprana de Cáncer de Cuello Uterino, no dejes pasar esta oportunidad, ven separa tu cita</h5>                       
+                        <h5 className="subtitleCitas">Comprometidos con una <b> atención humanizada </b> y de <b>alta calidad</b></h5>                       
                     </div>                    
                 </div>
                {seccion} 
+               
+               
             </div>
 
         );

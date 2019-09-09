@@ -6,7 +6,7 @@ import M from "materialize-css";
 
 class CustomSlide extends Component {
   render() {
-    const { texto, imagen, nombres, profesion, ...props } = this.props;
+    const {fecha_testimonio,  texto, imagen, nombres, profesion, ...props } = this.props;
     return (
       <div {...props}>
         <div className=" center-align espaciado" >
@@ -25,6 +25,7 @@ class CustomSlide extends Component {
         </div>
         <div className="text-c center-align">
           <h6 className=" center-align nombres">{nombres} - <strong>{profesion}</strong></h6>
+          <h6 className="fecha">{fecha_testimonio}</h6>
         </div>
       </div>
     );
@@ -109,7 +110,7 @@ class Testimonios extends Component {
       ]
     };
 
-    const listItems = this.state.testimonios.map((d) => <CustomSlide key={d.id_testimonio} texto={d.texto} imagen={d.url_imagen} nombres={d.nombre} profesion={d.profesion}></CustomSlide>);
+    const listItems = this.state.testimonios.map((d) => <CustomSlide key={d.id_testimonio} texto={d.texto} imagen={d.url_imagen} nombres={d.nombre} profesion={d.profesion} fecha_testimonio={d.fecha_testimonio}></CustomSlide>);
 
     return (
       <div className="parallax-container" id="testimonios">
