@@ -104,6 +104,18 @@ class Menu extends Component {
 
                                 <li>
 
+                                <Link
+                                        id="scroolCitas"
+                                        activateclass="activate"
+                                        to="citas"
+                                        spy={true}
+                                        smooth={true}
+                                        offset={-60}
+                                        duration={500}
+                                        delay={1000}
+                                    >
+                                    </Link>
+
                                     <Link
 
                                         onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCitas") }}
