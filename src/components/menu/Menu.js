@@ -9,7 +9,7 @@ let elementInicio;
 let elementTestimonios;
 let elementContacto;
 let elementCitas
-
+let usuario;
 
 class Menu extends Component {
     constructor(props) {
@@ -19,22 +19,19 @@ class Menu extends Component {
             gblState: 0,
             element: "",
             componentChange: 0,
-
-
         };
     }
     componentDidMount() {
-        console.log('estado login '+this.props.login);
+        console.log('estado login ' + this.props.login);
         M.Dropdown.init(this.Dropdown);
         M.Collapsible.init(this.Collapsible);
-
-
     }
-    
+
     componentDidUpdate() {
-        console.log('Update menu');    
+        M.Dropdown.init(this.Dropdown);
+        M.Collapsible.init(this.Collapsible);
     }
-    
+
     GenerateClick(state, elementMenu) {
         /*
         this.setState({
@@ -51,36 +48,26 @@ class Menu extends Component {
         //$("#"+context).trigger("click");
     }
 
-    showPerfil() {
-        if (this.props.login == 1) {
-            return (<ul id="dropdown1" className="dropdown-content">
-                <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
-                <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
-                <li className="divider"></li>
-                <li><a href="#/logout">Cerrar sesion</a></li>
-            </ul>)
-        }
-    }
-    showContentDropdown(){
-        if (this.props.login == 1) {
-            return (<li>
-                <a id="perfil" className="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
 
-                    Usuario <i className="material-icons right">arrow_drop_down</i>
-
-                </a>
-
-
-            </li>)
-        }
-    }
     render() {
+        let usuario;
+        if (this.props.login == 1) {
+            usuario = <li>
+                <a id="perfil" className="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
+                    Usuario <i className="material-icons right">arrow_drop_down</i>
+                </a>
+                <ul id="dropdown1" className="dropdown-content" >
+                    <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
+                    <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
+                    <li className="divider"></li>
+                    <li><a href="#/logout">Cerrar sesion</a></li>
+                </ul>
+            </li>
+        }
         return (
             <div id="menu">
                 <div className="navbar-fixed">
-                    {
-                        this.showPerfil()
-                    }
+
                     <nav>
                         <div className="nav-wrapper">
                             <Link
@@ -115,7 +102,7 @@ class Menu extends Component {
 
                                 <li>
 
-                                <Link
+                                    <Link
                                         id="scroolCitas"
                                         activateclass="activate"
                                         to="citas"
@@ -200,14 +187,8 @@ class Menu extends Component {
                                         Contacto
                                 </Link>
                                 </li>
-
-                               
-                                {
-                                    this.showContentDropdown()
-                                }
-                                
+                                {usuario}
                             </ul>
-
                         </div>
                     </nav>
 
@@ -383,5 +364,7 @@ class Menu extends Component {
 
 
 }
+function Perfil() {
 
+}
 export default Menu; // Don’t forget to use export default!
