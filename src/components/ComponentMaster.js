@@ -45,15 +45,19 @@ class ComponentMaster extends Component {
 
 
     }
+ 
     shouldComponentUpdate(nextProps, nextState){
         var checkState;
         console.log(this.state.changeCompt);
         console.log(nextState['changeCompt']);
+        
+        
         if(this.state.changeCompt != nextState['changeCompt']){ 
             return true;
         }else{      
            return false;
         }
+        
         
     }
     showPerfil = () => {        
@@ -72,6 +76,7 @@ class ComponentMaster extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+       
           
            
             if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {

@@ -148,7 +148,7 @@ class Menu extends Component {
                                         to="testimonios"
                                         spy={true}
                                         smooth={true}
-                                        offset={283}
+                                        offset={320}
                                         duration={500}
                                         delay={1000}
                                     >
@@ -167,24 +167,24 @@ class Menu extends Component {
                                 </Link>
                                 </li>
                                 <li>
-                                    <Link
-                                        id="scroolContacto"
-                                        activateclass="activate"
-                                        to="contacto"
-                                        spy={true}
-                                        smooth={true}
-                                        offset={283}
-                                        duration={500}
-                                        delay={1000}
-                                    >
-
-                                    </Link>
 
 
                                     <a href="#!"> Blog </a>
 
                                 </li>
                                 <li>
+                                    <Link
+                                        id="scroolContacto"
+                                        activateclass="activate"
+                                        to="contacto"
+                                        spy={true}
+                                        smooth={true}
+                                        offset={317}
+                                        duration={500}
+                                        delay={1000}
+                                    >
+
+                                    </Link>
 
                                     <Link
 

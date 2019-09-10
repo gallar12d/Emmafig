@@ -102,3 +102,33 @@
     font-weight: 600;
     color: #0062cc;
 }
+.editTaps{
+    margin: 0px !important;
+}
+
+.tabs{
+    height: auto;
+    white-space: normal;
+    padding: 30px;
+    }
+    .tab{
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+    }
+    .tab-content{
+    height: 100%;
+    width: 100%;
+    background: #fcfcfc;
+    border:1px solid #f0f0f0;
+    }
+    .indicator{
+    display: none;
+    }
+.form-content{
+    padding: 30px;
+}
+.floatElement{
+    float: left;
+    padding-top: 5px;
+}
