@@ -32,8 +32,7 @@ class Calculadora extends Component {
     }
     
 
-    changeComponente(result = -1 ){        
-        console.log('Resultado que llego a la funcion '+this.state.fin_resultado);       
+    changeComponente(result = -1 ){                       
         this.setState({ componente: this.state.componente + 1 }); 
         
         if(result != -1){
@@ -67,7 +66,7 @@ class Calculadora extends Component {
 
         return (
             <div id="contenedor-calculadora">
-                <Modal changeComponente={this.changeComponente} />
+                <Modal changeComponente={this.changeComponente} changeLogin={this.props.changeLogin}/>
                 {this.showComponente()}
             </div>
         );

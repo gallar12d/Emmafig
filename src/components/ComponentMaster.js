@@ -9,6 +9,7 @@ import Contacto from './contacto/Contacto';
 import Perfil from './perfil/Perfil';
 import EditPerfil from './perfil/Editprofile';
 import $ from "jquery";
+import { thisTypeAnnotation } from '@babel/types';
 
 let elementMenu;
 class ComponentMaster extends Component {
@@ -18,9 +19,10 @@ class ComponentMaster extends Component {
         this.modal = 1;
         this.state = {
             changeCompt: 0,
-            componentScroll: ""
-
+            componentScroll: "",
+            login: 0
         }
+        this.changeLogin = this.changeLogin.bind(this);
 
     }
     changeComponente(state) {
@@ -58,7 +60,20 @@ class ComponentMaster extends Component {
         
         
     }
-    
+    showPerfil = () => {        
+        if(this.state.login == 0){
+            return (<h1>hola</h1>)
+        }else{
+            return (<h1>hola mundo</h1>)
+        }
+    }
+    changeLogin = () => {
+        console.log('estado actual '+this.state.login);
+        this.setState({
+            login: 1
+        });
+        
+    }
 
     componentDidUpdate(prevProps, prevState) {
        
@@ -97,7 +112,7 @@ class ComponentMaster extends Component {
                 return (
                     <div className="mainpage">
                         <Seccion1 />
-                        <Calculadora />
+                        <Calculadora changeLogin={this.changeLogin}/>
                         <Citas />
                         <Testimonios />
                         <Contacto />
@@ -117,11 +132,13 @@ class ComponentMaster extends Component {
     }
 
     render() {
+        
 
         return (
             <div className="mainComponent">
+            {this.showPerfil()}
 
-                <Menu changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}></Menu>
+                {/*<Menu login={this.state.login} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}></Menu>*/}
                 {this.showComponent()}
             </div>
 

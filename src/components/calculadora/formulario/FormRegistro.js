@@ -29,8 +29,8 @@ class FormRegistro extends Component {
             showOptions: 1
         }
         this.showSocialButtons = this.showSocialButtons.bind(this);
-        this.responseFacebook = this.responseFacebook.bind(this);
-        this.responseGoogle = this.responseGoogle.bind(this);
+        /*this.responseFacebook = this.responseFacebook.bind(this);
+        this.responseGoogle = this.responseGoogle.bind(this);*/
         this.validarCampos = this.validarCampos.bind(this);
         this.showConfirmation = this.showConfirmation.bind(this);
         this.showFields = this.showFields.bind(this);
@@ -67,9 +67,9 @@ class FormRegistro extends Component {
     }
     closeModal = () => {
         M.Modal.getInstance(document.getElementById('modal1')).close();
-        this.props.changeComponente();
+        //this.props.changeComponente();
     }
-    responseFacebook = (response) => {
+    /*responseFacebook = (response) => {
         console.log(response);
         this.nombre = response.name;
         this.email = response.email;
@@ -88,7 +88,7 @@ class FormRegistro extends Component {
         });
 
         console.log(response.profileObj);
-        Axios.post('http://localhost:8080/api1/rest-api-authentication-example/api/create_user.php', {
+        Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
             "primer_nombre": this.state.primer_nombre,
             "correo": this.state.correo,
             "password": this.state.password,
@@ -109,7 +109,7 @@ class FormRegistro extends Component {
                 }
             });
         this.closeModal();
-    }
+    }*/
     validarCodigo = () => {
         let codigo = document.getElementById('codigo');
         let codigoError = document.getElementById('codigo-error');
@@ -121,7 +121,7 @@ class FormRegistro extends Component {
             cont_confirm.style.display = 'none';
             btn_confirm.style.display = 'none';
             codigo.setAttribute("disabled", "true");
-            Axios.post('http://localhost:8080/api1/rest-api-authentication-example/api/create_user.php', {
+            Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
                 "primer_nombre": 'User',
                 "segundo_nombre": 'User',
                 "primer_apellido": 'User',
@@ -156,7 +156,7 @@ class FormRegistro extends Component {
         let password = document.getElementById('password');
         let tipo_identificacion = document.getElementById('tipo_identificacion');
         let identificacion = document.getElementById('identificacion');
-        Axios.post('http://localhost:8080/api1/rest-api-authentication-example/api/login.php', {
+        Axios.post('http://localhost/api1/rest-api-authentication-example/api/login.php', {
                 "password": password.value,
                 "tipo_identificacion": tipo_identificacion.value,
                 "identificacion": identificacion.value
@@ -164,6 +164,7 @@ class FormRegistro extends Component {
             )
                 .then(res => {
                     this.setJwt('jwt', res.data.jwt);
+                    this.props.changeLogin()
                 })
                 .catch(function (error) {
                     if (error.response) {
@@ -475,7 +476,7 @@ class FormRegistro extends Component {
 
         return (
 
-            <form id="form_perfil" novalidate>
+            <form id="form_perfil" noValidate>
                 {
                     this.showOptions()
                 }
