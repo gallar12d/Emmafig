@@ -173,7 +173,9 @@ class FormRegistro extends Component {
                     this.closeModal();
                 })
                 .catch(function (error) {
-                    if (error.response) {
+                    if (error.response) {    
+                        let login_failed = document.getElementById('login_failed');     
+                        login_failed.style.display = 'block';
                         console.log(error.response.data);
                         console.log(error.response.status);
                         console.log(error.response.headers);
@@ -483,6 +485,7 @@ class FormRegistro extends Component {
         return (
 
             <form id="form_perfil" noValidate>
+                <div id="login_failed" class='alert alert-danger'>Login fallido. Identificación o Contraseña incorrectos.</div>
                 {
                     this.showOptions()
                 }

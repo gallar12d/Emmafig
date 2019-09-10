@@ -425,7 +425,7 @@ getEndTask() {
                     </div>
                     <div id="opc-respuesta-pregunta1" className="row" oprindex="1">
                         <div className="col l2 offset-l5">
-                            <select id="op11" className="browser-default selectEdad" onChange={this.handleOptionChange} defaultValue={1}>
+                            <select id="op11" className="browser-default selectEdad" onChange={this.handleOptionChange} defaultValue={0}>
                                 <option value="0">Escoge un opción</option>
                                 <option value="1">Menor de 15 años</option>
                                 <option value="2">Entre 15 y 20 años</option>
