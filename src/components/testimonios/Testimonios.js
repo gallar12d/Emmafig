@@ -24,8 +24,10 @@ class CustomSlide extends Component {
           </div>
         </div>
         <div className="text-c center-align">
-          <h6 className=" center-align nombres">{nombres} - <strong>{profesion}</strong></h6>
-          <h6 className="fecha">{fecha_testimonio}</h6>
+          <h6 className=" center-align nombres">  <strong>{nombres}</strong></h6>
+          <h6 className="fecha"><i>{profesion}</i></h6>
+          <h6 className="fecha2"><i>{fecha_testimonio}</i></h6>
+         
         </div>
       </div>
     );
