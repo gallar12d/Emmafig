@@ -86,11 +86,10 @@ class ComponentMaster extends Component {
                 elem.dispatchEvent(evt)
             };
             console.log(elementMenu);
-            var btnMenu = document.getElementById(elementMenu);
-            if (btnMenu != 'undefined') {
-                simulateClick(btnMenu);
+            if(elementMenu !== undefined){
+                var btnMenu = document.getElementById(elementMenu);
+                simulateClick(btnMenu)
             }
-
         }
     }
 

@@ -78,7 +78,7 @@ class Menu extends Component {
                                 smooth={true}
                                 offset={-70}
                                 duration={500}
-                            />                           
+                            />
                             <Link
                                 onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "inicio") }}
                                 activateclass="activate"
@@ -169,6 +169,22 @@ class Menu extends Component {
                                 </Link>
                                 </li>
                                 {usuario}
+                                <li>
+                                    <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
+                                        <i className="fa fa-facebook fa-lg"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://instagram.com/funinnovagen?igshid=1i9a8bm9m2kck" target="_blank">
+                                        <i className="fa fa-instagram fa-lg"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a id="iconWSP" href="https://api.whatsapp.com/send?phone=573174412170" target="_blank">
+                                        <i className="fa fa-whatsapp fa-lg"></i>
+                                    </a>
+                                </li>
+
                             </ul>
                         </div>
                     </nav>
@@ -186,7 +202,7 @@ class Menu extends Component {
                     offset={-55}
                     duration={500}
                     delay={1000}
-                />                
+                />
                 <Link
                     id="scroolCitas_sm"
                     activateclass="activate"
@@ -196,7 +212,7 @@ class Menu extends Component {
                     offset={-60}
                     duration={500}
                     delay={1000}
-                />                
+                />
                 <Link
                     id="scroolTestimonios_sm"
                     activateclass="activate"
