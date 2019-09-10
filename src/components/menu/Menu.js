@@ -205,6 +205,22 @@ class Menu extends Component {
                                 {
                                     this.showContentDropdown()
                                 }
+
+                                 <li>
+                        <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
+                            <i className="fa fa-facebook fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://instagram.com/funinnovagen?igshid=1i9a8bm9m2kck" target="_blank">
+                            <i className="fa fa-instagram fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="iconWSP" href="https://api.whatsapp.com/send?phone=573174412170" target="_blank">
+                            <i className="fa fa-whatsapp fa-lg"></i>
+                        </a>
+                    </li>
                                 
                             </ul>
 
