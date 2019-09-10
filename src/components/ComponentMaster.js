@@ -75,7 +75,7 @@ class ComponentMaster extends Component {
         
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps, prevState) { 
        
           
            
