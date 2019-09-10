@@ -18,32 +18,23 @@ class Menu extends Component {
             logo: process.env.PUBLIC_URL + "/img/logo-Emmafig4.png",
             gblState: 0,
             element: "",
-            componentChange: 0
+            componentChange: 0,
+
 
         };
     }
     componentDidMount() {
+        console.log('estado login '+this.props.login);
         M.Dropdown.init(this.Dropdown);
         M.Collapsible.init(this.Collapsible);
 
 
     }
-    /*
+    
     componentDidUpdate() {
-        console.log("componente menu: " + this.state.componentChange)
-       
-        if (this.state.componentChange != 1 && this.state.componentChange != 2) {
-        
-            //var element1 = document.getElementById("scroolCitas");
-            //$(element1).trigger('click');
-            //this.eventFire(element1,'click')
-    
-            alert("main page")
-    
-        }
-    
+        console.log('Update menu');    
     }
-    */
+    
     GenerateClick(state, elementMenu) {
         /*
         this.setState({
@@ -60,16 +51,36 @@ class Menu extends Component {
         //$("#"+context).trigger("click");
     }
 
+    showPerfil() {
+        if (this.props.login == 1) {
+            return (<ul id="dropdown1" className="dropdown-content">
+                <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
+                <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
+                <li className="divider"></li>
+                <li><a href="#/logout">Cerrar sesion</a></li>
+            </ul>)
+        }
+    }
+    showContentDropdown(){
+        if (this.props.login == 1) {
+            return (<li>
+                <a id="perfil" className="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
+
+                    Usuario <i className="material-icons right">arrow_drop_down</i>
+
+                </a>
+
+
+            </li>)
+        }
+    }
     render() {
         return (
             <div id="menu">
                 <div className="navbar-fixed">
-                    <ul id="dropdown1" className="dropdown-content">
-                        <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
-                        <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
-                        <li className="divider"></li>
-                        <li><a href="#/logout">Cerrar sesion</a></li>
-                    </ul>
+                    {
+                        this.showPerfil()
+                    }
                     <nav>
                         <div className="nav-wrapper">
                             <Link
@@ -190,37 +201,11 @@ class Menu extends Component {
                                 </Link>
                                 </li>
 
-
-
-
-                                <li>
-                                    <a id="perfil" className="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
-
-                                        Usuario <i className="material-icons right">arrow_drop_down</i>
-
-
-                                   
-
-                                    </a>
-
-
-                                </li>
-                                <li>
-                                    <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
-                                        <i className="fa fa-facebook fa-lg"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://instagram.com/funinnovagen?igshid=1i9a8bm9m2kck" target="_blank">
-                                        <i className="fa fa-instagram fa-lg"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="iconWSP" href="https://api.whatsapp.com/send?phone=573174412170" target="_blank">
-                                        <i className="fa fa-whatsapp fa-lg"></i>
-                                    </a>
-                                </li>
                                
+                                {
+                                    this.showContentDropdown()
+                                }
+                                
                             </ul>
 
                         </div>
@@ -231,49 +216,49 @@ class Menu extends Component {
 
 
                 <Link
-                            id="scroolCalculadora_sm"
-                            activateclass="activate"
-                            to="contenedor-calculadora"
-                            spy={true}
-                            smooth={true}
-                            offset={-55}
-                            duration={500}
-                            delay={1000}
-                        >
-                        </Link>
-                        <Link
-                            id="scroolCitas_sm"
-                            activateclass="activate"
-                            to="citas"
-                            spy={true}
-                            smooth={true}
-                            offset={-60}
-                            duration={500}
-                            delay={1000}
-                        >
-                        </Link>
-                        <Link
-                            id="scroolTestimonios_sm"
-                            activateclass="activate"
-                            to="testimonios"
-                            spy={true}
-                            smooth={true}
-                            offset={1430}
-                            duration={500}
-                            delay={1000}
-                        >
-                        </Link>
-                        <Link
-                            id="scroolContacto_sm"
-                            activateclass="activate"
-                            to="contacto"
-                            spy={true}
-                            smooth={true}
-                            offset={1423}
-                            duration={500}
-                            delay={1000}
-                        >
-                        </Link>
+                    id="scroolCalculadora_sm"
+                    activateclass="activate"
+                    to="contenedor-calculadora"
+                    spy={true}
+                    smooth={true}
+                    offset={-55}
+                    duration={500}
+                    delay={1000}
+                >
+                </Link>
+                <Link
+                    id="scroolCitas_sm"
+                    activateclass="activate"
+                    to="citas"
+                    spy={true}
+                    smooth={true}
+                    offset={-60}
+                    duration={500}
+                    delay={1000}
+                >
+                </Link>
+                <Link
+                    id="scroolTestimonios_sm"
+                    activateclass="activate"
+                    to="testimonios"
+                    spy={true}
+                    smooth={true}
+                    offset={1430}
+                    duration={500}
+                    delay={1000}
+                >
+                </Link>
+                <Link
+                    id="scroolContacto_sm"
+                    activateclass="activate"
+                    to="contacto"
+                    spy={true}
+                    smooth={true}
+                    offset={1423}
+                    duration={500}
+                    delay={1000}
+                >
+                </Link>
                 <ul className="sidenav" id="mobile-demo">
 
                     <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
@@ -283,8 +268,8 @@ class Menu extends Component {
 
 
                     <li>
-                  
-                        
+
+
 
                         <Link
                             onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCalculadora_sm") }}
@@ -298,19 +283,19 @@ class Menu extends Component {
                         >
                             Calculadora
                                 </Link>
-                        
-                               
+
+
 
                     </li>
 
                     <li >
 
-                        
+
 
 
                         <Link
 
-                            onClick={() => {this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCitas_sm") }}
+                            onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCitas_sm") }}
                             activateclass="activate"
                             to="citas"
                             spy={true}
@@ -323,7 +308,7 @@ class Menu extends Component {
 
                     </li>
                     <li>
-                        
+
                         <Link
                             onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolTestimonios_sm") }}
                             activateclass="activate"
@@ -337,7 +322,7 @@ class Menu extends Component {
                                 </Link>
                     </li>
                     <li>
-                      
+
 
 
                         <a href="#!"> Blog </a>
