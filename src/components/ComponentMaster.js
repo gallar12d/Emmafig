@@ -45,6 +45,7 @@ class ComponentMaster extends Component {
 
 
     }
+ 
     shouldComponentUpdate(nextProps, nextState){
         var checkState;
         console.log(this.state.changeCompt);
@@ -54,6 +55,7 @@ class ComponentMaster extends Component {
         }else{      
            return false;
         }
+        
         
     }
     /*showPerfil = () => { 
@@ -74,7 +76,37 @@ class ComponentMaster extends Component {
         
     }
 
-
+    componentDidUpdate(prevProps, prevState) {
+       
+          
+           
+            if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
+                let simulateClick = elem => {
+                    let evt = new MouseEvent('click', {
+                        bubbles: true,
+                        view: window
+                    });
+                    elem.dispatchEvent(evt)
+                };
+                console.log(elementMenu);
+                
+                var btnMenu = document.getElementById(""+elementMenu+"");
+                simulateClick(btnMenu);
+              
+               
+                
+                //elementMenu.click();
+            
+            
+    
+    
+               
+    
+    
+            }
+           
+      
+    }
     showComponent = () => {
         switch (this.state.changeCompt) {
             case 0:
