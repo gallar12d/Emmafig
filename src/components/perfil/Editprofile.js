@@ -11,163 +11,140 @@ class Editprofile extends Component {
     constructor(props) {
 
         super(props);
-        this.timer = null;
-        this.startedOn = 0;
         this.state = {
-            primer_nombre: '',
-
+            
         }
 
-        /*
-        this.start = this.start.bind( this );
-        this.stop = this.stop.bind( this );
-        */
     }
 
     componentDidMount() {
         M.Collapsible.init(this.Collapsible);
-        document.querySelector('#btnSetUserInfo').addEventListener('click', function () {
-            document.querySelector('#formPersonalInfo').reportValidity();
+        M.Tabs.init(this.Tabs);
+    }
+    validarFormulario(form,e){
+        e.preventDefault()
+        var formTap = document.querySelector("#"+form+"");
+        if(formTap.checkValidity()){
+           
+            //continuar con el proceso de actualizar la informacion en la base de datos
+        }else{
+                formTap.reportValidity();
+        }
 
-        });
-        document.querySelector('#btnSetEmail').addEventListener('click', function () {
-            document.querySelector('#formSetEmail').reportValidity();
 
-        });
     }
 
-
-
     render() {
-
-
-
         return (
 
-            <div className="EditProfile">
+            <div className="EditProfile ">
 
 
+                <div className="row">
+                    <div className="col m4">
+                        <ul className="tabs" ref={Tabs => {
+                            this.Tabs = Tabs;
+                        }}>
+                            <li className="tab "><a href="#infoUser" className="active"><i className="small material-icons floatElement">person</i>Informacion personal</a></li>
+                            <li className="tab "><a href="#emailContent"><i className="small material-icons floatElement">email</i>Correo</a></li>
+                            <li className="tab  "><a href="#passwordContent"><i className="small material-icons floatElement">fingerprint</i>Contraseña</a></li>
+                            <li className="tab "><a href="#numeroContent"><i className="small material-icons floatElement">phone_android</i>Numero de telefono</a></li>
+                        </ul>
+                    </div>
+                    <div className="col m8 ">
+                      
 
-                <div className="container emp-profile">
-                    <h4 className="headTitle">Configuracion general de la cuenta</h4>
+                            <div id="infoUser" className="col tab-content">
 
-                    <ul ref={Collapsible => { this.Collapsible = Collapsible }} className="collapsible">
-                        <li>
-                            <div className="collapsible-header resetBorder" id="UserName"><i className="large material-icons">person</i>Informacion personal</div>
-                            <div className="collapsible-body">
+                                <form id="formPersonalInfo" className="form-content">
 
-                                <form id="formPersonalInfo" method="post">
+                                    <div className="input-field col s12 ">
 
-                                    <div className="row">
-
-
-
-                                        <div className="input-field col s6 ">
-
-                                            <input id="primer_nombre" type="text" className="validate" name="primer_nombre" required maxLength="10" />
-                                            <label className="active" for="primer_nombre">Primer nombre</label>
-
-
-                                        </div>
-
-                                        <div className="input-field col s6 ">
-                                            <input id="segundo_apellido" type="text" className="validate" required maxLength="10" />
-                                            <label className="active" for="segundo_apellido">Segundo nombre</label>
-                                        </div>
-                                        <div className="input-field col s6 ">
-                                            <input id="first_apellido" type="text" className="validate" required maxLength="10" />
-                                            <label className="active" for="first_apellido">Primer apellido</label>
-                                        </div>
-                                        <div className="input-field col s6 ">
-                                            <input id="segundo_apellido" type="text" className="validate" required maxLength="10" />
-                                            <label className="active" for="segundo_apellido">Segundo apellido</label>
-                                        </div>
-
-
-
+                                        <input id="primer_nombre" type="text" className="validate" name="primer_nombre" required maxLength="10" />
+                                        <label className="active" for="primer_nombre">Primer nombre</label>
 
 
                                     </div>
-                                    <button className="waves-light btn" id="btnSetUserInfo" >Guardar cambios</button>
-                                </form>
 
-
-
-                            </div>
-                        </li>
-                        <li>
-                            <div className="collapsible-header resetBorder"><i className="large material-icons">email</i>Correo</div>
-                            <div className="collapsible-body">
-                                <form id="formSetEmail">
-                                    <div className="row">
-
-
-                                        <div className="input-field col s6 ">
-                                            <input id="email" type="email" className="validate" required />
-                                            <label for="email">Email</label>
-                                        </div>
-
-
+                                    <div className="input-field col s12 ">
+                                        <input id="segundo_nombre" type="text" className="validate" maxLength="10" />
+                                        <label className="active" for="segundo_nombre">Segundo nombre</label>
                                     </div>
-                                    <a className="waves-light btn" id="btnSetEmail" >Guardar cambios</a>
+                                    <div className="input-field col s12 ">
+                                        <input id="first_apellido" type="text" className="validate" required maxLength="10" />
+                                        <label className="active" for="first_apellido">Primer apellido</label>
+                                    </div>
+                                    <div className="input-field col s12 ">
+                                        <input id="segundo_apellido" type="text" className="validate" maxLength="10" />
+                                        <label className="active" for="segundo_apellido">Segundo apellido</label>
+                                    </div>
+                                    <button className="waves-light btn" id="btnSetUserInfo" onClick={(e)=> this.validarFormulario("formPersonalInfo", e)} >Guardar cambios</button>
+
                                 </form>
 
                             </div>
-                        </li>
-                        <li>
-                            <div className="collapsible-header resetBorder"><i className="large material-icons">fingerprint</i>Contraseña</div>
-                            <div className="collapsible-body">
-                                <form id="formContraseña">
 
-                                <div className="row">
-                                    <div className="input-field col s6">
-                                        <input id="password" type="password" className="validate" maxLength="10" required />
-                                        <label for="password">Contraseña actual</label>
+                            <div id="emailContent" className="col tab-content">
+
+                                <form className="form-content" id="emailForm">
+                                    <div className="input-field col s12 ">
+                                        <input id="email" type="email" className="validate" />
+                                        <label for="email">Email</label>
                                     </div>
+                                    <button className="waves-light btn" id="btnSetEmail" onClick={(e)=> this.validarFormulario("emailForm",e)} >Guardar cambios</button>
+
+                                </form>
+                            </div>
+
+                            <div id="passwordContent" className="col tab-content">
+                                <form className="form-content" id="formPassword">
+
                                     <div className="row">
-                                        <div className="input-field col s12">
-                                            <p>Ingrese una contraseña de maximo 10 caracteres.</p>
-                                        </div>
-                                        <div className="input-field col s6"    >
+                                        <div className="input-field col s6">
                                             <input id="password" type="password" className="validate" maxLength="10" required />
-                                            <label for="password">Nueva contraseña</label>
-
+                                            <label for="password">Contraseña actual</label>
                                         </div>
-                                        <div className="input-field col s6"    >
-                                            <input id="password" type="password" className="validate" maxLength="10" required />
-                                            <label for="password">Confirmar contraseña</label>
+                                        <div className="row">
+                                            <div className="input-field col s12">
+                                                <p>Ingrese una contraseña de maximo 10 caracteres.</p>
+                                            </div>
+                                            <div className="input-field col s6"    >
+                                                <input id="newPassword" type="password" className="validate" maxLength="10" required />
+                                                <label for="password">Nueva contraseña</label>
 
+                                            </div>
+                                            <div className="input-field col s6"    >
+                                                <input id="passwordRepeat" type="password" className="validate" maxLength="10" required />
+                                                <label for="password">Confirmar contraseña</label>
+
+                                            </div>
                                         </div>
+                                        <button className="waves-light btn" id="btnSetPass" onClick={(e)=> this.validarFormulario("formPassword",e)} >Guardar cambios</button>
                                     </div>
-                                </div>
-                                <a className="waves-light btn" id="btnSetContraseña">Guardar cambios</a>
+
                                 </form>
 
+
                             </div>
-                        </li>
-                        <li>
-                            <div className="collapsible-header resetBorder"><i className="large material-icons">phone_android</i>Numero de telefono</div>
-                            <div className="collapsible-body">
-                                <div className="row">
-                                    <div className="input-field col s6 ">
-                                        <input id="numeroTelefono" type="number" className="validate" />
+
+                            <div id="numeroContent" className="col tab-content">
+                                <form className="form-content" id="formTel">
+
+                                    <div className="input-field col s12 ">
+                                        <input id="numeroTelefono" type="number" className="validate" maxLength="9" />
                                         <label for="numeroTelefono">Numero de telefono</label>
                                     </div>
+                                    <button className="waves-light btn" id="btnSetTelefono" onClick={(e)=> this.validarFormulario("formTel",e)} >Guardar cambios</button>
 
-                                </div>
-                                <a className="waves-light btn" >Guardar cambios</a>
 
+                                </form>
                             </div>
-                        </li>
-                    </ul>
+                        
 
 
 
-
-
+                    </div>
                 </div>
-
-
             </div>
         );
     }
