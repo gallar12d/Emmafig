@@ -78,11 +78,8 @@ class Menu extends Component {
                                 smooth={true}
                                 offset={-70}
                                 duration={500}
-                            >
-
-                            </Link>
+                            />                           
                             <Link
-
                                 onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "inicio") }}
                                 activateclass="activate"
                                 to="seccion1"
@@ -93,15 +90,12 @@ class Menu extends Component {
                             >
                                 <img className="brand-logo hide-on-med-and-down logo" alt="logo" src={this.state.logo}>
                                 </img>
-
                             </Link>
                             <a href="#!" data-target="mobile-demo" className="sidenav-trigger">
                                 <i className="material-icons">menu</i>
                             </a>
                             <ul className=" menuItems right hide-on-med-and-down">
-
                                 <li>
-
                                     <Link
                                         id="scroolCitas"
                                         activateclass="activate"
@@ -111,11 +105,8 @@ class Menu extends Component {
                                         offset={-60}
                                         duration={500}
                                         delay={1000}
-                                    >
-                                    </Link>
-
+                                    />
                                     <Link
-
                                         onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCitas") }}
                                         activateclass="activate"
                                         to="citas"
@@ -126,7 +117,6 @@ class Menu extends Component {
                                     >
                                         Citas
                                     </Link>
-
                                 </li>
                                 <li>
                                     <Link
@@ -138,9 +128,7 @@ class Menu extends Component {
                                         offset={320}
                                         duration={500}
                                         delay={1000}
-                                    >
-                                    </Link>
-
+                                    />
                                     <Link
                                         onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolTestimonios") }}
                                         activateclass="activate"
@@ -154,10 +142,7 @@ class Menu extends Component {
                                 </Link>
                                 </li>
                                 <li>
-
-
                                     <a href="#!"> Blog </a>
-
                                 </li>
                                 <li>
                                     <Link
@@ -169,12 +154,8 @@ class Menu extends Component {
                                         offset={317}
                                         duration={500}
                                         delay={1000}
-                                    >
-
-                                    </Link>
-
+                                    />
                                     <Link
-
                                         ref={e => (elementContacto = e)}
                                         onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolContacto") }}
                                         activateclass="activate"
@@ -205,8 +186,7 @@ class Menu extends Component {
                     offset={-55}
                     duration={500}
                     delay={1000}
-                >
-                </Link>
+                />                
                 <Link
                     id="scroolCitas_sm"
                     activateclass="activate"
@@ -216,8 +196,7 @@ class Menu extends Component {
                     offset={-60}
                     duration={500}
                     delay={1000}
-                >
-                </Link>
+                />                
                 <Link
                     id="scroolTestimonios_sm"
                     activateclass="activate"
