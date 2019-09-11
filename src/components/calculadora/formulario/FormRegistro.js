@@ -26,7 +26,8 @@ class FormRegistro extends Component {
             id_social: '',
             canal_registro: '',
             registro: -1,
-            showOptions: 1
+            showOptions: 1,
+            LoginSuccesfull: 0
         }
         this.showSocialButtons = this.showSocialButtons.bind(this);
         /*this.responseFacebook = this.responseFacebook.bind(this);
@@ -66,7 +67,9 @@ class FormRegistro extends Component {
 
     }
     closeModal = () => {
+        console.log('Close modal');        
         M.Modal.getInstance(document.getElementById('modal1')).close();
+        this.props.changeLogin();
         //this.props.changeComponente();
     }
     /*responseFacebook = (response) => {
@@ -163,8 +166,11 @@ class FormRegistro extends Component {
             }
             )
                 .then(res => {
-                    this.setJwt('jwt', res.data.jwt);
-                    this.props.changeLogin()
+                    this.setJwt('jwt', res.data.jwt);                    
+                    this.setState({
+                        LoginSuccesfull: 1
+                    })
+                    this.closeModal();
                 })
                 .catch(function (error) {
                     if (error.response) {

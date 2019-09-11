@@ -9,7 +9,7 @@ let elementInicio;
 let elementTestimonios;
 let elementContacto;
 let elementCitas
-
+let usuario;
 
 class Menu extends Component {
     constructor(props) {
@@ -19,22 +19,19 @@ class Menu extends Component {
             gblState: 0,
             element: "",
             componentChange: 0,
-
-
         };
     }
     componentDidMount() {
-        console.log('estado login '+this.props.login);
+        console.log('estado login ' + this.props.login);
         M.Dropdown.init(this.Dropdown);
         M.Collapsible.init(this.Collapsible);
-
-
     }
-    
+
     componentDidUpdate() {
-        console.log('Update menu');    
+        M.Dropdown.init(this.Dropdown);
+        M.Collapsible.init(this.Collapsible);
     }
-    
+
     GenerateClick(state, elementMenu) {
         /*
         this.setState({
@@ -51,36 +48,26 @@ class Menu extends Component {
         //$("#"+context).trigger("click");
     }
 
-    showPerfil() {
-        if (this.props.login == 1) {
-            return (<ul id="dropdown1" className="dropdown-content">
-                <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
-                <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
-                <li className="divider"></li>
-                <li><a href="#/logout">Cerrar sesion</a></li>
-            </ul>)
-        }
-    }
-    showContentDropdown(){
-        if (this.props.login == 1) {
-            return (<li>
-                <a id="perfil" className="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
 
-                    Usuario <i className="material-icons right">arrow_drop_down</i>
-
-                </a>
-
-
-            </li>)
-        }
-    }
     render() {
+        let usuario;
+        if (this.props.login == 1) {
+            usuario = <li>
+                <a id="perfil" className="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
+                    Usuario <i className="material-icons right">arrow_drop_down</i>
+                </a>
+                <ul id="dropdown1" className="dropdown-content" >
+                    <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
+                    <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
+                    <li className="divider"></li>
+                    <li><a href="#/logout">Cerrar sesion</a></li>
+                </ul>
+            </li>
+        }
         return (
             <div id="menu">
                 <div className="navbar-fixed">
-                    {
-                        this.showPerfil()
-                    }
+
                     <nav>
                         <div className="nav-wrapper">
                             <Link
@@ -91,11 +78,8 @@ class Menu extends Component {
                                 smooth={true}
                                 offset={-70}
                                 duration={500}
-                            >
-
-                            </Link>
+                            />
                             <Link
-
                                 onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "inicio") }}
                                 activateclass="activate"
                                 to="seccion1"
@@ -106,16 +90,13 @@ class Menu extends Component {
                             >
                                 <img className="brand-logo hide-on-med-and-down logo" alt="logo" src={this.state.logo}>
                                 </img>
-
                             </Link>
                             <a href="#!" data-target="mobile-demo" className="sidenav-trigger">
                                 <i className="material-icons">menu</i>
                             </a>
                             <ul className=" menuItems right hide-on-med-and-down">
-
                                 <li>
-
-                                <Link
+                                    <Link
                                         id="scroolCitas"
                                         activateclass="activate"
                                         to="citas"
@@ -124,11 +105,8 @@ class Menu extends Component {
                                         offset={-60}
                                         duration={500}
                                         delay={1000}
-                                    >
-                                    </Link>
-
+                                    />
                                     <Link
-
                                         onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCitas") }}
                                         activateclass="activate"
                                         to="citas"
@@ -139,7 +117,6 @@ class Menu extends Component {
                                     >
                                         Citas
                                     </Link>
-
                                 </li>
                                 <li>
                                     <Link
@@ -148,12 +125,10 @@ class Menu extends Component {
                                         to="testimonios"
                                         spy={true}
                                         smooth={true}
-                                        offset={283}
+                                        offset={320}
                                         duration={500}
                                         delay={1000}
-                                    >
-                                    </Link>
-
+                                    />
                                     <Link
                                         onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolTestimonios") }}
                                         activateclass="activate"
@@ -167,27 +142,20 @@ class Menu extends Component {
                                 </Link>
                                 </li>
                                 <li>
+                                    <a href="#!"> Blog </a>
+                                </li>
+                                <li>
                                     <Link
                                         id="scroolContacto"
                                         activateclass="activate"
                                         to="contacto"
                                         spy={true}
                                         smooth={true}
-                                        offset={283}
+                                        offset={317}
                                         duration={500}
                                         delay={1000}
-                                    >
-
-                                    </Link>
-
-
-                                    <a href="#!"> Blog </a>
-
-                                </li>
-                                <li>
-
+                                    />
                                     <Link
-
                                         ref={e => (elementContacto = e)}
                                         onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolContacto") }}
                                         activateclass="activate"
@@ -200,14 +168,24 @@ class Menu extends Component {
                                         Contacto
                                 </Link>
                                 </li>
+                                {usuario}
+                                <li>
+                                    <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
+                                        <i className="fa fa-facebook fa-lg"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://instagram.com/funinnovagen?igshid=1i9a8bm9m2kck" target="_blank">
+                                        <i className="fa fa-instagram fa-lg"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a id="iconWSP" href="https://api.whatsapp.com/send?phone=573174412170" target="_blank">
+                                        <i className="fa fa-whatsapp fa-lg"></i>
+                                    </a>
+                                </li>
 
-                               
-                                {
-                                    this.showContentDropdown()
-                                }
-                                
                             </ul>
-
                         </div>
                     </nav>
 
@@ -224,8 +202,7 @@ class Menu extends Component {
                     offset={-55}
                     duration={500}
                     delay={1000}
-                >
-                </Link>
+                />
                 <Link
                     id="scroolCitas_sm"
                     activateclass="activate"
@@ -235,8 +212,7 @@ class Menu extends Component {
                     offset={-60}
                     duration={500}
                     delay={1000}
-                >
-                </Link>
+                />
                 <Link
                     id="scroolTestimonios_sm"
                     activateclass="activate"
@@ -383,5 +359,7 @@ class Menu extends Component {
 
 
 }
+function Perfil() {
 
+}
 export default Menu; // Don’t forget to use export default!
