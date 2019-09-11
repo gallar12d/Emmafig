@@ -182,7 +182,7 @@ class Cuestionario extends Component {
                 } else if (this.state.selectedValues[5] == '2') {
                     etnia_indigena = 1;
                 }
-                fetch("http://localhost/api1/algoritmo_prueba.php?edad=" + this.state.selectedValues[0] +
+                fetch("http://localhost:8080/api1/algoritmo_prueba.php?edad=" + this.state.selectedValues[0] +
                     "&hijos_may_3=" + this.state.selectedValues[1] +
                     "&comp_sex_may_2=" + this.state.selectedValues[2] +
                     "&con_pareja=" + this.state.selectedValues[3] +

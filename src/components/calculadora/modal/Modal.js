@@ -12,7 +12,7 @@ class Modal extends Component {
     }
     componentDidMount() {
         
-        var elems = document.getElementById('modal1');
+        var elems = document.getElementById(this.props.id);
         var instances = M.Modal.init(elems, {dismissible: false});
         
     }
@@ -20,7 +20,7 @@ class Modal extends Component {
 
         return (
 
-            <div id="modal1" className="modal">
+            <div id={this.props.id} className="modal">
                 <div className="modal-content">
                     <FormRegistro changeComponente={this.props.changeComponente} modal={this.modal} changeLogin={this.props.changeLogin}/>
                 </div>
