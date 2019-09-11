@@ -27,9 +27,10 @@ class FormRegistro extends Component {
             canal_registro: '',
             registro: -1,
             showOptions: 1,
-            LoginSuccesfull: 0
+            LoginSuccesfull: 0,
+            showButtons: 0
         }
-        this.showSocialButtons = this.showSocialButtons.bind(this);
+        //this.showSocialButtons = this.showSocialButtons.bind(this);
         /*this.responseFacebook = this.responseFacebook.bind(this);
         this.responseGoogle = this.responseGoogle.bind(this);*/
         this.validarCampos = this.validarCampos.bind(this);
@@ -67,9 +68,10 @@ class FormRegistro extends Component {
 
     }
     closeModal = () => {
-        console.log('Close modal');        
+        console.log('Close modal');
         M.Modal.getInstance(document.getElementById('modal1')).close();
         this.props.changeLogin();
+        this.reiniciarForm();
         //this.props.changeComponente();
     }
     /*responseFacebook = (response) => {
@@ -138,15 +140,17 @@ class FormRegistro extends Component {
             )
                 .then(res => {
                     console.log(res.data.message);
+                    this.login();
                 })
                 .catch(function (error) {
                     if (error.response) {
+                        let user_exits = document.getElementById('user_exits');
+                        user_exits.style.display = 'block';
                         console.log(error.response.data);
                         console.log(error.response.status);
                         console.log(error.response.headers);
                     }
                 });
-            this.closeModal();
         } else {
             codigoError.style.display = "block";
             codigoError.classList.remove("celular-animation");
@@ -160,27 +164,27 @@ class FormRegistro extends Component {
         let tipo_identificacion = document.getElementById('tipo_identificacion');
         let identificacion = document.getElementById('identificacion');
         Axios.post('https://emmafig.com/api1/rest-authentication/api/login.php', {
-                "password": password.value,
-                "tipo_identificacion": tipo_identificacion.value,
-                "identificacion": identificacion.value
-            }
-            )
-                .then(res => {
-                    this.setJwt('jwt', res.data.jwt);                    
-                    this.setState({
-                        LoginSuccesfull: 1
-                    })
-                    this.closeModal();
+            "password": password.value,
+            "tipo_identificacion": tipo_identificacion.value,
+            "identificacion": identificacion.value
+        }
+        )
+            .then(res => {
+                this.setJwt('jwt', res.data.jwt);
+                this.setState({
+                    LoginSuccesfull: 1
                 })
-                .catch(function (error) {
-                    if (error.response) {    
-                        let login_failed = document.getElementById('login_failed');     
-                        login_failed.style.display = 'block';
-                        console.log(error.response.data);
-                        console.log(error.response.status);
-                        console.log(error.response.headers);
-                    }
-                });
+                this.closeModal();
+            })
+            .catch(function (error) {
+                if (error.response) {
+                    let login_failed = document.getElementById('login_failed');
+                    login_failed.style.display = 'block';
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+            });
     }
 
     setJwt = (key, value) => {
@@ -199,7 +203,7 @@ class FormRegistro extends Component {
         let tipo_identificacion = document.getElementById('tipo_identificacion');
         let identificacion = document.getElementById('identificacion');
         let correo = document.getElementById('correo');
-        if(this.state.registro == 1){
+        if (this.state.registro == 1) {
             if (isValid) {
                 if (password.value !== confirm_password.value) {
                     errortext = "Los valores no coinciden";
@@ -283,20 +287,20 @@ class FormRegistro extends Component {
                                 celularError.classList.add("celular-animation");
                                 break;
                         }
-    
+
                     }
                 }
                 //this.props.changeComponente
             }
-        }else if(isValid){
+        } else if (isValid) {
             this.setState({
                 password: password.value,
                 tipo_identificacion: tipo_identificacion.value,
-                identificacion: identificacion.value                
+                identificacion: identificacion.value
             });
             this.login();
         }
-        
+
 
     }
     validarEmail = (valor) => {
@@ -313,16 +317,20 @@ class FormRegistro extends Component {
     isRegistro = () => {
         this.setState({
             registro: 1,
-            showOptions: 0
+            showOptions: 0,
+            showButtons: 1
         });
         this.showOptions()
+        this.showButtons()
     }
     isLogin = () => {
         this.setState({
             registro: 0,
-            showOptions: 0
+            showOptions: 0,
+            showButtons: 1
         });
         this.showOptions()
+        this.showButtons()
     }
     showOptions = () => {
         if (this.state.showOptions == 1) {
@@ -344,13 +352,32 @@ class FormRegistro extends Component {
 
     }
 
-    regresar = () => {
+    /*regresar = () => {
         this.setState({
             registro: -1,
             showOptions: 1
         })
         this.showFields();
         this.showOptions();
+        document.getElementById("form_perfil").reset();
+        let login_failed = document.getElementById('login_failed');
+        login_failed.style.display = 'none';
+    }*/
+
+    reiniciarForm = () => {
+        this.setState({
+            registro: -1,
+            showOptions: 1,
+            showButtons: 0
+        })
+        this.showFields();
+        this.showOptions();
+        this.showButtons();
+        document.getElementById("form_perfil").reset();
+        let login_failed = document.getElementById('login_failed');
+        login_failed.style.display = 'none';
+        let user_exits = document.getElementById('user_exits');
+        user_exits.style.display = 'none';
     }
 
     showFields = () => {
@@ -389,12 +416,6 @@ class FormRegistro extends Component {
 
                         </div>
                     </div>
-                    <div id="btn_celular" className="row">
-                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.validarCampos}>Aceptar</a>
-                    </div>
-                    <div id="btn_cancelar" className="row">
-                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.regresar}>Regresar</a>
-                    </div>
                 </div>
             )
         } else if (this.state.registro == 0) {
@@ -409,12 +430,7 @@ class FormRegistro extends Component {
                             <p id="password-error" className="center cel-error">Por favor digite su contraseña</p>
                         </div>
                     </div>
-                    <div id="btn_ingresar" className="row">
-                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.validarCampos}>Aceptar</a>
-                    </div>
-                    <div id="btn_cancelar" className="row">
-                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.regresar}>Regresar</a>
-                    </div>
+
                 </div>
             )
         }
@@ -443,7 +459,23 @@ class FormRegistro extends Component {
         }
 
     }
-    showSocialButtons = () => {
+    showButtons() {
+        if (this.state.showButtons == 1) {
+            return (
+                <div>
+                    <div id="btn_celular" className="row">
+                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.validarCampos}>Aceptar</a>
+                    </div>
+                    <div id="btn_cancelar" className="row">
+                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.reiniciarForm}>Regresar</a>
+                    </div>
+                </div>
+            )
+        } else {
+            return null
+        }
+    }
+    /*showSocialButtons = () => {
         if (this.state.showSocialButtons == 1) {
             return (
                 <div>
@@ -494,12 +526,13 @@ class FormRegistro extends Component {
             );
 
         }
-    }
+    }*/
     render() {
 
         return (
 
             <form id="form_perfil" noValidate>
+                <div id="user_exits" class='alert alert-danger'>Registro fallido. la identificación ya existe.</div>
                 <div id="login_failed" class='alert alert-danger'>Login fallido. Identificación o Contraseña incorrectos.</div>
                 {
                     this.showOptions()
@@ -509,6 +542,9 @@ class FormRegistro extends Component {
                 }
                 {
                     this.showConfirmation()
+                }
+                {
+                    this.showButtons()
                 }
             </form>
         );
@@ -523,9 +559,9 @@ function CamposPorDefecto(props) {
             <div className="input-field col s12 l10 offset-l1">
                 <select id="tipo_identificacion" className="browser-default" defaultValue='1' required>
                     <option value="" disabled>Tipo de Identifcación *</option>
-                    <option value="Cédula de Ciudadanía">CC (Cédula de Ciudadanía)</option>
-                    <option value="Tarjeta de Identidad">TI (Tarjeta de Identidad)</option>
-                    <option value="Cédula de Extranjería">CE (Cédula de Extranjería)</option>
+                    <option value="Cédula de ciudadanía">CC (Cédula de ciudadanía)</option>
+                    <option value="Tarjeta de identidad">TI (Tarjeta de identidad)</option>
+                    <option value="Cédula de extranjería">CE (Cédula de extranjería)</option>
                 </select>
 
                 <p id="tipo_iden_error" className="center cel-error">Por favor Escoja un tipo de Identifcación</p>

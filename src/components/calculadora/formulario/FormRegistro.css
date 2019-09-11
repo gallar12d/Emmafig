@@ -15,7 +15,7 @@
   margin-bottom: 1em;
   width: 19.3em;
 }
-#login_failed {
+#login_failed, #user_exits {
   display: none;
   color: #a72525;
   background-color: #f5d6d6;
