@@ -124,7 +124,7 @@ class FormRegistro extends Component {
             cont_confirm.style.display = 'none';
             btn_confirm.style.display = 'none';
             codigo.setAttribute("disabled", "true");
-            Axios.post('http://localhost.8080/api1/rest-api-authentication-example/api/create_user.php', {
+            Axios.post('https://emmafig.com/api1/rest-authentication/api/create_user.php', {
                 "primer_nombre": 'User',
                 "segundo_nombre": 'User',
                 "primer_apellido": 'User',
@@ -159,7 +159,7 @@ class FormRegistro extends Component {
         let password = document.getElementById('password');
         let tipo_identificacion = document.getElementById('tipo_identificacion');
         let identificacion = document.getElementById('identificacion');
-        Axios.post('http://localhost:8080/api1/rest-api-authentication-example/api/login.php', {
+        Axios.post('https://emmafig.com/api1/rest-authentication/api/login.php', {
                 "password": password.value,
                 "tipo_identificacion": tipo_identificacion.value,
                 "identificacion": identificacion.value
@@ -344,6 +344,15 @@ class FormRegistro extends Component {
 
     }
 
+    regresar = () => {
+        this.setState({
+            registro: -1,
+            showOptions: 1
+        })
+        this.showFields();
+        this.showOptions();
+    }
+
     showFields = () => {
         if (this.state.registro == 1) {
             return (
@@ -383,6 +392,9 @@ class FormRegistro extends Component {
                     <div id="btn_celular" className="row">
                         <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.validarCampos}>Aceptar</a>
                     </div>
+                    <div id="btn_cancelar" className="row">
+                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.regresar}>Regresar</a>
+                    </div>
                 </div>
             )
         } else if (this.state.registro == 0) {
@@ -397,8 +409,11 @@ class FormRegistro extends Component {
                             <p id="password-error" className="center cel-error">Por favor digite su contraseña</p>
                         </div>
                     </div>
-                    <div id="btn_celular" className="row">
+                    <div id="btn_ingresar" className="row">
                         <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.validarCampos}>Aceptar</a>
+                    </div>
+                    <div id="btn_cancelar" className="row">
+                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.regresar}>Regresar</a>
                     </div>
                 </div>
             )

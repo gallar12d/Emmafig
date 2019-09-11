@@ -103,7 +103,7 @@ class Resultado extends Component {
                     </div>
                     <div className="col s12 l3">
                         {/*<img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1" />*/}
-                        <a id="btn_mas_detalles" className="boton-res waves-effect waves-light modal-trigger" href={this.props.idModal} onClick={this.showa}>Más detalles de tu resultado</a>
+                        <a id="btn_mas_detalles" className="boton-res waves-effect waves-light modal-trigger" href={this.props.idModal}>Más detalles de tu resultado</a>
                     </div>
                     {/*<div className="col s12 l2">
                         <img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>
