@@ -23,6 +23,7 @@ class ComponentMaster extends Component {
             login: 0
         }
         this.changeLogin = this.changeLogin.bind(this);
+        this.showPerfil = this.showPerfil.bind(this);
 
     }
     changeComponente(state) {
@@ -45,61 +46,59 @@ class ComponentMaster extends Component {
 
 
     }
-    shouldComponentUpdate(nextProps, nextState){
+    shouldComponentUpdate(nextProps, nextState) {
         var checkState;
         console.log(this.state.changeCompt);
         console.log(nextState['changeCompt']);
-        if(this.state.changeCompt != nextState['changeCompt']){ 
+        if (this.state.changeCompt != nextState['changeCompt']) {
             return true;
-        }else{      
-           return false;
+        } else {
+            return false;
         }
-        
+
     }
-    showPerfil = () => {        
-        if(this.state.login == 0){
-            return (<h1>hola</h1>)
-        }else{
-            return (<h1>hola mundo</h1>)
-        }
+    showPerfil = () => {
+        console.log('show perfil');
+        return <Hola text={this.state.login} />
+
     }
     changeLogin = () => {
-        console.log('estado actual '+this.state.login);
+        console.log('estado actual ' + this.state.login);
         this.setState({
             login: 1
         });
-        
+        this.showPerfil();
     }
 
     componentDidUpdate(prevProps, prevState) {
-          
-           
-            if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
-                let simulateClick = elem => {
-                    let evt = new MouseEvent('click', {
-                        bubbles: true,
-                        view: window
-                    });
-                    elem.dispatchEvent(evt)
-                };
-                console.log(elementMenu);
-                
-                var btnMenu = document.getElementById(""+elementMenu+"");
-                simulateClick(btnMenu);
-              
-               
-                
-                //elementMenu.click();
-            
-            
-    
-    
-               
-    
-    
-            }
-           
-      
+
+
+        if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
+            let simulateClick = elem => {
+                let evt = new MouseEvent('click', {
+                    bubbles: true,
+                    view: window
+                });
+                elem.dispatchEvent(evt)
+            };
+            console.log(elementMenu);
+
+            var btnMenu = document.getElementById("" + elementMenu + "");
+            simulateClick(btnMenu);
+
+
+
+            //elementMenu.click();
+
+
+
+
+
+
+
+        }
+
+
     }
     showComponent = () => {
         switch (this.state.changeCompt) {
@@ -107,7 +106,7 @@ class ComponentMaster extends Component {
                 return (
                     <div className="mainpage">
                         <Seccion1 />
-                        <Calculadora changeLogin={this.changeLogin}/>
+                        <Calculadora changeLogin={this.changeLogin} />
                         <Citas />
                         <Testimonios />
                         <Contacto />
@@ -127,12 +126,11 @@ class ComponentMaster extends Component {
     }
 
     render() {
-        
+
 
         return (
             <div className="mainComponent">
-            {this.showPerfil()}
-
+                {this.showPerfil()}
                 {/*<Menu login={this.state.login} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}></Menu>*/}
                 {this.showComponent()}
             </div>
@@ -142,7 +140,11 @@ class ComponentMaster extends Component {
         );
 
     }
-
-
+}
+function Hola(props) {
+    if (props.text == 1)
+        return <h1>hola</h1>;
+    else
+        return <h1>hola mundo</h1>
 }
 export default ComponentMaster;

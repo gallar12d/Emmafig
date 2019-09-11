@@ -121,7 +121,7 @@ class FormRegistro extends Component {
             cont_confirm.style.display = 'none';
             btn_confirm.style.display = 'none';
             codigo.setAttribute("disabled", "true");
-            Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
+            Axios.post('http://localhost:8080/api1/rest-api-authentication-example/api/create_user.php', {
                 "primer_nombre": 'User',
                 "segundo_nombre": 'User',
                 "primer_apellido": 'User',
@@ -156,7 +156,7 @@ class FormRegistro extends Component {
         let password = document.getElementById('password');
         let tipo_identificacion = document.getElementById('tipo_identificacion');
         let identificacion = document.getElementById('identificacion');
-        Axios.post('http://localhost/api1/rest-api-authentication-example/api/login.php', {
+        Axios.post('http://localhost:8080/api1/rest-api-authentication-example/api/login.php', {
                 "password": password.value,
                 "tipo_identificacion": tipo_identificacion.value,
                 "identificacion": identificacion.value
