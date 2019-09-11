@@ -98,7 +98,7 @@ class ComponentMaster extends Component {
                 return (
                     <div className="mainpage">
                         <Seccion1 />
-                        <Calculadora changeLogin={this.changeLogin.bind(this)} />
+                        <Calculadora changeLogin={this.changeLogin.bind(this)} viewPerfil={this.changeComponente.bind(this)} />
                         <Citas />
                         <Testimonios />
                         <Contacto />
@@ -120,7 +120,7 @@ class ComponentMaster extends Component {
     render() {
         return (
             <div className="mainComponent">
-                {<Menu login={this.state.login} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}></Menu>}
+                {<Menu login={this.state.login} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
                 {this.showComponent()}
             </div>
         );

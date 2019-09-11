@@ -175,6 +175,7 @@ class FormRegistro extends Component {
                     LoginSuccesfull: 1
                 })
                 this.closeModal();
+                this.props.viewPerfil(1);
             })
             .catch(function (error) {
                 if (error.response) {
@@ -532,8 +533,8 @@ class FormRegistro extends Component {
         return (
 
             <form id="form_perfil" noValidate>
-                <div id="user_exits" class='alert alert-danger'>Registro fallido. la identificación ya existe.</div>
-                <div id="login_failed" class='alert alert-danger'>Login fallido. Identificación o Contraseña incorrectos.</div>
+                <div id="user_exits" className='alert alert-danger'>Registro fallido. la identificación ya existe.</div>
+                <div id="login_failed" className='alert alert-danger'>Login fallido. Identificación o Contraseña incorrectos.</div>
                 {
                     this.showOptions()
                 }

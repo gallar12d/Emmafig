@@ -66,7 +66,7 @@ class Calculadora extends Component {
 
         return (
             <div id="contenedor-calculadora">
-                <Modal id='modal1' changeComponente={this.changeComponente} changeLogin={this.props.changeLogin}/>
+                <Modal id='modal1' changeComponente={this.changeComponente} changeLogin={this.props.changeLogin} viewPerfil={this.props.viewPerfil}/>
                 {this.showComponente()}
             </div>
         );
