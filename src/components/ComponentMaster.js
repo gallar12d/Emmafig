@@ -45,7 +45,6 @@ class ComponentMaster extends Component {
 
 
     }
-
     shouldComponentUpdate(nextProps, nextState) {
         var checkState;
         console.log(this.state.changeCompt);
@@ -127,7 +126,11 @@ class ComponentMaster extends Component {
         );
 
     }
-
-
+}
+function Hola(props) {
+    if (props.text == 1)
+        return <h1>hola</h1>;
+    else
+        return <h1>hola mundo</h1>
 }
 export default ComponentMaster;
