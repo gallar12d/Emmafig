@@ -72,8 +72,12 @@
 
 }
 #head_info{
+    
     margin-bottom: 8px !important; 
     
+}
+.telefonos{
+    margin-top: 30px;
 }
 
 .info_div_hide{
@@ -92,7 +96,7 @@
     text-align: start;
   
     transition-property: margin-left;
-   transition-duration: 0.3s, 0.3s, 0.3s;
+   transition-duration: 0.2s, 0.2s, 0.2s;
    transition-timing-function: linear, linear;
 /*
 
@@ -113,12 +117,12 @@ margin-left: -354px;
     padding-bottom: 0px;
     padding-left: 40px;
     background-color: #c83b8d;
-    color: aliceblue;
+    color: #f0f8ff;
   
     text-align: start;
   
     transition-property: margin-left;
-   transition-duration: 0.3s, 0.3s, 0.3s;
+   transition-duration: 0.2s, 0.2s, 0.2s;
    transition-timing-function: linear, linear;
    
    
@@ -153,7 +157,9 @@ margin-left: -354px;
     cursor: pointer;
 }
 
-
+.centerText{
+    text-align: center;
+}
 
 #btn_animate_div_info:active{
     width: 0px;
@@ -168,7 +174,7 @@ margin-left: -354px;
     
 }
 #col_0_pading{
-    padding: 0px;
+    padding: 0px 0px 10px 0px;
 }
 
 .cel_div{
@@ -199,6 +205,40 @@ margin-left: -354px;
     /*border: black solid 2px;*/
     
 }
+/*
+
+div.container_sedes{
+    
+    position: absolute;
+    top: 96%;
+    left: 30%;
+    
+    
+}
+*/
+#btnsedeSantander{
+
+   width: 120px !important;
+   height: 30px !important;
+   
+}
+#btnsedePopayan{
+ 
+    width: 120px !important;
+    
+    height: 30px !important;
+    
+}
+div.container_btn_sedes{
+   
+  
+    position: absolute;
+    left: 324px;
+    top: 89.1%;   
+   
+
+}
+
 
 #second_text{
     font-size: 14px !important;
@@ -227,11 +267,49 @@ margin-left: -354px;
 }
 
 
-.headline_sede{
-    font-size: 20px;
+.headline_sede{   
+    font-size: 18px; 
     margin-top: 30px;
+    padding: 5px;
+   
+}
+.headline_sede:hover{
+    cursor: pointer;
+}
+.headline_sede_clicked{
+    font-size: 18px; 
+    margin-top: 30px;
+    /*
+    padding: 5px;
+    border: 2px solid aliceblue;
+    border-radius: 2px solid;
+    */
+
+    border: 2px solid aliceblue;
+    padding: 5px ;
+    border-radius: 25px;
     
+
+
+
+}
+.sede_div{
+    margin-bottom: 10px;
+    padding: 0px !important;
+    width: 120px;
+}
+.sede_div_clicked{
+    margin-bottom: 10px;
+    padding: 0px !important;
+    border: 2px solid aliceblue;
+    border-radius: 25px;
+  
+    text-align: center;
     
+
+}
+.headline_sede_clicked:hover{
+    cursor: pointer;
 }
 
 .titulos{
@@ -240,11 +318,13 @@ margin-left: -354px;
 
 
 }
-
-#sede_div{
-    margin-bottom: 10px;
-    padding: 0px !important;
+.routes{
+   margin-left: 55%;
+   color: aliceblue;
+   cursor: pointer;
+   text-decoration: underline;
 }
+
 #sede_div_santander{
     margin-top: 30px;
     margin-bottom: 8px ;
@@ -252,10 +332,16 @@ margin-left: -354px;
 }
 #head_info_div{
     margin-top: 30px ;
-    margin-bottom: 20px ;
+    margin-bottom: 10px ;
     padding: 0px !important;
     
 }
+#sede_div_parent{
+    margin-top: 30px ;
+    padding: 2px 0px 0px 0px !important ; 
+
+}
+
 .div_sede{
     margin-top: 4%;
     margin-bottom: 8px;
@@ -341,8 +427,7 @@ margin-left: -354px;
   }
 
 @media only screen and (max-width:640px) and (orientation: landscape) {
-   
-
+    
     
     .info_div_hide{
         position: absolute;
@@ -494,7 +579,36 @@ margin-left: -354px;
  
  */
  @media only screen and (max-width: 375px){
+    #btnsedeSantander{
+
+        width: 80px !important;
+        height: 30px !important;
+        font-size: 11px;
+        padding: 0% 8px !important;
+        text-align: initial;
+        
+    }
     
+   
+     #btnsedePopayan{
+      
+         width: 80px !important;
+         
+         height: 30px !important;
+         font-size: 11px;
+        padding: 0% 8px !important;
+        text-align: initial;
+     }  
+    
+    div.container_btn_sedes{
+   
+  
+        position: absolute;
+        left: 250px;
+        top: 88%;   
+       
+    
+    }
     
   
     .btn_animate_div_in{

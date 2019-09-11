@@ -6,7 +6,7 @@ import '../../../../node_modules/font-awesome/css/font-awesome.min.css';
 import './FormRegistro.css';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from 'react-google-login';
-
+import Axios from 'axios';
 class FormRegistro extends Component {
 
     constructor(props) {
@@ -16,16 +16,31 @@ class FormRegistro extends Component {
             showConfirmation: 0,
             celularError: 0,
             codigo: 0,
-            email: '',
+            correo: '',
             celular: '',
-            nombre: ''
+            primer_nombre: '',
+            password: '',
+            tipo_identificacion: '',
+            identificacion: '',
+            avatar: '',
+            id_social: '',
+            canal_registro: '',
+            registro: -1,
+            showOptions: 1,
+            LoginSuccesfull: 0
         }
         this.showSocialButtons = this.showSocialButtons.bind(this);
-        this.responseFacebook = this.responseFacebook.bind(this);
-        this.responseGoogle = this.responseGoogle.bind(this);
-        this.validarCelular = this.validarCelular.bind(this);
+        /*this.responseFacebook = this.responseFacebook.bind(this);
+        this.responseGoogle = this.responseGoogle.bind(this);*/
+        this.validarCampos = this.validarCampos.bind(this);
         this.showConfirmation = this.showConfirmation.bind(this);
+        this.showFields = this.showFields.bind(this);
+        this.isRegistro = this.isRegistro.bind(this);
+        this.isLogin = this.isLogin.bind(this);
+        this.login = this.login.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.showOptions = this.showOptions.bind(this);
+        this.setJwt = this.setJwt.bind(this);
     }
 
     btnOnclick = () => {
@@ -39,11 +54,11 @@ class FormRegistro extends Component {
             nombreError.classList.remove("celular-animation");
             void nombreError.offsetWidth;
             nombreError.classList.add("celular-animation");
-        } else if(this.validarEmail(email.value)){
+        } else if (this.validarEmail(email.value)) {
             this.nombre = nombre.value;
             this.email = email.value;
             this.closeModal();
-        }else{
+        } else {
             emailError.style.display = "block";
             emailError.classList.remove("celular-animation");
             void emailError.offsetWidth;
@@ -52,10 +67,12 @@ class FormRegistro extends Component {
 
     }
     closeModal = () => {
+        console.log('Close modal');        
         M.Modal.getInstance(document.getElementById('modal1')).close();
-        this.props.changeComponente();
+        this.props.changeLogin();
+        //this.props.changeComponente();
     }
-    responseFacebook = (response) => {
+    /*responseFacebook = (response) => {
         console.log(response);
         this.nombre = response.name;
         this.email = response.email;
@@ -64,11 +81,38 @@ class FormRegistro extends Component {
     }
 
     responseGoogle = (response) => {
-        this.nombre = response.profileObj.name;
-        this.email = response.profileObj.email;
+        this.setState({
+            primer_nombre: response.profileObj.name,
+            correo: response.profileObj.email,
+            celular: this.state.celular,
+            avatar: response.profileObj.imageUrl,
+            canal_registro: 'Google',
+            id_social: response.profileObj.googleId
+        });
+
         console.log(response.profileObj);
+        Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
+            "primer_nombre": this.state.primer_nombre,
+            "correo": this.state.correo,
+            "password": this.state.password,
+            "celular": this.state.celular,
+            "avatar": this.state.avatar,
+            "canal_registro": this.state.canal_registro,
+            "id_social": this.state.id_social
+        }
+        )
+            .then(res => {
+                console.log(res.data.message);
+            })
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+            });
         this.closeModal();
-    }
+    }*/
     validarCodigo = () => {
         let codigo = document.getElementById('codigo');
         let codigoError = document.getElementById('codigo-error');
@@ -80,9 +124,29 @@ class FormRegistro extends Component {
             cont_confirm.style.display = 'none';
             btn_confirm.style.display = 'none';
             codigo.setAttribute("disabled", "true");
-            this.setState({
-                showSocialButtons: 1
-            });
+            Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
+                "primer_nombre": 'User',
+                "segundo_nombre": 'User',
+                "primer_apellido": 'User',
+                "segundo_apellido": 'User',
+                "correo": this.state.correo,
+                "celular": this.state.celular,
+                "password": this.state.password,
+                "tipo_identificacion": this.state.tipo_identificacion,
+                "identificacion": this.state.identificacion
+            }
+            )
+                .then(res => {
+                    console.log(res.data.message);
+                })
+                .catch(function (error) {
+                    if (error.response) {
+                        console.log(error.response.data);
+                        console.log(error.response.status);
+                        console.log(error.response.headers);
+                    }
+                });
+            this.closeModal();
         } else {
             codigoError.style.display = "block";
             codigoError.classList.remove("celular-animation");
@@ -90,98 +154,254 @@ class FormRegistro extends Component {
             codigoError.classList.add("celular-animation");
         }
     }
-    validarCelular = () => {
+
+    login = () => {
+        let password = document.getElementById('password');
+        let tipo_identificacion = document.getElementById('tipo_identificacion');
+        let identificacion = document.getElementById('identificacion');
+        Axios.post('http://localhost/api1/rest-api-authentication-example/api/login.php', {
+                "password": password.value,
+                "tipo_identificacion": tipo_identificacion.value,
+                "identificacion": identificacion.value
+            }
+            )
+                .then(res => {
+                    this.setJwt('jwt', res.data.jwt);                    
+                    this.setState({
+                        LoginSuccesfull: 1
+                    })
+                    this.closeModal();
+                })
+                .catch(function (error) {
+                    if (error.response) {    
+                        let login_failed = document.getElementById('login_failed');     
+                        login_failed.style.display = 'block';
+                        console.log(error.response.data);
+                        console.log(error.response.status);
+                        console.log(error.response.headers);
+                    }
+                });
+    }
+
+    setJwt = (key, value) => {
+        localStorage.setItem(key, value);
+    }
+
+    validarCampos = () => {
+        let isValid = document.querySelector('#form_perfil').reportValidity();
         let errortext = "Por favor digite un numero de celular para continuar";
         let celular = document.getElementById('celular');
         let celularError = document.getElementById('celular-error');
+        let passwordError = document.getElementById('password-error');
         let btn_celular = document.getElementById('btn_celular');
-        if (celular.value === "" || celular.value.length < 10) {
-            console.log("value cel " + celular.value);
-            if (celular.value.length < 10 && celular.value !== "") {
-                errortext = "El Número de celular debe ser de 10 digitos";
-            }
-            celularError.innerHTML = errortext;
-            celularError.style.display = "block";
-            celularError.classList.remove("celular-animation");
-            void celularError.offsetWidth;
-            celularError.classList.add("celular-animation");
-        } else {
-            if (celular.value.length == 10) {
-                let prefijo = celular.value.substr(0, 3);
-                switch (prefijo) {
-                    case '300':
-                    case '301':
-                    case '302':
-                    case '304':
-                    case '305':
-                    case '310':
-                    case '311':
-                    case '312':
-                    case '313':
-                    case '314':
-                    case '320':
-                    case '321':
-                    case '322':
-                    case '323':
-                    case '315':
-                    case '316':
-                    case '317':
-                    case '318':
-                    case '319':
-                    case '350':
-                    case '351': 
-                        this.celular = celular.value;
-                        celular.setAttribute("disabled", "true");
-                        btn_celular.style.display = "none";
-                        celularError.style.display = "none";
-                        this.setState({
-                            showConfirmation: 1
-                        });
-                        this.showConfirmation();
-                        //fetch("http://localhost/api1/sendKey.php?celular="+celular.value)
-                        fetch("https://emmafig.com/api1/sendKey.php?celular="+celular.value)
-                            .then(res => res.json())
-                            .then(
-                                (result) => {
-                                    console.log(result);
-                                    if (result.estado == 'sent') {
-                                        console.log(result.codigo)
-                                        this.setState({
-                                            codigo : result.codigo
-                                        });
-                                        this.setState({
-                                            showConfirmation: 1
-                                        });
-                                        this.showConfirmation();
-                                    }
-                                },
-                                (error) => {
-                                    alert('Error');
-                                }
-                            )
-                        break;
-                    default: errortext = "Numero de celular no valido";
-                        celularError.innerHTML = errortext;
-                        celularError.style.display = "block";
-                        celularError.classList.remove("celular-animation");
-                        void celularError.offsetWidth;
-                        celularError.classList.add("celular-animation");
-                        break;
+        let password = document.getElementById('password');
+        let confirm_password = document.getElementById('confirm_password');
+        let tipo_identificacion = document.getElementById('tipo_identificacion');
+        let identificacion = document.getElementById('identificacion');
+        let correo = document.getElementById('correo');
+        if(this.state.registro == 1){
+            if (isValid) {
+                if (password.value !== confirm_password.value) {
+                    errortext = "Los valores no coinciden";
+                    passwordError.innerHTML = errortext;
+                    passwordError.style.display = "block";
+                    passwordError.classList.remove("celular-animation");
+                    void passwordError.offsetWidth;
+                    passwordError.classList.add("celular-animation");
+                } else if (celular.value.length < 10) {
+                    passwordError.style.display = "none";
+                    if (celular.value.length < 10 && celular.value !== "") {
+                        errortext = "El Número de celular debe ser de 10 digitos";
+                    }
+                    celularError.innerHTML = errortext;
+                    celularError.style.display = "block";
+                    celularError.classList.remove("celular-animation");
+                    void celularError.offsetWidth;
+                    celularError.classList.add("celular-animation");
+                } else {
+                    if (celular.value.length == 10) {
+                        let prefijo = celular.value.substr(0, 3);
+                        switch (prefijo) {
+                            case '300':
+                            case '301':
+                            case '302':
+                            case '304':
+                            case '305':
+                            case '310':
+                            case '311':
+                            case '312':
+                            case '313':
+                            case '314':
+                            case '320':
+                            case '321':
+                            case '322':
+                            case '323':
+                            case '315':
+                            case '316':
+                            case '317':
+                            case '318':
+                            case '319':
+                            case '350':
+                            case '351':
+                                this.celular = celular.value;
+                                celular.setAttribute("disabled", "true");
+                                btn_celular.style.display = "none";
+                                celularError.style.display = "none";
+                                this.setState({
+                                    celular: celular.value,
+                                    password: password.value,
+                                    tipo_identificacion: tipo_identificacion.value,
+                                    identificacion: identificacion.value,
+                                    correo: correo.value
+                                });
+                                fetch("https://emmafig.com/api1/sendKey.php?celular=" + celular.value)
+                                    .then(res => res.json())
+                                    .then(
+                                        (result) => {
+                                            console.log(result);
+                                            if (result.estado == 'sent') {
+                                                console.log(result.codigo)
+                                                this.setState({
+                                                    codigo: result.codigo
+                                                });
+                                                this.setState({
+                                                    showConfirmation: 1
+                                                });
+                                                this.showConfirmation();
+                                            }
+                                        },
+                                        (error) => {
+                                            alert('Error');
+                                        }
+                                    )
+                                break;
+                            default: errortext = "Numero de celular no valido";
+                                celularError.innerHTML = errortext;
+                                celularError.style.display = "block";
+                                celularError.classList.remove("celular-animation");
+                                void celularError.offsetWidth;
+                                celularError.classList.add("celular-animation");
+                                break;
+                        }
+    
+                    }
                 }
-
+                //this.props.changeComponente
             }
+        }else if(isValid){
+            this.setState({
+                password: password.value,
+                tipo_identificacion: tipo_identificacion.value,
+                identificacion: identificacion.value                
+            });
+            this.login();
         }
-        //this.props.changeComponente
+        
+
     }
     validarEmail = (valor) => {
         console.log(valor);
         let emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-        if (emailRegex.test(valor)){
-        
-         return true;
+        if (emailRegex.test(valor)) {
+
+            return true;
         } else {
-         
-         return false;
+
+            return false;
+        }
+    }
+    isRegistro = () => {
+        this.setState({
+            registro: 1,
+            showOptions: 0
+        });
+        this.showOptions()
+    }
+    isLogin = () => {
+        this.setState({
+            registro: 0,
+            showOptions: 0
+        });
+        this.showOptions()
+    }
+    showOptions = () => {
+        if (this.state.showOptions == 1) {
+            return (
+                <div>
+                    <p className="center titulo-registro">Registrate</p>
+                    <p className="center subtitulo-registro">Para recibir mas detalles de tu resultado <br />totalmente gratis</p>
+                    <div id="btn_ingresar" className="row">
+                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.isLogin}>Ingresar</a>
+                    </div>
+                    <div id="btn_registro" className="row">
+                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.isRegistro}>Registrarse</a>
+                    </div>
+                </div>
+            )
+        } else {
+            return null;
+        }
+
+    }
+
+    showFields = () => {
+        if (this.state.registro == 1) {
+            return (
+                <div id="cont_registro">
+                    <CamposPorDefecto text='Registro' />
+                    <div id="cont_correo" className="row">
+                        <div className="input-field col s12 l10 offset-l1">
+                            <i className="material-icons prefix">https</i>
+                            <input id="correo" type="email" className="validate" />
+                            <label htmlFor="password">email</label>
+                        </div>
+                    </div>
+                    <div id="cont_password" className="row">
+                        <div className="input-field col s12 l10 offset-l1">
+                            <i className="material-icons prefix">https</i>
+                            <input id="password" type="password" className="validate" required />
+                            <label htmlFor="password">Contraseña *</label>
+                        </div>
+                    </div>
+                    <div id="cont_confirm_password" className="row">
+                        <div className="input-field col s12 l10 offset-l1">
+                            <i className="material-icons prefix">https</i>
+                            <input id="confirm_password" type="password" className="validate" required />
+                            <label htmlFor="confirm_password">Confirmar contraseña *</label>
+                            <p id="password-error" className="center cel-error">Por favor digite su confirmación de password</p>
+                        </div>
+                    </div>
+                    <div id="cont_celular" className="row">
+                        <div className="input-field col s12 l10 offset-l1">
+                            <i className="material-icons prefix">phone</i>
+                            <input id="celular" type="number" className="validate" minLength="10" required />
+                            <label htmlFor="celular">Celular *</label>
+                            <p id="celular-error" className="center cel-error">Por favor digite un numero de celular para continuar</p>
+
+                        </div>
+                    </div>
+                    <div id="btn_celular" className="row">
+                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.validarCampos}>Aceptar</a>
+                    </div>
+                </div>
+            )
+        } else if (this.state.registro == 0) {
+            return (
+                <div id="cont_login">
+                    <CamposPorDefecto text='Ingreso' />
+                    <div id="cont_password" className="row">
+                        <div className="input-field col s12 l10 offset-l1">
+                            <i className="material-icons prefix">https</i>
+                            <input id="password" type="number" className="validate" require="" aria-required="true" />
+                            <label htmlFor="password">Contraseña *</label>
+                            <p id="password-error" className="center cel-error">Por favor digite su contraseña</p>
+                        </div>
+                    </div>
+                    <div id="btn_celular" className="row">
+                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.validarCampos}>Aceptar</a>
+                    </div>
+                </div>
+            )
         }
     }
     showConfirmation = () => {
@@ -245,7 +465,7 @@ class FormRegistro extends Component {
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="small material-icons prefix">email</i>
                             <input id="email" type="email" className="validate" required="" aria-required="true" />
-                            <label htmlFor="email">Correo Personal *</label>                            
+                            <label htmlFor="email">Correo Personal *</label>
                             <p id="correo-error" className="center cel-error">Correo no válido</p>
                         </div>
                     </div>
@@ -264,31 +484,47 @@ class FormRegistro extends Component {
 
         return (
 
-            <form /*onSubmit={this.props.changeComponente}*/>
-                <p className="center titulo-registro">Registrate</p>
-                <p className="center subtitulo-registro">Para recibir mas detalles de tu resultado <br />totalmente gratis</p>
-                <div id="cont_celular" className="row">
-                    <div className="input-field col s12 l10 offset-l1">
-                        <i className="material-icons prefix">phone</i>
-                        <input id="celular" type="number" className="validate" require="" aria-required="true" />
-                        <label htmlFor="celular">Celular</label>
-                        <p id="celular-error" className="center cel-error">Por favor digite un numero de celular para continuar</p>
-                        
-                    </div>
-                </div>
-                <div id="btn_celular" className="row">
-                    <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.validarCelular}>Aceptar</a>
-                </div>
+            <form id="form_perfil" noValidate>
+                <div id="login_failed" class='alert alert-danger'>Login fallido. Identificación o Contraseña incorrectos.</div>
                 {
-                    this.showConfirmation()
+                    this.showOptions()
                 }
                 {
-                    this.showSocialButtons()
+                    this.showFields()
+                }
+                {
+                    this.showConfirmation()
                 }
             </form>
         );
 
     }
 }
+function CamposPorDefecto(props) {
+    return <div><p className="center info-codigo">!Bienvenido¡</p>
+        <p className="center info-codigo">Para continuar con el {props.text} por favor ingresa los siguientes datos</p>
 
+        <div className="row">
+            <div className="input-field col s12 l10 offset-l1">
+                <select id="tipo_identificacion" className="browser-default" defaultValue='1' required>
+                    <option value="" disabled>Tipo de Identifcación *</option>
+                    <option value="Cédula de Ciudadanía">CC (Cédula de Ciudadanía)</option>
+                    <option value="Tarjeta de Identidad">TI (Tarjeta de Identidad)</option>
+                    <option value="Cédula de Extranjería">CE (Cédula de Extranjería)</option>
+                </select>
+
+                <p id="tipo_iden_error" className="center cel-error">Por favor Escoja un tipo de Identifcación</p>
+            </div>
+        </div>
+        <div id="cont_identificacion" className="row">
+            <div className="input-field col s12 l10 offset-l1">
+                <i className="material-icons prefix">assignment_ind</i>
+                <input id="identificacion" type="number" className="validate" required />
+                <label htmlFor="identificacion">Identificación *</label>
+                <p id="identificacion-error" className="center cel-error">Por favor digite un numero de identificacion para continuar</p>
+
+            </div>
+        </div>
+    </div>;
+}
 export default FormRegistro; // Don’t forget to use export default!

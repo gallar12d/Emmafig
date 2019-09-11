@@ -117,6 +117,10 @@
 .pregunta-ok{
     margin-left: -2000px;
 }
+.selectEdad{
+    font-size: 1.3em;
+    font-weight: 500;
+}
 #subtitulo-cal{      
     margin-top: 0.1rem;
 }

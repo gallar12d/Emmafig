@@ -22,7 +22,7 @@ class Modal extends Component {
 
             <div id="modal1" className="modal">
                 <div className="modal-content">
-                    <FormRegistro changeComponente={this.props.changeComponente} modal={this.modal} />
+                    <FormRegistro changeComponente={this.props.changeComponente} modal={this.modal} changeLogin={this.props.changeLogin}/>
                 </div>
             </div>
 

@@ -17,6 +17,9 @@
     padding: 18px !important;
    
 }
+#iconWSP{
+    display: inline-block !important;
+}
 .titulo_footer{
     font-size: 20px;
     font-weight: bolder;
@@ -128,3 +131,4 @@ EFECTO HOVER LINK SOCIAL MEDIA
       
       }
 }
+

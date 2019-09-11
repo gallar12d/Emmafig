@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Cuestionario.css'
-
+import axios from "axios";
 
 class Cuestionario extends Component {
     constructor(props) {
@@ -11,10 +11,12 @@ class Cuestionario extends Component {
             btn_prev: process.env.PUBLIC_URL + "/img/prev-btn.svg",
             item: 1,
             selectedOptions: [0, 0, 0, 0, 0, 0],
+            selectedValues: [0, 0, 0, 0, 0, 0],
             style: {
                 opacity: 0,
                 transform: 'translate3d(50%,0,0)'
-            }
+            },
+
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -32,6 +34,42 @@ class Cuestionario extends Component {
         this.closeInfo = this.closeInfo.bind(this);
 
     }
+
+    /* 
+    OBTENER LA FECHA FINAL Y CALCULAR LA DIFERENCIA DE TIEMPO ENTRE LA FECHA INICIAL Y LA FINAL
+    getEndTask() {
+        let current_datetime = new Date()
+        let fechaFinal = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds();
+        var fechaInicial = this.props.hora_i;
+        //console.log(fechaInicial);
+        var hora_inicial = new Date(fechaInicial);
+        var hora_final = new Date(fechaFinal);
+    
+        
+    
+        this.props.update_hf(fechaFinal);
+    
+        var dif = hora_inicial.getTime() - hora_final.getTime()
+      
+        var Segundos_de_T1_a_T2 = dif / 1000;
+        var endTaskfinal = Math.abs(Segundos_de_T1_a_T2);
+        var dataform = new FormData();
+        dataform.append("nombre", "responder preguntas de la calculadora");
+        dataform.append("task_end", endTaskfinal+" segundos");
+        dataform.append("version", "emmafig V1");
+        axios.post("http://localhost/api1/timeTask",dataform).then(
+            res =>{
+                var result = res.data;
+                console.log(result)
+            }
+        )
+        
+    
+    
+    }
+    
+    */
+
 
     handleChange(event) {
         this.setState({ value: event.target.value });
@@ -51,18 +89,20 @@ class Cuestionario extends Component {
         let circuloOk;
         let textoOk;
         let op = event.target.id.substr(2, 1);
+        console.log(event.target.value);
         let opts = this.state.selectedOptions;
+        let values = this.state.selectedValues;
         let info_end = document.getElementById("info-fin-cuestionario");
-
         opts[op - 1] = 1;
+        values[op - 1] = event.target.value;
         if (this.countOptSelecteds(opts) == 6) {
             info_end.style.clipPath = "circle(75%)";
-            //info_end.classList.add('info-fin-show');
-            //this.props.changeComponente();
         }
         this.setState({
-            selectedOptions: opts
+            selectedOptions: opts,
+            selectedValues: values
         });
+        console.log(this.state.selectedValues);
         circuloOk = document.getElementById("circulo" + op);
         textoOk = document.getElementById("texto" + op);
         circuloOk.classList.remove("circulo");
@@ -135,17 +175,37 @@ class Cuestionario extends Component {
                 opcRespActual.style.display = "block";
                 preguntaActual.style.display = "block";
             } else if (this.countOptSelecteds(opts) == 6) {
-                this.props.changeComponente();
+                let etnia_afro = 0;
+                let etnia_indigena = 0;
+                if (this.state.selectedValues[5] == '1') {
+                    etnia_afro = 1
+                } else if (this.state.selectedValues[5] == '2') {
+                    etnia_indigena = 1;
+                }
+                fetch("http://localhost/api1/algoritmo_prueba.php?edad=" + this.state.selectedValues[0] +
+                    "&hijos_may_3=" + this.state.selectedValues[1] +
+                    "&comp_sex_may_2=" + this.state.selectedValues[2] +
+                    "&con_pareja=" + this.state.selectedValues[3] +
+                    "&sex_antes_15=" + this.state.selectedValues[4] +
+                    "&etnia_afro=" + etnia_afro +
+                    "&etnia_indigena=" + etnia_indigena)
+                    .then(res => res.json())
+                    .then(
+                        (result) => {
+                            this.props.changeComponente(result.resultado);
+                        },
+                        (error) => {
+                            alert('Error');
+                        }
+                    )
+
             }
         } else {
             info.style.display = "block";
             info.classList.remove("info-animation");
             void info.offsetWidth;
             info.classList.add("info-animation");
-
-
         }
-
     }
 
 
@@ -359,107 +419,112 @@ class Cuestionario extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div id="cont-pregunta1" className="row" pgindex="1">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta1" className="center-align contenido-pregunta">1. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <h4 id="pregunta1" className="center-align contenido-pregunta">1. ¿Cuantos años tienes?</h4>
                             <p id="info1" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta1" className="row" oprindex="1">
                         <div className="col l2 offset-l5">
-                            <select class="browser-default">
-                                <option value="" disabled selected>Choose your option</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
+                            <select id="op11" className="browser-default selectEdad" onChange={this.handleOptionChange} defaultValue={0}>
+                                <option value="0">Escoge un opción</option>
+                                <option value="1">Menor de 15 años</option>
+                                <option value="2">Entre 15 y 20 años</option>
+                                <option value="3">Entre 21 y 30 años</option>
+                                <option value="4">Entre 31 y 50 años</option>
+                                <option value="5">Mayor de 50 años</option>
                             </select>
                         </div>
-
                         {/*<label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input id="op11" className="with-gap" name="group1" type="radio" value="si" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Si</span>
+                            <input id="op11" className="with-gap" name="group1" type="radio" value="1" onChange={this.handleOptionChange} />
+                            <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input id="op12" className="with-gap" name="group1" type="radio" value="no" onChange={this.handleOptionChange} />
+                            <input id="op12" className="with-gap" name="group1" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
         </label>*/}
                     </div>
                     <div id="cont-pregunta2" className="row" pgindex="2">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta2" className="center-align contenido-pregunta">2. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <h4 id="pregunta2" className="center-align contenido-pregunta">2. ¿Tienes más de tres hijos?</h4>
                             <p id="info2" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta2" className="row" oprindex="2">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input id="op21" className="with-gap" name="group2" type="radio" value="si" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Si</span>
+                            <input id="op21" className="with-gap" name="group2" type="radio" value="1" onChange={this.handleOptionChange} />
+                            <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input id="op22" className="with-gap" name="group2" type="radio" value="no" onChange={this.handleOptionChange} />
+                            <input id="op22" className="with-gap" name="group2" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
                     <div id="cont-pregunta3" className="row" pgindex="3">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta3" className="center-align contenido-pregunta">3. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <h4 id="pregunta3" className="center-align contenido-pregunta">3. ¿Has tenido mas de dos compañeros sexuales?</h4>
                             <p id="info3" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta3" className="row" oprindex="3">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input id="op31" className="with-gap" name="group3" type="radio" value="si" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Si</span>
+                            <input id="op31" className="with-gap" name="group3" type="radio" value="1" onChange={this.handleOptionChange} />
+                            <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input id="op31" className="with-gap" name="group3" type="radio" value="no" onChange={this.handleOptionChange} />
+                            <input id="op31" className="with-gap" name="group3" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
                     <div id="cont-pregunta4" className="row" pgindex="4">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta4" className="center-align contenido-pregunta">4. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <h4 id="pregunta4" className="center-align contenido-pregunta">4. ¿Tienes pareja actualmente?</h4>
                             <p id="info4" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta4" className="row" oprindex="4">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input id="op41" className="with-gap" name="group4" type="radio" value="si" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Si</span>
+                            <input id="op41" className="with-gap" name="group4" type="radio" value="1" onChange={this.handleOptionChange} />
+                            <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input id="op42" className="with-gap" name="group4" type="radio" value="no" onChange={this.handleOptionChange} />
+                            <input id="op42" className="with-gap" name="group4" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
                     <div id="cont-pregunta5" className="row" pgindex="5">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta5" className="center-align contenido-pregunta">5. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <h4 id="pregunta5" className="center-align contenido-pregunta">5. ¿Has tenido relaciones sexuales antes de los 15 años?</h4>
                             <p id="info5" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta5" className="row" oprindex="5">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input id="op51" className="with-gap" name="group5" type="radio" value="si" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Si</span>
+                            <input id="op51" className="with-gap" name="group5" type="radio" value="1" onChange={this.handleOptionChange} />
+                            <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1">
-                            <input id="op52" className="with-gap" name="group5" type="radio" value="no" onChange={this.handleOptionChange} />
+                            <input id="op52" className="with-gap" name="group5" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
                         </label>
                     </div>
                     <div id="cont-pregunta6" className="row" pgindex="6">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta6" className="center-align contenido-pregunta">6. ¿Te haz realizado una citologia en el ultimo año?</h4>
+                            <h4 id="pregunta6" className="center-align contenido-pregunta">6. ¿Perteneces a alguna etnia?</h4>
                             <p id="info6" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta6" className="row" oprindex="6">
-                        <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input id="op61" className="with-gap" name="group6" type="radio" value="si" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Si</span>
+                        <label className="col s12 m2 l1 offset-m4 offset-l4">
+                            <input id="op61" className="with-gap" name="group6" type="radio" value="1" onChange={this.handleOptionChange} />
+                            <span className="contenido-respuesta">Afro</span>
                         </label>
-                        <label className="col s2 m2 l1">
-                            <input id="op62" className="with-gap" name="group6" type="radio" value="no" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">No</span>
+                        <label className="col s12 m2 l1">
+                            <input id="op62" className="with-gap" name="group6" type="radio" value="2" onChange={this.handleOptionChange} />
+                            <span className="contenido-respuesta">Indigena</span>
+                        </label>
+                        <label className="col s12 m2 l2">
+                            <input id="op62" className="with-gap" name="group6" type="radio" value="0" onChange={this.handleOptionChange} />
+                            <span className="contenido-respuesta">Ninguna</span>
                         </label>
                     </div>
                 </form>

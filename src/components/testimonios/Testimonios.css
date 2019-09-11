@@ -67,7 +67,7 @@ p.text-green {
     margin-right: 5%;
 }
 .parallax-container {
-    height: 630px !important;
+    height: 660px !important;
   }
   h6.nombress {
     margin-top: 60%;
@@ -77,6 +77,7 @@ h6.nombres {
     font-size: 2.8vh;   
     margin-top: 25%;
     color: white !important;
+    font-family: lato;
    
 
 }
@@ -113,7 +114,7 @@ button.slick-arrow.slick-next {
 
 @media only screen and (max-width: 300px) {
     .parallax-container {
-        height: 650px;
+        height: 680px;
       }
 }
 @media only screen and (max-width: 500px) {
@@ -121,3 +122,18 @@ button.slick-arrow.slick-next {
         height: 700px;
       }
 }
+
+h6.fecha {
+    font-family: lato;
+    
+    color: white;
+    font-size: 2.3vh;
+}
+
+h6.fecha2 {
+    font-family: lato;
+    
+    color: white;
+    font-size: 2vh;
+}
+

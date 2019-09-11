@@ -42,7 +42,7 @@ class Inscripcion extends Component {
                     <img id="btn_ok" onMouseOver={this.okHandleMouseOver} onMouseOut={this.okHandleMouseOut} src={this.state.btn_ok} onClick={this.props.changeComponente} className="center" />
                 </div>
                 <div></div>
-            </div >
+            </div>
 
         );
 
