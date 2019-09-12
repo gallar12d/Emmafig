@@ -20,7 +20,7 @@ class ComponentMaster extends Component {
         this.state = {
             changeCompt: 0,
             componentScroll: "",
-            login: 1,
+            login: 0,
             prevLogin: 1,
             ancla: null,
             prevAncla: ""
