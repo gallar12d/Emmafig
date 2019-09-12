@@ -16,7 +16,7 @@ class Cuestionario extends Component {
                 opacity: 0,
                 transform: 'translate3d(50%,0,0)'
             },
-            
+
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -34,41 +34,41 @@ class Cuestionario extends Component {
         this.closeInfo = this.closeInfo.bind(this);
 
     }
-   
-/* 
-OBTENER LA FECHA FINAL Y CALCULAR LA DIFERENCIA DE TIEMPO ENTRE LA FECHA INICIAL Y LA FINAL
-getEndTask() {
-    let current_datetime = new Date()
-    let fechaFinal = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds();
-    var fechaInicial = this.props.hora_i;
-    //console.log(fechaInicial);
-    var hora_inicial = new Date(fechaInicial);
-    var hora_final = new Date(fechaFinal);
 
+    /* 
+    OBTENER LA FECHA FINAL Y CALCULAR LA DIFERENCIA DE TIEMPO ENTRE LA FECHA INICIAL Y LA FINAL
+    getEndTask() {
+        let current_datetime = new Date()
+        let fechaFinal = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds();
+        var fechaInicial = this.props.hora_i;
+        //console.log(fechaInicial);
+        var hora_inicial = new Date(fechaInicial);
+        var hora_final = new Date(fechaFinal);
     
-
-    this.props.update_hf(fechaFinal);
-
-    var dif = hora_inicial.getTime() - hora_final.getTime()
-  
-    var Segundos_de_T1_a_T2 = dif / 1000;
-    var endTaskfinal = Math.abs(Segundos_de_T1_a_T2);
-    var dataform = new FormData();
-    dataform.append("nombre", "responder preguntas de la calculadora");
-    dataform.append("task_end", endTaskfinal+" segundos");
-    dataform.append("version", "emmafig V1");
-    axios.post("http://localhost/api1/timeTask",dataform).then(
-        res =>{
-            var result = res.data;
-            console.log(result)
-        }
-    )
+        
     
-
-
-}
-
-*/
+        this.props.update_hf(fechaFinal);
+    
+        var dif = hora_inicial.getTime() - hora_final.getTime()
+      
+        var Segundos_de_T1_a_T2 = dif / 1000;
+        var endTaskfinal = Math.abs(Segundos_de_T1_a_T2);
+        var dataform = new FormData();
+        dataform.append("nombre", "responder preguntas de la calculadora");
+        dataform.append("task_end", endTaskfinal+" segundos");
+        dataform.append("version", "emmafig V1");
+        axios.post("http://localhost/api1/timeTask",dataform).then(
+            res =>{
+                var result = res.data;
+                console.log(result)
+            }
+        )
+        
+    
+    
+    }
+    
+    */
 
 
     handleChange(event) {
@@ -85,18 +85,18 @@ getEndTask() {
         info_end.style.clipPath = "circle(0%)";
     }
 
-    handleOptionChange(event) {        
+    handleOptionChange(event) {
         let circuloOk;
         let textoOk;
-        let op = event.target.id.substr(2, 1);        
+        let op = event.target.id.substr(2, 1);
         console.log(event.target.value);
         let opts = this.state.selectedOptions;
         let values = this.state.selectedValues;
         let info_end = document.getElementById("info-fin-cuestionario");
-        opts[op - 1] = 1;        
-        values[op -1] = event.target.value;
+        opts[op - 1] = 1;
+        values[op - 1] = event.target.value;
         if (this.countOptSelecteds(opts) == 6) {
-            info_end.style.clipPath = "circle(75%)";            
+            info_end.style.clipPath = "circle(75%)";
         }
         this.setState({
             selectedOptions: opts,
@@ -174,31 +174,31 @@ getEndTask() {
                 opcRespOK.style.display = "none";
                 opcRespActual.style.display = "block";
                 preguntaActual.style.display = "block";
-            } else if (this.countOptSelecteds(opts) == 6) {                
+            } else if (this.countOptSelecteds(opts) == 6) {
                 let etnia_afro = 0;
                 let etnia_indigena = 0;
-                if(this.state.selectedValues[5] == '1'){
+                if (this.state.selectedValues[5] == '1') {
                     etnia_afro = 1
-                }else if(this.state.selectedValues[5] == '2'){
+                } else if (this.state.selectedValues[5] == '2') {
                     etnia_indigena = 1;
                 }
-                fetch("http://localhost/api1/algoritmo_prueba.php?edad="+this.state.selectedValues[0]+
-                "&hijos_may_3="+this.state.selectedValues[1]+
-                "&comp_sex_may_2="+this.state.selectedValues[2]+
-                "&con_pareja="+this.state.selectedValues[3]+
-                "&sex_antes_15="+this.state.selectedValues[4]+
-                "&etnia_afro="+etnia_afro+
-                "&etnia_indigena="+etnia_indigena)
-                            .then(res => res.json())
-                            .then(
-                                (result) => {                                    
-                                    this.props.changeComponente(result.resultado);
-                                },
-                                (error) => {
-                                    alert('Error');
-                                }
-                            )
-                            
+                fetch("https://emmafig.com/api1/algoritmo_prueba.php?edad=" + this.state.selectedValues[0] +
+                    "&hijos_may_3=" + this.state.selectedValues[1] +
+                    "&comp_sex_may_2=" + this.state.selectedValues[2] +
+                    "&con_pareja=" + this.state.selectedValues[3] +
+                    "&sex_antes_15=" + this.state.selectedValues[4] +
+                    "&etnia_afro=" + etnia_afro +
+                    "&etnia_indigena=" + etnia_indigena)
+                    .then(res => res.json())
+                    .then(
+                        (result) => {
+                            this.props.changeComponente(result.resultado);
+                        },
+                        (error) => {
+                            alert('Error');
+                        }
+                    )
+
             }
         } else {
             info.style.display = "block";
@@ -419,19 +419,19 @@ getEndTask() {
                 <form onSubmit={this.handleSubmit}>
                     <div id="cont-pregunta1" className="row" pgindex="1">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta1" className="center-align contenido-pregunta">1. ¿Cuantos años tienes?</h4>                            
+                            <h4 id="pregunta1" className="center-align contenido-pregunta">1. ¿Cuantos años tienes?</h4>
                             <p id="info1" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta1" className="row" oprindex="1">
                         <div className="col l2 offset-l5">
-                            <select id="op11" className="browser-default selectEdad" onChange={this.handleOptionChange} defaultValue={1}>
+                            <select id="op11" className="browser-default selectEdad" onChange={this.handleOptionChange} defaultValue={0}>
                                 <option value="0">Escoge un opción</option>
                                 <option value="1">Menor de 15 años</option>
                                 <option value="2">Entre 15 y 20 años</option>
                                 <option value="3">Entre 21 y 30 años</option>
                                 <option value="4">Entre 31 y 50 años</option>
-                                <option value="5">Mayor de 50 años</option>                                
+                                <option value="5">Mayor de 50 años</option>
                             </select>
                         </div>
                         {/*<label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
@@ -441,7 +441,7 @@ getEndTask() {
                         <label className="col s2 m2 l1">
                             <input id="op12" className="with-gap" name="group1" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
-                        </label>*/}
+        </label>*/}
                     </div>
                     <div id="cont-pregunta2" className="row" pgindex="2">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
