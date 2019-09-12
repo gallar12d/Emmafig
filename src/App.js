@@ -30,8 +30,10 @@ let options = {
 };
 */
 
-function App() {
-  
+function App(props) {
+
+
+  let ancla = props.match.params.ancla
   
   return (
  
@@ -46,7 +48,7 @@ function App() {
       <Contacto></Contacto> 
       <Footer></Footer> 
       */}
-      <ComponentMaster></ComponentMaster>
+      <ComponentMaster ancla = {ancla}></ComponentMaster>
     </div>
    
   );

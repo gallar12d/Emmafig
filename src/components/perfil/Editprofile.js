@@ -20,15 +20,28 @@ class Editprofile extends Component {
     componentDidMount() {
         M.Collapsible.init(this.Collapsible);
         M.Tabs.init(this.Tabs);
+        
     }
     validarFormulario(form,e){
         e.preventDefault()
         var formTap = document.querySelector("#"+form+"");
-        if(formTap.checkValidity()){
-           
-            //continuar con el proceso de actualizar la informacion en la base de datos
+        if(form == 'formPassword'){
+            //valifar que los valores de las contraseñas sea iguales
+            var password = document.getElementById("newPassword").value;
+            var passwordRepeat = document.getElementById("passwordRepeat").value;
+            if(password != passwordRepeat){
+                alert("las contraseñas no coinciden");
+
+            }
+
         }else{
-                formTap.reportValidity();
+
+            if(formTap.checkValidity()){
+               
+                //continuar con el proceso de actualizar la informacion en la base de datos
+            }else{
+                    formTap.reportValidity();
+            }
         }
 
 
