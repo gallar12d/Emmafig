@@ -14,6 +14,7 @@ import M from 'materialize-css';
 
 let elementMenu;
 var btnMenu;
+let ancla;
 class ComponentMaster extends Component {
 
     constructor(props) {
@@ -28,14 +29,18 @@ class ComponentMaster extends Component {
             prevAncla: ""
 
         }
+        //this.clickLogin = this.clickLogin.bind(this);
 
     }
 
 
+  
+
+
     componentDidMount() {
-        let ancla = this.props.ancla
-      
-        if(ancla == "login"){
+        ancla = this.props.ancla
+       
+        if (ancla == "login") {
             setTimeout(function () {
                 let simulateClick = elem => {
                     let evt = new MouseEvent('click', {
@@ -44,22 +49,34 @@ class ComponentMaster extends Component {
                     });
                     elem.dispatchEvent(evt)
                 };
-                
+
                 M.Modal.getInstance(document.getElementById('modal1')).open();
                 var btnIngresar = document.getElementById("btn_ingresar_a");
-              
+
                 simulateClick(btnIngresar);
+    
             }, 3000);
-        }else{
+
+
+
+        } else{
             this.setState({
 
                 ancla: ancla
             })
         }
-       
+
+
+
+
 
     }
-    changeComponente(state) {
+
+
+    
+
+
+    changeComponente(state){
 
         this.setState({
             changeCompt: state
@@ -72,7 +89,7 @@ class ComponentMaster extends Component {
     }
 
 
-    
+
     shouldComponentUpdate(nextProps, nextState) {
         var checkState;
         console.log(this.state.changeCompt);
@@ -104,13 +121,13 @@ class ComponentMaster extends Component {
         });
 
     }
-  
+
 
     componentDidUpdate() {
-
+        ancla = this.props.ancla;
+        
         if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
-            
-          
+           
             console.log(elementMenu);
             if (elementMenu != undefined || elementMenu != null) {
                 let simulateClick = elem => {
@@ -124,10 +141,10 @@ class ComponentMaster extends Component {
                 setTimeout(function () {
                     simulateClick(btnMenu);
                 }, 1000);
-                
-                
-            }else{
-                if(this.state.ancla != null){
+
+
+            } else {
+                if (this.state.ancla != null) {
                     let simulateClick = elem => {
                         let evt = new MouseEvent('click', {
                             bubbles: true,
@@ -135,19 +152,21 @@ class ComponentMaster extends Component {
                         });
                         elem.dispatchEvent(evt)
                     };
-                  
+
                     btnMenu = document.getElementById(this.state.ancla);
                     setTimeout(function () {
                         simulateClick(btnMenu);
                     }, 3000);
-                    
-                }
-            } 
-        
-           
-            elementMenu=null;
-        }
 
+                }else if(ancla == 'login'){
+                    this.changeComponente(1)
+
+                }
+            }
+
+
+            elementMenu = null;
+        }
     }
 
     showComponent = () => {
