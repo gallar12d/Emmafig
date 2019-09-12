@@ -339,7 +339,7 @@ class FormRegistro extends Component {
                     <p className="center titulo-registro">Registrate</p>
                     <p className="center subtitulo-registro">Para recibir mas detalles de tu resultado <br />totalmente gratis</p>
                     <div id="btn_ingresar" className="row">
-                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.isLogin}>Ingresar</a>
+                        <a className="waves-effect waves-light btn col s10 offset-s1" id="btn_ingresar_a" onClick={this.isLogin}>Ingresar</a>
                     </div>
                     <div id="btn_registro" className="row">
                         <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.isRegistro}>Registrarse</a>
