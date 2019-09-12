@@ -212,7 +212,7 @@ class Menu extends Component {
                     to="contenedor-calculadora"
                     spy={true}
                     smooth={true}
-                    offset={-30}
+                    offset={-23}
                     duration={500}
 
                 />
@@ -356,7 +356,7 @@ class Menu extends Component {
                             <a href="#!"> Cerrar Sesion </a>
 
                         </li>
-                        <li>
+                        
                             <div className="row ">
                                 <div className="col s6 offset-s3">
 
@@ -379,7 +379,7 @@ class Menu extends Component {
                                 </div>
 
                             </div>
-                        </li>
+                        
 
                     </li>
 

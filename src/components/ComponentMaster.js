@@ -12,6 +12,7 @@ import $ from "jquery";
 import { thisTypeAnnotation } from '@babel/types';
 
 let elementMenu;
+var btnMenu;
 class ComponentMaster extends Component {
 
     constructor(props) {
@@ -20,7 +21,7 @@ class ComponentMaster extends Component {
         this.state = {
             changeCompt: 0,
             componentScroll: "",
-            login: 1,
+            login: 0,
             prevLogin: 1,
             ancla: null,
             prevAncla: ""
@@ -36,6 +37,7 @@ class ComponentMaster extends Component {
 
             ancla: ancla
         })
+       
 
     }
     changeComponente(state) {
@@ -83,25 +85,21 @@ class ComponentMaster extends Component {
         });
 
     }
+    simulateClick(elem){
+        let evt = new MouseEvent('click', {
+            bubbles: true,
+            view: window
+        });
+        elem.dispatchEvent(evt);
+    }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate() {
 
         if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
-            let simulateClick = elem => {
-                let evt = new MouseEvent('click', {
-                    bubbles: true,
-                    view: window
-                });
-                elem.dispatchEvent(evt)
-            };
+            
+          
             console.log(elementMenu);
-            if (elementMenu !== undefined) {
-                var btnMenu = document.getElementById(elementMenu);
-                setTimeout(function () {
-                    simulateClick(btnMenu);
-                }, 1000);
-            } else {
-        
+            if (elementMenu != undefined || elementMenu != null) {
                 let simulateClick = elem => {
                     let evt = new MouseEvent('click', {
                         bubbles: true,
@@ -109,18 +107,34 @@ class ComponentMaster extends Component {
                     });
                     elem.dispatchEvent(evt)
                 };
-                var btnMenu = document.getElementById(this.state.ancla);
+                btnMenu = document.getElementById(elementMenu);
                 setTimeout(function () {
                     simulateClick(btnMenu);
-                }, 2500);
-
-
-
-
-
-
-            }
+                }, 1000);
+                
+                
+            }else{
+                if(this.state.ancla != null){
+                    let simulateClick = elem => {
+                        let evt = new MouseEvent('click', {
+                            bubbles: true,
+                            view: window
+                        });
+                        elem.dispatchEvent(evt)
+                    };
+                  
+                    btnMenu = document.getElementById(this.state.ancla);
+                    setTimeout(function () {
+                        simulateClick(btnMenu);
+                    }, 3000);
+                    
+                }
+            } 
+        
+           
+            elementMenu=null;
         }
+
     }
 
     showComponent = () => {
