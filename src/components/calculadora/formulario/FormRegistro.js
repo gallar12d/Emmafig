@@ -464,7 +464,7 @@ class FormRegistro extends Component {
             return (
                 <div>
                     <div id="btn_celular" className="row">
-                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.validarCampos}>Aceptar</a>
+                        <a className="waves-effect waves-light btn col s10 offset-s1" id="btn_aceptar_form_login" onClick={this.validarCampos}>Aceptar</a>
                     </div>
                     <div id="btn_cancelar" className="row">
                         <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.reiniciarForm}>Regresar</a>
