@@ -28,7 +28,8 @@ class FormRegistro extends Component {
             registro: -1,
             showOptions: 1,
             LoginSuccesfull: 0,
-            showButtons: 0
+            showButtons: 0,
+            showPreloader: 0,
         }
         //this.showSocialButtons = this.showSocialButtons.bind(this);
         /*this.responseFacebook = this.responseFacebook.bind(this);
@@ -67,12 +68,10 @@ class FormRegistro extends Component {
         }
 
     }
-    closeModal = () => {
-        console.log('Close modal');
+    closeModal = () => {       
         M.Modal.getInstance(document.getElementById('modal1')).close();
         this.props.changeLogin();
         this.reiniciarForm();
-        //this.props.changeComponente();
     }
     /*responseFacebook = (response) => {
         console.log(response);
@@ -121,12 +120,12 @@ class FormRegistro extends Component {
         let btn_confirm = document.getElementById('btn_confirm');
         let cont_celular = document.getElementById('cont_celular');
         let cont_confirm = document.getElementById('cont_confirm');
-        if (codigo.value == this.state.codigo) {
-            cont_celular.style.display = 'none';
+        if (codigo.value == this.state.codigo) {            
             cont_confirm.style.display = 'none';
             btn_confirm.style.display = 'none';
             codigo.setAttribute("disabled", "true");
-            Axios.post('https://emmafig.com/api1/rest-authentication/api/create_user.php', {
+            //Axios.post('https://emmafig.com/api1/rest-authentication/api/create_user.php', {
+            Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
                 "primer_nombre": 'User',
                 "segundo_nombre": 'User',
                 "primer_apellido": 'User',
@@ -142,10 +141,15 @@ class FormRegistro extends Component {
                     console.log(res.data.message);
                     this.login();
                 })
-                .catch(function (error) {
+                .catch((error) => {
                     if (error.response) {
                         let user_exits = document.getElementById('user_exits');
                         user_exits.style.display = 'block';
+                        let btn_celular = document.getElementById('btn_celular');
+                        btn_celular.style.display = 'block';
+                        this.setState({
+                            showConfirmation: 0
+                        });
                         console.log(error.response.data);
                         console.log(error.response.status);
                         console.log(error.response.headers);
@@ -174,8 +178,11 @@ class FormRegistro extends Component {
                 this.setState({
                     LoginSuccesfull: 1
                 })
+                this.setState({
+                    showPreloader: 0
+                });
+                this.showPreloader();
                 this.closeModal();
-                this.props.viewPerfil(1);
             })
             .catch(function (error) {
                 if (error.response) {
@@ -184,6 +191,7 @@ class FormRegistro extends Component {
                     console.log(error.response.data);
                     console.log(error.response.status);
                     console.log(error.response.headers);
+
                 }
             });
     }
@@ -193,6 +201,10 @@ class FormRegistro extends Component {
     }
 
     validarCampos = () => {
+        this.setState({
+            showPreloader: 1
+        })
+        this.showPreloader();
         let isValid = document.querySelector('#form_perfil').reportValidity();
         let errortext = "Por favor digite un numero de celular para continuar";
         let celular = document.getElementById('celular');
@@ -249,7 +261,7 @@ class FormRegistro extends Component {
                             case '350':
                             case '351':
                                 this.celular = celular.value;
-                                celular.setAttribute("disabled", "true");
+                                //celular.setAttribute("disabled", "true");
                                 btn_celular.style.display = "none";
                                 celularError.style.display = "none";
                                 this.setState({
@@ -262,9 +274,13 @@ class FormRegistro extends Component {
                                 fetch("https://emmafig.com/api1/sendKey.php?celular=" + celular.value)
                                     .then(res => res.json())
                                     .then(
-                                        (result) => {
+                                        (result) => {                                            
                                             console.log(result);
                                             if (result.estado == 'sent') {
+                                                this.setState({
+                                                    showPreloader: 0
+                                                });
+                                                this.showPreloader()
                                                 console.log(result.codigo)
                                                 this.setState({
                                                     codigo: result.codigo
@@ -369,16 +385,39 @@ class FormRegistro extends Component {
         this.setState({
             registro: -1,
             showOptions: 1,
-            showButtons: 0
+            showButtons: 0,
+            showConfirmation: 0
         })
         this.showFields();
         this.showOptions();
         this.showButtons();
+        this.showConfirmation();
         document.getElementById("form_perfil").reset();
         let login_failed = document.getElementById('login_failed');
         login_failed.style.display = 'none';
         let user_exits = document.getElementById('user_exits');
         user_exits.style.display = 'none';
+    }
+
+    showPreloader = () => {
+        if(this.state.showPreloader == 1){
+            return (
+                <div className="preloader-wrapper big active">
+                    <div className="spinner-layer spinner-blue">
+                        <div className="circle-clipper left">
+                            <div className="circle"></div>
+                        </div><div className="gap-patch">
+                            <div className="circle"></div>
+                        </div><div className="circle-clipper right">
+                            <div className="circle"></div>
+                        </div>
+                    </div>
+                </div>)
+        }
+        else{
+            return null;
+        }        
+        
     }
 
     showFields = () => {
@@ -417,6 +456,9 @@ class FormRegistro extends Component {
 
                         </div>
                     </div>
+                    {
+                        this.showPreloader()
+                    }
                 </div>
             )
         } else if (this.state.registro == 0) {
@@ -426,12 +468,11 @@ class FormRegistro extends Component {
                     <div id="cont_password" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">https</i>
-                            <input id="password" type="number" className="validate" require="" aria-required="true" />
+                            <input id="password" type="password" className="validate" require="" aria-required="true" />
                             <label htmlFor="password">Contraseña *</label>
                             <p id="password-error" className="center cel-error">Por favor digite su contraseña</p>
                         </div>
                     </div>
-
                 </div>
             )
         }
@@ -476,6 +517,7 @@ class FormRegistro extends Component {
             return null
         }
     }
+
     /*showSocialButtons = () => {
         if (this.state.showSocialButtons == 1) {
             return (
@@ -524,10 +566,10 @@ class FormRegistro extends Component {
                         <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.props.changeComponente}>Cancelar</a>
                     </div>
                 </div>
-            );
-
-        }
-    }*/
+                );
+    
+            }
+        }*/
     render() {
 
         return (
@@ -544,6 +586,7 @@ class FormRegistro extends Component {
                 {
                     this.showConfirmation()
                 }
+
                 {
                     this.showButtons()
                 }

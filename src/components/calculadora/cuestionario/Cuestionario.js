@@ -182,7 +182,7 @@ class Cuestionario extends Component {
                 } else if (this.state.selectedValues[5] == '2') {
                     etnia_indigena = 1;
                 }
-                /*fetch("https://emmafig.com/api1/algoritmo_prueba.php?edad=" + this.state.selectedValues[0] +
+                fetch("https://emmafig.com/api1/algoritmo_prueba.php?edad=" + this.state.selectedValues[0] +
                     "&hijos_may_3=" + this.state.selectedValues[1] +
                     "&comp_sex_may_2=" + this.state.selectedValues[2] +
                     "&con_pareja=" + this.state.selectedValues[3] +
@@ -197,8 +197,8 @@ class Cuestionario extends Component {
                         (error) => {
                             alert('Error');
                         }
-                    )*/
-                    axios.get('http://104.197.119.186/app/', {
+                    )
+                    /*axios.get('http://104.197.119.186/app/', {
                         params: {
                             Edad_cat: this.state.selectedValues[0],
                             hijos_may_3: this.state.selectedValues[1],
@@ -218,7 +218,7 @@ class Cuestionario extends Component {
                             console.log(error.response.status);
                             console.log(error.response.headers);
                         }
-                    });
+                    });*/
 
             }
         } else {

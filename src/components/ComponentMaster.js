@@ -21,7 +21,8 @@ class ComponentMaster extends Component {
             changeCompt: 0,
             componentScroll: "",
             login: 0,
-            prevLogin: 1
+            prevLogin: 1,
+            loginCalculadora: 0
         }
 
     }
@@ -33,17 +34,7 @@ class ComponentMaster extends Component {
 
     }
     scroolComponent(element1) {
-        /*
-        this.setState({
-            componentScroll: state,
-         
-            
-        })
-        */
         elementMenu = element1;
-
-
-
     }
     shouldComponentUpdate(nextProps, nextState) {
         var checkState;
@@ -67,15 +58,28 @@ class ComponentMaster extends Component {
         }
     }*/
     changeLogin = () => {
-
         this.setState({
             login: this.state.prevLogin,
             prevLogin: this.state.login
         });
+        if(this.state.loginCalculadora == 1){
+            this.setState({
+                changeCompt: 1
+            })
+            this.showComponent();
+        }        
+    }
 
+    changeLoginCalculadora = () => {
+        this.setState({
+            loginCalculadora: 1
+        });
     }
 
     componentDidUpdate(prevProps, prevState) {
+        if(this.state.login == 0){
+            localStorage.removeItem('jwt');
+        }
         if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
             let simulateClick = elem => {
                 let evt = new MouseEvent('click', {
@@ -89,7 +93,8 @@ class ComponentMaster extends Component {
                 var btnMenu = document.getElementById(elementMenu);
                 simulateClick(btnMenu)
             }
-        }
+        }       
+        
     }
 
     showComponent = () => {
@@ -98,7 +103,7 @@ class ComponentMaster extends Component {
                 return (
                     <div className="mainpage">
                         <Seccion1 />
-                        <Calculadora changeLogin={this.changeLogin.bind(this)} viewPerfil={this.changeComponente.bind(this)} />
+                        <Calculadora changeLogin={this.changeLogin.bind(this)} changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} />
                         <Citas />
                         <Testimonios />
                         <Contacto />
