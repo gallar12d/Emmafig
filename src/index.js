@@ -18,6 +18,7 @@ const routing = (
       <div>
         <Switch>
             <Route exact path="/" component={App} />
+            <Route exact path="/goto/:ancla" render={(props) => <App {...props} />}/> 
             <Route exact path="/citas" component={App} />  
             <Route exact path="/testimoniios" component={App} /> 
             <Route exact path="/contacto" component={App} /> 

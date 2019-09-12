@@ -20,9 +20,22 @@ class ComponentMaster extends Component {
         this.state = {
             changeCompt: 0,
             componentScroll: "",
-            login: 0,
-            prevLogin: 1
+            login: 1,
+            prevLogin: 1,
+            ancla: null,
+            prevAncla: ""
+
         }
+
+    }
+
+
+    componentDidMount() {
+        let ancla = this.props.ancla
+        this.setState({
+
+            ancla: ancla
+        })
 
     }
     changeComponente(state) {
@@ -33,23 +46,17 @@ class ComponentMaster extends Component {
 
     }
     scroolComponent(element1) {
-        /*
-        this.setState({
-            componentScroll: state,
-         
-            
-        })
-        */
         elementMenu = element1;
 
-
-
     }
+
+
+    
     shouldComponentUpdate(nextProps, nextState) {
         var checkState;
         console.log(this.state.changeCompt);
         console.log(nextState['changeCompt']);
-        if ((this.state.changeCompt != nextState['changeCompt']) || (this.state.prevLogin != this.state.login)) {
+        if ((this.state.changeCompt != nextState['changeCompt']) || (this.state.prevLogin != this.state.login) || (this.state.ancla != nextState['ancla'])) {
             return true;
         } else {
             return false;
@@ -66,6 +73,8 @@ class ComponentMaster extends Component {
             return (<h1>hola mundo</h1>)
         }
     }*/
+
+
     changeLogin = () => {
 
         this.setState({
@@ -76,6 +85,7 @@ class ComponentMaster extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+
         if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
             let simulateClick = elem => {
                 let evt = new MouseEvent('click', {
@@ -85,9 +95,30 @@ class ComponentMaster extends Component {
                 elem.dispatchEvent(evt)
             };
             console.log(elementMenu);
-            if(elementMenu !== undefined){
+            if (elementMenu !== undefined) {
                 var btnMenu = document.getElementById(elementMenu);
-                simulateClick(btnMenu)
+                setTimeout(function () {
+                    simulateClick(btnMenu);
+                }, 1000);
+            } else {
+        
+                let simulateClick = elem => {
+                    let evt = new MouseEvent('click', {
+                        bubbles: true,
+                        view: window
+                    });
+                    elem.dispatchEvent(evt)
+                };
+                var btnMenu = document.getElementById(this.state.ancla);
+                setTimeout(function () {
+                    simulateClick(btnMenu);
+                }, 2500);
+
+
+
+
+
+
             }
         }
     }
@@ -118,6 +149,7 @@ class ComponentMaster extends Component {
     }
 
     render() {
+
         return (
             <div className="mainComponent">
                 {<Menu login={this.state.login} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}></Menu>}
