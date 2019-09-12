@@ -20,8 +20,9 @@ class Perfil extends Component {
         M.Tabs.init(this.Tabs);
         const userData = new FormData();
         //asignar a no_identificacion el numero de cedula del usuario logeado
-        var no_identificacion = 112323123;
+        var no_identificacion = "1061699966";
         userData.append("identificacion", no_identificacion)
+        //cambiar localhost
         axios
             .post("http://localhost/api1/searchHistorialCitas", userData)
             .then(res => {
@@ -29,24 +30,30 @@ class Perfil extends Component {
 
                 //actualizar estado 
                 //result = JSON.parse(result)
-                console.log(result)
-                
-                this.setState({ resultados: result })
-                tableData = result.map(function (e) {
+                console.log(result.resultados_atl)
+                if(result.code == 200){
 
-                    return <tr>
-                        <td>
-                            {e.fecha_atencion}
-                        </td>
-                        <td>
-                            {e.id_atencion}
-                        </td>
-                    </tr>
-                })
-                if(tableData != null){
+                    this.setState({ resultados: result.resultados_atl })
+                    tableData = result.resultados_atl.map(function (e) {
+    
+                        return <tr>
+                            <td>
+                                {e.fecha_atencion}
+                            </td>
+                            <td>
+                                {e.id_atencion}
+                            </td>
+                        </tr>
+                    })
+                }else{
+                    document.getElementById("msj_error").innerHTML = "no se encontraron resultados"
+                }
+                if(tableData != null || result.code == 400){
+                 
                     var elem = document.getElementById("loader")
                     elem.parentNode.removeChild(elem)
                     return false
+                  
 
                 }
 
@@ -63,6 +70,9 @@ class Perfil extends Component {
             var strUrl = "http://localhost/atlanticv3/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion;
 
             return <tr>
+                <td>
+                    {e.nombre_servicio}
+                </td>
                 <td>
                     {e.fecha_atencion}
                 </td>
@@ -111,6 +121,7 @@ class Perfil extends Component {
                                 <table className="striped" id="tableResult">
                                     <thead>
                                         <tr>
+                                            <th>Prueba</th>
                                             <th>Fecha resultado</th>
                                             <th>Resultado</th>
 
@@ -118,6 +129,10 @@ class Perfil extends Component {
                                     </thead>
 
                                     <tbody>
+                                        {tableData}
+                                        <p id="msj_error"></p>
+                                    </tbody>
+                                </table>
                                         <div class="preloader-wrapper small active" id="loader">
                                             <div class="spinner-layer spinner-green-only">
                                                 <div class="circle-clipper left">
@@ -129,10 +144,6 @@ class Perfil extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        {tableData}
-
-                                    </tbody>
-                                </table>
 
 
 
