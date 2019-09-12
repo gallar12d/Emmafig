@@ -99,7 +99,7 @@ class ComponentMaster extends Component {
                     <div className="mainpage">
                         <Seccion1 />
                         <Calculadora changeLogin={this.changeLogin.bind(this)} />
-                        <Citas />
+                        <Citas changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
                         <Testimonios />
                         <Contacto />
                         <Footer />

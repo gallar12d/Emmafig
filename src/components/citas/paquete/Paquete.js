@@ -23,8 +23,19 @@ class Paquete extends Component {
 
     }
     addItem(id, nombre) {
-        //cerrar midal
-        this.props.item_selected(id, nombre)
+
+        if(this.props.login == 0){
+            var elem = document.getElementById('modal1');
+            var instance = M.Modal.getInstance(elem);
+            instance.open();
+            this.props.item_selected(id, nombre)
+
+        }
+        else{
+            this.props.item_selected(id, nombre)
+
+        }
+        
     }
 
     formatNum(num) {
