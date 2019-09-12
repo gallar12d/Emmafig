@@ -10,6 +10,7 @@ import Perfil from './perfil/Perfil';
 import EditPerfil from './perfil/Editprofile';
 import $ from "jquery";
 import { thisTypeAnnotation } from '@babel/types';
+import M from 'materialize-css';
 
 let elementMenu;
 var btnMenu;
@@ -33,10 +34,28 @@ class ComponentMaster extends Component {
 
     componentDidMount() {
         let ancla = this.props.ancla
-        this.setState({
+      
+        if(ancla == "login"){
+            setTimeout(function () {
+                let simulateClick = elem => {
+                    let evt = new MouseEvent('click', {
+                        bubbles: true,
+                        view: window
+                    });
+                    elem.dispatchEvent(evt)
+                };
+                
+                M.Modal.getInstance(document.getElementById('modal1')).open();
+                var btnIngresar = document.getElementById("btn_ingresar_a");
+              
+                simulateClick(btnIngresar);
+            }, 3000);
+        }else{
+            this.setState({
 
-            ancla: ancla
-        })
+                ancla: ancla
+            })
+        }
        
 
     }
@@ -85,13 +104,7 @@ class ComponentMaster extends Component {
         });
 
     }
-    simulateClick(elem){
-        let evt = new MouseEvent('click', {
-            bubbles: true,
-            view: window
-        });
-        elem.dispatchEvent(evt);
-    }
+  
 
     componentDidUpdate() {
 
