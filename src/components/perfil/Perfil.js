@@ -24,7 +24,7 @@ class Perfil extends Component {
         userData.append("identificacion", no_identificacion)
         //cambiar localhost
         axios
-            .post("http://localhost/api1/searchHistorialCitas", userData)
+            .post("https://emmafig.com/api1/searchHistorialCitas", userData)
             .then(res => {
                 let result = res.data;
 
@@ -67,7 +67,7 @@ class Perfil extends Component {
     render() {
 
         let tableData = this.state.resultados.map(function (e) {
-            var strUrl = "http://localhost/atlanticv3/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion;
+            var strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion;
 
             return <tr>
                 <td>
@@ -130,17 +130,18 @@ class Perfil extends Component {
 
                                     <tbody>
                                         {tableData}
-                                        <p id="msj_error"></p>
                                     </tbody>
+                                    
                                 </table>
-                                        <div class="preloader-wrapper small active" id="loader">
-                                            <div class="spinner-layer spinner-green-only">
-                                                <div class="circle-clipper left">
-                                                    <div class="circle"></div>
-                                                </div><div class="gap-patch">
-                                                    <div class="circle"></div>
-                                                </div><div class="circle-clipper right">
-                                                    <div class="circle"></div>
+                                        <p id="msj_error"></p>
+                                        <div className="preloader-wrapper small active" id="loader">
+                                            <div className="spinner-layer spinner-green-only">
+                                                <div className="circle-clipper left">
+                                                    <div className="circle"></div>
+                                                </div><div className="gap-patch">
+                                                    <div className="circle"></div>
+                                                </div><div className="circle-clipper right">
+                                                    <div className="circle"></div>
                                                 </div>
                                             </div>
                                         </div>

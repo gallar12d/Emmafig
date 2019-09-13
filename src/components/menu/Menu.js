@@ -349,13 +349,13 @@ class Menu extends Component {
 
 
 
-                    <li>
                         <li>
 
 
                             <a href="#!"> Cerrar Sesion </a>
 
                         </li>
+                    <li>
                         
                             <div className="row ">
                                 <div className="col s6 offset-s3">
