@@ -59,7 +59,7 @@ class Citas extends Component {
 
 
     itemSelected(id, nombre){
-        this.setState({iditem: id, textItem: nombre, step_activated: 1});
+        this.setState({iditem: id, textItem: nombre});
         if(this.props.login != 0){
             this.setState({step_activated: 1});
         }
