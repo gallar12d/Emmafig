@@ -20,7 +20,7 @@ class Perfil extends Component {
         M.Tabs.init(this.Tabs);
         const userData = new FormData();
         //asignar a no_identificacion el numero de cedula del usuario logeado
-        var no_identificacion = "1061699966";
+        var no_identificacion = "1061686379";
         userData.append("identificacion", no_identificacion)
         //cambiar localhost
         axios
