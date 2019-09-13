@@ -225,7 +225,7 @@ class Menu extends Component {
                     smooth={true}
                     offset={-55}
                     duration={500}
-                    delay={1000}
+                    
                 />
                 <Link
                     id="citas_sm"
@@ -235,7 +235,7 @@ class Menu extends Component {
                     smooth={true}
                     offset={-60}
                     duration={500}
-                    delay={1000}
+                    
                 />
                 <Link
                     id="scroolTestimonios_sm"
@@ -243,9 +243,9 @@ class Menu extends Component {
                     to="testimonios"
                     spy={true}
                     smooth={true}
-                    offset={1430}
+                    offset={-50}
                     duration={500}
-                    delay={1000}
+                    
                 >
                 </Link>
                 <Link
@@ -254,9 +254,9 @@ class Menu extends Component {
                     to="contacto"
                     spy={true}
                     smooth={true}
-                    offset={1423}
+                    offset={-63}
                     duration={500}
-                    delay={1000}
+                    
                 >
                 </Link>
                 <ul className="sidenav" id="mobile-demo">
