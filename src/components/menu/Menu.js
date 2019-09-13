@@ -51,10 +51,16 @@ class Menu extends Component {
 
     render() {
         let usuario;
+        let inicio;
+        if(this.props.login == 0){
+            inicio = <li><a className="modal-trigger" href='#modal1'><span id="txt_boton_entrar">Entrar</span></a></li>
+        }else{
+            inicio = null;
+        }
         if (this.props.login == 1) {
             usuario = <li>
                 <a id="perfil" className="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
-                    Usuario <i className="material-icons right">arrow_drop_down</i>
+                    {this.props.primer_nombre} <i className="material-icons right">arrow_drop_down</i>
                 </a>
                 <ul id="dropdown1" className="dropdown-content" >
                     <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
@@ -182,6 +188,7 @@ class Menu extends Component {
                                         Contacto
                                 </Link>
                                 </li>
+                                {inicio}
                                 {usuario}
                                 <li>
                                     <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
