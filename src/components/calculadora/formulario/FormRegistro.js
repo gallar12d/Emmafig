@@ -167,14 +167,15 @@ class FormRegistro extends Component {
         let password = document.getElementById('password');
         let tipo_identificacion = document.getElementById('tipo_identificacion');
         let identificacion = document.getElementById('identificacion');
-        Axios.post('https://emmafig.com/api1/rest-authentication/api/login.php', {
+        Axios.post('http://localhost/api1/rest-api-authentication-example/api/login.php', {
+        //Axios.post('https://emmafig.com/api1/rest-authentication/api/login.php', {
             "password": password.value,
             "tipo_identificacion": tipo_identificacion.value,
             "identificacion": identificacion.value
         }
         )
-            .then(res => {
-                this.setJwt('jwt', res.data.jwt);
+            .then(res => {                
+                this.setJwt(res.data);
                 this.setState({
                     LoginSuccesfull: 1
                 })
@@ -196,8 +197,10 @@ class FormRegistro extends Component {
             });
     }
 
-    setJwt = (key, value) => {
-        localStorage.setItem(key, value);
+    setJwt = (data) => {
+        localStorage.setItem('jwt', data.jwt);
+        localStorage.setItem('id', data.id);
+        localStorage.setItem('primer_nombre', data.primer_nombre);
     }
 
     validarCampos = () => {

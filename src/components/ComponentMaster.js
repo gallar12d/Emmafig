@@ -27,7 +27,9 @@ class ComponentMaster extends Component {
             prevLogin: 1,
             loginCalculadora: 0,
             ancla: null,
-            prevAncla: ""
+            prevAncla: "",
+            primer_nombre: "",
+            id: ""
 
         }
         //this.clickLogin = this.clickLogin.bind(this);
@@ -39,8 +41,11 @@ class ComponentMaster extends Component {
 
 
     componentDidMount() {
-        ancla = this.props.ancla
-       
+        ancla = this.props.ancla;
+        console.log('jwt '+localStorage.getItem('jwt'));
+        if(localStorage.getItem('jwt') !== null){
+            this.changeLogin()
+        }
         if (ancla == "login") {
             setTimeout(function () {
                 let simulateClick = elem => {
@@ -113,7 +118,9 @@ class ComponentMaster extends Component {
     changeLogin = () => {
         this.setState({
             login: this.state.prevLogin,
-            prevLogin: this.state.login
+            prevLogin: this.state.login,
+            primer_nombre: localStorage.getItem('primer_nombre'),
+            id: localStorage.getItem('id')
         });
         if(this.state.loginCalculadora == 1){
             this.setState({
@@ -134,6 +141,9 @@ class ComponentMaster extends Component {
         ancla = this.props.ancla;
         if(this.state.login == 0){
             localStorage.removeItem('jwt');
+            localStorage.removeItem('id');
+            localStorage.removeItem('primer_nombre');
+
         }
         if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
            
@@ -205,7 +215,7 @@ class ComponentMaster extends Component {
 
         return (
             <div className="mainComponent">
-                {<Menu login={this.state.login} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
+                {<Menu login={this.state.login} primer_nombre={this.state.primer_nombre} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
                 {this.showComponent()}
             </div>
         );
