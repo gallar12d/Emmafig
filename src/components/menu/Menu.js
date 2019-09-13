@@ -60,7 +60,7 @@ class Menu extends Component {
                     <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
                     <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
                     <li className="divider"></li>
-                    <li><a href="#/logout">Cerrar sesion</a></li>
+                    <li><a onClick={() => { this.props.changeLogin(); this.props.updateStateComponent(0) }}>Cerrar sesion</a></li>
                 </ul>
             </li>
         }
