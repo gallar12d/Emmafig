@@ -25,6 +25,7 @@ class ComponentMaster extends Component {
             componentScroll: "",
             login: 0,
             prevLogin: 1,
+            loginCalculadora: 0,
             ancla: null,
             prevAncla: ""
 
@@ -85,11 +86,7 @@ class ComponentMaster extends Component {
     }
     scroolComponent(element1) {
         elementMenu = element1;
-
     }
-
-
-
     shouldComponentUpdate(nextProps, nextState) {
         var checkState;
         console.log(this.state.changeCompt);
@@ -114,18 +111,30 @@ class ComponentMaster extends Component {
 
 
     changeLogin = () => {
-
         this.setState({
             login: this.state.prevLogin,
             prevLogin: this.state.login
         });
-
+        if(this.state.loginCalculadora == 1){
+            this.setState({
+                changeCompt: 1
+            })
+            this.showComponent();
+        }        
     }
 
+    changeLoginCalculadora = () => {
+        this.setState({
+            loginCalculadora: 1
+        });
+    }
 
+    
     componentDidUpdate() {
         ancla = this.props.ancla;
-        
+        if(this.state.login == 0){
+            localStorage.removeItem('jwt');
+        }
         if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
            
             console.log(elementMenu);
@@ -163,8 +172,6 @@ class ComponentMaster extends Component {
 
                 }
             }
-
-
             elementMenu = null;
         }
     }
@@ -175,7 +182,9 @@ class ComponentMaster extends Component {
                 return (
                     <div className="mainpage">
                         <Seccion1 />
-                        <Calculadora changeLogin={this.changeLogin.bind(this)} />
+                        
+                        
+                        <Calculadora changeLogin={this.changeLogin.bind(this)} changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} />
                         <Citas changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
                         <Testimonios />
                         <Contacto />
@@ -198,7 +207,7 @@ class ComponentMaster extends Component {
 
         return (
             <div className="mainComponent">
-                {<Menu login={this.state.login} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}></Menu>}
+                {<Menu login={this.state.login} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
                 {this.showComponent()}
             </div>
         );

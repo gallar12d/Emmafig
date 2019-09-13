@@ -57,7 +57,7 @@ class Calculadora extends Component {
         switch (this.state.componente) {
             case 1: return <Inicio changeComponente={this.changeComponente.bind(this)} />
             case 2: return <Cuestionario changeComponente={this.changeComponente.bind(this)} />
-            case 3: return <Resultado idModal='#modal1' backComponente={this.backComponente} result={this.state.fin_resultado}/>
+            case 3: return <Resultado backComponente={this.backComponente} result={this.state.fin_resultado} changeLoginCalculadora={this.props.changeLoginCalculadora}/>
             case 4: return <Inscripcion changeComponente={this.changeComponente.bind(this)} />
             case 5: return <Detalle />
         }
@@ -66,7 +66,7 @@ class Calculadora extends Component {
 
         return (
             <div id="contenedor-calculadora">
-                <Modal id='modal1' changeComponente={this.changeComponente} changeLogin={this.props.changeLogin}/>
+                <Modal changeComponente={this.changeComponente} changeLogin={this.props.changeLogin}/>
                 {this.showComponente()}
             </div>
         );
