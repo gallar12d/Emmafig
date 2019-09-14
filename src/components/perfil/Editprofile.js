@@ -20,15 +20,28 @@ class Editprofile extends Component {
     componentDidMount() {
         M.Collapsible.init(this.Collapsible);
         M.Tabs.init(this.Tabs);
+        
     }
     validarFormulario(form,e){
         e.preventDefault()
         var formTap = document.querySelector("#"+form+"");
-        if(formTap.checkValidity()){
-           
-            //continuar con el proceso de actualizar la informacion en la base de datos
+        if(form == 'formPassword'){
+            //valifar que los valores de las contraseñas sea iguales
+            var password = document.getElementById("newPassword").value;
+            var passwordRepeat = document.getElementById("passwordRepeat").value;
+            if(password != passwordRepeat){
+                alert("las contraseñas no coinciden");
+
+            }
+
         }else{
-                formTap.reportValidity();
+
+            if(formTap.checkValidity()){
+               
+                //continuar con el proceso de actualizar la informacion en la base de datos
+            }else{
+                    formTap.reportValidity();
+            }
         }
 
 
@@ -61,22 +74,22 @@ class Editprofile extends Component {
                                     <div className="input-field col s12 ">
 
                                         <input id="primer_nombre" type="text" className="validate" name="primer_nombre" required maxLength="10" />
-                                        <label className="active" for="primer_nombre">Primer nombre</label>
+                                        <label className="active" htmlFor="primer_nombre">Primer nombre</label>
 
 
                                     </div>
 
                                     <div className="input-field col s12 ">
                                         <input id="segundo_nombre" type="text" className="validate" maxLength="10" />
-                                        <label className="active" for="segundo_nombre">Segundo nombre</label>
+                                        <label className="active" htmlFor="segundo_nombre">Segundo nombre</label>
                                     </div>
                                     <div className="input-field col s12 ">
                                         <input id="first_apellido" type="text" className="validate" required maxLength="10" />
-                                        <label className="active" for="first_apellido">Primer apellido</label>
+                                        <label className="active" htmlFor="first_apellido">Primer apellido</label>
                                     </div>
                                     <div className="input-field col s12 ">
                                         <input id="segundo_apellido" type="text" className="validate" maxLength="10" />
-                                        <label className="active" for="segundo_apellido">Segundo apellido</label>
+                                        <label className="active" htmlFor="segundo_apellido">Segundo apellido</label>
                                     </div>
                                     <button className="waves-light btn" id="btnSetUserInfo" onClick={(e)=> this.validarFormulario("formPersonalInfo", e)} >Guardar cambios</button>
 
@@ -89,7 +102,7 @@ class Editprofile extends Component {
                                 <form className="form-content" id="emailForm">
                                     <div className="input-field col s12 ">
                                         <input id="email" type="email" className="validate" />
-                                        <label for="email">Email</label>
+                                        <label htmlFor="email">Email</label>
                                     </div>
                                     <button className="waves-light btn" id="btnSetEmail" onClick={(e)=> this.validarFormulario("emailForm",e)} >Guardar cambios</button>
 
@@ -102,7 +115,7 @@ class Editprofile extends Component {
                                     <div className="row">
                                         <div className="input-field col s6">
                                             <input id="password" type="password" className="validate" maxLength="10" required />
-                                            <label for="password">Contraseña actual</label>
+                                            <label htmlFor="password">Contraseña actual</label>
                                         </div>
                                         <div className="row">
                                             <div className="input-field col s12">
@@ -110,12 +123,12 @@ class Editprofile extends Component {
                                             </div>
                                             <div className="input-field col s6"    >
                                                 <input id="newPassword" type="password" className="validate" maxLength="10" required />
-                                                <label for="password">Nueva contraseña</label>
+                                                <label htmlFor="password">Nueva contraseña</label>
 
                                             </div>
                                             <div className="input-field col s6"    >
                                                 <input id="passwordRepeat" type="password" className="validate" maxLength="10" required />
-                                                <label for="password">Confirmar contraseña</label>
+                                                <label htmlFor="password">Confirmar contraseña</label>
 
                                             </div>
                                         </div>
@@ -132,7 +145,7 @@ class Editprofile extends Component {
 
                                     <div className="input-field col s12 ">
                                         <input id="numeroTelefono" type="number" className="validate" maxLength="9" />
-                                        <label for="numeroTelefono">Numero de telefono</label>
+                                        <label htmlFor="numeroTelefono">Numero de telefono</label>
                                     </div>
                                     <button className="waves-light btn" id="btnSetTelefono" onClick={(e)=> this.validarFormulario("formTel",e)} >Guardar cambios</button>
 

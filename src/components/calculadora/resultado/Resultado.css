@@ -1,6 +1,7 @@
-#contenedor-resultado{    
-    width: 100%;
-    padding-bottom: 15px;    
+.btn_op{
+    min-width: 80px;
+    max-width: 150px;
+    cursor: pointer;
 }
 .boton-res{
     cursor: pointer;
@@ -11,12 +12,26 @@
     border-radius: .5em;
     margin-top: .5em;
 }
-
+#contenedor-detalles{
+    padding-top: 15px;
+    margin-bottom: 0;
+}
+#contenedor-opciones{
+    margin-top: 1em;
+    padding-top: 15px;
+}
 #contenido-res{
     color: #000000;
     font-size: 2.5em;
     font-weight: bolder;
     margin-bottom: 0.3rem; 
+}
+#contenedor-resultado{    
+    width: 100%;
+    padding-bottom: 15px;    
+}
+#detalle-res{
+    margin-top: 1em;
 }
 .info-reiniciar{
     position: absolute;
@@ -54,6 +69,12 @@
 
 #subtitulo-res{      
     margin-top: 0.1rem;
+}
+#titulo-detalle{
+    color: #0f9b9b;
+    font-size: 2.4em;
+    font-weight: bolder;
+    margin-bottom: 1rem; 
 }
 #titulo-res{
     color:#0F9b9b;

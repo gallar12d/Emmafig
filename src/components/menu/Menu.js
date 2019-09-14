@@ -51,10 +51,18 @@ class Menu extends Component {
 
     render() {
         let usuario;
+        let inicio;
+        if(this.props.login == 0){
+            inicio = <li><a className="modal-trigger" href='#modal1'><span id="txt_boton_entrar">Entrar</span></a></li>
+        }else{
+            inicio = null;
+        }
+        let usuario_sm;
+        let cerrar_sesion;
         if (this.props.login == 1) {
             usuario = <li>
                 <a id="perfil" className="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
-                    Usuario <i className="material-icons right">arrow_drop_down</i>
+                    {this.props.primer_nombre} <i className="material-icons right">arrow_drop_down</i>
                 </a>
                 <ul id="dropdown1" className="dropdown-content" >
                     <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
@@ -63,7 +71,24 @@ class Menu extends Component {
                     <li><a onClick={() => { this.props.changeLogin(); this.props.updateStateComponent(0) }}>Cerrar sesion</a></li>
                 </ul>
             </li>
+             usuario_sm = <div>
+
+             <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
+             <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
+         </div>
+            cerrar_sesion =
+                <li>
+
+
+<a href="#!"> Cerrar Sesion </a>
+
+</li>
+            
+
+
         }
+        
+      
         return (
             <div id="menu">
                 <div className="navbar-fixed">
@@ -96,18 +121,22 @@ class Menu extends Component {
                             </a>
                             <ul className=" menuItems right hide-on-med-and-down">
                                 <li>
+
                                     <Link
-                                        id="scroolCitas"
+                                        id="citas_section"
                                         activateclass="activate"
                                         to="citas"
                                         spy={true}
                                         smooth={true}
                                         offset={-60}
                                         duration={500}
-                                        delay={1000}
+
                                     />
+
+
+
                                     <Link
-                                        onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCitas") }}
+                                        onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "citas_section") }}
                                         activateclass="activate"
                                         to="citas"
                                         spy={true}
@@ -119,18 +148,22 @@ class Menu extends Component {
                                     </Link>
                                 </li>
                                 <li>
+
+
                                     <Link
-                                        id="scroolTestimonios"
+                                        id="testimonios_section"
                                         activateclass="activate"
                                         to="testimonios"
                                         spy={true}
                                         smooth={true}
-                                        offset={320}
+                                        offset={-50}
                                         duration={500}
-                                        delay={1000}
+
                                     />
+
+
                                     <Link
-                                        onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolTestimonios") }}
+                                        onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "testimonios_section") }}
                                         activateclass="activate"
                                         to="testimonios"
                                         spy={true}
@@ -145,19 +178,25 @@ class Menu extends Component {
                                     <a href="#!"> Blog </a>
                                 </li>
                                 <li>
+
+
+
                                     <Link
-                                        id="scroolContacto"
+                                        id="contacto_section"
                                         activateclass="activate"
                                         to="contacto"
                                         spy={true}
                                         smooth={true}
-                                        offset={317}
+                                        offset={-63}
                                         duration={500}
-                                        delay={1000}
+
                                     />
+
+
+
                                     <Link
                                         ref={e => (elementContacto = e)}
-                                        onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolContacto") }}
+                                        onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "contacto_section") }}
                                         activateclass="activate"
                                         to="contacto"
                                         spy={true}
@@ -168,6 +207,7 @@ class Menu extends Component {
                                         Contacto
                                 </Link>
                                 </li>
+                                {inicio}
                                 {usuario}
                                 <li>
                                     <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
@@ -192,6 +232,16 @@ class Menu extends Component {
 
                 </div>
 
+                <Link
+                    id="calculadora_section"
+                    activateclass="activate"
+                    to="contenedor-calculadora"
+                    spy={true}
+                    smooth={true}
+                    offset={-23}
+                    duration={500}
+
+                />
 
                 <Link
                     id="scroolCalculadora_sm"
@@ -201,17 +251,17 @@ class Menu extends Component {
                     smooth={true}
                     offset={-55}
                     duration={500}
-                    delay={1000}
+                    
                 />
                 <Link
-                    id="scroolCitas_sm"
+                    id="citas_sm"
                     activateclass="activate"
                     to="citas"
                     spy={true}
                     smooth={true}
                     offset={-60}
                     duration={500}
-                    delay={1000}
+                    
                 />
                 <Link
                     id="scroolTestimonios_sm"
@@ -219,9 +269,9 @@ class Menu extends Component {
                     to="testimonios"
                     spy={true}
                     smooth={true}
-                    offset={1430}
+                    offset={-50}
                     duration={500}
-                    delay={1000}
+                    
                 >
                 </Link>
                 <Link
@@ -230,19 +280,13 @@ class Menu extends Component {
                     to="contacto"
                     spy={true}
                     smooth={true}
-                    offset={1423}
+                    offset={-63}
                     duration={500}
-                    delay={1000}
+                    
                 >
                 </Link>
                 <ul className="sidenav" id="mobile-demo">
-
-                    <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
-                    <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
-
-
-
-
+                        {usuario_sm}
                     <li>
 
 
@@ -271,7 +315,7 @@ class Menu extends Component {
 
                         <Link
 
-                            onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCitas_sm") }}
+                            onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "citas_sm") }}
                             activateclass="activate"
                             to="citas"
                             spy={true}
@@ -319,29 +363,38 @@ class Menu extends Component {
                             Contacto
                                 </Link>
                     </li>
+
+
+
+
+
+
+                       {cerrar_sesion}
                     <li>
-                        <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
-                            <i className="fa fa-facebook fa-lg"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://instagram.com/funinnovagen?igshid=1i9a8bm9m2kck" target="_blank">
-                            <i className="fa fa-instagram fa-lg"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a id="iconWSP" href="https://api.whatsapp.com/send?phone=573174412170" target="_blank">
-                            <i className="fa fa-whatsapp fa-lg"></i>
-                        </a>
-                    </li>
+                        
+                            <div className="row ">
+                                <div className="col s6 offset-s3">
 
+                                <div className="col s4">
+                                    <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
+                                        <i className="fa fa-facebook fa-lg"></i>
+                                    </a>
 
+                                </div>
+                                <div className="col s4">
+                                    <a href="https://instagram.com/funinnovagen?igshid=1i9a8bm9m2kck" target="_blank">
+                                        <i className="fa fa-instagram fa-lg"></i>
+                                    </a>
+                                </div>
+                                <div className="col s4">
+                                    <a id="iconWSP" href="https://api.whatsapp.com/send?phone=573174412170" target="_blank">
+                                        <i className="fa fa-whatsapp fa-lg"></i>
+                                    </a>
+                                </div>
+                                </div>
 
-
-                    <li>
-
-
-                        <a href="#!"> Cerrar Sesion </a>
+                            </div>
+                        
 
                     </li>
 

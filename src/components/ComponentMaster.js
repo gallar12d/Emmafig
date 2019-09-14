@@ -10,8 +10,11 @@ import Perfil from './perfil/Perfil';
 import EditPerfil from './perfil/Editprofile';
 import $ from "jquery";
 import { thisTypeAnnotation } from '@babel/types';
+import M from 'materialize-css';
 
 let elementMenu;
+var btnMenu;
+let ancla;
 class ComponentMaster extends Component {
 
     constructor(props) {
@@ -21,11 +24,65 @@ class ComponentMaster extends Component {
             changeCompt: 0,
             componentScroll: "",
             login: 0,
-            prevLogin: 1
+            prevLogin: 1,
+            loginCalculadora: 0,
+            ancla: null,
+            prevAncla: "",
+            primer_nombre: "",
+            id: ""
+
         }
+        //this.clickLogin = this.clickLogin.bind(this);
 
     }
-    changeComponente(state) {
+
+
+  
+
+
+    componentDidMount() {
+        ancla = this.props.ancla;
+        console.log('jwt '+localStorage.getItem('jwt'));
+        if(localStorage.getItem('jwt') !== null){
+            this.changeLogin()
+        }
+        if (ancla == "login") {
+            setTimeout(function () {
+                let simulateClick = elem => {
+                    let evt = new MouseEvent('click', {
+                        bubbles: true,
+                        view: window
+                    });
+                    elem.dispatchEvent(evt)
+                };
+
+                M.Modal.getInstance(document.getElementById('modal1')).open();
+                var btnIngresar = document.getElementById("btn_ingresar_a");
+
+                simulateClick(btnIngresar);
+    
+            }, 3000);
+
+
+
+        } else{
+            this.setState({
+
+                ancla: ancla
+            })
+        }
+
+
+
+
+
+    }
+
+
+    
+
+
+    changeComponente(state){
 
         this.setState({
             changeCompt: state
@@ -33,23 +90,13 @@ class ComponentMaster extends Component {
 
     }
     scroolComponent(element1) {
-        /*
-        this.setState({
-            componentScroll: state,
-         
-            
-        })
-        */
         elementMenu = element1;
-
-
-
     }
     shouldComponentUpdate(nextProps, nextState) {
         var checkState;
         console.log(this.state.changeCompt);
         console.log(nextState['changeCompt']);
-        if ((this.state.changeCompt != nextState['changeCompt']) || (this.state.prevLogin != this.state.login)) {
+        if ((this.state.changeCompt != nextState['changeCompt']) || (this.state.prevLogin != this.state.login) || (this.state.ancla != nextState['ancla'])) {
             return true;
         } else {
             return false;
@@ -66,29 +113,76 @@ class ComponentMaster extends Component {
             return (<h1>hola mundo</h1>)
         }
     }*/
-    changeLogin = () => {
 
+
+    changeLogin = () => {
         this.setState({
             login: this.state.prevLogin,
-            prevLogin: this.state.login
+            prevLogin: this.state.login,
+            primer_nombre: localStorage.getItem('primer_nombre'),
+            id: localStorage.getItem('id')
         });
-
+        if(this.state.loginCalculadora == 1){
+            this.setState({
+                changeCompt: 1
+            })
+            this.showComponent();
+        }        
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    changeLoginCalculadora = () => {
+        this.setState({
+            loginCalculadora: 1
+        });
+    }
+
+    
+    componentDidUpdate() {
+        ancla = this.props.ancla;
+        if(this.state.login == 0){
+            localStorage.removeItem('jwt');
+            localStorage.removeItem('id');
+            localStorage.removeItem('primer_nombre');
+
+        }
         if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
-            let simulateClick = elem => {
-                let evt = new MouseEvent('click', {
-                    bubbles: true,
-                    view: window
-                });
-                elem.dispatchEvent(evt)
-            };
+           
             console.log(elementMenu);
-            if(elementMenu !== undefined){
-                var btnMenu = document.getElementById(elementMenu);
-                simulateClick(btnMenu)
+            if (elementMenu != undefined || elementMenu != null) {
+                let simulateClick = elem => {
+                    let evt = new MouseEvent('click', {
+                        bubbles: true,
+                        view: window
+                    });
+                    elem.dispatchEvent(evt)
+                };
+                btnMenu = document.getElementById(elementMenu);
+                setTimeout(function () {
+                    simulateClick(btnMenu);
+                }, 1000);
+
+
+            } else {
+                if (this.state.ancla != null) {
+                    let simulateClick = elem => {
+                        let evt = new MouseEvent('click', {
+                            bubbles: true,
+                            view: window
+                        });
+                        elem.dispatchEvent(evt)
+                    };
+
+                    btnMenu = document.getElementById(this.state.ancla);
+                    setTimeout(function () {
+                        simulateClick(btnMenu);
+                    }, 3000);
+
+                }else if(ancla == 'login'){
+                    this.changeComponente(1)
+
+                }
             }
+            elementMenu = null;
         }
     }
 
@@ -98,7 +192,7 @@ class ComponentMaster extends Component {
                 return (
                     <div className="mainpage">
                         <Seccion1 />
-                        <Calculadora changeLogin={this.changeLogin.bind(this)} viewPerfil={this.changeComponente.bind(this)} />
+                        <Calculadora changeLogin={this.changeLogin.bind(this)} changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} />
                         <Citas />
                         <Testimonios />
                         <Contacto />
@@ -118,9 +212,10 @@ class ComponentMaster extends Component {
     }
 
     render() {
+
         return (
             <div className="mainComponent">
-                {<Menu login={this.state.login} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
+                {<Menu login={this.state.login} primer_nombre={this.state.primer_nombre} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
                 {this.showComponent()}
             </div>
         );

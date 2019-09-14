@@ -27,6 +27,10 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     vertical-align: 0%;
 }
 
+#txt_boton_entrar{
+    font-size: 1.1em;
+}
 ul#mobile-demo li a {
     display: inline-block !important;
 }
+
