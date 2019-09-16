@@ -4,7 +4,7 @@ import M from 'materialize-css'
 import '../../../../node_modules/materialize-social/css/materialize.css'
 import '../../../../node_modules/font-awesome/css/font-awesome.min.css'
 /*import './materialize-social.css'*/
-
+let formatos = [0, 0, 0, 0, 0, 0];
 class Resultado extends Component {
 
     constructor(props) {
@@ -13,11 +13,12 @@ class Resultado extends Component {
             btn_mas_detalles: process.env.PUBLIC_URL + "/img/masdeta-btn.svg",
             btn_conocer_mas: process.env.PUBLIC_URL + "/img/conocermas-btn_1.svg",
             displayModal: false,
-            textResultado : '',
+            textResultado: '',
             style: {
                 opacity: 0,
                 transform: 'translate3d(100%,0,0)'
-            }
+            },
+            img_emma: process.env.PUBLIC_URL + "/img/emma-ok.svg"
         };
 
         this.masHandleMouseOver = this.masHandleMouseOver.bind(this);
@@ -29,7 +30,8 @@ class Resultado extends Component {
         this.unMountStyle = this.unMountStyle.bind(this);
     }
 
-    componentDidMount() {        
+    componentDidMount() {
+        this.formatRespuestas();
         setTimeout(this.mountStyle, 10) //call the into animiation
     }
 
@@ -80,15 +82,65 @@ class Resultado extends Component {
         });
     }
 
-    showa = () =>{
+    showa = () => {
         alert('hola form');
+    }
+
+    showOpcion = () => {
+        let opcion = '';
+        if (this.props.login) {
+            opcion = <div className="col s12 l3">
+                {/*<img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1" />*/}
+                <a id="btn_mas_detalles" className="boton-res waves-effect waves-light modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Saber más</a>
+            </div>
+        } else {
+            opcion = <div className="col s12 l3">
+                {/*<img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1" />*/}
+                <a id="btn_mas_detalles" className="boton-res waves-effect waves-light modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles de tu resultado</a>
+            </div>
+        }
+        return opcion;
+    }
+    formatRespuestas = () => {
+                  
+        switch(this.props.respuestas[0]){
+            case 1: formatos[0] = 'Menor de 15 años';
+                    break;
+            case 2: formatos[0] = 'Entre 15 y 20 años';
+                    break;
+            case 3: formatos[0] = 'Entre 21 y 30 años';
+                    break;
+            case 4: formatos[0] = 'Entre 31 y 50 años';
+                    break;
+            default: formatos[0] = 'Mayor de 50 años';
+                    break;
+        }
+        
+        for(var i=1; i<= 4; i++){
+            if(this.props.respuestas[i] == 1){
+                formatos[i] = 'Sí'
+            }else{
+                formatos[i] = 'No'
+            }
+        }        
+        switch(this.props.respuestas[5]){
+            case '0': formatos[5] = 'Ninguna';
+                    console.log('Ninguna');
+                    break;
+            case '1': formatos[5] = 'Afro';
+                    console.log('Afro');
+                    break;           
+            case '2': formatos[5] = 'Indigena';
+                    console.log('Indigena');
+                    break;
+        }
+        console.log(formatos);  
     }
     render() {
 
-        return (
+        return (         
 
             <div style={this.state.style} id="contenedor-resultado">
-
                 <div className="row">
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
                         <h1 id="titulo-res" className="flow-text">Resultado</h1>
@@ -96,19 +148,54 @@ class Resultado extends Component {
                         <h1 id="contenido-res" className="flow-text"><span className="label-res">RESULTADO: </span>{this.props.result}</h1>
                     </div>
                 </div>
+                <div id="contenedor-detalles" className="row">
+                    <div id="contenedor-emma" className="col s4 m4 l3 offset-s4">
+                        <img id="img-emma" src={this.state.img_emma} />
+                    </div>
+                    <div className="col s10 m8 l8 offset-s1 offset-l1">
+                        <div id="contenedor-titulo-ins" className="right-align">
+                            <span id="titulo-detalle">Detalles de tu resultado</span>
+                            <p id="detalle-res">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                        </div>
+                        <div className="row">
+                            <div className="col l12">
+                                <table className="centered">
+                                    <thead>
+                                        <tr>
+                                            <th>Cuantos años tienes</th>
+                                            <th>Tienes mas de tres hijos</th>
+                                            <th>Más de dos compañeros sexuales</th>
+                                            <th>Con Pareja</th>
+                                            <th>Relaciones antes de los 15 años</th>
+                                            <th>Etnia</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            {formatos.map((item, index) => <td key={index}>{item}</td>)}
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div id="cont-btn-result" className="row">
-                    <div className="col s12 l3 offset-l3">
-                        {/*<img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>*/}
-                        <a id="btn_reiniciar" className="boton-res waves-effect waves-light" onClick={this.props.backComponente}>Reiniciar cuestionario</a>
+
+                    <div className="row">
+                        <div className="col s12 l3 offset-l3">
+                            {/*<img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>*/}
+                            <a id="btn_reiniciar" className="boton-res waves-effect waves-light" onClick={this.props.backComponente}>Reiniciar cuestionario</a>
+                        </div>
+                        {
+                            this.showOpcion()
+                        }
+                        <div className="col s12 l2">
+                            {/*<img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>*/}
+                            <a id="btn_conocer_mas" className="boton-res waves-effect waves-light">Pedir cita</a>
+                        </div>
                     </div>
-                    <div className="col s12 l3">
-                        {/*<img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1" />*/}
-                        <a id="btn_mas_detalles" className="boton-res waves-effect waves-light modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles de tu resultado</a>
-                    </div>
-                    {/*<div className="col s12 l2">
-                        <img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>
-                        <a id="btn_conocer_mas" className="boton-res waves-effect waves-light">Conocer más</a>
-                    </div>*/}
 
                 </div>
             </div>

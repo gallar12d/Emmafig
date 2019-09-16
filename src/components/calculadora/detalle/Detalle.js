@@ -81,7 +81,7 @@ class Detalle extends Component {
                         </div>
                     </div>
                 </div>
-            </div >
+            </div>
 
         );
 
