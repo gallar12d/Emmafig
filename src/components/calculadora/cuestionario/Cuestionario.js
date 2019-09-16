@@ -208,9 +208,8 @@ class Cuestionario extends Component {
                             etnia_indigena: etnia_indigena,
                             etnia_afro: etnia_afro
                         }
-                      }).then(res => {
-                        console.log(res.data.message);
-                        this.props.changeComponente(res.data.riesgo);
+                      }).then(res => {                        
+                        this.props.changeComponente(res.data.riesgo, this.state.selectedValues);
                     })
                     .catch(function (error) {
                         if (error.response) {
