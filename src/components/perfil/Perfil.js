@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Perfil.css'
 import M from "materialize-css";
 import axios from "axios";
+import $ from 'jquery';
 
 let tableData;
 
@@ -16,8 +17,9 @@ class Perfil extends Component {
             primer_apellido: '',
             segundo_apellido: '',
             fecha_nacimiento: '',
-            no_identificacion: ''
+            no_identificacion: '',
         }
+
     }
 
 
@@ -85,9 +87,41 @@ class Perfil extends Component {
                 }
             });
 
-        //cambiar localhost
 
 
+    }
+    /*
+    onchangeFile(e){
+        let file = e.target.files;
+        console.log(file)
+
+        let reader = new FileReader;
+        reader.readAsDataURL(file[0]);
+        reader.onload =(e)=>{
+            console.log(e.target.result);
+        }
+    }
+
+    handleChange(event) {
+        console.log(URL.createObjectURL(event.target.files[0]))
+        console.log(event.target.files[0])
+        this.setState({
+            file: URL.createObjectURL(event.target.files[0])
+        })
+    }
+    */
+    changePictureProfile() {
+
+        let pictureFile = new FormData();
+        var imagedata = document.querySelector('input[type="file"]').files[0];
+
+        pictureFile.append("imgFile", imagedata);
+        
+
+        axios.post("https://localhost/atlanticv3/usuarios/updateProfilePicture", pictureFile).then(res => {
+            let result = res.data;
+
+        })
 
     }
 
@@ -115,70 +149,73 @@ class Perfil extends Component {
 
 
                 <div className="container emp-profile">
-                    <form method="post">
-                        <div className="row">
-                            <div className="col m5">
-                                <div className="profile-img">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
-                                    <div className="file btn btn-lg btn-primary">
-                                        Cambiar Foto
-                                <input type="file" name="file" />
-                                    </div>
+
+                    <div className="row">
+                        <div className="col m5">
+                            <div className="profile-img">
+                                <img id="profile_picture" src={this.state.file} alt="" />
+                                <div className="file btn btn-lg btn-primary">
+                                    Cambiar Foto
+                                        <form id="form_img_profile"   >
+
+                                        <input onChange={() => this.changePictureProfile()} type="file" id="foto_perfil" name="userProfile" />
+                                    </form>
                                 </div>
                             </div>
-                            <div className="col md6">
-                                <div className="profile-head">
-                                    <h5>
-                                        {this.state.primer_nombre+' '+this.state.segundo_nombre+' '+this.state.primer_apellido+' '+this.state.segundo_apellido}
-                                    </h5>
-                                    <h6>
-                                        N° identificacion: {this.state.no_identificacion}
-                                    </h6>
-                                    <p className="proile-rating">Fecha de nacimiento : <span>{this.state.fecha_nacimiento}</span></p>
-
-
-                                </div>
-                            </div>
-
                         </div>
-                        <div className="row">
-
-                            <div className="col m12">
-                                <h6>REGISTRO DE ACTIVIDAD</h6>
-                                <table className="striped" id="tableResult">
-                                    <thead>
-                                        <tr>
-                                            <th>Prueba</th>
-                                            <th>Fecha resultado</th>
-                                            <th>Resultado</th>
-
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        {tableData}
-                                    </tbody>
-
-                                </table>
-                                <p id="msj_error"></p>
-                                <div className="preloader-wrapper small active" id="loader">
-                                    <div className="spinner-layer spinner-green-only">
-                                        <div className="circle-clipper left">
-                                            <div className="circle"></div>
-                                        </div><div className="gap-patch">
-                                            <div className="circle"></div>
-                                        </div><div className="circle-clipper right">
-                                            <div className="circle"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
+                        <div className="col md6">
+                            <div className="profile-head">
+                                <h5>
+                                    {this.state.primer_nombre + ' ' + this.state.segundo_nombre + ' ' + this.state.primer_apellido + ' ' + this.state.segundo_apellido}
+                                </h5>
+                                <h6>
+                                    N° identificacion: {this.state.no_identificacion}
+                                </h6>
+                                <p className="proile-rating">Fecha de nacimiento : <span>{this.state.fecha_nacimiento}</span></p>
 
 
                             </div>
                         </div>
-                    </form>
+
+                    </div>
+                    <div className="row">
+
+                        <div className="col m12">
+                            <h6>REGISTRO DE ACTIVIDAD</h6>
+                            <table className="striped" id="tableResult">
+                                <thead>
+                                    <tr>
+                                        <th>Prueba</th>
+                                        <th>Fecha resultado</th>
+                                        <th>Resultado</th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {tableData}
+                                </tbody>
+
+                            </table>
+                            <p id="msj_error"></p>
+                            <div className="preloader-wrapper small active" id="loader">
+                                <div className="spinner-layer spinner-green-only">
+                                    <div className="circle-clipper left">
+                                        <div className="circle"></div>
+                                    </div><div className="gap-patch">
+                                        <div className="circle"></div>
+                                    </div><div className="circle-clipper right">
+                                        <div className="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
                 </div>
 
             </div>

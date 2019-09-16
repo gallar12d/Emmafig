@@ -52,9 +52,9 @@ class Menu extends Component {
     render() {
         let usuario;
         let inicio;
-        if(this.props.login == 0){
+        if (this.props.login == 0) {
             inicio = <li><a className="modal-trigger" href='#modal1'><span id="txt_boton_entrar">Entrar</span></a></li>
-        }else{
+        } else {
             inicio = null;
         }
         let usuario_sm;
@@ -71,24 +71,24 @@ class Menu extends Component {
                     <li><a onClick={() => { this.props.changeLogin(); this.props.updateStateComponent(0) }}>Cerrar sesion</a></li>
                 </ul>
             </li>
-             usuario_sm = <div>
+            usuario_sm = <div>
 
-             <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
-             <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
-         </div>
+                <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
+                <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
+            </div>
             cerrar_sesion =
                 <li>
 
 
-<a href="#!"> Cerrar Sesion </a>
+                    <a href="#!"> Cerrar Sesion </a>
 
-</li>
-            
+                </li>
+
 
 
         }
-        
-      
+
+
         return (
             <div id="menu">
                 <div className="navbar-fixed">
@@ -251,7 +251,7 @@ class Menu extends Component {
                     smooth={true}
                     offset={-55}
                     duration={500}
-                    
+
                 />
                 <Link
                     id="citas_sm"
@@ -261,7 +261,7 @@ class Menu extends Component {
                     smooth={true}
                     offset={-60}
                     duration={500}
-                    
+
                 />
                 <Link
                     id="scroolTestimonios_sm"
@@ -271,7 +271,7 @@ class Menu extends Component {
                     smooth={true}
                     offset={-50}
                     duration={500}
-                    
+
                 >
                 </Link>
                 <Link
@@ -282,11 +282,11 @@ class Menu extends Component {
                     smooth={true}
                     offset={-63}
                     duration={500}
-                    
+
                 >
                 </Link>
                 <ul className="sidenav" id="mobile-demo">
-                        {usuario_sm}
+                    {usuario_sm}
                     <li>
 
 
@@ -369,11 +369,11 @@ class Menu extends Component {
 
 
 
-                       {cerrar_sesion}
+                    {cerrar_sesion}
                     <li>
-                        
-                            <div className="row ">
-                                <div className="col s6 offset-s3">
+
+                        <div className="row ">
+                            <div className="col s6 offset-s3">
 
                                 <div className="col s4">
                                     <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
@@ -391,10 +391,10 @@ class Menu extends Component {
                                         <i className="fa fa-whatsapp fa-lg"></i>
                                     </a>
                                 </div>
-                                </div>
-
                             </div>
-                        
+
+                        </div>
+
 
                     </li>
 
