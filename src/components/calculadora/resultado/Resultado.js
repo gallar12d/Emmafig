@@ -91,7 +91,7 @@ class Resultado extends Component {
         if (this.props.login) {
             opcion = <div className="col s12 l3">
                 {/*<img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1" />*/}
-                <a id="btn_mas_detalles" className="boton-res waves-effect waves-light modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Saber más</a>
+                <a id="btn_mas_detalles" className="boton-res waves-effect waves-light">Saber más</a>
             </div>
         } else {
             opcion = <div className="col s12 l3">

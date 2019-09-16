@@ -38,7 +38,7 @@ class Calculadora extends Component {
             componente: this.state.componente + 1,
             respuestas: respuestas 
         }); 
-        
+        this.props.respuestas_fin = respuestas;
         if(result != -1){
             if(result == 0){
                 this.setState({
@@ -60,8 +60,8 @@ class Calculadora extends Component {
     showComponente = () => {
         switch (this.state.componente) {
             case 1: return <Inicio changeComponente={this.changeComponente.bind(this)} />
-            case 2: return <Cuestionario changeComponente={this.changeComponente.bind(this)} />
-            case 3: return <Resultado login={this.props.login} backComponente={this.backComponente} result={this.state.fin_resultado} respuestas={this.state.respuestas}changeLoginCalculadora={this.props.changeLoginCalculadora}/>
+            case 2: return <Cuestionario changeComponente={this.changeComponente.bind(this)} login={this.props.login}/>
+            case 3: return <Resultado login={this.props.login} backComponente={this.backComponente} result={this.state.fin_resultado} respuestas={this.state.respuestas} changeLoginCalculadora={this.props.changeLoginCalculadora}/>
             case 4: return <Inscripcion changeComponente={this.changeComponente.bind(this)} />
             case 5: return <Detalle />
         }
