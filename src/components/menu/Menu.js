@@ -51,10 +51,18 @@ class Menu extends Component {
 
     render() {
         let usuario;
+        let inicio;
+        if(this.props.login == 0){
+            inicio = <li><a className="modal-trigger" href='#modal1'><span id="txt_boton_entrar">Entrar</span></a></li>
+        }else{
+            inicio = null;
+        }
+        let usuario_sm;
+        let cerrar_sesion;
         if (this.props.login == 1) {
             usuario = <li>
                 <a id="perfil" className="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
-                    Usuario <i className="material-icons right">arrow_drop_down</i>
+                    {this.props.primer_nombre} <i className="material-icons right">arrow_drop_down</i>
                 </a>
                 <ul id="dropdown1" className="dropdown-content" >
                     <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
@@ -63,7 +71,24 @@ class Menu extends Component {
                     <li><a onClick={() => { this.props.changeLogin(); this.props.updateStateComponent(0) }}>Cerrar sesion</a></li>
                 </ul>
             </li>
+             usuario_sm = <div>
+
+             <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
+             <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
+         </div>
+            cerrar_sesion =
+                <li>
+
+
+<a href="#!"> Cerrar Sesion </a>
+
+</li>
+            
+
+
         }
+        
+      
         return (
             <div id="menu">
                 <div className="navbar-fixed">
@@ -182,6 +207,7 @@ class Menu extends Component {
                                         Contacto
                                 </Link>
                                 </li>
+                                {inicio}
                                 {usuario}
                                 <li>
                                     <a href="https://www.facebook.com/fundacioninnovagen/" target="_blank">
@@ -260,13 +286,7 @@ class Menu extends Component {
                 >
                 </Link>
                 <ul className="sidenav" id="mobile-demo">
-
-                    <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
-                    <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
-
-
-
-
+                        {usuario_sm}
                     <li>
 
 
@@ -349,13 +369,8 @@ class Menu extends Component {
 
 
 
+                       {cerrar_sesion}
                     <li>
-                        <li>
-
-
-                            <a href="#!"> Cerrar Sesion </a>
-
-                        </li>
                         
                             <div className="row ">
                                 <div className="col s6 offset-s3">

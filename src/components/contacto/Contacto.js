@@ -407,7 +407,7 @@ class Contacto extends Component {
 
 
                                     <h3 className="titulos">
-                                        <span className="headline">Telefonos <i className="small material-icons">call</i></span>
+                                        <span className="headline"><i className="small material-icons">call</i>Telefonos </span>
                                     </h3>
                                 </div>
 
@@ -543,7 +543,7 @@ class Contacto extends Component {
 
 
                                     <h3 className="titulos">
-                                        <span className="headline">Telefonos <i className="small material-icons">call</i></span>
+                                        <span className="headline"><i className="small material-icons">call</i>Telefonos </span>
                                     </h3>
                                 </div>
 
@@ -660,7 +660,7 @@ class Contacto extends Component {
 
 
                                     <h3 className="titulos">
-                                        <span className="headline">Telefonos <i className="small material-icons">call</i></span>
+                                        <span className="headline"><i className="small material-icons">call</i>Telefonos </span>
                                     </h3>
                                 </div>
 
