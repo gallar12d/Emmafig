@@ -233,8 +233,8 @@ class Cuestionario extends Component {
     }
 
     saveResult = () => {
-        axios.get('http://localhost/api1/saveEstimacion', {
-            params: {
+        axios.post('http://localhost/api1/saveEstimacion', {
+            
                 valor_respuesta1: this.state.selectedValues[0],
                 valor_respuesta2: this.state.selectedValues[1],
                 valor_respuesta3: this.state.selectedValues[2],
@@ -242,7 +242,7 @@ class Cuestionario extends Component {
                 valor_respuesta5: this.state.selectedValues[4],
                 valor_respuesta6: this.state.selectedValues[5],
                 id_atl_usuario: localStorage.getItem('id')
-            }
+            
         }).then(res => {
             console.log('Estimacion guardad');
             //this.props.changeComponente(res.data.riesgo, this.state.selectedValues);

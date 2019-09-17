@@ -30,7 +30,8 @@ class Resultado extends Component {
         this.unMountStyle = this.unMountStyle.bind(this);
     }
 
-    componentDidMount() {
+    componentDidMount() { 
+        this.props.saveRespuestas(this.props.respuestas);    
         this.formatRespuestas();
         setTimeout(this.mountStyle, 10) //call the into animiation
     }

@@ -104,8 +104,6 @@ class ComponentMaster extends Component {
         } else {
             return false;
         }
-
-
     }
     /*showPerfil = () => { 
         alert('entraaaa')
@@ -140,17 +138,25 @@ class ComponentMaster extends Component {
         });
     }
 
+    saveRespuestas = respuestas => {
+        console.log('respuestas master'+ respuestas);
+        this.setState({
+            respuestas: respuestas
+        })
+        
+    }
+
     saveResult = () => {
-        axios.get('http://localhost/api1/saveEstimacion', {
-            params: {
-                valor_respuesta1: this.state.respuestas[0],
-                valor_respuesta2: this.state.respuestas[1],
-                valor_respuesta3: this.state.respuestas[2],
-                valor_respuesta4: this.state.respuestas[3],
-                valor_respuesta5: this.state.respuestas[4],
-                valor_respuesta6: this.state.respuestas[5],
-                id_atl_usuario: localStorage.getItem('id')
-            }
+        console.log('respuestas master setstate 1'+ this.state.respuestas[0]);
+        axios.post('http://localhost:8080/api1/saveEstimacion', {           
+                "valor_respuesta1": this.state.respuestas[0],
+                "valor_respuesta2": this.state.respuestas[1],
+                "valor_respuesta3": this.state.respuestas[2],
+                "valor_respuesta4": this.state.respuestas[3],                
+                "valor_respuesta5": this.state.respuestas[4],
+                "valor_respuesta6": this.state.respuestas[5],
+                "id_atl_usuario": localStorage.getItem('id')
+            
         }).then(res => {
             console.log('Estimacion guardad');
             //this.props.changeComponente(res.data.riesgo, this.state.selectedValues);
@@ -219,7 +225,13 @@ class ComponentMaster extends Component {
                 return (
                     <div className="mainpage">
                         <Seccion1 />
-                        <Calculadora login={this.state.login} respuestas_cuest={this.state.respuestas} changeLogin={this.changeLogin.bind(this)} changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} />
+                        <Calculadora                             
+                            login={this.state.login}
+                            res={this.state.respuestas}
+                            saveRespuestas={this.saveRespuestas.bind(this)}
+                            changeLogin={this.changeLogin.bind(this)} 
+                            changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} 
+                        />
                         <Citas />
                         <Testimonios />
                         <Contacto />
@@ -249,10 +261,5 @@ class ComponentMaster extends Component {
 
     }
 }
-function Hola(props) {
-    if (props.text == 1)
-        return <h1>hola</h1>;
-    else
-        return <h1>hola mundo</h1>
-}
+
 export default ComponentMaster;
