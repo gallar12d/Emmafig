@@ -42,7 +42,10 @@ class Citas extends Component {
     }
 
     componentDidUpdate(){
-        if(this.props.login == 1 && !this.state.step_update){
+
+       
+        if(this.props.login == 1 && !this.state.step_update && this.props.logCitas == 1 ){
+            
             this.setState({step_activated: 1})
             this.setState({step_update: true})
 
@@ -52,6 +55,7 @@ class Citas extends Component {
    
 
     set_state(nombre, valor){
+       
         
         this.setState({[nombre]: valor});
     }
@@ -59,6 +63,7 @@ class Citas extends Component {
 
 
     itemSelected(id, nombre){
+        
         this.setState({iditem: id, textItem: nombre});
         if(this.props.login != 0){
             this.setState({step_activated: 1});
@@ -76,7 +81,7 @@ class Citas extends Component {
         if(this.state.step_activated == 0){
             seccion = ( 
             <div>
-                <Paquetes login={this.props.login}   item ={this.itemSelected}>                
+                <Paquetes loginCitas={this.props.loginCitas} login={this.props.login}   item ={this.itemSelected}>                
                 </Paquetes>
                 <div className="moreServices">
                     <a alt='' target="_blank" href="http://www.fig.org.co">Conoce otros servicios</a>
@@ -86,8 +91,12 @@ class Citas extends Component {
              );
         }
         
-        else{         
+        else{   
+            
+            if(this.props.login == 1){
                 seccion = ( <Wizard   {...this.state} set_state = {this.set_state.bind(this)}  step = {this.state.step_activated}  activate_step = {this.activate_step.bind(this)} id_servicio={this.state.iditem} nombre_servicio={this.state.textItem} ></Wizard> );
+            }
+                
         
 
            

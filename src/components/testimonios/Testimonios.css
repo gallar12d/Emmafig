@@ -137,3 +137,7 @@ h6.fecha2 {
     font-size: 2vh;
 }
 
+.slick-dots{
+    bottom: -5px !important;
+}
+

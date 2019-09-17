@@ -29,7 +29,8 @@ class ComponentMaster extends Component {
             ancla: null,
             prevAncla: "",
             primer_nombre: "",
-            id: ""
+            id: "",
+            loginCitas: 0
 
         }
         //this.clickLogin = this.clickLogin.bind(this);
@@ -135,6 +136,12 @@ class ComponentMaster extends Component {
             loginCalculadora: 1
         });
     }
+    
+    changeLoginCitas = () => {
+        this.setState({
+            loginCitas: 1
+        });
+    }
 
     
     componentDidUpdate() {
@@ -195,7 +202,7 @@ class ComponentMaster extends Component {
                         
                         
                         <Calculadora changeLogin={this.changeLogin.bind(this)} changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} />
-                        <Citas changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
+                        <Citas logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
                         <Testimonios />
                         <Contacto />
                         <Footer />

@@ -29,6 +29,7 @@ class Paquete extends Component {
             var instance = M.Modal.getInstance(elem);
             instance.open();
             this.props.item_selected(id, nombre)
+            this.props.loginCitas()
 
         }
         else{
