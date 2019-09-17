@@ -74,11 +74,6 @@ class ComponentMaster extends Component {
                 ancla: ancla
             })
         }
-
-
-
-
-
     }
 
 
@@ -104,8 +99,6 @@ class ComponentMaster extends Component {
         } else {
             return false;
         }
-
-
     }
     /*showPerfil = () => { 
         alert('entraaaa')

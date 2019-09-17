@@ -45,6 +45,8 @@ class FormRegistro extends Component {
         this.setJwt = this.setJwt.bind(this);
     }
 
+
+
     btnOnclick = () => {
         let nombre = document.getElementById('name');
         let nombreError = document.getElementById('nombre-error');
@@ -323,6 +325,18 @@ class FormRegistro extends Component {
 
 
     }
+
+    componentDidMount(){
+        $('form').on('focus', 'input[type=number]', function (e) {
+            $(this).on('mousewheel.disableScroll', function (e) {
+              e.preventDefault()
+            })
+          })
+          $('form').on('blur', 'input[type=number]', function (e) {
+            $(this).off('mousewheel.disableScroll')
+          })
+    }
+    
     validarEmail = (valor) => {
         console.log(valor);
         let emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
