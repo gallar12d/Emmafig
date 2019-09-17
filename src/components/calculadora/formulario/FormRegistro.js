@@ -7,6 +7,7 @@ import './FormRegistro.css';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from 'react-google-login';
 import Axios from 'axios';
+import $ from "jquery";
 class FormRegistro extends Component {
 
     constructor(props) {
