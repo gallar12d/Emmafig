@@ -127,9 +127,9 @@ class FormRegistro extends Component {
             //Axios.post('https://emmafig.com/api1/rest-authentication/api/create_user.php', {
             Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
                 "primer_nombre": 'User',
-                "segundo_nombre": 'User',
+                "segundo_nombre": '',
                 "primer_apellido": 'User',
-                "segundo_apellido": 'User',
+                "segundo_apellido": '',
                 "correo": this.state.correo,
                 "celular": this.state.celular,
                 "password": this.state.password,

@@ -11,6 +11,8 @@ import EditPerfil from './perfil/Editprofile';
 import $ from "jquery";
 import { thisTypeAnnotation } from '@babel/types';
 import M from 'materialize-css';
+import axios from "axios";
+
 
 let elementMenu;
 var btnMenu;
@@ -30,7 +32,8 @@ class ComponentMaster extends Component {
             prevAncla: "",
             primer_nombre: "",
             id: "",
-            loginCitas: 0
+            loginCitas: 0,
+            respuestas: []//respuestas de la calculadora
 
         }
         //this.clickLogin = this.clickLogin.bind(this);
@@ -102,8 +105,6 @@ class ComponentMaster extends Component {
         } else {
             return false;
         }
-
-
     }
     /*showPerfil = () => { 
         alert('entraaaa')
@@ -123,10 +124,11 @@ class ComponentMaster extends Component {
             primer_nombre: localStorage.getItem('primer_nombre'),
             id: localStorage.getItem('id')
         });
-        if(this.state.loginCalculadora == 1){
+        if(this.state.loginCalculadora == 1 && this.state.login == 1){
             this.setState({
                 changeCompt: 1
             })
+            this.saveResult();
             this.showComponent();
         }        
     }
@@ -143,6 +145,37 @@ class ComponentMaster extends Component {
         });
     }
 
+    saveRespuestas = respuestas => {
+        console.log('respuestas master'+ respuestas);
+        this.setState({
+            respuestas: respuestas
+        })
+        
+    }
+
+    saveResult = () => {
+        console.log('respuestas master setstate 1'+ this.state.respuestas[0]);
+        axios.post('http://localhost:8080/api1/saveEstimacion', {           
+                "valor_respuesta1": this.state.respuestas[0],
+                "valor_respuesta2": this.state.respuestas[1],
+                "valor_respuesta3": this.state.respuestas[2],
+                "valor_respuesta4": this.state.respuestas[3],                
+                "valor_respuesta5": this.state.respuestas[4],
+                "valor_respuesta6": this.state.respuestas[5],
+                "id_atl_usuario": localStorage.getItem('id')
+            
+        }).then(res => {
+            console.log('Estimacion guardad');
+            //this.props.changeComponente(res.data.riesgo, this.state.selectedValues);
+        })
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+            });
+    }
     
     componentDidUpdate() {
         ancla = this.props.ancla;
@@ -201,8 +234,16 @@ class ComponentMaster extends Component {
                         <Seccion1 />
                         
                         
-                        <Calculadora changeLogin={this.changeLogin.bind(this)} changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} />
+                        <Calculadora                             
+                            login={this.state.login}
+                            res={this.state.respuestas}
+                            saveRespuestas={this.saveRespuestas.bind(this)}
+                            changeLogin={this.changeLogin.bind(this)} 
+                            changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} 
+                        />
                         <Citas logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
+
+                        
                         <Testimonios />
                         <Contacto />
                         <Footer />
@@ -214,6 +255,8 @@ class ComponentMaster extends Component {
                 return <Perfil />
             case 2:
                 return <EditPerfil></EditPerfil>
+            default:
+                return false
 
 
         }
@@ -231,10 +274,5 @@ class ComponentMaster extends Component {
 
     }
 }
-function Hola(props) {
-    if (props.text == 1)
-        return <h1>hola</h1>;
-    else
-        return <h1>hola mundo</h1>
-}
+
 export default ComponentMaster;

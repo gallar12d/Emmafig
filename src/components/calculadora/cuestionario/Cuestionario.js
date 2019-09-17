@@ -182,7 +182,7 @@ class Cuestionario extends Component {
                 } else if (this.state.selectedValues[5] == '2') {
                     etnia_indigena = 1;
                 }
-                fetch("https://emmafig.com/api1/algoritmo_prueba.php?edad=" + this.state.selectedValues[0] +
+                /*fetch("https://emmafig.com/api1/algoritmo_prueba.php?edad=" + this.state.selectedValues[0] +
                     "&hijos_may_3=" + this.state.selectedValues[1] +
                     "&comp_sex_may_2=" + this.state.selectedValues[2] +
                     "&con_pareja=" + this.state.selectedValues[3] +
@@ -197,28 +197,31 @@ class Cuestionario extends Component {
                         (error) => {
                             alert('Error');
                         }
-                    )
-                    /*axios.get('http://104.197.119.186/app/', {
-                        params: {
-                            Edad_cat: this.state.selectedValues[0],
-                            hijos_may_3: this.state.selectedValues[1],
-                            comp_sex_may_2: this.state.selectedValues[2],
-                            con_pareja: this.state.selectedValues[3],
-                            sex_antes_15: this.state.selectedValues[4],
-                            etnia_indigena: etnia_indigena,
-                            etnia_afro: etnia_afro
-                        }
-                      }).then(res => {
-                        console.log(res.data.message);
-                        this.props.changeComponente(res.data.riesgo);
-                    })
+                    )*/
+                axios.get('http://104.197.119.186/app/', {
+                    params: {
+                        Edad_cat: this.state.selectedValues[0],
+                        hijos_may_3: this.state.selectedValues[1],
+                        comp_sex_may_2: this.state.selectedValues[2],
+                        con_pareja: this.state.selectedValues[3],
+                        sex_antes_15: this.state.selectedValues[4],
+                        etnia_indigena: this.state.selectedValues[5],
+                        etnia_afro: etnia_afro
+                    }
+                }).then(res => {
+                    this.props.changeComponente(res.data.riesgo, this.state.selectedValues);
+                    if (this.props.login == 1) {
+                        this.saveResult();
+                    }
+
+                })
                     .catch(function (error) {
                         if (error.response) {
                             console.log(error.response.data);
                             console.log(error.response.status);
                             console.log(error.response.headers);
                         }
-                    });*/
+                    });
 
             }
         } else {
@@ -229,6 +232,29 @@ class Cuestionario extends Component {
         }
     }
 
+    saveResult = () => {
+        axios.post('http://localhost/api1/saveEstimacion', {
+            
+                valor_respuesta1: this.state.selectedValues[0],
+                valor_respuesta2: this.state.selectedValues[1],
+                valor_respuesta3: this.state.selectedValues[2],
+                valor_respuesta4: this.state.selectedValues[3],
+                valor_respuesta5: this.state.selectedValues[4],
+                valor_respuesta6: this.state.selectedValues[5],
+                id_atl_usuario: localStorage.getItem('id')
+            
+        }).then(res => {
+            console.log('Estimacion guardad');
+            //this.props.changeComponente(res.data.riesgo, this.state.selectedValues);
+        })
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+            });
+    }
 
     prevHandleMouseOver() {
         this.setState({
