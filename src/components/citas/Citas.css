@@ -2,6 +2,15 @@
 #citas{
     background-color: #f3f3f3;
 }
+
+@media (orientation: landscape) {
+
+    #citas{
+        background-color: #f3f3f3;
+        height: 71vh;
+    }
+
+ }
     .row.espacioPack {
         width: 85%;
     }
@@ -26,7 +35,7 @@
     }
 
     .moreServices{
-        padding-bottom: 20px;
+        padding-bottom: 15px;
 
     }
 

@@ -76,11 +76,11 @@ class Paquete extends Component {
                     <div className="card ">
                         <div className="card-title white-text">
 
-                            <h4 style={{ 'paddingTop': '13px' }} className="center-align tituloServicio">{res[0]}</h4>
+                            <h4 style={{ 'paddingTop': '8px' }} className="center-align tituloServicio">{res[0]}</h4>
                             <h4 className="center-align tituloServicio">{res[1]}</h4>
                         </div>
                         <div className="card-content white-text">
-                            <h5 className="linet">$ {this.formatNum(this.props.valor_antiguo)}</h5>
+                            <h6 className="linet">$ {this.formatNum(this.props.valor_antiguo)}</h6>
                             <h4>$ {this.formatNum(this.props.valor)}</h4>
                             <p>Si separas tu cita por este medio</p>
                         </div>

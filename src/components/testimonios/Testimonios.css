@@ -15,17 +15,18 @@
 }
 
 .tituloTestimonials{
-    margin-top: 50px;
+    margin-top: 20px;
     color: white;
     font-family: Lato;
-    margin-bottom: 25px;
-    font-size: -webkit-xxx-large;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    font-weight: bolder;
 }
 .subtituloTestimonials{
     color: white;
     font-family: Lato;
-    margin-bottom: 25px;
-    font-size: 1.2em;
+    margin-bottom: 34px;
+    font-size: 1.54rem;
 }
 .espaciado2 .card .card-action:last-child {
     border-radius: inherit;
