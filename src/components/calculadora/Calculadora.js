@@ -33,12 +33,11 @@ class Calculadora extends Component {
     }
     
 
-    changeComponente(result = -1,  respuestas ){                       
+    changeComponente(result = -1,  respuestas){                       
         this.setState({ 
             componente: this.state.componente + 1,
             respuestas: respuestas 
-        }); 
-        
+        });         
         if(result != -1){
             if(result == 0){
                 this.setState({
@@ -53,15 +52,19 @@ class Calculadora extends Component {
         }
 
     }
-    backComponente = e => this.setState({ componente: this.state.componente - 1 });
-    componentDidMount() {
-               
-    }
+    backComponente = e => this.setState({ componente: this.state.componente - 1 });   
     showComponente = () => {
         switch (this.state.componente) {
             case 1: return <Inicio changeComponente={this.changeComponente.bind(this)} />
-            case 2: return <Cuestionario changeComponente={this.changeComponente.bind(this)} />
-            case 3: return <Resultado login={this.props.login} backComponente={this.backComponente} result={this.state.fin_resultado} respuestas={this.state.respuestas}changeLoginCalculadora={this.props.changeLoginCalculadora}/>
+            case 2: return <Cuestionario changeComponente={this.changeComponente.bind(this)} login={this.props.login}/>
+            case 3: return <Resultado 
+                                saveRespuestas = {this.props.saveRespuestas}
+                                login={this.props.login} 
+                                backComponente={this.backComponente} 
+                                result={this.state.fin_resultado}                                                               
+                                respuestas={this.state.respuestas} 
+                                changeLoginCalculadora={this.props.changeLoginCalculadora}
+                            />
             case 4: return <Inscripcion changeComponente={this.changeComponente.bind(this)} />
             case 5: return <Detalle />
         }
