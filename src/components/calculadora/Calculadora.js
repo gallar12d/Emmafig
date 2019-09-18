@@ -8,6 +8,8 @@ import Inicio from './inicio/Inicio';
 import Inscripcion from './inscripcion/Inscripcion';
 import Resultado from './resultado/Resultado';
 import Modal from './modal/Modal';
+import axios from 'axios';
+
 import './Calculadora.css';
 
 
@@ -24,7 +26,8 @@ class Calculadora extends Component {
             email: '',
             mensaje_registro: 'Se ha realizado exitosamente tu inscripción',
             fin_resultado : 0,
-            respuestas: []
+            respuestas: [],
+            id_seguimiento: ''
         }
         this.showComponente = this.showComponente.bind(this);
        
@@ -32,8 +35,26 @@ class Calculadora extends Component {
         this.backComponente = this.backComponente.bind(this);
     }
     
+    saveIdSeguimiento(){
+        axios.post('http://localhost/api1/createSeguimiento').then(res => {            
+            this.setState({
+                id_seguimiento: res.data.id
+            })
+        })
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+            });     
+    }
 
-    changeComponente(result = -1,  respuestas){                       
+
+    changeComponente(result = -1,  respuestas){
+        if(this.state.componente == 1){
+            this.saveIdSeguimiento();
+        }                       
         this.setState({ 
             componente: this.state.componente + 1,
             respuestas: respuestas 
@@ -56,7 +77,7 @@ class Calculadora extends Component {
     showComponente = () => {
         switch (this.state.componente) {
             case 1: return <Inicio changeComponente={this.changeComponente.bind(this)} />
-            case 2: return <Cuestionario changeComponente={this.changeComponente.bind(this)} login={this.props.login}/>
+            case 2: return <Cuestionario changeComponente={this.changeComponente.bind(this)} login={this.props.login}  id_seguimiento={this.props.id_seguimiento}/>
             case 3: return <Resultado 
                                 saveRespuestas = {this.props.saveRespuestas}
                                 login={this.props.login} 
@@ -69,6 +90,9 @@ class Calculadora extends Component {
             case 5: return <Detalle />
         }
     }
+
+    
+
     render() {
 
         return (

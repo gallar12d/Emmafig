@@ -32,6 +32,7 @@ class Cuestionario extends Component {
         this.unMountStyle = this.unMountStyle.bind(this);
         this.countOptSelecteds = this.countOptSelecteds.bind(this);
         this.closeInfo = this.closeInfo.bind(this);
+        this.updateSeguimiento = this.updateSeguimiento.bind(this);
 
     }
 
@@ -85,6 +86,22 @@ class Cuestionario extends Component {
         info_end.style.clipPath = "circle(0%)";
     }
 
+    updateSeguimiento(numero_pregunta){
+        axios.post('http://localhost/api1/updateResSeguimiento',{
+            "id_seguimiento": this.props.id_seguimiento,
+            "pregunta_resuelta": numero_pregunta
+        }).then(res => {
+            
+        })
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+            }); 
+    }
+
     handleOptionChange(event) {
         let circuloOk;
         let textoOk;
@@ -93,7 +110,8 @@ class Cuestionario extends Component {
         let opts = this.state.selectedOptions;
         let values = this.state.selectedValues;
         let info_end = document.getElementById("info-fin-cuestionario");
-        opts[op - 1] = 1;
+        opts[op - 1] = 1;//la pregunta la asigna como diligenciada
+        this.updateSeguimiento(op);
         values[op - 1] = event.target.value;
         if (this.countOptSelecteds(opts) == 6) {
             info_end.style.clipPath = "circle(75%)";
