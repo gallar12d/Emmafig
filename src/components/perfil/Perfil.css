@@ -24,7 +24,7 @@
 .profile-img img{
     width: 70%;
     height: 100%;
-    clip-path: circle(90px at 50% 95px);
+    clip-path: circle(100px at 50% 105px);
 }
 .profile-img .file {
     position: relative;
