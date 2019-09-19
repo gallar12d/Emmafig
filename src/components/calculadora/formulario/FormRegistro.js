@@ -119,44 +119,54 @@ class FormRegistro extends Component {
     validarCodigo = () => {
         let codigo = document.getElementById('codigo');
         let codigoError = document.getElementById('codigo-error');
+        let terminosError = document.getElementById('terminos-error');
         let btn_confirm = document.getElementById('btn_confirm');
         let cont_celular = document.getElementById('cont_celular');
         let cont_confirm = document.getElementById('cont_confirm');
+        let isValid = document.querySelector('#form_perfil').reportValidity();
+
         if (codigo.value == this.state.codigo) {
-            cont_confirm.style.display = 'none';
-            btn_confirm.style.display = 'none';
-            codigo.setAttribute("disabled", "true");
-            //Axios.post('https://emmafig.com/api1/rest-authentication/api/create_user.php', {
-            Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
-                "primer_nombre": 'User',
-                "segundo_nombre": '',
-                "primer_apellido": 'User',
-                "segundo_apellido": '',
-                "correo": this.state.correo,
-                "celular": this.state.celular,
-                "password": this.state.password,
-                "tipo_identificacion": this.state.tipo_identificacion,
-                "identificacion": this.state.identificacion
+            if (isValid) {
+                cont_confirm.style.display = 'none';
+                btn_confirm.style.display = 'none';
+                codigo.setAttribute("disabled", "true");
+                //Axios.post('https://emmafig.com/api1/rest-authentication/api/create_user.php', {
+                Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
+                    "primer_nombre": 'User',
+                    "segundo_nombre": '',
+                    "primer_apellido": 'User',
+                    "segundo_apellido": '',
+                    "correo": this.state.correo,
+                    "celular": this.state.celular,
+                    "password": this.state.password,
+                    "tipo_identificacion": this.state.tipo_identificacion,
+                    "identificacion": this.state.identificacion
+                }
+                )
+                    .then(res => {
+                        console.log(res.data.message);
+                        this.login();
+                    })
+                    .catch((error) => {
+                        if (error.response) {
+                            let user_exits = document.getElementById('user_exits');
+                            user_exits.style.display = 'block';
+                            let btn_celular = document.getElementById('btn_celular');
+                            btn_celular.style.display = 'block';
+                            this.setState({
+                                showConfirmation: 0
+                            });
+                            console.log(error.response.data);
+                            console.log(error.response.status);
+                            console.log(error.response.headers);
+                        }
+                    });
+            } else {
+                terminosError.style.display = "block";
+                terminosError.classList.remove("celular-animation");
+                void terminosError.offsetWidth;
+                terminosError.classList.add("celular-animation");
             }
-            )
-                .then(res => {
-                    console.log(res.data.message);
-                    this.login();
-                })
-                .catch((error) => {
-                    if (error.response) {
-                        let user_exits = document.getElementById('user_exits');
-                        user_exits.style.display = 'block';
-                        let btn_celular = document.getElementById('btn_celular');
-                        btn_celular.style.display = 'block';
-                        this.setState({
-                            showConfirmation: 0
-                        });
-                        console.log(error.response.data);
-                        console.log(error.response.status);
-                        console.log(error.response.headers);
-                    }
-                });
         } else {
             codigoError.style.display = "block";
             codigoError.classList.remove("celular-animation");
@@ -326,17 +336,17 @@ class FormRegistro extends Component {
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
         $('form').on('focus', 'input[type=number]', function (e) {
             $(this).on('mousewheel.disableScroll', function (e) {
-              e.preventDefault()
+                e.preventDefault()
             })
-          })
-          $('form').on('blur', 'input[type=number]', function (e) {
+        })
+        $('form').on('blur', 'input[type=number]', function (e) {
             $(this).off('mousewheel.disableScroll')
-          })
+        })
     }
-    
+
     validarEmail = (valor) => {
         console.log(valor);
         let emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
@@ -470,7 +480,6 @@ class FormRegistro extends Component {
                             <input id="celular" type="number" className="validate noscroll" minLength="10" required />
                             <label htmlFor="celular">Celular *</label>
                             <p id="celular-error" className="center cel-error">Por favor digite un numero de celular para continuar</p>
-
                         </div>
                     </div>
                     {
@@ -485,7 +494,7 @@ class FormRegistro extends Component {
                     <div id="cont_password" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">https</i>
-                            <input id="password" type="password" className="validate" require="" aria-required="true" />
+                            <input id="password" type="password" className="validate" required />
                             <label htmlFor="password">Contraseña *</label>
                             <p id="password-error" className="center cel-error">Por favor digite su contraseña</p>
                         </div>
@@ -502,9 +511,20 @@ class FormRegistro extends Component {
                     <div id="cod-confirm" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">confirmation_number</i>
-                            <input id="codigo" type="number" className="validate" require="" aria-required="true" />
+                            <input id="codigo" type="number" className="validate" required />
                             <label htmlFor="codigo">Código</label>
                             <p id="codigo-error" className="center cel-error">Por favor digite el código de confirmación correctamente</p>
+                        </div>
+                    </div>
+                    <div id="cont_terminos" className="row">
+                        <div>
+                            <p>
+                                <label>
+                                    <input id="indeterminate-checkbox" type="checkbox" required />
+                                    <span>He leído y acepto los <a>Términos y condiciones</a></span>
+                                </label>                                
+                            </p>
+                            <p id="terminos-error" className="center cel-error">Debe aceptar los términos y condiciones para continuar</p>
                         </div>
                     </div>
                     <div id="btn_confirm" className="row">
@@ -637,16 +657,13 @@ function CamposPorDefecto(props) {
         <div id="cont_identificacion" className="row">
             <div className="input-field col s12 l10 offset-l1">
                 <i className="material-icons prefix">assignment_ind</i>
-                <input id="identificacion" type="number" className="validate noscroll" onFocus={(event)=>hola(event)} required />
+                <input id="identificacion" type="number" className="validate" required />
                 <label htmlFor="identificacion">Identificación *</label>
                 <p id="identificacion-error" className="center cel-error">Por favor digite un numero de identificacion para continuar</p>
             </div>
         </div>
     </div>;
 }
- function hola(event){
-    event.preventDefault(event);
-    console.log('hola');
- }
+
 
 export default FormRegistro; // Don’t forget to use export default!
