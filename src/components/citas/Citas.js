@@ -32,7 +32,8 @@ class Citas extends Component {
             paciente_numero2: '',
             paciente_email: '',
             cita: false,
-            step_update: false
+            step_update: false,
+            orientation: ''
 
 
 
@@ -41,7 +42,14 @@ class Citas extends Component {
         this.itemSelected = this.itemSelected.bind(this)
     }
 
+    componentDidMount(){
+        var Myorientation = window.screen.orientation;
+        console.log(Myorientation)
+        this.setState({orientation: Myorientation.type})
+    }
+
     componentDidUpdate(){
+        
 
        
         if(this.props.login == 1 && !this.state.step_update && this.props.logCitas == 1 ){
@@ -103,10 +111,19 @@ class Citas extends Component {
 
         }
 
+        let stilo = {};
+        if (this.state.step_activated == 0  && this.state.orientation == 'landscape-primary'){
+
+            stilo = {
+                
+                height: '71vh'
+            };
+        }
+
 
 
         return (
-            <div id="citas" >
+            <div id="citas" className style={stilo} >
                 <div className="container headcitas">
                     <div className="row ">
                         <h4 className="titulocitas">
