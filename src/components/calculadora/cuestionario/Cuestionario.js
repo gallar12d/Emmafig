@@ -32,6 +32,7 @@ class Cuestionario extends Component {
         this.unMountStyle = this.unMountStyle.bind(this);
         this.countOptSelecteds = this.countOptSelecteds.bind(this);
         this.closeInfo = this.closeInfo.bind(this);
+        this.updateSeguimiento = this.updateSeguimiento.bind(this);
 
     }
 
@@ -85,6 +86,24 @@ class Cuestionario extends Component {
         info_end.style.clipPath = "circle(0%)";
     }
 
+    updateSeguimiento(numero_pregunta){
+        console.log(localStorage.getItem('id_seguimiento'))        
+        axios.post('https://emmafig.com/api1/updateResSeguimiento',{
+        //axios.post('http://localhost/api1/updateResSeguimiento',{
+            "id_seguimiento": localStorage.getItem('id_seguimiento'),
+            "pregunta_resuelta": numero_pregunta
+        }).then(res => {
+            
+        })
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+            }); 
+    }
+
     handleOptionChange(event) {
         let circuloOk;
         let textoOk;
@@ -93,7 +112,8 @@ class Cuestionario extends Component {
         let opts = this.state.selectedOptions;
         let values = this.state.selectedValues;
         let info_end = document.getElementById("info-fin-cuestionario");
-        opts[op - 1] = 1;
+        opts[op - 1] = 1;//la pregunta la asigna como diligenciada
+        this.updateSeguimiento(op);
         values[op - 1] = event.target.value;
         if (this.countOptSelecteds(opts) == 6) {
             info_end.style.clipPath = "circle(75%)";
@@ -181,23 +201,7 @@ class Cuestionario extends Component {
                     etnia_afro = 1
                 } else if (this.state.selectedValues[5] == '2') {
                     etnia_indigena = 1;
-                }
-                /*fetch("https://emmafig.com/api1/algoritmo_prueba.php?edad=" + this.state.selectedValues[0] +
-                    "&hijos_may_3=" + this.state.selectedValues[1] +
-                    "&comp_sex_may_2=" + this.state.selectedValues[2] +
-                    "&con_pareja=" + this.state.selectedValues[3] +
-                    "&sex_antes_15=" + this.state.selectedValues[4] +
-                    "&etnia_afro=" + etnia_afro +
-                    "&etnia_indigena=" + etnia_indigena)
-                    .then(res => res.json())
-                    .then(
-                        (result) => {
-                            this.props.changeComponente(result.resultado);
-                        },
-                        (error) => {
-                            alert('Error');
-                        }
-                    )*/
+                }                
                 axios.get('http://104.197.119.186/app/', {
                     params: {
                         Edad_cat: this.state.selectedValues[0],
@@ -211,7 +215,7 @@ class Cuestionario extends Component {
                 }).then(res => {
                     this.props.changeComponente(res.data.riesgo, this.state.selectedValues);
                     if (this.props.login == 1) {
-                        this.saveResult();
+                        this.saveResult();                        
                     }
 
                 })
@@ -232,9 +236,9 @@ class Cuestionario extends Component {
         }
     }
 
-    saveResult = () => {
-        axios.post('http://localhost/api1/saveEstimacion', {
-            
+    saveResult = () => {        
+        axios.post('https://emmafig.com/api1/saveEstimacion', {            
+        //axios.post('http://localhost/api1/saveEstimacion', {            
                 valor_respuesta1: this.state.selectedValues[0],
                 valor_respuesta2: this.state.selectedValues[1],
                 valor_respuesta3: this.state.selectedValues[2],
@@ -255,6 +259,7 @@ class Cuestionario extends Component {
                 }
             });
     }
+   
 
     prevHandleMouseOver() {
         this.setState({

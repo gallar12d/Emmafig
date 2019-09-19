@@ -3,6 +3,7 @@ import './Resultado.css'
 import M from 'materialize-css'
 import '../../../../node_modules/materialize-social/css/materialize.css'
 import '../../../../node_modules/font-awesome/css/font-awesome.min.css'
+import axios from 'axios';
 /*import './materialize-social.css'*/
 let formatos = [0, 0, 0, 0, 0, 0];
 class Resultado extends Component {
@@ -31,7 +32,21 @@ class Resultado extends Component {
     }
 
     componentDidMount() { 
-        this.props.saveRespuestas(this.props.respuestas);    
+        this.props.saveRespuestas(this.props.respuestas);         
+        axios.post(' https://emmafig.com/api1/updateResultSeguimiento',{
+        //axios.post('http://localhost/api1/updateResultSeguimiento',{
+            "id_seguimiento": localStorage.getItem('id_seguimiento'),
+            "obtuvo_resultado": "Sí"
+        }).then(res => {
+            
+        })
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+            });  
         this.formatRespuestas();
         setTimeout(this.mountStyle, 10) //call the into animiation
     }
@@ -145,7 +160,7 @@ class Resultado extends Component {
                 <div className="row">
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
                         <h1 id="titulo-res" className="flow-text">Resultado</h1>
-                        <h6 id="subtitulo-res" className="center-align ">Tiene un riesgo de desarrollar cancer de cuello uterino</h6>
+                        
                         <h1 id="contenido-res" className="flow-text"><span className="label-res">RESULTADO: </span>{this.props.result}</h1>
                     </div>
                 </div>
@@ -155,7 +170,8 @@ class Resultado extends Component {
                     </div>
                     <div className="col s10 m8 l8 offset-s1 offset-l1">
                         <div id="contenedor-titulo-ins" className="right-align">
-                            <span id="titulo-detalle">Detalles de tu resultado</span>
+                            <span id="titulo-detalle">Resultado</span>
+                            <h6 id="subtitulo-res" className="right-align">Emma dice que tu nivel de riesgo es </h6>
                             <p id="detalle-res">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
                         </div>
                         <div className="row">

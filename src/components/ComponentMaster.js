@@ -39,11 +39,11 @@ class ComponentMaster extends Component {
 
     }
 
-
-  
+    
 
 
     componentDidMount() {
+        
         ancla = this.props.ancla;
         console.log('jwt '+localStorage.getItem('jwt'));
         if(localStorage.getItem('jwt') !== null){
@@ -129,7 +129,7 @@ class ComponentMaster extends Component {
             })
             this.saveResult();
             this.showComponent();
-        }        
+        }   
     }
 
     changeLoginCalculadora = () => {
@@ -147,8 +147,9 @@ class ComponentMaster extends Component {
     }
 
     saveResult = () => {
-        console.log('respuestas master setstate 1'+ this.state.respuestas[0]);
-        axios.post('http://localhost/api1/saveEstimacion', {           
+        console.log('respuestas master setstate 1'+ this.state.respuestas[0]);        
+        axios.post('https://emmafig.com/api1/saveEstimacion', {
+        //axios.post('http://localhost/api1/saveEstimacion', {           
                 "valor_respuesta1": this.state.respuestas[0],
                 "valor_respuesta2": this.state.respuestas[1],
                 "valor_respuesta3": this.state.respuestas[2],
