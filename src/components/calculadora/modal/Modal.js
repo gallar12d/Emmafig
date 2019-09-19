@@ -10,9 +10,8 @@ class Modal extends Component {
         this.modal = 1;
 
     }
-    componentDidMount() {
-        
-        var elems = document.getElementById(this.props.id);
+    componentDidMount() {        
+        var elems = document.getElementById('modal1');
         var instances = M.Modal.init(elems, {dismissible: false});
         
     }

@@ -45,6 +45,10 @@ class FormRegistro extends Component {
         this.setJwt = this.setJwt.bind(this);
     }
 
+    componentDidMount() {
+
+    }
+
     btnOnclick = () => {
         let nombre = document.getElementById('name');
         let nombreError = document.getElementById('nombre-error');
@@ -68,7 +72,7 @@ class FormRegistro extends Component {
         }
 
     }
-    closeModal = () => {       
+    closeModal = () => {
         M.Modal.getInstance(document.getElementById('modal1')).close();
         this.props.changeLogin();
         this.reiniciarForm();
@@ -120,7 +124,7 @@ class FormRegistro extends Component {
         let btn_confirm = document.getElementById('btn_confirm');
         let cont_celular = document.getElementById('cont_celular');
         let cont_confirm = document.getElementById('cont_confirm');
-        if (codigo.value == this.state.codigo) {            
+        if (codigo.value == this.state.codigo) {
             cont_confirm.style.display = 'none';
             btn_confirm.style.display = 'none';
             codigo.setAttribute("disabled", "true");
@@ -174,7 +178,7 @@ class FormRegistro extends Component {
             "identificacion": identificacion.value
         }
         )
-            .then(res => {                
+            .then(res => {
                 this.setJwt(res.data);
                 this.setState({
                     LoginSuccesfull: 1
@@ -277,7 +281,7 @@ class FormRegistro extends Component {
                                 fetch("https://emmafig.com/api1/sendKey.php?celular=" + celular.value)
                                     .then(res => res.json())
                                     .then(
-                                        (result) => {                                            
+                                        (result) => {
                                             console.log(result);
                                             if (result.estado == 'sent') {
                                                 this.setState({
@@ -403,7 +407,7 @@ class FormRegistro extends Component {
     }
 
     showPreloader = () => {
-        if(this.state.showPreloader == 1){
+        if (this.state.showPreloader == 1) {
             return (
                 <div className="preloader-wrapper big active">
                     <div className="spinner-layer spinner-blue">
@@ -417,10 +421,10 @@ class FormRegistro extends Component {
                     </div>
                 </div>)
         }
-        else{
+        else {
             return null;
-        }        
-        
+        }
+
     }
 
     showFields = () => {
@@ -453,7 +457,7 @@ class FormRegistro extends Component {
                     <div id="cont_celular" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">phone</i>
-                            <input id="celular" type="number" className="validate" minLength="10" required />
+                            <input id="celular" type="number" className="validate noscroll" minLength="10" required />
                             <label htmlFor="celular">Celular *</label>
                             <p id="celular-error" className="center cel-error">Por favor digite un numero de celular para continuar</p>
 
@@ -573,6 +577,12 @@ class FormRegistro extends Component {
     
             }
         }*/
+
+    stopScroll = (event) => {
+        console.log('focus');
+        //event.preventDefault(event);
+    }
+
     render() {
 
         return (
@@ -617,12 +627,16 @@ function CamposPorDefecto(props) {
         <div id="cont_identificacion" className="row">
             <div className="input-field col s12 l10 offset-l1">
                 <i className="material-icons prefix">assignment_ind</i>
-                <input id="identificacion" type="number" className="validate" required />
+                <input id="identificacion" type="number" className="validate noscroll" onFocus={(event)=>hola(event)} required />
                 <label htmlFor="identificacion">Identificación *</label>
                 <p id="identificacion-error" className="center cel-error">Por favor digite un numero de identificacion para continuar</p>
-
             </div>
         </div>
     </div>;
 }
+ function hola(event){
+    event.preventDefault(event);
+    console.log('hola');
+ }
+
 export default FormRegistro; // Don’t forget to use export default!
