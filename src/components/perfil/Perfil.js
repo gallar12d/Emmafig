@@ -12,9 +12,9 @@ class Perfil extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data_resultados:[],
+            data_resultados: [],
             resultados: [],
-            resultados_emf:[],
+            resultados_emf: [],
             primer_nombre: '',
             segundo_nombre: '',
             primer_apellido: '',
@@ -69,6 +69,7 @@ class Perfil extends Component {
 
     componentDidMount() {
         M.Tabs.init(this.Tabs);
+        
 
         const userData = new FormData();
         //axios.post('http://localhost/api1/rest-api-authentication-example/api/getIdentyById.php', {
@@ -91,29 +92,36 @@ class Perfil extends Component {
                 let id_user = new FormData();
                 //traer id de usuario desde el local storage
                 //console.log(localStorage.getItem('id'))
-                var id_usuario =localStorage.getItem('id');
-                id_user.append('id_usuario',id_usuario);
+                var id_usuario = localStorage.getItem('id');
+                id_user.append('id_usuario', id_usuario);
                 axios
                     .post("http://emmafig.com/api1/searchProfilePicture", id_user)
                     .then(res => {
                         let result = res.data;
                         console.log(result);
                         console.log(result.filename.length)
-                        
+                       
+
+
                         var srcProfile;
                         var srcProfileImg;
-                        if(result.filename.length != 0){
+                        if (result.filename.length != 0) {
                             //console.log(result.filename[0].avatar);
                             srcProfile = result.filename[0].avatar
                             srcProfileImg = "http://fig.org.co/atlanticv2/public/userAvatar/" + id_usuario + "/" + srcProfile
 
-                        }else{
+                        } else {
 
                             srcProfileImg = process.env.PUBLIC_URL + "/img/default-profile.png"
                         }
                         this.setState({
                             file: srcProfileImg
                         })
+                       
+                        var elem = document.getElementById("loaderphoto")
+                        elem.parentNode.removeChild(elem)
+                       
+                        
 
                     })
 
@@ -130,12 +138,12 @@ class Perfil extends Component {
                         this.setState({
                             data_resultados: result
                         })
-                        if(result.code ==200){
-                            this.setState({ 
+                        if (result.code == 200) {
+                            this.setState({
                                 resultados: this.state.data_resultados.resultados_atl,
                                 resultados_emf: this.state.data_resultados.resultados_emf
                             })
-                        }else{
+                        } else {
                             document.getElementById("msj_error").innerHTML = "no se encontraron resultados";
                         }
                         if (this.state.resultados != null || result.code == 400 || this.state.resultados_emf != null) {
@@ -143,8 +151,8 @@ class Perfil extends Component {
                             var elem = document.getElementById("loader")
                             elem.parentNode.removeChild(elem)
                             return false
-                    
-                    
+
+
                         }
                     })
 
@@ -187,48 +195,15 @@ class Perfil extends Component {
     }
 
     render() {
-       var strUrl;
-       let tableData;
-       let tableDataEmf;
-  
-        if(this.state.data_resultados.resultados_atl !=null && this.state.data_resultados.resultados_emf != null){
+        var strUrl;
+        let tableData;
+        let tableDataEmf;
 
-             tableData = this.state.resultados.map(function (e) {
-                strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion+"?emmafig=true";
-    
-                return <tr>
-                    <td>
-                        {e.nombre_servicio}
-                    </td>
-                    <td>
-                        {e.fecha_atencion}
-                    </td>
-                    <td>
-                        <a target="_blank" href={strUrl}>Ver </a>
-                    </td>
-                </tr>
-            })
+        if (this.state.data_resultados.resultados_atl != null && this.state.data_resultados.resultados_emf != null) {
 
-         tableDataEmf = this.state.resultados_emf.map(function(e){
-            strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion+"?emmafig=true";
-            return <tr>
-
-            <td>
-                ESTIMACION DE RIESGO
-            </td>
-            <td>
-                {e.fecha_estimacion}
-            </td>
-            <td>
-            <a target="_blank" href={strUrl}>Ver </a>
-            </td>
-            </tr> 
-        })
-        }else if(this.state.data_resultados.resultados_atl !=null && this.state.data_resultados.resultados_emf == null ){
-            
             tableData = this.state.resultados.map(function (e) {
-                strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion+"?emmafig=true";
-    
+                strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
+
                 return <tr>
                     <td>
                         {e.nombre_servicio}
@@ -241,63 +216,96 @@ class Perfil extends Component {
                     </td>
                 </tr>
             })
-        }else if(this.state.data_resultados.resultados_atl ==null && this.state.data_resultados.resultados_emf != null){
-            tableDataEmf = this.state.resultados_emf.map(function(e){
-                strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion+"?emmafig=true";
+
+            tableDataEmf = this.state.resultados_emf.map(function (e) {
+                strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
                 return <tr>
-    
-                <td>
-                    ESTIMACION DE RIESGO
+
+                    <td>
+                        ESTIMACION DE RIESGO
+            </td>
+                    <td>
+                        {e.fecha_estimacion}
+                    </td>
+                    <td>
+                        <a target="_blank" href={strUrl}>Ver </a>
+                    </td>
+                </tr>
+            })
+        } else if (this.state.data_resultados.resultados_atl != null && this.state.data_resultados.resultados_emf == null) {
+
+            tableData = this.state.resultados.map(function (e) {
+                strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
+
+                return <tr>
+                    <td>
+                        {e.nombre_servicio}
+                    </td>
+                    <td>
+                        {e.fecha_atencion}
+                    </td>
+                    <td>
+                        <a target="_blank" href={strUrl}>Ver </a>
+                    </td>
+                </tr>
+            })
+        } else if (this.state.data_resultados.resultados_atl == null && this.state.data_resultados.resultados_emf != null) {
+            tableDataEmf = this.state.resultados_emf.map(function (e) {
+                strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
+                return <tr>
+
+                    <td>
+                        ESTIMACION DE RIESGO
                 </td>
-                <td>
-                    {e.fecha_estimacion}
-                </td>
-                <td>
-                <a target="_blank" href={strUrl}>Ver </a>
-                </td>
-                </tr> 
+                    <td>
+                        {e.fecha_estimacion}
+                    </td>
+                    <td>
+                        <a target="_blank" href={strUrl}>Ver </a>
+                    </td>
+                </tr>
             })
         }
-       
 
-   
-    
-        
-       /*
-            let tableData = this.state.resultados.map(function (e) {
-                strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion+"?emmafig=true";
-    
-                return <tr>
-                    <td>
-                        {e.nombre_servicio}
-                    </td>
-                    <td>
-                        {e.fecha_atencion}
-                    </td>
-                    <td>
-                        <a target="_blank" href={strUrl}>Ver </a>
-                    </td>
-                </tr>
-            })
 
-        let tableDataEmf = this.state.resultados_emf.map(function(e){
-            strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion+"?emmafig=true";
-            return <tr>
 
-            <td>
-                ESTIMACION DE RIESGO
-            </td>
-            <td>
-                {e.fecha_estimacion}
-            </td>
-            <td>
 
-            </td>
-            </tr> 
-        })
-        */
-       
-        
+
+        /*
+             let tableData = this.state.resultados.map(function (e) {
+                 strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion+"?emmafig=true";
+     
+                 return <tr>
+                     <td>
+                         {e.nombre_servicio}
+                     </td>
+                     <td>
+                         {e.fecha_atencion}
+                     </td>
+                     <td>
+                         <a target="_blank" href={strUrl}>Ver </a>
+                     </td>
+                 </tr>
+             })
+ 
+         let tableDataEmf = this.state.resultados_emf.map(function(e){
+             strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion+"?emmafig=true";
+             return <tr>
+ 
+             <td>
+                 ESTIMACION DE RIESGO
+             </td>
+             <td>
+                 {e.fecha_estimacion}
+             </td>
+             <td>
+ 
+             </td>
+             </tr> 
+         })
+         */
+
+
         return (
 
             <div className="Perfil">
@@ -307,8 +315,27 @@ class Perfil extends Component {
 
                     <div className="row">
                         <div className="col m5">
+
+                            
+                            <div id="loaderphoto" class="preloader-wrapper big active">
+                                <div class="spinner-layer spinner-green-only" >
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div><div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div><div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
                             <div className="profile-img">
+                              <div className="row">
+                                  <div className="col m12">
                                 <img id="profile_picture" src={this.state.file} alt="" />
+
+                                  </div>
+
+                              </div>
                                 <div className="file btn btn-lg btn-primary">
                                     Cambiar Foto
                                         <form id="form_img_profile" onChange={this.onChange} >
@@ -316,6 +343,8 @@ class Perfil extends Component {
                                         <input type="file" id="foto_perfil" name="file" />
                                     </form>
                                 </div>
+
+                                
                             </div>
                         </div>
                         <div className="col md6">

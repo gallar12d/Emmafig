@@ -24,17 +24,18 @@
 .profile-img img{
     width: 70%;
     height: 100%;
-    clip-path: circle(100px at 50% 105px);
-}
+    clip-path: circle(100px at 50% 105px);}
+
+
 .profile-img .file {
     position: relative;
     overflow: hidden;
-    margin-top: -20%;
+    margin-top: -30%;
     width: 70%;
     border: none;
     border-radius: 0;
     font-size: 15px;
-    background: #212529b8;
+    background: #0F9b9b;
 }
 .profile-img .file input {
     position: absolute;
@@ -136,3 +137,7 @@
     margin-top: 10px;
     
 }
+#loaderEdit{
+    display: none;
+}
+

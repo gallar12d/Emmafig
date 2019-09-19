@@ -47,9 +47,12 @@ class ComponentMaster extends Component {
         ancla = this.props.ancla;
         console.log('jwt '+localStorage.getItem('jwt'));
         if(localStorage.getItem('jwt') !== null){
+           
             this.changeLogin()
         }
+        alert(this.state.login);
         if (ancla == "login") {
+           
             setTimeout(function () {
                 let simulateClick = elem => {
                     let evt = new MouseEvent('click', {
@@ -112,12 +115,14 @@ class ComponentMaster extends Component {
 
 
     changeLogin = () => {
+      
         this.setState({
             login: this.state.prevLogin,
             prevLogin: this.state.login,
             primer_nombre: localStorage.getItem('primer_nombre'),
             id: localStorage.getItem('id')
         });
+       
         if(this.state.loginCalculadora == 1 && this.state.login == 1){
             this.setState({
                 changeCompt: 1
