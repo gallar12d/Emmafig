@@ -55,6 +55,7 @@ class Editprofile extends Component {
 
                 <div className="row">
                     <div className="col m4">
+                    
                         <ul className="tabs" ref={Tabs => {
                             this.Tabs = Tabs;
                         }}>
@@ -63,6 +64,7 @@ class Editprofile extends Component {
                             <li className="tab  "><a href="#passwordContent"><i className="small material-icons floatElement">fingerprint</i>Contraseña</a></li>
                             <li className="tab "><a href="#numeroContent"><i className="small material-icons floatElement">phone_android</i>Numero de telefono</a></li>
                         </ul>
+                        
                     </div>
                     <div className="col m8 ">
                       

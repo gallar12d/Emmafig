@@ -7,6 +7,7 @@ import './FormRegistro.css';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from 'react-google-login';
 import Axios from 'axios';
+import $ from "jquery";
 class FormRegistro extends Component {
 
     constructor(props) {
@@ -45,9 +46,6 @@ class FormRegistro extends Component {
         this.setJwt = this.setJwt.bind(this);
     }
 
-    componentDidMount() {
-
-    }
 
     btnOnclick = () => {
         let nombre = document.getElementById('name');
@@ -327,6 +325,18 @@ class FormRegistro extends Component {
 
 
     }
+
+    componentDidMount(){
+        $('form').on('focus', 'input[type=number]', function (e) {
+            $(this).on('mousewheel.disableScroll', function (e) {
+              e.preventDefault()
+            })
+          })
+          $('form').on('blur', 'input[type=number]', function (e) {
+            $(this).off('mousewheel.disableScroll')
+          })
+    }
+    
     validarEmail = (valor) => {
         console.log(valor);
         let emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
