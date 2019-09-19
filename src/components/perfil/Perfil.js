@@ -317,14 +317,14 @@ class Perfil extends Component {
                         <div className="col m5">
 
                             
-                            <div id="loaderphoto" class="preloader-wrapper big active">
-                                <div class="spinner-layer spinner-green-only" >
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div><div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div><div class="circle-clipper right">
-                                        <div class="circle"></div>
+                            <div id="loaderphoto" className="preloader-wrapper big active">
+                                <div className="spinner-layer spinner-green-only" >
+                                    <div className="circle-clipper left">
+                                        <div className="circle"></div>
+                                    </div><div className="gap-patch">
+                                        <div className="circle"></div>
+                                    </div><div className="circle-clipper right">
+                                        <div className="circle"></div>
                                     </div>
                                 </div>
                             </div>

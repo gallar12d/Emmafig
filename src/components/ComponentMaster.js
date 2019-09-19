@@ -50,7 +50,7 @@ class ComponentMaster extends Component {
            
             this.changeLogin()
         }
-        alert(this.state.login);
+      
         if (ancla == "login") {
            
             setTimeout(function () {
