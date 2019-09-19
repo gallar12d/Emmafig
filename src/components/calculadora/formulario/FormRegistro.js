@@ -130,8 +130,8 @@ class FormRegistro extends Component {
                 cont_confirm.style.display = 'none';
                 btn_confirm.style.display = 'none';
                 codigo.setAttribute("disabled", "true");
-                //Axios.post('https://emmafig.com/api1/rest-authentication/api/create_user.php', {
-                Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
+                Axios.post('https://emmafig.com/api1/rest-authentication/api/create_user.php', {
+                //Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
                     "primer_nombre": 'User',
                     "segundo_nombre": '',
                     "primer_apellido": 'User',
