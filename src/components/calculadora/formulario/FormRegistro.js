@@ -424,6 +424,7 @@ class FormRegistro extends Component {
     }
 
     showFields = () => {
+        
         if (this.state.registro == 1) {
             return (
                 <div id="cont_registro">
@@ -476,8 +477,33 @@ class FormRegistro extends Component {
                             <p id="password-error" className="center cel-error">Por favor digite su contraseña</p>
                         </div>
                     </div>
+                    <a onClick={(e) => {e.preventDefault(); this.showRecoveryPass()}} href='!#'>Olvidaste tu contraseña?</a>
+                    <br></br>
+                    <br></br>
+                    
                 </div>
             )
+        }
+        else if(this.state.registro === 2){
+            alert('2')
+            return (
+                <div id="cont_login">
+                    <CamposPorDefecto text='Ingreso' />
+                    <div id="cont_password" className="row">
+                        <div className="input-field col s12 l10 offset-l1">
+                            <i className="material-icons prefix">https</i>
+                            <input id="password" type="number" className="validate" require="" aria-required="true" />
+                            <label htmlFor="password">Contraseña *</label>
+                            <p id="password-error" className="center cel-error">Por favor digite su número de identificación</p>
+                        </div>
+                    </div>
+                    <a onClick={(e) => {e.preventDefault(); this.showRecoveryPass()}} href='!#'>Olvidaste tu contraseña?</a>
+                    <br></br>
+                    <br></br>
+                    
+                </div>
+            )
+
         }
     }
     showConfirmation = () => {
@@ -520,6 +546,21 @@ class FormRegistro extends Component {
             return null
         }
     }
+
+    showRecoveryPass = () => {
+        alert('entras')
+
+        this.setState({
+            registro: 2,
+            showOptions: 0,
+            showButtons: 1
+        });
+        this.showFields();
+        this.showOptions()
+        this.showButtons()
+
+    }
+       
 
     /*showSocialButtons = () => {
         if (this.state.showSocialButtons == 1) {

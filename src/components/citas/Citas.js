@@ -4,10 +4,12 @@ import Paquetes from './paquetes/Paquetes'
 import Wizard from './wizard/Wizard'
 import Step5 from './wizard/steps/Step5'
 import Modal from '../calculadora/modal/Modal'
+import $ from 'jquery'
 
 class Citas extends Component {
     constructor(props) {
         super(props);
+          
         this.state = {
             show_modal_login: true,
             textItem: '',
@@ -41,12 +43,22 @@ class Citas extends Component {
         };
         this.itemSelected = this.itemSelected.bind(this)
     }
+    
 
     componentDidMount(){
-        var Myorientation = window.screen.orientation;
-        console.log(Myorientation)
-        this.setState({orientation: Myorientation.type})
+        var screenOrientation = ($(window).width() > $(window).height())? 90 : 0;
+        this.setState({orientation: screenOrientation})
+
+
+        $(window).bind("resize", () => {
+            var screenOrientation = ($(window).width() > $(window).height())? 90 : 0;
+            
+            this.setState({orientation: screenOrientation})
+        });
+
+       
     }
+
 
     componentDidUpdate(){
         
@@ -112,7 +124,8 @@ class Citas extends Component {
         }
 
         let stilo = {};
-        if (this.state.step_activated == 0  && this.state.orientation == 'landscape-primary'){
+        if (this.state.step_activated == 0  && this.state.orientation == 90){
+            
 
             stilo = {
                 

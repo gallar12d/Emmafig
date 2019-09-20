@@ -68,7 +68,8 @@ p.text-green {
     margin-right: 5%;
 }
 .parallax-container {
-    height: 660px !important;
+    height: 100vh !important;
+    width: 100%;
   }
   h6.nombress {
     margin-top: 60%;
@@ -113,16 +114,7 @@ button.slick-arrow.slick-next {
 }
 
 
-@media only screen and (max-width: 300px) {
-    .parallax-container {
-        height: 680px;
-      }
-}
-@media only screen and (max-width: 500px) {
-    .parallax-container {
-        height: 700px;
-      }
-}
+
 
 h6.fecha {
     font-family: lato;
