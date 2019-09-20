@@ -26,7 +26,9 @@
     height: 100%;
     clip-path: circle(100px at 50% 105px);}
 
-
+#textCapitalize{
+    text-transform: capitalize;
+}
 .profile-img .file {
     position: relative;
     overflow: hidden;

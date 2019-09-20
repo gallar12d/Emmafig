@@ -349,8 +349,11 @@ class Perfil extends Component {
                         </div>
                         <div className="col md6">
                             <div className="profile-head">
-                                <h5>
+                                <h5 id="textCapitalize">
+                                    
                                     {this.state.primer_nombre + ' ' + this.state.segundo_nombre + ' ' + this.state.primer_apellido + ' ' + this.state.segundo_apellido}
+                                    
+                                    
                                 </h5>
                                 <h6>
                                     N° identificacion: {this.state.no_identificacion}
