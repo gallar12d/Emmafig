@@ -665,8 +665,10 @@ class FormRegistro extends Component {
                             <p>
                                 <label>
                                     <input id="indeterminate-checkbox" type="checkbox" required />
-                                    <span>He leído y acepto los <a>Términos y condiciones</a></span>
-                                </label>
+                                    <span>He leído y acepto los 
+                                    
+                                    <a href="#/terminos_condiciones" target="_blank">Términos y condiciones</a></span>
+                                </label>                                
                             </p>
                             <p id="terminos-error" className="center cel-error">Debe aceptar los términos y condiciones para continuar</p>
                         </div>
