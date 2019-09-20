@@ -32,6 +32,7 @@ class ComponentMaster extends Component {
             prevAncla: "",
             primer_nombre: "",
             id: "",
+            loginCitas: 0,
             respuestas: []//respuestas de la calculadora
 
         }
@@ -140,6 +141,12 @@ class ComponentMaster extends Component {
             loginCalculadora: 1
         });
     }
+    
+    changeLoginCitas = () => {
+        this.setState({
+            loginCitas: 1
+        });
+    }
 
     saveRespuestas = respuestas => {
         console.log('respuestas master'+ respuestas);
@@ -230,6 +237,8 @@ class ComponentMaster extends Component {
                 return (
                     <div className="mainpage">
                         <Seccion1 />
+                        
+                        
                         <Calculadora                             
                             login={this.state.login}
                             res={this.state.respuestas}
@@ -237,7 +246,9 @@ class ComponentMaster extends Component {
                             changeLogin={this.changeLogin.bind(this)} 
                             changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} 
                         />
-                        <Citas />
+                        <Citas logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
+
+                        
                         <Testimonios />
                         <Contacto />
                         <Footer />
@@ -249,6 +260,8 @@ class ComponentMaster extends Component {
                 return <Perfil />
             case 2:
                 return <EditPerfil></EditPerfil>
+            default:
+                return false
 
 
         }

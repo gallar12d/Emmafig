@@ -83,7 +83,7 @@ class Step3 extends Component {
                     if (key % 2 == 0) {
                         return (<p key={turno.id_turno}>
                             <label>
-                                <input onClick={(e) => { this.props.set_state('id_turno', turno.id_turno); this.props.set_state('turno', this.formatAMPM(turno.hora)); }} className="with-gap" name="group1" type="radio" />
+                                <input defaultChecked ={this.props.id_turno === turno.id_turno} onClick={(e) => { this.props.set_state('id_turno', turno.id_turno); this.props.set_state('turno', this.formatAMPM(turno.hora)); }} className="with-gap" name="group1" type="radio" />
                                 <span> {this.formatAMPM(turno.hora)}</span>
                             </label>
                         </p>)
@@ -95,7 +95,7 @@ class Step3 extends Component {
                     if (key % 2 != 0) {
                         return (<p key={turno.id_turno}>
                             <label>
-                                <input onClick={(e) => { this.props.set_state('id_turno', turno.id_turno); this.props.set_state('turno', this.formatAMPM(turno.hora)); }} className="with-gap" name="group1" type="radio" />
+                                <input defaultChecked ={this.props.id_turno === turno.id_turno} onClick={(e) => { this.props.set_state('id_turno', turno.id_turno); this.props.set_state('turno', this.formatAMPM(turno.hora)); }} className="with-gap" name="group1" type="radio" />
                                 <span>{this.formatAMPM(turno.hora)}</span>
                             </label>
                         </p>)
