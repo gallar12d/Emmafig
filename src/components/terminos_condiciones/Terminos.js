@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Menu from '../menu/Menu';
+
 import Footer from '../footer/Footer';
-import { Link } from "react-scroll";
+
 import '../menu/Menu.css'
 import './Terminos.css';
 

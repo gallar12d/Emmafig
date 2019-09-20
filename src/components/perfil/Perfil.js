@@ -99,19 +99,17 @@ class Perfil extends Component {
                     .then(res => {
                         let result = res.data;
                         console.log(result);
-                        console.log(result.filename.length)
-                       
-
-
+                        
                         var srcProfile;
                         var srcProfileImg;
-                        if (result.filename.length != 0) {
+                        if (result.filename[0].avatar != null) {
+                      
                             //console.log(result.filename[0].avatar);
                             srcProfile = result.filename[0].avatar
                             srcProfileImg = "http://fig.org.co/atlanticv2/public/userAvatar/" + id_usuario + "/" + srcProfile
 
                         } else {
-
+                            
                             srcProfileImg = process.env.PUBLIC_URL + "/img/default-profile.png"
                         }
                         this.setState({

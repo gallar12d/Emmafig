@@ -87,6 +87,7 @@ class ComponentMaster extends Component {
 
 
     changeComponente(state){
+       
 
         this.setState({
             changeCompt: state
@@ -115,8 +116,6 @@ class ComponentMaster extends Component {
             return (<h1>hola mundo</h1>)
         }
     }*/
-
-
     changeLogin = () => {
       
         this.setState({
@@ -133,6 +132,7 @@ class ComponentMaster extends Component {
             this.saveResult();
             this.showComponent();
         }   
+        
     }
 
     changeLoginCalculadora = () => {
@@ -180,6 +180,7 @@ class ComponentMaster extends Component {
             localStorage.removeItem('jwt');
             localStorage.removeItem('id');
             localStorage.removeItem('primer_nombre');
+       
 
         }
         if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
@@ -260,6 +261,7 @@ class ComponentMaster extends Component {
             <div className="mainComponent">
                 {<Menu login={this.state.login} primer_nombre={this.state.primer_nombre} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
                 {this.showComponent()}
+               
             </div>
         );
 
