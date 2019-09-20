@@ -40,46 +40,47 @@ class ComponentMaster extends Component {
 
     }
 
-
-  
+    
 
 
     componentDidMount() {
+        
         ancla = this.props.ancla;
         console.log('jwt '+localStorage.getItem('jwt'));
         if(localStorage.getItem('jwt') !== null){
+           
             this.changeLogin()
         }
-        if (ancla == "login") {
-            setTimeout(function () {
-                let simulateClick = elem => {
-                    let evt = new MouseEvent('click', {
-                        bubbles: true,
-                        view: window
-                    });
-                    elem.dispatchEvent(evt)
-                };
+      
+        if (ancla == "login" ){
+            if(localStorage.getItem('jwt') == null){
 
-                M.Modal.getInstance(document.getElementById('modal1')).open();
-                var btnIngresar = document.getElementById("btn_ingresar_a");
-
-                simulateClick(btnIngresar);
+                setTimeout(function () {
+                    let simulateClick = elem => {
+                        let evt = new MouseEvent('click', {
+                            bubbles: true,
+                            view: window
+                        });
+                        elem.dispatchEvent(evt)
+                    };
     
-            }, 3000);
+                    M.Modal.getInstance(document.getElementById('modal1')).open();
+                    var btnIngresar = document.getElementById("btn_ingresar_a");
+    
+                    simulateClick(btnIngresar);
+        
+                }, 3000);
+            }
+           
 
 
 
-        } else{
+        }else{
             this.setState({
 
                 ancla: ancla
             })
         }
-
-
-
-
-
     }
 
 
@@ -118,19 +119,21 @@ class ComponentMaster extends Component {
 
 
     changeLogin = () => {
+      
         this.setState({
             login: this.state.prevLogin,
             prevLogin: this.state.login,
             primer_nombre: localStorage.getItem('primer_nombre'),
             id: localStorage.getItem('id')
         });
+        
         if(this.state.loginCalculadora == 1 && this.state.login == 1){
             this.setState({
                 changeCompt: 1
             })
             this.saveResult();
             this.showComponent();
-        }        
+        }   
     }
 
     changeLoginCalculadora = () => {
@@ -154,8 +157,9 @@ class ComponentMaster extends Component {
     }
 
     saveResult = () => {
-        console.log('respuestas master setstate 1'+ this.state.respuestas[0]);
-        axios.post('http://localhost:8080/api1/saveEstimacion', {           
+        console.log('respuestas master setstate 1'+ this.state.respuestas[0]);        
+        axios.post('https://emmafig.com/api1/saveEstimacion', {
+        //axios.post('http://localhost/api1/saveEstimacion', {           
                 "valor_respuesta1": this.state.respuestas[0],
                 "valor_respuesta2": this.state.respuestas[1],
                 "valor_respuesta3": this.state.respuestas[2],

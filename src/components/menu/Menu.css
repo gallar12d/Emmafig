@@ -35,8 +35,13 @@ ul#mobile-demo li a {
 }
 a#perfil {
     font-size: 1rem;
-
 }
+#dropdown1{
+    width: auto !important;
+    height: auto !important;
+}
+
+
 ul#dropdown1 {
     width: 13% !important;
 }
