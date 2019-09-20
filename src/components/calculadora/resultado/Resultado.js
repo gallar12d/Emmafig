@@ -31,14 +31,14 @@ class Resultado extends Component {
         this.unMountStyle = this.unMountStyle.bind(this);
     }
 
-    componentDidMount() { 
-        this.props.saveRespuestas(this.props.respuestas);         
-        axios.post(' https://emmafig.com/api1/updateResultSeguimiento',{
-        //axios.post('http://localhost/api1/updateResultSeguimiento',{
+    componentDidMount() {
+        this.props.saveRespuestas(this.props.respuestas);
+        axios.post(' https://emmafig.com/api1/updateResultSeguimiento', {
+            //axios.post('http://localhost/api1/updateResultSeguimiento',{
             "id_seguimiento": localStorage.getItem('id_seguimiento'),
             "obtuvo_resultado": "Sí"
         }).then(res => {
-            
+
         })
             .catch(function (error) {
                 if (error.response) {
@@ -46,7 +46,7 @@ class Resultado extends Component {
                     console.log(error.response.status);
                     console.log(error.response.headers);
                 }
-            });  
+            });
         this.formatRespuestas();
         setTimeout(this.mountStyle, 10) //call the into animiation
     }
@@ -106,73 +106,65 @@ class Resultado extends Component {
         let opcion = '';
         if (this.props.login) {
             opcion = <div className="col s12 l3">
-                {/*<img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1" />*/}
-                <a id="btn_mas_detalles" className="boton-res waves-effect waves-light">Saber más</a>
+                <a id="btn_mas_detalles" className="boton-res waves-light col l12">Saber más</a>
             </div>
         } else {
-            opcion = <div className="col s12 l3">
-                {/*<img id="btn_mas_detalles" onMouseOver={this.masHandleMouseOver} onMouseOut={this.masHandleMouseOut} src={this.state.btn_mas_detalles} className="right boton-res waves-effect waves-light modal-trigger" href="#modal1" />*/}
-                <a id="btn_mas_detalles" className="boton-res waves-effect waves-light modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles de tu resultado</a>
+            opcion = <div className="col s12 l3">                
+                <a id="btn_mas_detalles" className="boton-res waves-light modal-trigger col l12" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles de tu resultado</a>
             </div>
         }
         return opcion;
     }
     formatRespuestas = () => {
-                  
-        switch(this.props.respuestas[0]){
+
+        switch (this.props.respuestas[0]) {
             case 1: formatos[0] = 'Menor de 15 años';
-                    break;
+                break;
             case 2: formatos[0] = 'Entre 15 y 20 años';
-                    break;
+                break;
             case 3: formatos[0] = 'Entre 21 y 30 años';
-                    break;
+                break;
             case 4: formatos[0] = 'Entre 31 y 50 años';
-                    break;
+                break;
             default: formatos[0] = 'Mayor de 50 años';
-                    break;
+                break;
         }
-        
-        for(var i=1; i<= 4; i++){
-            if(this.props.respuestas[i] == 1){
+
+        for (var i = 1; i <= 4; i++) {
+            if (this.props.respuestas[i] == 1) {
                 formatos[i] = 'Sí'
-            }else{
+            } else {
                 formatos[i] = 'No'
             }
-        }        
-        switch(this.props.respuestas[5]){
-            case '0': formatos[5] = 'Ninguna';
-                    console.log('Ninguna');
-                    break;
-            case '1': formatos[5] = 'Afro';
-                    console.log('Afro');
-                    break;           
-            case '2': formatos[5] = 'Indigena';
-                    console.log('Indigena');
-                    break;
         }
-        console.log(formatos);  
+        switch (this.props.respuestas[5]) {
+            case '0': formatos[5] = 'Ninguna';
+                console.log('Ninguna');
+                break;
+            case '1': formatos[5] = 'Afro';
+                console.log('Afro');
+                break;
+            case '2': formatos[5] = 'Indigena';
+                console.log('Indigena');
+                break;
+        }
+        console.log(formatos);
     }
     render() {
 
-        return (         
+        return (
 
-            <div style={this.state.style} id="contenedor-resultado">
-                <div className="row">
-                    <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
-                        <h1 id="titulo-res" className="flow-text">Resultado</h1>
-                        
-                        <h1 id="contenido-res" className="flow-text"><span className="label-res">RESULTADO: </span>{this.props.result}</h1>
-                    </div>
-                </div>
+            <div style={this.state.style} id="contenedor-resultado">                
                 <div id="contenedor-detalles" className="row">
-                    <div id="contenedor-emma" className="col s4 m4 l3 offset-s4">
+                    <div id="contenedor-emma" className="col s4 m4 l3">
                         <img id="img-emma" src={this.state.img_emma} />
                     </div>
-                    <div className="col s10 m8 l8 offset-s1 offset-l1">
+                    <div className="col s10 m8 l8 offset-s1">
                         <div id="contenedor-titulo-ins" className="right-align">
-                            <span id="titulo-detalle">Resultado</span>
-                            <h6 id="subtitulo-res" className="right-align">Emma dice que tu nivel de riesgo es </h6>
-                            <p id="detalle-res">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                            <h1 id="titulo-res" className="flow-text right-align">Resultado</h1>
+                            <h6 id="subtitulo-res" className="flow-text right-align">Emma dice que tu nivel de riesgo es </h6>
+                            <h1 id="contenido-res" className="flow-text right-align">{this.props.result}</h1>
+                            <p id="detalle-res">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
                         </div>
                         <div className="row">
                             <div className="col l12">
@@ -201,16 +193,14 @@ class Resultado extends Component {
                 <div id="cont-btn-result" className="row">
 
                     <div className="row">
-                        <div className="col s12 l3 offset-l3">
-                            {/*<img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>*/}
-                            <a id="btn_reiniciar" className="boton-res waves-effect waves-light" onClick={this.props.backComponente}>Reiniciar cuestionario</a>
+                        <div className="col s12 l3 offset-l3">                            
+                            <a id="btn_reiniciar" className="boton-res waves-light col l12" onClick={this.props.backComponente}>Reiniciar cuestionario</a>
                         </div>
                         {
                             this.showOpcion()
                         }
-                        <div className="col s12 l2">
-                            {/*<img id="btn_conocer_mas" onMouseOver={this.conocerHandleMouseOver} onMouseOut={this.conocerHandleMouseOut} src={this.state.btn_conocer_mas} className="left boton-res"></img>*/}
-                            <a id="btn_conocer_mas" className="boton-res waves-effect waves-light">Pedir cita</a>
+                        <div className="col s12 l2">                            
+                            <a id="btn_conocer_mas" className="boton-res waves-light col l12">Pedir cita</a>
                         </div>
                     </div>
 

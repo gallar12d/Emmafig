@@ -105,8 +105,8 @@ class Calculadora extends Component {
                                 respuestas={this.state.respuestas} 
                                 changeLoginCalculadora={this.props.changeLoginCalculadora}
                             />
-            case 4: return <Inscripcion changeComponente={this.changeComponente.bind(this)} />
-            case 5: return <Detalle />
+            {/*case 4: return <Inscripcion changeComponente={this.changeComponente.bind(this)} />
+        case 5: return <Detalle />*/}
         }
     }
 
