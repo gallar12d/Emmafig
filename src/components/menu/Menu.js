@@ -66,10 +66,10 @@ class Menu extends Component {
                 </a>
                 <ul id="dropdown1" className="dropdown-content" >
                     <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
-                    <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
+                    <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuración</a></li>
                     <li className="divider"></li>
                     <li><a onClick={() => {
-                        this.props.changeLogin(); this.props.updateStateComponent(0); window.location.reload();
+                        this.props.changeLogin(); window.location.reload(); 
                     }}>Cerrar sesion</a></li>
                 </ul>
             </li>
@@ -107,6 +107,7 @@ class Menu extends Component {
                                 duration={500}
                             />
                             <Link
+                                id="inicioMain"
                                 onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "inicio") }}
                                 activateclass="activate"
                                 to="seccion1"
@@ -122,7 +123,7 @@ class Menu extends Component {
                                 <i className="material-icons">menu</i>
                             </a>
                             <ul className=" menuItems right hide-on-med-and-down">
-                                <li>
+                                <li id="citas_li">
 
                                     <Link
                                         id="citas_section"
@@ -149,7 +150,7 @@ class Menu extends Component {
                                         Citas
                                     </Link>
                                 </li>
-                                <li>
+                                <li id="testimonios_li">
 
 
                                     <Link
@@ -176,10 +177,10 @@ class Menu extends Component {
                                         Testimonios
                                 </Link>
                                 </li>
-                                <li>
+                                <li id="blog_li">
                                     <a href="#!"> Blog </a>
                                 </li>
-                                <li>
+                                <li id="contacto_li">
 
 
 
@@ -289,7 +290,7 @@ class Menu extends Component {
                 </Link>
                 <ul className="sidenav" id="mobile-demo">
                     {usuario_sm}
-                    <li>
+                    <li id="hiddenTerminos">
 
 
 
@@ -310,7 +311,7 @@ class Menu extends Component {
 
                     </li>
 
-                    <li >
+                    <li id="citas_li_sm">
 
 
 
@@ -329,7 +330,7 @@ class Menu extends Component {
                         </Link>
 
                     </li>
-                    <li>
+                    <li id="testimonios_li_sm">
 
                         <Link
                             onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolTestimonios_sm") }}
@@ -343,14 +344,14 @@ class Menu extends Component {
                             Testimonios
                                 </Link>
                     </li>
-                    <li>
+                    <li id="blog_li_sm">
 
 
 
                         <a href="#!"> Blog </a>
 
                     </li>
-                    <li>
+                    <li id="contacto_li_sm">
 
                         <Link
 

@@ -28,13 +28,20 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
 }
 
 #txt_boton_entrar{
-    font-size: 1.1em;
+    font-size: 1rem;
 }
 ul#mobile-demo li a {
     display: inline-block !important;
+}
+a#perfil {
+    font-size: 1rem;
 }
 #dropdown1{
     width: auto !important;
     height: auto !important;
 }
 
+
+ul#dropdown1 {
+    width: 13% !important;
+}

@@ -32,6 +32,7 @@ class ComponentMaster extends Component {
             prevAncla: "",
             primer_nombre: "",
             id: "",
+            loginCitas: 0,
             respuestas: []//respuestas de la calculadora
 
         }
@@ -47,28 +48,34 @@ class ComponentMaster extends Component {
         ancla = this.props.ancla;
         console.log('jwt '+localStorage.getItem('jwt'));
         if(localStorage.getItem('jwt') !== null){
+           
             this.changeLogin()
         }
-        if (ancla == "login") {
-            setTimeout(function () {
-                let simulateClick = elem => {
-                    let evt = new MouseEvent('click', {
-                        bubbles: true,
-                        view: window
-                    });
-                    elem.dispatchEvent(evt)
-                };
+      
+        if (ancla == "login" ){
+            if(localStorage.getItem('jwt') == null){
 
-                M.Modal.getInstance(document.getElementById('modal1')).open();
-                var btnIngresar = document.getElementById("btn_ingresar_a");
-
-                simulateClick(btnIngresar);
+                setTimeout(function () {
+                    let simulateClick = elem => {
+                        let evt = new MouseEvent('click', {
+                            bubbles: true,
+                            view: window
+                        });
+                        elem.dispatchEvent(evt)
+                    };
     
-            }, 3000);
+                    M.Modal.getInstance(document.getElementById('modal1')).open();
+                    var btnIngresar = document.getElementById("btn_ingresar_a");
+    
+                    simulateClick(btnIngresar);
+        
+                }, 3000);
+            }
+           
 
 
 
-        } else{
+        }else{
             this.setState({
 
                 ancla: ancla
@@ -81,6 +88,7 @@ class ComponentMaster extends Component {
 
 
     changeComponente(state){
+       
 
         this.setState({
             changeCompt: state
@@ -109,15 +117,15 @@ class ComponentMaster extends Component {
             return (<h1>hola mundo</h1>)
         }
     }*/
-
-
     changeLogin = () => {
+      
         this.setState({
             login: this.state.prevLogin,
             prevLogin: this.state.login,
             primer_nombre: localStorage.getItem('primer_nombre'),
             id: localStorage.getItem('id')
         });
+        
         if(this.state.loginCalculadora == 1 && this.state.login == 1){
             this.setState({
                 changeCompt: 1
@@ -125,11 +133,18 @@ class ComponentMaster extends Component {
             this.saveResult();
             this.showComponent();
         }   
+        
     }
 
     changeLoginCalculadora = () => {
         this.setState({
             loginCalculadora: 1
+        });
+    }
+    
+    changeLoginCitas = () => {
+        this.setState({
+            loginCitas: 1
         });
     }
 
@@ -172,6 +187,7 @@ class ComponentMaster extends Component {
             localStorage.removeItem('jwt');
             localStorage.removeItem('id');
             localStorage.removeItem('primer_nombre');
+       
 
         }
         if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
@@ -221,6 +237,8 @@ class ComponentMaster extends Component {
                 return (
                     <div className="mainpage">
                         <Seccion1 />
+                        
+                        
                         <Calculadora                             
                             login={this.state.login}
                             res={this.state.respuestas}
@@ -228,7 +246,9 @@ class ComponentMaster extends Component {
                             changeLogin={this.changeLogin.bind(this)} 
                             changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} 
                         />
-                        <Citas />
+                        <Citas logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
+
+                        
                         <Testimonios />
                         <Contacto />
                         <Footer />
@@ -240,6 +260,8 @@ class ComponentMaster extends Component {
                 return <Perfil />
             case 2:
                 return <EditPerfil></EditPerfil>
+            default:
+                return false
 
 
         }
@@ -252,6 +274,7 @@ class ComponentMaster extends Component {
             <div className="mainComponent">
                 {<Menu login={this.state.login} primer_nombre={this.state.primer_nombre} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
                 {this.showComponent()}
+               
             </div>
         );
 

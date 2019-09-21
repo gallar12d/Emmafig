@@ -31,6 +31,9 @@ class FormRegistro extends Component {
             LoginSuccesfull: 0,
             showButtons: 0,
             showPreloader: 0,
+            codigo_recovery: '',
+            tipo_identificacion_recovery: '',
+            identificacion_recovery: ''
         }
         //this.showSocialButtons = this.showSocialButtons.bind(this);
         /*this.responseFacebook = this.responseFacebook.bind(this);
@@ -116,6 +119,8 @@ class FormRegistro extends Component {
             });
         this.closeModal();
     }*/
+    
+
     validarCodigo = () => {
         let codigo = document.getElementById('codigo');
         let codigoError = document.getElementById('codigo-error');
@@ -125,54 +130,143 @@ class FormRegistro extends Component {
         let cont_confirm = document.getElementById('cont_confirm');
         let isValid = document.querySelector('#form_perfil').reportValidity();
 
-        if (codigo.value == this.state.codigo) {
-            if (isValid) {
-                cont_confirm.style.display = 'none';
-                btn_confirm.style.display = 'none';
-                codigo.setAttribute("disabled", "true");
-                Axios.post('https://emmafig.com/api1/rest-authentication/api/create_user.php', {
-                //Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
-                    "primer_nombre": 'User',
-                    "segundo_nombre": '',
-                    "primer_apellido": 'User',
-                    "segundo_apellido": '',
-                    "correo": this.state.correo,
-                    "celular": this.state.celular,
-                    "password": this.state.password,
-                    "tipo_identificacion": this.state.tipo_identificacion,
-                    "identificacion": this.state.identificacion
-                }
-                )
-                    .then(res => {
-                        console.log(res.data.message);
-                        this.login();
-                    })
-                    .catch((error) => {
-                        if (error.response) {
-                            let user_exits = document.getElementById('user_exits');
-                            user_exits.style.display = 'block';
-                            let btn_celular = document.getElementById('btn_celular');
-                            btn_celular.style.display = 'block';
-                            this.setState({
-                                showConfirmation: 0
-                            });
-                            console.log(error.response.data);
-                            console.log(error.response.status);
-                            console.log(error.response.headers);
-                        }
-                    });
-            } else {
-                terminosError.style.display = "block";
-                terminosError.classList.remove("celular-animation");
-                void terminosError.offsetWidth;
-                terminosError.classList.add("celular-animation");
-            }
-        } else {
-            codigoError.style.display = "block";
-            codigoError.classList.remove("celular-animation");
-            void codigoError.offsetWidth;
-            codigoError.classList.add("celular-animation");
+        let codigo_validar = '';
+        let normal_validate = '';
+        if (this.state.codigo) {
+            codigo_validar = this.state.codigo
+            normal_validate = true;
         }
+        else {
+            codigo_validar = this.state.codigo_recovery
+            normal_validate = false;
+
+        }
+
+
+        if (normal_validate) {
+            if (codigo.value == this.state.codigo) {
+                if (isValid) {
+                    cont_confirm.style.display = 'none';
+                    btn_confirm.style.display = 'none';
+                    codigo.setAttribute("disabled", "true");
+                    Axios.post('https://emmafig.com/api1/rest-authentication/api/create_user.php', {
+                        //Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
+                        "primer_nombre": 'User',
+                        "segundo_nombre": '',
+                        "primer_apellido": 'User',
+                        "segundo_apellido": '',
+                        "correo": this.state.correo,
+                        "celular": this.state.celular,
+                        "password": this.state.password,
+                        "tipo_identificacion": this.state.tipo_identificacion,
+                        "identificacion": this.state.identificacion
+                    }
+                    )
+                        .then(res => {
+                            console.log(res.data.message);
+                            this.login();
+                        })
+                        .catch((error) => {
+                            if (error.response) {
+                                let user_exits = document.getElementById('user_exits');
+                                user_exits.style.display = 'block';
+                                let btn_celular = document.getElementById('btn_celular');
+                                btn_celular.style.display = 'block';
+                                this.setState({
+                                    showConfirmation: 0
+                                });
+                                console.log(error.response.data);
+                                console.log(error.response.status);
+                                console.log(error.response.headers);
+                            }
+                        });
+                } else {
+                    terminosError.style.display = "block";
+                    terminosError.classList.remove("celular-animation");
+                    void terminosError.offsetWidth;
+                    terminosError.classList.add("celular-animation");
+                }
+            } else {
+                codigoError.style.display = "block";
+                codigoError.classList.remove("celular-animation");
+                void codigoError.offsetWidth;
+                codigoError.classList.add("celular-animation");
+            }
+
+        }
+        else {
+
+            if(codigo.value == this.state.codigo_recovery){
+                
+                const dataForm = new FormData();
+                dataForm.append("id_usuario", this.state.id_usuario_recovery);                
+                Axios.post('https://emmafig.com/api1/recoveryPassword', dataForm).then(res => {
+                    if(res.data.status == 202){
+                        alert(res.data.msg)
+                        this.setState({
+                            showOptions: 1,
+                            showConfirmation: 0,
+                            showButtons: 0, 
+                            showFields: -1
+                        })
+
+                        this.showFields();
+
+                    }
+                })
+            }
+            else{
+                codigoError.style.display = "block";
+                codigoError.classList.remove("celular-animation");
+                void codigoError.offsetWidth;
+                codigoError.classList.add("celular-animation");
+            }
+
+        }
+
+
+    }
+
+    recoveryPhone = () => {
+        let tipo_identificacion = document.getElementById('tipo_identificacion');
+        let identificacion = document.getElementById('identificacion');
+        const dataForm = new FormData();
+        dataForm.append("tipo_identificacion", tipo_identificacion.value);
+        dataForm.append("identificacion", identificacion.value);
+        Axios.post('https://emmafig.com/api1/getContact', dataForm).then(res => {
+            
+
+            if (res.data.existe) {
+                this.setState({
+                    id_usuario_recovery: res.data.user.id_usuario
+                });
+                
+
+                Axios.get("https://emmafig.com/api1/sendKey.php?celular=" + res.data.user.telefono1)
+                    .then(resp => {
+                        console.log(resp.data)
+                        if (resp.data.estado == 'sent') {
+                            this.setState({
+                                codigo_recovery: resp.data.codigo,
+                                codigo: null
+                            });
+                            this.setState({
+                                showConfirmation: 1,
+                                tipo_identificacion_recovery: tipo_identificacion.value,
+                                identificacion_recovery: identificacion.value 
+                            });
+                            this.showConfirmationRecovery();
+                        }
+
+                    })
+            }
+            else {
+                alert('El usuario no existe, por favor Ingrese al módulo de registro para continuar!')
+            }
+
+        })
+
+
     }
 
     login = () => {
@@ -298,7 +392,8 @@ class FormRegistro extends Component {
                                                 this.showPreloader()
                                                 console.log(result.codigo)
                                                 this.setState({
-                                                    codigo: result.codigo
+                                                    codigo: result.codigo,
+                                                    codigo_recovery: null
                                                 });
                                                 this.setState({
                                                     showConfirmation: 1
@@ -448,6 +543,7 @@ class FormRegistro extends Component {
     }
 
     showFields = () => {
+
         if (this.state.registro == 1) {
             return (
                 <div id="cont_registro">
@@ -499,15 +595,63 @@ class FormRegistro extends Component {
                             <p id="password-error" className="center cel-error">Por favor digite su contraseña</p>
                         </div>
                     </div>
+                    <a onClick={(e) => { e.preventDefault(); this.showRecoveryPass() }} href='!#'>Olvidaste tu contraseña?</a>
+                    <br></br>
+                    <br></br>
+
                 </div>
             )
         }
+        else if (this.state.registro === 2) {
+
+            return (
+                <div id="cont_login">
+                    <CamposPorDefecto text='proceso de recuperación' />
+                    <div id="btn_celular" className="row">
+                        <a className=" waves-light btn col s10 offset-s1" id="btn_recovery" onClick={this.recoveryPhone}>Enviar código</a>
+                    </div>
+
+
+
+
+                </div>
+            )
+
+        }
+        else if (this.state.registro === -1){
+            return null;
+        }
+    }
+    showConfirmationRecovery = () => {
+        if (this.state.showConfirmation == 1) {
+            return (
+                <div id='cont_confirm2'>
+                    <p id="info-confirm2" className="center info-codigo">Por favor ingresa el código de confirmación que se envió a tu celular</p>
+                    <div id="cod-confirm2" className="row">
+                        <div className="input-field col s12 l10 offset-l1">
+                            <i className="material-icons prefix">confirmation_number</i>
+                            <input id="codigo2" type="number" className="validate" required />
+                            <label htmlFor="codigo">Código</label>
+                            <p id="codigo-error2" className="center cel-error">Por favor digite el código de confirmación correctamente</p>
+                        </div>
+                    </div>
+
+                    <div id="btn_confirm" className="row">
+                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.validarCodigoRecovery}>Confirmar Código</a>
+                    </div>
+                </div>
+
+            );
+        } else {
+            return null;
+        }
+
     }
     showConfirmation = () => {
         if (this.state.showConfirmation == 1) {
             return (
                 <div id='cont_confirm'>
-                    <p id="info-confirm" className="center info-codigo">Por favor ingresa el código de confirmación que se envío a tu celular</p>
+                    <p id="info-confirm" className="center info-codigo">Por favor ingresa el código de confirmación que se envió a tu celular</p>
                     <div id="cod-confirm" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">confirmation_number</i>
@@ -521,7 +665,9 @@ class FormRegistro extends Component {
                             <p>
                                 <label>
                                     <input id="indeterminate-checkbox" type="checkbox" required />
-                                    <span>He leído y acepto los <a>Términos y condiciones</a></span>
+                                    <span>He leído y acepto los 
+                                    
+                                    <a href="#/terminos_condiciones" target="_blank">Términos y condiciones</a></span>
                                 </label>                                
                             </p>
                             <p id="terminos-error" className="center cel-error">Debe aceptar los términos y condiciones para continuar</p>
@@ -543,10 +689,10 @@ class FormRegistro extends Component {
             return (
                 <div>
                     <div id="btn_celular" className="row">
-                        <a className="waves-effect waves-light btn col s10 offset-s1" id="btn_aceptar_form_login" onClick={this.validarCampos}>Aceptar</a>
+                        <a className=" waves-light btn col s10 offset-s1" id="btn_aceptar_form_login" onClick={this.validarCampos}>Aceptar</a>
                     </div>
                     <div id="btn_cancelar" className="row">
-                        <a className="waves-effect waves-light btn col s10 offset-s1" onClick={this.reiniciarForm}>Regresar</a>
+                        <a className=" waves-light btn col s10 offset-s1" onClick={this.reiniciarForm}>Regresar</a>
                     </div>
                 </div>
             )
@@ -554,6 +700,21 @@ class FormRegistro extends Component {
             return null
         }
     }
+
+    showRecoveryPass = () => {
+
+
+        this.setState({
+            registro: 2,
+            showOptions: 0,
+            showButtons: 0
+        });
+        //this.showFields();
+        this.showOptions()
+        this.showButtons()
+
+    }
+
 
     /*showSocialButtons = () => {
         if (this.state.showSocialButtons == 1) {
@@ -644,11 +805,12 @@ function CamposPorDefecto(props) {
 
         <div className="row">
             <div className="input-field col s12 l10 offset-l1">
+
                 <select id="tipo_identificacion" className="browser-default" defaultValue='1' required>
                     <option value="" disabled>Tipo de Identifcación *</option>
-                    <option value="Cédula de ciudadanía">CC (Cédula de ciudadanía)</option>
-                    <option value="Tarjeta de identidad">TI (Tarjeta de identidad)</option>
-                    <option value="Cédula de extranjería">CE (Cédula de extranjería)</option>
+                    <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                    <option value="Cédula de extranjería">Cédula de extranjería</option>
                 </select>
 
                 <p id="tipo_iden_error" className="center cel-error">Por favor Escoja un tipo de Identifcación</p>

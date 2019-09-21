@@ -119,8 +119,8 @@ class Testimonios extends Component {
         <div className="parallax">
           <img alt="algo" src={this.state.background}></img>
         </div>
-        <h2 className="espacioTitulo tituloTestimonials">Testimonios EmmaFIG</h2>
-        <h6 className="subtituloTestimonials">Don't take our word for it. Here is what our customers say about our products and our awesome support!</h6>
+        <h2 className="espacioTitulo tituloTestimonials">Testimonios </h2>
+        <h5 className="subtituloTestimonials">Subtítulo y descripción de <b>testimonios</b> de la <b>Fundación InnovaGen</b></h5>
         <div className="espaciado2">
           <Slider {...settings}>
             {listItems}
