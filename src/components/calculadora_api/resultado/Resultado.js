@@ -189,14 +189,11 @@ class Resultado extends Component {
                             </div>
                         </div>
                         <div className="row row-resultado">
-                            <div className="col s4 m4 l4">
+                            <div className="col s6 m6 l6">
                                 <a id="btn_reiniciar" className="boton-res waves-light col s12 m12 l12" onClick={this.props.backComponente}>Reiniciar</a>
-                            </div>
-                            {
-                                this.showOpcion()
-                            }
-                            <div className="col s4 m4 l4">
-                                <a id="btn_conocer_mas" className="boton-res waves-light col s12 m12 l12">Pedir cita</a>
+                            </div>                            
+                            <div className="col s6 m6 l6">
+                                <a id="btn_conocer_mas" className="boton-res waves-light col s12 m12 l12" href="localhost:3000">Ir a EmmaFIG</a>
                             </div>
                         </div>
                     </div>
