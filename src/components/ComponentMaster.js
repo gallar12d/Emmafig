@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Menu from './menu/Menu';
 import Seccion1 from './seccion1/Seccion1';
-import Calculadora from './calculadora_api/Calculadora';
+import Calculadora from './calculadora/Calculadora';
 import Testimonios from './testimonios/Testimonios';
 import Footer from './footer/Footer';
 import Citas from './citas/Citas';
