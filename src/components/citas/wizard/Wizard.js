@@ -143,7 +143,7 @@ class Wizard extends Component {
                 step = (<Step3 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
                 break;
             case 4:
-                step = (<Step4 actualizar={this.actualizar.bind(this)}  set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
+                step = (<Step4 id_usuario={this.props.id_usuario} actualizar={this.actualizar.bind(this)}  set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)
                 break;
             case 5:
                 step = (<Step5 set_state={this.props.set_state} {...this.props} step={this.props.step} activate_step={this.props.activate_step} />)

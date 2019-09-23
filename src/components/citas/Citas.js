@@ -114,7 +114,7 @@ class Citas extends Component {
         else{   
             
             if(this.props.login == 1){
-                seccion = ( <Wizard   {...this.state} set_state = {this.set_state.bind(this)}  step = {this.state.step_activated}  activate_step = {this.activate_step.bind(this)} id_servicio={this.state.iditem} nombre_servicio={this.state.textItem} ></Wizard> );
+                seccion = ( <Wizard id_usuario ={this.props.id_usuario} {...this.state} set_state = {this.set_state.bind(this)}  step = {this.state.step_activated}  activate_step = {this.activate_step.bind(this)} id_servicio={this.state.iditem} nombre_servicio={this.state.textItem} ></Wizard> );
             }
                 
         
@@ -136,7 +136,7 @@ class Citas extends Component {
 
 
         return (
-            <div id="citas" className style={stilo} >
+            <div id="citas"  style={stilo} >
                 <div className="container headcitas">
                     <div className="row ">
                         <h4 className="titulocitas">
