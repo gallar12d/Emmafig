@@ -20,6 +20,38 @@ class Editprofile extends Component {
     componentDidMount() {
         M.Collapsible.init(this.Collapsible);
         M.Tabs.init(this.Tabs);
+        //document.getElementById("primer_nombre").value
+        let dataForm = new FormData();
+        dataForm.append("id_usuario", localStorage.getItem('id'));
+        axios.get("http://emmafig.com/api1/getUser/"+localStorage.getItem('id')).then(res  => {
+            var result =  res.data;
+            console.log(result)
+            /*
+            console.log(result.infoUser[0].primer_nombre);
+            */
+            document.getElementById("primer_nombre").value = result.user.primer_nombre;
+            document.getElementById("segundo_nombre").value = result.user.segundo_nombre;
+            document.getElementById("primer_apellido").value = result.user.primer_apellido;
+            document.getElementById("segundo_apellido").value = result.user.segundo_apellido;
+            document.getElementById("email").value = result.user.correo;
+            document.getElementById("numeroTelefono").value = result.user.telefono1;
+            if(result.user.segundo_nombre != null  && result.user.segundo_nombre != ""){
+                document.getElementById("label_segundo_nombre").classList.add("active");
+            }
+            if(result.user.segundo_apellido != null && result.user.segundo_apellido != ""){
+                
+                document.getElementById("label_segundo_apellido").classList.add("active");
+            }
+            if(result.user.telefono1 != null && result.user.segundo_telefono1 != ""){
+                document.getElementById("labelTel").classList.add("active");
+
+            }
+            if(result.user.correo != null && result.user.correo != ""){
+
+                document.getElementById("labelEmail").classList.add("active");
+            }
+
+        })
 
     }
     validarFormulario(form, e) {
@@ -46,14 +78,11 @@ class Editprofile extends Component {
                     axios.post("http://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
                         .then(res => {
                             loader.style.display = "none"
-                            document.getElementById("primer_nombre").value ="";
-                            document.getElementById("segundo_nombre").value ="";
-                            document.getElementById("primer_apellido").value ="";
-                            document.getElementById("segundo_apellido").value ="";
+                           
                             alert("usuario actualizado correctamente")
                             let result = res.data;
                             console.log(result)
-                            window.location.reload()
+                            
 
                         })
                     break;
@@ -64,12 +93,12 @@ class Editprofile extends Component {
                     dataUpdate.append("id_usuario", id_usuario)
                     axios.post("http://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
                         .then(res => {
-                            document.getElementById("email").value ="";
+                            
                             alert("usuario actualizado correctamente")
                             let result = res.data;
                             console.log(result)
                             loader.style.display = "none"
-                            window.location.reload()
+                            
                         })
                     break;
                 case 'formPassword':
@@ -96,10 +125,8 @@ class Editprofile extends Component {
                                 } else {
                                     alert("usuario actualizado correctamente")
                                 
-                                    document.getElementById("password").value ="";
-                                    document.getElementById("newPassword").value ="";
-                                    document.getElementById("passwordRepeat").value ="";
-                                    window.location.reload()
+                                   
+                                    
 
                                 }
                             })
@@ -118,7 +145,7 @@ class Editprofile extends Component {
                             loader.style.display = "none"
                             let result = res.data;
                             console.log(result)
-                            window.location.reload()
+                            
                         })
                     break;
 
@@ -171,22 +198,22 @@ class Editprofile extends Component {
                                 <div className="input-field col s12 ">
 
                                     <input id="primer_nombre" type="text" className="validate" name="primer_nombre" required maxLength="10" />
-                                    <label className="active" htmlFor="primer_nombre">Primer nombre</label>
+                                    <label className="active" htmlFor="primer_nombre">Primer nombre *</label>
 
 
                                 </div>
 
                                 <div className="input-field col s12 ">
                                     <input id="segundo_nombre" type="text" className="validate" maxLength="10" />
-                                    <label className="active" htmlFor="segundo_nombre">Segundo nombre</label>
+                                    <label id="label_segundo_nombre" htmlFor="segundo_nombre">Segundo nombre</label>
                                 </div>
                                 <div className="input-field col s12 ">
                                     <input id="primer_apellido" type="text" className="validate" required maxLength="10" />
-                                    <label className="active" htmlFor="primer_apellido">Primer apellido</label>
+                                    <label className="active" htmlFor="primer_apellido">Primer apellido *</label>
                                 </div>
                                 <div className="input-field col s12 ">
                                     <input id="segundo_apellido" type="text" className="validate" maxLength="10" />
-                                    <label className="active" htmlFor="segundo_apellido">Segundo apellido</label>
+                                    <label id="label_segundo_apellido" htmlFor="segundo_apellido">Segundo apellido</label>
                                 </div>
                                 <button className="waves-light btn" id="btnSetUserInfo" onClick={(e) => this.validarFormulario("formPersonalInfo", e)} >Guardar cambios</button>
                                 <div className="preloader-wrapper small active" id="loader">
@@ -203,7 +230,7 @@ class Editprofile extends Component {
                             <form className="form-content" id="emailForm">
                                 <div className="input-field col s12 ">
                                     <input id="email" type="email" className="validate" />
-                                    <label htmlFor="email">Email</label>
+                                    <label id="labelEmail" htmlFor="email">Email</label>
                                 </div>
                                 <button className="waves-light btn" id="btnSetEmail" onClick={(e) => this.validarFormulario("emailForm", e)} >Guardar cambios</button>
 
@@ -216,7 +243,7 @@ class Editprofile extends Component {
                                 <div className="row">
                                     <div className="input-field col s6">
                                         <input id="password" type="password" className="validate" maxLength="10" required />
-                                        <label htmlFor="password">Contraseña actual</label>
+                                        <label htmlFor="password">Contraseña actual *</label>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s12">
@@ -224,12 +251,12 @@ class Editprofile extends Component {
                                         </div>
                                         <div className="input-field col s6"    >
                                             <input id="newPassword" type="password" className="validate" maxLength="10" required />
-                                            <label htmlFor="password">Nueva contraseña</label>
+                                            <label htmlFor="password">Nueva contraseña *</label>
 
                                         </div>
                                         <div className="input-field col s6"    >
                                             <input id="passwordRepeat" type="password" className="validate" maxLength="10" required />
-                                            <label htmlFor="password">Confirmar contraseña</label>
+                                            <label htmlFor="password">Confirmar contraseña *</label>
 
                                         </div>
                                     </div>
@@ -246,7 +273,7 @@ class Editprofile extends Component {
 
                                 <div className="input-field col s12 ">
                                     <input id="numeroTelefono" type="number" className="validate" maxLength="9" />
-                                    <label htmlFor="numeroTelefono">Numero de telefono</label>
+                                    <label id="labelTel" htmlFor="numeroTelefono">Numero de telefono</label>
                                 </div>
                                 <button className="waves-light btn" id="btnSetTelefono" onClick={(e) => this.validarFormulario("formTel", e)} >Guardar cambios</button>
 
