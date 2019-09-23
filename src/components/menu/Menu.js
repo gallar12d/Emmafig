@@ -52,10 +52,13 @@ class Menu extends Component {
     render() {
         let usuario;
         let inicio;
+        let inicio_sm;
         if (this.props.login == 0) {
             inicio = <li><a className="modal-trigger" href='#modal1'><span id="txt_boton_entrar">Entrar</span></a></li>
+            inicio_sm = <a className="modal-trigger hide-on-med-and-up aling-right" href='#modal1'><span id="txt_boton_entrar">Entrar</span></a>
         } else {
             inicio = null;
+            inicio_sm = null;
         }
         let usuario_sm;
         let cerrar_sesion;
@@ -79,14 +82,9 @@ class Menu extends Component {
                 <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
             </div>
             cerrar_sesion =
-                <li>
-
-
-                    <a href="#!"> Cerrar Sesion </a>
-
-                </li>
-
-
+            <li><a onClick={() => {
+                this.props.changeLogin(); window.location.reload(); 
+            }}>Cerrar sesion</a></li>
 
         }
 
@@ -122,6 +120,7 @@ class Menu extends Component {
                             <a href="#!" data-target="mobile-demo" className="sidenav-trigger">
                                 <i className="material-icons">menu</i>
                             </a>
+                            {inicio_sm}
                             <ul className=" menuItems right hide-on-med-and-down">
                                 <li id="citas_li">
 
@@ -232,7 +231,7 @@ class Menu extends Component {
                         </div>
                     </nav>
 
-
+                    
                 </div>
 
                 <Link
@@ -288,6 +287,7 @@ class Menu extends Component {
 
                 >
                 </Link>
+               
                 <ul className="sidenav" id="mobile-demo">
                     {usuario_sm}
                     <li id="hiddenTerminos">
