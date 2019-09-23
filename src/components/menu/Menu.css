@@ -20,6 +20,9 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     font-size: 40px ;
     
 }
+.aling-right{
+    margin-left: 50%;
+}
 
 #menu .fa-lg {
     font-size: 1.33333333em;
