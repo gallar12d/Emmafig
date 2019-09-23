@@ -3,163 +3,293 @@ import './Perfil.css'
 import M from "materialize-css";
 import axios from "axios";
 
-//cronometro entre tareas
-var endTask;
-var ss;
-var mm;
-var hh;
-var time;
-var cc;
-var acumularTime2;
+//import { ValidatorComponent,ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 
 
 class Editprofile extends Component {
     constructor(props) {
-        
+
         super(props);
-        this.timer = null;
-        this.startedOn = 0;
         this.state = {
-            elapsed: 0,
+
         }
-        /*
-        this.start = this.start.bind( this );
-        this.stop = this.stop.bind( this );
-        */
+
     }
+
     componentDidMount() {
         M.Collapsible.init(this.Collapsible);
+        M.Tabs.init(this.Tabs);
+        //document.getElementById("primer_nombre").value
+        let dataForm = new FormData();
+        dataForm.append("id_usuario", localStorage.getItem('id'));
+        axios.get("http://emmafig.com/api1/getUser/"+localStorage.getItem('id')).then(res  => {
+            var result =  res.data;
+            console.log(result)
+            /*
+            console.log(result.infoUser[0].primer_nombre);
+            */
+            document.getElementById("primer_nombre").value = result.user.primer_nombre;
+            document.getElementById("segundo_nombre").value = result.user.segundo_nombre;
+            document.getElementById("primer_apellido").value = result.user.primer_apellido;
+            document.getElementById("segundo_apellido").value = result.user.segundo_apellido;
+            document.getElementById("email").value = result.user.correo;
+            document.getElementById("numeroTelefono").value = result.user.telefono1;
+            if(result.user.segundo_nombre != null  && result.user.segundo_nombre != ""){
+                document.getElementById("label_segundo_nombre").classList.add("active");
+            }
+            if(result.user.segundo_apellido != null && result.user.segundo_apellido != ""){
+                
+                document.getElementById("label_segundo_apellido").classList.add("active");
+            }
+            if(result.user.telefono1 != null && result.user.segundo_telefono1 != ""){
+                document.getElementById("labelTel").classList.add("active");
+
+            }
+            if(result.user.correo != null && result.user.correo != ""){
+
+                document.getElementById("labelEmail").classList.add("active");
+            }
+
+        })
+
     }
-    
-  /*
-  
-  start() {
-      this.startedOn = new Date().getTime();
-      this.timer = window.setInterval( this.updateTime.bind( this ), 10 );
-      
-  }
-  updateTime() {
-      this.setState( {elapsed: new Date().getTime() - this.startedOn } );
-      time = this.state.elapsed;
-      acumularTime2 = new Date;
-      acumularTime2.setTime(time);
-      cc = Math.round(acumularTime2.getMilliseconds()/10);
-      ss = acumularTime2.getSeconds();
-      mm = acumularTime2.getMinutes();
-      hh = acumularTime2.getHours()-19;
-      if (cc < 10) {cc = "0"+cc;}
-      if (ss < 10) {ss = "0"+ss;} 
-      if (mm < 10) {mm = "0"+mm;}
-      if (hh < 10) {hh = "0"+hh;}
-      endTask = hh+" : "+mm+" : "+ss+" : "+cc;
-     
-    
-  }
-  stop() {
-      window.clearInterval( this.timer );
-      var dataform = new FormData();
-      dataform.append("nombre", "actualizar perfil");
-      dataform.append("task_end", endTask);
-      dataform.append("version", "emmafig V1");
-      alert("El usuario ha tardado "+endTask+" en completar la tarea");
-      axios.post("http://localhost/api1/timeTask",dataform).then(
-          res =>{
-              var result = res.data;
-              console.log(result)
-          }
-      )
-      
-      
-  }
-  */
-   
-    
+    validarFormulario(form, e) {
+        e.preventDefault()
+        var formTap = document.querySelector("#" + form + "");
+
+
+        if (formTap.checkValidity()) {
+
+            var dataUpdate = new FormData();
+            var id_usuario = localStorage.getItem('id');
+            //continuar con el proceso de actualizar la informacion en la base de datos
+            var loader = document.getElementById("loaderEdit");
+            switch (form) {
+                case 'formPersonalInfo':
+                   
+                    loader.style.display = "inline-block"
+                    dataUpdate.append("bandera_update", 'nombres')
+                    dataUpdate.append("id_usuario", id_usuario)
+                    dataUpdate.append("primer_nombre", document.getElementById("primer_nombre").value)
+                    dataUpdate.append("segundo_nombre", document.getElementById("segundo_nombre").value)
+                    dataUpdate.append("primer_apellido", document.getElementById("primer_apellido").value)
+                    dataUpdate.append("segundo_apellido", document.getElementById("segundo_apellido").value)
+                    axios.post("http://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
+                        .then(res => {
+                            loader.style.display = "none"
+                           
+                            alert("usuario actualizado correctamente")
+                            let result = res.data;
+                            console.log(result)
+                            
+
+                        })
+                    break;
+                case 'emailForm':
+                    loader.style.display = "inline-block"
+                    dataUpdate.append("email", document.getElementById("email").value)
+                    dataUpdate.append("bandera_update", 'email')
+                    dataUpdate.append("id_usuario", id_usuario)
+                    axios.post("http://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
+                        .then(res => {
+                            
+                            alert("usuario actualizado correctamente")
+                            let result = res.data;
+                            console.log(result)
+                            loader.style.display = "none"
+                            
+                        })
+                    break;
+                case 'formPassword':
+                    loader.style.display = "inline-block"
+                    var password = document.getElementById("newPassword").value;
+                    var passwordRepeat = document.getElementById("passwordRepeat").value;
+                    if (password != passwordRepeat) {
+                        alert("las contraseñas no coinciden");
+
+                    } else {
+
+
+                        dataUpdate.append("password_actual", document.getElementById("password").value)
+                        dataUpdate.append("bandera_update", 'password')
+                        dataUpdate.append("id_usuario", id_usuario)
+                        dataUpdate.append("password", document.getElementById("newPassword").value)
+                        axios.post("http://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
+                            .then(res => {
+                                loader.style.display = "none"
+                                let result = res.data;
+                                if (result == 3) {
+                                    alert("la contraseña actual no coincide")
+
+                                } else {
+                                    alert("usuario actualizado correctamente")
+                                
+                                   
+                                    
+
+                                }
+                            })
+                    }
+
+                    break;
+                case 'formTel':
+                    loader.style.display = "inline-block"
+                    dataUpdate.append("bandera_update", 'telefono')
+                    dataUpdate.append("id_usuario", id_usuario)
+                    dataUpdate.append("telefono", document.getElementById("numeroTelefono").value);
+                    axios.post("http://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
+                        .then(res => {
+                            document.getElementById("numeroTelefono").value ="";
+                            alert("usuario actualizado correctamente")
+                            loader.style.display = "none"
+                            let result = res.data;
+                            console.log(result)
+                            
+                        })
+                    break;
+
+            }
+        } else {
+            formTap.reportValidity();
+        }
 
 
 
-
+    }
 
     render() {
-
         return (
 
-            <div className="EditProfile">
+            <div className="EditProfile ">
 
-                <div className="container emp-profile">
-                    <h4 className="headTitle">Configuracion general de la cuenta</h4>
-                    <ul ref={Collapsible => { this.Collapsible = Collapsible }} class="collapsible">
-                        <li>
-                            <div class="collapsible-header resetBorder" id="UserName"><i class="large material-icons">person</i>Nombre de usuario</div>
-                            <div class="collapsible-body">
-                                <div class="row">
-                                    <div class="input-field col s6 ">
-                                        <input id="first_name2" type="text" class="validate" />
-                                        <label class="active" for="first_name2">Nombre de usuario</label>
-                                    </div>
+
+                <div className="row">
+                    <div className="col m4">
+
+                        <ul className="tabs" ref={Tabs => {
+                            this.Tabs = Tabs;
+                        }}>
+                            <li className="tab "><a href="#infoUser" className="active"><i className="small material-icons floatElement">person</i>Informacion personal</a></li>
+                            <li className="tab "><a href="#emailContent"><i className="small material-icons floatElement">email</i>Correo</a></li>
+                            <li className="tab  "><a href="#passwordContent"><i className="small material-icons floatElement">fingerprint</i>Contraseña</a></li>
+                            <li className="tab "><a href="#numeroContent"><i className="small material-icons floatElement">phone_android</i>Numero de telefono</a></li>
+
+                        </ul>
+                        <div id="loaderEdit" className="preloader-wrapper big active">
+                            <div className="spinner-layer spinner-green-only" >
+                                <div className="circle-clipper left">
+                                    <div className="circle"></div>
+                                </div><div className="gap-patch">
+                                    <div className="circle"></div>
+                                </div><div className="circle-clipper right">
+                                    <div className="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col m8 ">
+
+
+                        <div id="infoUser" className="col tab-content">
+
+                            <form id="formPersonalInfo" className="form-content">
+
+                                <div className="input-field col s12 ">
+
+                                    <input id="primer_nombre" type="text" className="validate" name="primer_nombre" required maxLength="10" />
+                                    <label className="active" htmlFor="primer_nombre">Primer nombre *</label>
+
 
                                 </div>
 
-                                <a class="waves-effect waves-light btn" >Guardar cambios</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header resetBorder"><i class="large material-icons">email</i>Correo</div>
-                            <div class="collapsible-body">
-                                <div class="row">
-                                    <div class="input-field col s6 ">
-                                        <input id="email" type="email" class="validate" />
-                                        <label for="email">Email</label>
-                                    </div>
+                                <div className="input-field col s12 ">
+                                    <input id="segundo_nombre" type="text" className="validate" maxLength="10" />
+                                    <label id="label_segundo_nombre" htmlFor="segundo_nombre">Segundo nombre</label>
                                 </div>
-                                <a class="waves-effect waves-light btn">Guardar cambios</a>
+                                <div className="input-field col s12 ">
+                                    <input id="primer_apellido" type="text" className="validate" required maxLength="10" />
+                                    <label className="active" htmlFor="primer_apellido">Primer apellido *</label>
+                                </div>
+                                <div className="input-field col s12 ">
+                                    <input id="segundo_apellido" type="text" className="validate" maxLength="10" />
+                                    <label id="label_segundo_apellido" htmlFor="segundo_apellido">Segundo apellido</label>
+                                </div>
+                                <button className="waves-light btn" id="btnSetUserInfo" onClick={(e) => this.validarFormulario("formPersonalInfo", e)} >Guardar cambios</button>
+                                <div className="preloader-wrapper small active" id="loader">
 
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header resetBorder"><i class="large material-icons">fingerprint</i>Contraseña</div>
-                            <div class="collapsible-body">
-                                <div class="row">
-                                    <div class="input-field col s6">
-                                        <input id="password" type="password" class="validate" />
-                                        <label for="password">Contraseña actual</label>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                        <div id="emailContent" className="col tab-content">
+
+                            <form className="form-content" id="emailForm">
+                                <div className="input-field col s12 ">
+                                    <input id="email" type="email" className="validate" />
+                                    <label id="labelEmail" htmlFor="email">Email</label>
+                                </div>
+                                <button className="waves-light btn" id="btnSetEmail" onClick={(e) => this.validarFormulario("emailForm", e)} >Guardar cambios</button>
+
+                            </form>
+                        </div>
+
+                        <div id="passwordContent" className="col tab-content">
+                            <form className="form-content" id="formPassword">
+
+                                <div className="row">
+                                    <div className="input-field col s6">
+                                        <input id="password" type="password" className="validate" maxLength="10" required />
+                                        <label htmlFor="password">Contraseña actual *</label>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <input id="password" type="password" class="validate" />
-                                            <label for="password">Nueva contraseña</label>
+                                    <div className="row">
+                                        <div className="input-field col s12">
+                                            <p>Ingrese una contraseña de maximo 10 caracteres.</p>
+                                        </div>
+                                        <div className="input-field col s6"    >
+                                            <input id="newPassword" type="password" className="validate" maxLength="10" required />
+                                            <label htmlFor="password">Nueva contraseña *</label>
+
+                                        </div>
+                                        <div className="input-field col s6"    >
+                                            <input id="passwordRepeat" type="password" className="validate" maxLength="10" required />
+                                            <label htmlFor="password">Confirmar contraseña *</label>
+
                                         </div>
                                     </div>
+                                    <button className="waves-light btn" id="btnSetPass" onClick={(e) => this.validarFormulario("formPassword", e)} >Guardar cambios</button>
                                 </div>
-                                <a class="waves-effect waves-light btn">Guardar cambios</a>
 
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header resetBorder"><i class="large material-icons">phone_android</i>Numero de telefono</div>
-                            <div class="collapsible-body">
-                                <div class="row">
-                                    <div class="input-field col s6 ">
-                                        <input id="numeroTelefono" type="number" class="validate" />
-                                        <label for="numeroTelefono">Numero de telefono</label>
-                                    </div>
+                            </form>
 
+
+                        </div>
+
+                        <div id="numeroContent" className="col tab-content">
+                            <form className="form-content" id="formTel">
+
+                                <div className="input-field col s12 ">
+                                    <input id="numeroTelefono" type="number" className="validate" maxLength="9" />
+                                    <label id="labelTel" htmlFor="numeroTelefono">Numero de telefono</label>
                                 </div>
-                                <a class="waves-effect waves-light btn" >Guardar cambios</a>
-
-                            </div>
-                        </li>
-                    </ul>
+                                <button className="waves-light btn" id="btnSetTelefono" onClick={(e) => this.validarFormulario("formTel", e)} >Guardar cambios</button>
 
 
+                            </form>
+                        </div>
 
 
 
+
+                    </div>
                 </div>
-
-
             </div>
         );
     }
+
+
 }
 export default Editprofile;

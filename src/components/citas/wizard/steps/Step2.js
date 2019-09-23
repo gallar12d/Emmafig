@@ -74,13 +74,13 @@ class Step2 extends Component {
                     <div id={'Modal' + profesional.id_usuario} className="modal modal-fixed-footer">
                         <div className="modal-content left-align">
                             <div className="row">
-                                <div className="col s6 m6 l6">
+                                <div className="col s12 m6 l6">
                                     <img alt= '' style={{width: '100%'}} src = {'http://fig.org.co/atlanticv2/public/img/'+profesional.avatar}>
                                     </img>
 
 
                                 </div>
-                                <div className="col s6 m6 l6">
+                                <div className="col s12 m6 l6">
                                     <h5 style={{ color: '#c83b8d', fontWeight:'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">Nuestros profesionales</h5>
                                     <hr></hr>
                                     <h6 style={{  fontWeight:'bolder', fontFamily: 'lato'  }} >{profesional.primer_nombre + ' ' + nombre2 + ' ' + profesional.primer_apellido + ' ' + apellido2}</h6>

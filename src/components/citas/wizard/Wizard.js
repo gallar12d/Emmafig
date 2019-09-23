@@ -154,9 +154,12 @@ class Wizard extends Component {
 
         }
 
-
-        let title = this.props.nombre_servicio;
-        title = title.replace('|', '');
+        let title = '';
+        if(this.props.step != 5 ){
+            title = this.props.nombre_servicio;
+            title = title.replace('|', '');
+        }
+         
 
 
 

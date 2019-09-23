@@ -210,23 +210,23 @@ class Step4 extends Component {
                         <div className="row">
                             <form id="form_user">
 
-                                <div className="input-field col s6 m6">
+                                <div className="input-field col s12 m6">
                                     <input onChange={(e) => this.props.set_state('paciente_primer_nombre', e.target.value)} defaultValue={this.props.paciente_primer_nombre} required id="primer_nombre" type="text" className="validate"></input>
                                     <label className = {(this.props.paciente_primer_nombre) ? 'active': ''} htmlFor="first_name">Primer nombre *</label>
                                 </div>
-                                <div className="input-field col s6 m6">
+                                <div className="input-field col s12 m6">
                                     <input onChange={(e) => this.props.set_state('paciente_segundo_nombre', e.target.value)} defaultValue={this.props.paciente_segundo_nombre} id="segundo_nombre" type="text" className="validate"></input>
                                     <label className = {(this.props.paciente_segundo_nombre) ? 'active': ''} htmlFor="first_name">Segundo nombre</label>
                                 </div>
-                                <div className="input-field col s6 m6">
+                                <div className="input-field col s12 m6">
                                     <input onChange={(e) => this.props.set_state('paciente_primer_apellido', e.target.value)} defaultValue={this.props.paciente_primer_apellido} required id="primer_apellido" type="text" className="validate"></input>
                                     <label className = {(this.props.paciente_primer_apellido) ? 'active': ''} htmlFor="first_name">Primer apellido *</label>
                                 </div>
-                                <div className="input-field col s6 m6">
+                                <div className="input-field col s12 m6">
                                     <input onChange={(e) => this.props.set_state('paciente_segundo_apellido', e.target.value)} defaultValue={this.props.paciente_segundo_apellido} id="segundo_apellido" type="text" className="validate"></input>
                                     <label className = {(this.props.paciente_segundo_apellido) ? 'active': ''} htmlFor="first_name">Segundo apellido </label>
                                 </div>
-                                <div className="input-field col s6 m6">
+                                <div className="input-field col s12 m6">
                                     <select  onChange={(e) => this.props.set_state('paciente_tipo_identificacion', e.target.value)} id="tipo_id" name="tipo-id" required value={this.props.paciente_tipo_identificacion}>
                                         <option value='-1' disabled >Tipo de identificación *</option>
 
@@ -240,15 +240,15 @@ class Step4 extends Component {
 
                                 </div>
 
-                                <div className="input-field col s6 m6">
+                                <div className="input-field col s12 m6">
                                     <input onChange={(e) => this.props.set_state('paciente_numero_identificacion', e.target.value)} defaultValue={this.props.paciente_numero_identificacion} required id="numero_identificacion" type="number" className="validate"></input>
                                     <label className = {(this.props.paciente_numero_identificacion) ? 'active': ''} htmlFor="first_name">Número de identificación *</label>
                                 </div>
-                                <div className="input-field col s6 m6">
+                                <div className="input-field col s12 m6">
                                     <input onChange={(e) => this.props.set_state('paciente_numero1', e.target.value)} defaultValue={this.props.paciente_numero1} required id="telefono1" type="number" className="validate"></input>
                                     <label className = {(this.props.paciente_numero1) ? 'active': ''} htmlFor="first_name">Teléfono de contacto 1 *</label>
                                 </div>
-                                <div className="input-field col s6 m6">
+                                <div className="input-field col s12 m6">
                                     <input onChange={(e) => this.props.set_state('paciente_numero2', e.target.value)} defaultValue={this.props.paciente_numero2} id="telefono2" type="number" className="validate"></input>
                                     <label className = {(this.props.paciente_numero2) ? 'active': ''} htmlFor="first_name">Teléfono de contacto 2</label>
                                 </div>

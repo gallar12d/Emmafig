@@ -13,10 +13,11 @@ class CustomSlide extends Component {
 
 
   render() {
-    const { id, imagen, textoppal, textosec, url_ver_mas, url_sec_boton, titulo, alineacion, ...props } = this.props;
+    const {  id, imagen, textoppal, textosec, url_ver_mas, url_sec_boton, titulo, alineacion, ...props } = this.props;
+    
     return (
       <div  {...props}>
-        <div id="div-seccion1" className= "each-fade col s3 m6 l12" >
+        <div  id="div-seccion1" className= "each-fade col s3 m6 l12" >
           <div className="image-container col s3 l3 offset-l2 offset-s1">
             <img className="panel" src={'http://emmafig.com/api1/public/images/sliders/' + imagen} />
             <img className="panelFondo" src={ "img/blanco-nada"+alineacion+".png"} />
@@ -81,7 +82,8 @@ class Seccion1 extends Component {
   }
 
   render() {
-    const listItems = this.state.sliders.map((d) => <CustomSlide id={d.id_Slider} imagen={d.imagen} textoppal={d.texto_principal} textosec={d.texto_secundario} url_ver_mas={d.url_ver_mas} url_sec_boton={d.url_segundo_boton} titulo={d.nombre} alineacion={d.alineacion}></CustomSlide>);
+    
+    const listItems = this.state.sliders.map((d) => <CustomSlide key={d.id_slider} id={d.id_slider} imagen={d.imagen} textoppal={d.texto_principal} textosec={d.texto_secundario} url_ver_mas={d.url_ver_mas} url_sec_boton={d.url_segundo_boton} titulo={d.nombre} alineacion={d.alineacion}></CustomSlide>);
 
     return (
       <section className="page-section layoutSeccion1" id="seccion1">

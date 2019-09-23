@@ -14,9 +14,9 @@
     top: 0px;
     left: 0px;
     padding-top: 0px;
-    padding-right: 20px;
+    padding-right: 40px;
     padding-bottom: 0px;
-    padding-left: 20px;
+    padding-left: 40px;
     
     /*
     
@@ -294,18 +294,27 @@ div.container_btn_sedes{
 
 }
 .sede_div{
+    /*
     margin-bottom: 10px;
     padding: 0px !important;
-    width: 120px;
+    */
+
+    
+    
+    padding: 5px;
 }
 .sede_div_clicked{
+    
+    padding: 5px;
+    background-color: #a13775;
+    border-radius: 25px;
+    /*
+    
     margin-bottom: 10px;
     padding: 0px !important;
     border: 2px solid aliceblue;
-    border-radius: 25px;
-  
     text-align: center;
-    
+    */
 
 }
 .headline_sede_clicked:hover{
@@ -694,7 +703,7 @@ div.container_btn_sedes{
       }
     .layoutMap{
         position: relative;
-        margin-top: 140px;
+        
         margin-bottom: 0px !important;
         height: 500px !important;
     }
@@ -703,9 +712,9 @@ div.container_btn_sedes{
         top: 0px;
         left: 0px;
         padding-top: 0px;
-        padding-right: 20px;
+        padding-right: 40px;
         padding-bottom: 0px;
-        padding-left: 20px;
+        padding-left: 40px;
         
         width: 250px;
         height: 100%;

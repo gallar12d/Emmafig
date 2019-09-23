@@ -24,8 +24,10 @@ class CustomSlide extends Component {
           </div>
         </div>
         <div className="text-c center-align">
-          <h6 className=" center-align nombres">{nombres} - <strong>{profesion}</strong></h6>
-          <h6 className="fecha">{fecha_testimonio}</h6>
+          <h6 className=" center-align nombres">  <strong>{nombres}</strong></h6>
+          <h6 className="fecha"><i>{profesion}</i></h6>
+          <h6 className="fecha2"><i>{fecha_testimonio}</i></h6>
+         
         </div>
       </div>
     );
@@ -117,8 +119,8 @@ class Testimonios extends Component {
         <div className="parallax">
           <img alt="algo" src={this.state.background}></img>
         </div>
-        <h2 className="espacioTitulo tituloTestimonials">Testimonios EmmaFIG</h2>
-        <h6 className="subtituloTestimonials">Don't take our word for it. Here is what our customers say about our products and our awesome support!</h6>
+        <h2 className="espacioTitulo tituloTestimonials">Testimonios </h2>
+        <h5 className="subtituloTestimonials">Subtítulo y descripción de <b>testimonios</b> de la <b>Fundación InnovaGen</b></h5>
         <div className="espaciado2">
           <Slider {...settings}>
             {listItems}

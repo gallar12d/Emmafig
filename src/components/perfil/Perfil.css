@@ -24,17 +24,18 @@
 .profile-img img{
     width: 70%;
     height: 100%;
-    clip-path: circle(80px at 50% 85px);
-}
+    clip-path: circle(100px at 50% 105px);}
+
+
 .profile-img .file {
     position: relative;
     overflow: hidden;
-    margin-top: -20%;
+    margin-top: -30%;
     width: 70%;
     border: none;
     border-radius: 0;
     font-size: 15px;
-    background: #212529b8;
+    background: #0F9b9b;
 }
 .profile-img .file input {
     position: absolute;
@@ -102,3 +103,41 @@
     font-weight: 600;
     color: #0062cc;
 }
+.editTaps{
+    margin: 0px !important;
+}
+
+.tabs{
+    height: auto;
+    white-space: normal;
+    padding: 30px;
+    }
+    .tab{
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+    }
+    .tab-content{
+    height: 100%;
+    width: 100%;
+    background: #fcfcfc;
+    border:1px solid #f0f0f0;
+    }
+    .indicator{
+    display: none;
+    }
+.form-content{
+    padding: 30px;
+}
+.floatElement{
+    float: left;
+    padding-top: 5px;
+}
+#loader{
+    margin-top: 10px;
+    
+}
+#loaderEdit{
+    display: none;
+}
+

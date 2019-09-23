@@ -190,6 +190,16 @@ class Contacto extends Component {
                 btnSantSmall.classList.remove("sede_div_clicked")
                 btnSantSmall.classList.add("sede_div");
             }
+            telefono1_sede.innerHTML = "No disponible"
+            telefono2_sede.innerHTML = "3006586605"
+            telefono1_sede_small.innerHTML = "No disponible"
+            telefono2_sede_small.innerHTML = "3006586605"
+            telefono1_sede_med.innerHTML = "No disponible"
+            telefono2_sede_med.innerHTML = "3006586605"
+            
+            this.updateMap(3.399965, -76.546063)
+            this.routesFunction("https://www.google.com/maps/dir//Cra.+64a+%235-20,+Cali,+Valle+del+Cauca/@3.3999716,-76.5470417,18.25z/data=!4m17!1m7!3m6!1s0x8e30a1542cd9578d:0x997c24c3108e8312!2sCra.+64a+%235-20,+Cali,+Valle+del+Cauca!3b1!8m2!3d3.3999499!4d-76.5460627!4m8!1m0!1m5!1m1!1s0x8e30a1542cd9578d:0x997c24c3108e8312!2m2!1d-76.5460627!2d3.3999499!3e2?hl=es-CO")
+
 
         }
         h_semana.innerHTML = horario_semana;
@@ -403,7 +413,7 @@ class Contacto extends Component {
 
 
                                     <h3 className="titulos">
-                                        <span className="headline">Telefonos <i className="small material-icons">call</i></span>
+                                        <span className="headline"><i className="small material-icons">call</i>Telefonos </span>
                                     </h3>
                                 </div>
 
@@ -539,7 +549,7 @@ class Contacto extends Component {
 
 
                                     <h3 className="titulos">
-                                        <span className="headline">Telefonos <i className="small material-icons">call</i></span>
+                                        <span className="headline"><i className="small material-icons">call</i>Telefonos </span>
                                     </h3>
                                 </div>
 
@@ -656,7 +666,7 @@ class Contacto extends Component {
 
 
                                     <h3 className="titulos">
-                                        <span className="headline">Telefonos <i className="small material-icons">call</i></span>
+                                        <span className="headline"><i className="small material-icons">call</i>Telefonos </span>
                                     </h3>
                                 </div>
 
@@ -854,6 +864,11 @@ class GMapReact extends React.Component {
                 <Marker
                     lat={3.003815}
                     lng={-76.482547}
+                    src={this.props.img_marker}
+                />
+                <Marker
+                    lat={3.399965}
+                    lng={-76.546063}
                     src={this.props.img_marker}
                 />
 
