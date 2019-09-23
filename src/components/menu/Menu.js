@@ -178,7 +178,7 @@ class Menu extends Component {
                                 </Link>
                                 </li>
                                 <li id="blog_li">
-                                    <a href="#!"> Blog </a>
+                                    <a href="http://blog.emmafig.com/" target="_blank"> Blog </a>
                                 </li>
                                 <li id="contacto_li">
 
@@ -348,7 +348,7 @@ class Menu extends Component {
 
 
 
-                        <a href="#!"> Blog </a>
+                    <a href="http://blog.emmafig.com/" target="_blank"> Blog </a>
 
                     </li>
                     <li id="contacto_li_sm">

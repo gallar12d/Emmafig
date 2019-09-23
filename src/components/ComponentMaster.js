@@ -246,7 +246,7 @@ class ComponentMaster extends Component {
                             changeLogin={this.changeLogin.bind(this)} 
                             changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} 
                         />
-                        <Citas logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
+                        <Citas id_usuario = {this.state.id} logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
 
                         
                         <Testimonios />

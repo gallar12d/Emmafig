@@ -96,3 +96,16 @@ animation: shake 1s cubic-bezier(.36,.07,.19,.97) both;
 .step4 #modal_cita button.btn.modal-close {
   border-radius: 7px;
 }
+
+.step4 #modal_cita .input-field>label.active {
+  color: #000000;
+  font-size: initial;
+  font-weight: bold;
+}
+.step4 #modal_cita .input-field>label.select_label {
+  color: #000000;
+  font-size: small;
+  font-weight: bold;
+}
+
+

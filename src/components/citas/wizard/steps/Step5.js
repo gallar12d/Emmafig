@@ -57,8 +57,10 @@ class Step5 extends Component {
         dataForm.append("telefono1", this.props.paciente_numero1);
         dataForm.append("telefono2", this.props.paciente_numero2)
         dataForm.append("email", this.props.paciente_email)
-        dataForm.append("id_turno", this.props.id_turno);
-        dataForm.append("turno", this.props.turno);
+        dataForm.append("id_turno", this.props.id_turno);        
+        let new_turno = this.props.turno;
+        new_turno = new_turno.replace(" ", "");
+        dataForm.append("turno", new_turno);
         dataForm.append("fecha_modificada", this.formatdate(this.props.fecha_cita));
         dataForm.append("id_paquete", this.props.iditem);
         dataForm.append("nombre_paquete", this.props.textItem);
