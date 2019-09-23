@@ -29,7 +29,11 @@ class Perfil extends Component {
 
 
     }
-
+ 
+    capitalize(s) {
+        var capitalize = s[0].toUpperCase() + s.slice(1);
+        return capitalize;
+    }
 
     onChange(e) {
         e.preventDefault() // Stop form submit
@@ -69,7 +73,7 @@ class Perfil extends Component {
 
     componentDidMount() {
         M.Tabs.init(this.Tabs);
-        
+
 
         const userData = new FormData();
         //axios.post('http://localhost/api1/rest-api-authentication-example/api/getIdentyById.php', {
@@ -78,13 +82,19 @@ class Perfil extends Component {
         }
         )
             .then(res => {
+                var nombre1 = res.data.primer_nombre.toLowerCase();
+                var nombre2 =res.data.segundo_nombre.toLowerCase();
+                var apellido1 = res.data.primer_apellido.toLowerCase();
+                var apellido2 = res.data.segundo_apellido.toLowerCase();
+                
                 this.setState({
-                    primer_nombre: res.data.primer_nombre,
-                    segundo_nombre: res.data.segundo_nombre,
-                    primer_apellido: res.data.primer_apellido,
-                    segundo_apellido: res.data.segundo_apellido,
+                    primer_nombre: this.capitalize(nombre1) ,
+                    segundo_nombre: this.capitalize(nombre2),
+                    primer_apellido: this.capitalize(apellido1),
+                    segundo_apellido: this.capitalize(apellido2),
                     fecha_nacimiento: res.data.fecha_nacimiento,
                     no_identificacion: res.data.no_identificacion
+                   
                 })
                 //userData.append("identificacion", res.data.no_identificacion)
 
@@ -99,27 +109,27 @@ class Perfil extends Component {
                     .then(res => {
                         let result = res.data;
                         console.log(result);
-                        
+
                         var srcProfile;
                         var srcProfileImg;
                         if (result.filename[0].avatar != null) {
-                      
+
                             //console.log(result.filename[0].avatar);
                             srcProfile = result.filename[0].avatar
                             srcProfileImg = "http://fig.org.co/atlanticv2/public/userAvatar/" + id_usuario + "/" + srcProfile
 
                         } else {
-                            
+
                             srcProfileImg = process.env.PUBLIC_URL + "/img/default-profile.png"
                         }
                         this.setState({
                             file: srcProfileImg
                         })
-                       
+
                         var elem = document.getElementById("loaderphoto")
                         elem.parentNode.removeChild(elem)
-                       
-                        
+
+
 
                     })
 
@@ -312,9 +322,9 @@ class Perfil extends Component {
                 <div className="container emp-profile">
 
                     <div className="row">
-                        <div className="col m5">
+                        <div className="col l5 m5">
 
-                            
+
                             <div id="loaderphoto" className="preloader-wrapper big active">
                                 <div className="spinner-layer spinner-green-only" >
                                     <div className="circle-clipper left">
@@ -327,13 +337,13 @@ class Perfil extends Component {
                                 </div>
                             </div>
                             <div className="profile-img">
-                              <div className="row">
-                                  <div className="col m12">
-                                <img id="profile_picture" src={this.state.file} alt="" />
+                                <div className="row">
+                                    <div className="col l12 m12 s12">
+                                        <img id="profile_picture" src={this.state.file} alt="" />
 
-                                  </div>
+                                    </div>
 
-                              </div>
+                                </div>
                                 <div className="file btn btn-lg btn-primary">
                                     Cambiar Foto
                                         <form id="form_img_profile" onChange={this.onChange} >
@@ -342,16 +352,16 @@ class Perfil extends Component {
                                     </form>
                                 </div>
 
-                                
+
                             </div>
                         </div>
-                        <div className="col md6">
+                        <div className="col l6 m6 s12">
                             <div className="profile-head">
                                 <h5 id="textCapitalize">
-                                    
+
                                     {this.state.primer_nombre + ' ' + this.state.segundo_nombre + ' ' + this.state.primer_apellido + ' ' + this.state.segundo_apellido}
-                                    
-                                    
+
+
                                 </h5>
                                 <h6>
                                     N° identificacion: {this.state.no_identificacion}
@@ -365,7 +375,7 @@ class Perfil extends Component {
                     </div>
                     <div className="row">
 
-                        <div className="col m12">
+                        <div className="col l12 m12 s12">
                             <h6>REGISTRO DE ACTIVIDAD</h6>
                             <table className="striped" id="tableResult">
                                 <thead>

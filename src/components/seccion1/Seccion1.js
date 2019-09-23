@@ -49,7 +49,7 @@ class CustomSlide extends Component {
 }
 
 const fadeProperties = {
-  duration: 4000,
+  duration: 7000,
   transitionDuration: 600,
   infinite: true,
   indicators: false,
