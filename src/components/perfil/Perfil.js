@@ -21,7 +21,8 @@ class Perfil extends Component {
             segundo_apellido: '',
             fecha_nacimiento: '',
             no_identificacion: '',
-            file: ''
+            file: '',
+            
         }
 
         this.onChange = this.onChange.bind(this)
@@ -34,25 +35,37 @@ class Perfil extends Component {
 
     onChange(e) {
         e.preventDefault() // Stop form submit
-        var fileName = e.target.files[0].name;
-        this.fileUpload(e.target.files[0]).then((response) => {
-            var result = response.data;
+        
+       
+        
+           
+           
 
-            if (result == 1) {
-                //traer id de usuario desde el local storage
-                //console.log(localStorage.getItem('id'))
-                var srcProfileImg = "http://fig.org.co/atlanticv2/public/userAvatar/" + localStorage.getItem('id') + "/" + fileName
-                this.setState({
-                    file: srcProfileImg
-                })
-            } else {
-                alert("error al cambiar la foto de perfil");
-            }
-        })
+            let fileName = e.target.files[0].name;
+            this.fileUpload(e.target.files[0]).then((response) => {
+              
+                var result = response.data;
+                fileName = fileName.split('.').pop();
+                
+    
+                if (result == 1) {
+                    //traer id de usuario desde el local storage
+                    //console.log(localStorage.getItem('id'))
+                    var srcProfileImg = "https://fig.org.co/atlanticv2/public/userAvatar/" + localStorage.getItem('id') + "/" + localStorage.getItem('id') +"."+fileName
+                    
+                    this.setState({
+                        file: srcProfileImg
+                    })
+                 
+                } else {
+                    alert("error al cambiar la foto de perfil");
+                }
+            })
+    
         //this.setState({ file: e.target.files[0] })
     }
     fileUpload(file) {
-        const url = 'http://fig.org.co/atlanticv2/usuarios/updateProfilePicture';
+        const url = 'https://fig.org.co/atlanticv2/usuarios/updateProfilePicture';
         const formData = new FormData();
         formData.append('file', file)
         //traer id de usuario desde el local storage
@@ -128,7 +141,7 @@ class Perfil extends Component {
 
                             //console.log(result.filename[0].avatar);
                             srcProfile = result.filename[0].avatar
-                            srcProfileImg = "http://fig.org.co/atlanticv2/public/userAvatar/" + id_usuario + "/" + srcProfile
+                            srcProfileImg = "https://fig.org.co/atlanticv2/public/userAvatar/" + id_usuario + "/" + srcProfile
 
                         } else {
 
@@ -192,7 +205,7 @@ class Perfil extends Component {
 
 
     changePictureProfile(e) {
-        const url = 'http://fig.org.co/atlanticv2/usuarios/updateProfilePicture';
+        const url = 'https://fig.org.co/atlanticv2/usuarios/updateProfilePicture';
         const pictureFile = new FormData();
 
         pictureFile.append('imgFile', e.target.files[0].name)
