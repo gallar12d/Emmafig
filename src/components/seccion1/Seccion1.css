@@ -19,6 +19,7 @@
   position: absolute;
   width: 100%;
   min-height: 70vh;
+  background-size: cover;
   top: 0;
   left: 0;
   padding: 0px;
@@ -26,13 +27,12 @@
 
 .panelFondo {
   position: absolute;
-  width: 100%;
-  min-height: 70vh;
+  width: 110%;
+  min-height: 110%;
   top: 0;
   left: 0;
   padding: 0px;
-  opacity: 0.6;
-  background: -prefix-linear-gradient(left, blue, white);
+  opacity: 0.8;
 }                    
 
 /* Info */
@@ -73,10 +73,6 @@
   color: #0F9b9b;
 }
 
-
-
-
-
 .imagenEmma{
   position: relative;
   float: right;
@@ -86,7 +82,6 @@
   padding-top: 8px; 
   border: none!important;
 }
-
 
 #div-seccion1 .buttons {
   position: absolute;
@@ -188,9 +183,6 @@
   background: #adceed;
 }
 
-
-
-
 #div-seccion1 .buttonSmall{
   border-radius: 6px !important;
   background-color: #0F9b9b !important;
@@ -213,5 +205,4 @@
   background-color: #c83b8d !important;
   color:  #f8f4f6 !important;/* Green */
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
- 
 }
