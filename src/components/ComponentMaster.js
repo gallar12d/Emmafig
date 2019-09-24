@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Menu from './menu/Menu';
 import Seccion1 from './seccion1/Seccion1';
-import Calculadora from './calculadora_api/Calculadora';
+import Calculadora from './calculadora/Calculadora';
 import Testimonios from './testimonios/Testimonios';
 import Footer from './footer/Footer';
 import Citas from './citas/Citas';
@@ -33,6 +33,7 @@ class ComponentMaster extends Component {
             primer_nombre: "",
             id: "",
             loginCitas: 0,
+            riesgo: 0,
             respuestas: []//respuestas de la calculadora
 
         }
@@ -148,10 +149,11 @@ class ComponentMaster extends Component {
         });
     }
 
-    saveRespuestas = respuestas => {
+    saveRespuestas = (respuestas, riesgo) => {
         console.log('respuestas master'+ respuestas);
         this.setState({
-            respuestas: respuestas
+            respuestas: respuestas,
+            riesgo: riesgo
         })
         
     }
@@ -166,6 +168,7 @@ class ComponentMaster extends Component {
                 "valor_respuesta4": this.state.respuestas[3],                
                 "valor_respuesta5": this.state.respuestas[4],
                 "valor_respuesta6": this.state.respuestas[5],
+                "riesgo": this.state.riesgo,
                 "id_atl_usuario": localStorage.getItem('id')
             
         }).then(res => {
@@ -246,7 +249,7 @@ class ComponentMaster extends Component {
                             changeLogin={this.changeLogin.bind(this)} 
                             changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} 
                         />
-                        <Citas logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
+                        <Citas id_usuario = {this.state.id} logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
 
                         
                         <Testimonios />

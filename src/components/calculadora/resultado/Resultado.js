@@ -32,7 +32,11 @@ class Resultado extends Component {
     }
 
     componentDidMount() {
-        this.props.saveRespuestas(this.props.respuestas);
+        let riesgo = 0;
+        if(this.props.result == 'Alto'){
+            riesgo = 1;
+        }
+        this.props.saveRespuestas(this.props.respuestas, riesgo);
         axios.post(' https://emmafig.com/api1/updateResultSeguimiento', {
             //axios.post('http://localhost/api1/updateResultSeguimiento',{
             "id_seguimiento": localStorage.getItem('id_seguimiento'),

@@ -29,11 +29,8 @@ class Perfil extends Component {
 
 
     }
- 
-    capitalize(s) {
-        var capitalize = s[0].toUpperCase() + s.slice(1);
-        return capitalize;
-    }
+
+
 
     onChange(e) {
         e.preventDefault() // Stop form submit
@@ -69,10 +66,23 @@ class Perfil extends Component {
         }
         return axios.post(url, formData, config)
     }
+    capitalize(s) {
+        var capitalize;
+        if(s){
+
+            capitalize = s[0].toUpperCase() + s.slice(1);
+        }else{
+            capitalize = "";
+            
+        }
+        return capitalize;
+
+    }
 
 
     componentDidMount() {
         M.Tabs.init(this.Tabs);
+
 
 
         const userData = new FormData();
@@ -82,20 +92,22 @@ class Perfil extends Component {
         }
         )
             .then(res => {
+
                 var nombre1 = res.data.primer_nombre.toLowerCase();
-                var nombre2 =res.data.segundo_nombre.toLowerCase();
                 var apellido1 = res.data.primer_apellido.toLowerCase();
+                var nombre2= res.data.segundo_nombre.toLowerCase() ;
                 var apellido2 = res.data.segundo_apellido.toLowerCase();
                 
                 this.setState({
-                    primer_nombre: this.capitalize(nombre1) ,
+                    primer_nombre: this.capitalize(nombre1),
                     segundo_nombre: this.capitalize(nombre2),
                     primer_apellido: this.capitalize(apellido1),
                     segundo_apellido: this.capitalize(apellido2),
-                    fecha_nacimiento: res.data.fecha_nacimiento,
-                    no_identificacion: res.data.no_identificacion
-                   
+                    fecha_nacimiento: this.capitalize(res.data.fecha_nacimiento),
+                    no_identificacion: this.capitalize(res.data.no_identificacion)
+
                 })
+
                 //userData.append("identificacion", res.data.no_identificacion)
 
                 //consultar si hay foto de perfil
@@ -244,6 +256,7 @@ class Perfil extends Component {
 
             tableData = this.state.resultados.map(function (e) {
                 strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
+                
 
                 return <tr>
                     <td>
