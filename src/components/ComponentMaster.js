@@ -33,6 +33,7 @@ class ComponentMaster extends Component {
             primer_nombre: "",
             id: "",
             loginCitas: 0,
+            riesgo: 0,
             respuestas: []//respuestas de la calculadora
 
         }
@@ -148,10 +149,11 @@ class ComponentMaster extends Component {
         });
     }
 
-    saveRespuestas = respuestas => {
+    saveRespuestas = (respuestas, riesgo) => {
         console.log('respuestas master'+ respuestas);
         this.setState({
-            respuestas: respuestas
+            respuestas: respuestas,
+            riesgo: riesgo
         })
         
     }
@@ -166,6 +168,7 @@ class ComponentMaster extends Component {
                 "valor_respuesta4": this.state.respuestas[3],                
                 "valor_respuesta5": this.state.respuestas[4],
                 "valor_respuesta6": this.state.respuestas[5],
+                "riesgo": this.state.riesgo,
                 "id_atl_usuario": localStorage.getItem('id')
             
         }).then(res => {

@@ -16,7 +16,7 @@ class Cuestionario extends Component {
                 opacity: 0,
                 transform: 'translate3d(50%,0,0)'
             },
-
+            resultado: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -238,10 +238,10 @@ class Cuestionario extends Component {
                         etnia_indigena: this.state.selectedValues[5],
                         etnia_afro: etnia_afro
                     }
-                }).then(res => {
+                }).then(res => {                    
                     this.props.changeComponente(res.data.riesgo, this.state.selectedValues);
                     if (this.props.login == 1) {
-                        this.saveResult();
+                        this.saveResult(res.data.riesgo);
                     }
 
                 })
@@ -262,7 +262,7 @@ class Cuestionario extends Component {
         }
     }
 
-    saveResult = () => {
+    saveResult = (riesgo) => {
         axios.post('https://emmafig.com/api1/saveEstimacion', {
             //axios.post('http://localhost/api1/saveEstimacion', {            
             valor_respuesta1: this.state.selectedValues[0],
@@ -271,6 +271,7 @@ class Cuestionario extends Component {
             valor_respuesta4: this.state.selectedValues[3],
             valor_respuesta5: this.state.selectedValues[4],
             valor_respuesta6: this.state.selectedValues[5],
+            riesgo: riesgo,
             id_atl_usuario: localStorage.getItem('id')
 
         }).then(res => {
