@@ -272,7 +272,8 @@ class Perfil extends Component {
             })
         } else if (this.state.data_resultados.resultados_atl == null && this.state.data_resultados.resultados_emf != null) {
             tableDataEmf = this.state.resultados_emf.map(function (e) {
-                strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
+                /*strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";*/
+                strUrl = "http://localhost/api1/pdf?id=" + e.id_estimacion;
                 return <tr>
 
                     <td>

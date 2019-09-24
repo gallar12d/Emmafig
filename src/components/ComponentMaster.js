@@ -41,7 +41,17 @@ class ComponentMaster extends Component {
 
     }
 
-    
+    resultadoGotoCita(){
+        let simulateClick = elem => {
+            let evt = new MouseEvent('click', {
+                bubbles: true,
+                view: window
+            });
+            elem.dispatchEvent(evt)
+        };
+        let anclaCitas = document.getElementById('citas_section');
+        simulateClick(anclaCitas);
+    }
 
 
     componentDidMount() {
@@ -52,7 +62,18 @@ class ComponentMaster extends Component {
            
             this.changeLogin()
         }
-      
+        
+        /*document.getElementById('btn_conocer_mas').addEventListener('click',function(){
+            let simulateClick = elem => {
+                let evt = new MouseEvent('click', {
+                    bubbles: true,
+                    view: window
+                });
+                elem.dispatchEvent(evt)
+            };
+            simulateClick('citas_section');
+        });*/
+
         if (ancla == "login" ){
             if(localStorage.getItem('jwt') == null){
 
@@ -248,6 +269,7 @@ class ComponentMaster extends Component {
                             saveRespuestas={this.saveRespuestas.bind(this)}
                             changeLogin={this.changeLogin.bind(this)} 
                             changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} 
+                            resultadoGotoCita = {this.resultadoGotoCita.bind(this)}                            
                         />
                         <Citas id_usuario = {this.state.id} logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
 

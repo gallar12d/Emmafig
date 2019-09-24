@@ -119,7 +119,7 @@ class FormRegistro extends Component {
             });
         this.closeModal();
     }*/
-    
+
 
     validarCodigo = () => {
         let codigo = document.getElementById('codigo');
@@ -196,17 +196,17 @@ class FormRegistro extends Component {
         }
         else {
 
-            if(codigo.value == this.state.codigo_recovery){
-                
+            if (codigo.value == this.state.codigo_recovery) {
+
                 const dataForm = new FormData();
-                dataForm.append("id_usuario", this.state.id_usuario_recovery);                
+                dataForm.append("id_usuario", this.state.id_usuario_recovery);
                 Axios.post('https://emmafig.com/api1/recoveryPassword', dataForm).then(res => {
-                    if(res.data.status == 202){
+                    if (res.data.status == 202) {
                         alert(res.data.msg)
                         this.setState({
                             showOptions: 1,
                             showConfirmation: 0,
-                            showButtons: 0, 
+                            showButtons: 0,
                             showFields: -1
                         })
 
@@ -215,7 +215,7 @@ class FormRegistro extends Component {
                     }
                 })
             }
-            else{
+            else {
                 codigoError.style.display = "block";
                 codigoError.classList.remove("celular-animation");
                 void codigoError.offsetWidth;
@@ -234,13 +234,13 @@ class FormRegistro extends Component {
         dataForm.append("tipo_identificacion", tipo_identificacion.value);
         dataForm.append("identificacion", identificacion.value);
         Axios.post('https://emmafig.com/api1/getContact', dataForm).then(res => {
-            
+
 
             if (res.data.existe) {
                 this.setState({
                     id_usuario_recovery: res.data.user.id_usuario
                 });
-                
+
 
                 Axios.get("https://emmafig.com/api1/sendKey.php?celular=" + res.data.user.telefono1)
                     .then(resp => {
@@ -253,7 +253,7 @@ class FormRegistro extends Component {
                             this.setState({
                                 showConfirmation: 1,
                                 tipo_identificacion_recovery: tipo_identificacion.value,
-                                identificacion_recovery: identificacion.value 
+                                identificacion_recovery: identificacion.value
                             });
                             this.showConfirmationRecovery();
                         }
@@ -310,10 +310,7 @@ class FormRegistro extends Component {
     }
 
     validarCampos = () => {
-        this.setState({
-            showPreloader: 1
-        })
-        this.showPreloader();
+        
         let isValid = document.querySelector('#form_perfil').reportValidity();
         let errortext = "Por favor digite un numero de celular para continuar";
         let celular = document.getElementById('celular');
@@ -325,7 +322,7 @@ class FormRegistro extends Component {
         let tipo_identificacion = document.getElementById('tipo_identificacion');
         let identificacion = document.getElementById('identificacion');
         let correo = document.getElementById('correo');
-        if (this.state.registro == 1) {
+        if (this.state.registro == 1) {//es registro
             if (isValid) {
                 if (password.value !== confirm_password.value) {
                     errortext = "Los valores no coinciden";
@@ -370,7 +367,6 @@ class FormRegistro extends Component {
                             case '350':
                             case '351':
                                 this.celular = celular.value;
-                                //celular.setAttribute("disabled", "true");
                                 btn_celular.style.display = "none";
                                 celularError.style.display = "none";
                                 this.setState({
@@ -380,31 +376,48 @@ class FormRegistro extends Component {
                                     identificacion: identificacion.value,
                                     correo: correo.value
                                 });
-                                fetch("https://emmafig.com/api1/sendKey.php?celular=" + celular.value)
-                                    .then(res => res.json())
-                                    .then(
-                                        (result) => {
-                                            console.log(result);
-                                            if (result.estado == 'sent') {
-                                                this.setState({
-                                                    showPreloader: 0
-                                                });
-                                                this.showPreloader()
-                                                console.log(result.codigo)
-                                                this.setState({
-                                                    codigo: result.codigo,
-                                                    codigo_recovery: null
-                                                });
-                                                this.setState({
-                                                    showConfirmation: 1
-                                                });
-                                                this.showConfirmation();
-                                            }
-                                        },
-                                        (error) => {
-                                            alert('Error');
+                                Axios.post("http://localhost/api1/rest-api-authentication-example/api/user_exist.php", {
+                                    "tipo_identificacion": tipo_identificacion.value,
+                                    "identificacion": identificacion.value
+                                })
+                                    .then(res => {
+                                        if (res.data.existe == 'true') {
+                                            let user_exits = document.getElementById('user_exits');
+                                            user_exits.style.display = 'block';
+                                        } else {
+                                            this.setState({
+                                                showPreloader: 1
+                                            })
+                                            this.showPreloader();
+                                            fetch("https://emmafig.com/api1/sendKey.php?celular=" + celular.value)
+                                                .then(res => res.json())
+                                                .then(
+                                                    (result) => {
+                                                        console.log(result);
+                                                        if (result.estado == 'sent') {
+                                                            this.setState({
+                                                                showPreloader: 0
+                                                            });
+                                                            this.showPreloader()
+                                                            console.log(result.codigo)
+                                                            this.setState({
+                                                                codigo: result.codigo,
+                                                                codigo_recovery: null
+                                                            });
+                                                            this.setState({
+                                                                showConfirmation: 1
+                                                            });
+                                                            this.showConfirmation();
+                                                        }
+                                                    },
+                                                    (error) => {
+                                                        alert('Error');
+                                                    }
+                                                )
                                         }
-                                    )
+                                    })
+
+
                                 break;
                             default: errortext = "Numero de celular no valido";
                                 celularError.innerHTML = errortext;
@@ -476,7 +489,7 @@ class FormRegistro extends Component {
             return (
                 <div>
                     <p className="center titulo-registro">Registrate</p>
-                    <p className="center subtitulo-registro">Para recibir mas detalles de tu resultado <br />totalmente gratis</p>
+                    <p className="center subtitulo-registro">Podrás participar de promociones en nuestros servicios, además recibirás noticias de eventos <br />totalmente gratis</p>
                     <div id="btn_ingresar" className="row">
                         <a className="waves-effect waves-light btn col s10 offset-s1" id="btn_ingresar_a" onClick={this.isLogin}>Ingresar</a>
                     </div>
@@ -618,7 +631,7 @@ class FormRegistro extends Component {
             )
 
         }
-        else if (this.state.registro === -1){
+        else if (this.state.registro === -1) {
             return null;
         }
     }
@@ -665,10 +678,10 @@ class FormRegistro extends Component {
                             <p>
                                 <label>
                                     <input id="indeterminate-checkbox" type="checkbox" required />
-                                    <span>He leído y acepto los 
-                                    
+                                    <span>He leído y acepto los
+
                                     <a href="#/terminos_condiciones" target="_blank">Términos y condiciones</a></span>
-                                </label>                                
+                                </label>
                             </p>
                             <p id="terminos-error" className="center cel-error">Debe aceptar los términos y condiciones para continuar</p>
                         </div>
