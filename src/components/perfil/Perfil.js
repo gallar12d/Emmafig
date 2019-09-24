@@ -269,6 +269,7 @@ class Perfil extends Component {
 
             tableData = this.state.resultados.map(function (e) {
                 strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
+                
 
                 return <tr>
                     <td>
