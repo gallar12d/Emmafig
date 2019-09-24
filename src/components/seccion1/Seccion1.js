@@ -22,7 +22,9 @@ class CustomSlide extends Component {
       <div  {...props}>
         <div id="div-seccion1" className="each-fade col s3 m6 l12" >
           <div className="image-container col s3 l3 offset-l2 offset-s1">
-            <img className="panel" src={'http://emmafig.com/api1/public/images/sliders/' + imagen} />
+        
+            <img className="panel" src={'https://emmafig.com/api1/public/images/sliders/' + imagen} />            
+ 
             <img className="panelFondo" src={"img/blanco-nada" + alineacion + ".png"} />
             <div id="contenidoSlider " className={"info" + alineacion}>
               <div className="inner">
