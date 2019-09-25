@@ -130,7 +130,7 @@ class Perfil extends Component {
                 var id_usuario = localStorage.getItem('id');
                 id_user.append('id_usuario', id_usuario);
                 axios
-                    .post("http://emmafig.com/api1/searchProfilePicture", id_user)
+                    .post("https://emmafig.com/api1/searchProfilePicture", id_user)
                     .then(res => {
                         let result = res.data;
                         console.log(result);
@@ -160,7 +160,7 @@ class Perfil extends Component {
 
 
                 axios
-                    .post("http://emmafig.com/api1/searchHistorialCitas", id_user)
+                    .post("https://emmafig.com/api1/searchHistorialCitas", id_user)
                     .then(res => {
                         let result = res.data;
 

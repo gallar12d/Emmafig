@@ -53,6 +53,7 @@ class Citas extends Component {
         $(window).bind("resize", () => {
             var screenOrientation = ($(window).width() > $(window).height())? 90 : 0;
             
+            
             this.setState({orientation: screenOrientation})
         });
 

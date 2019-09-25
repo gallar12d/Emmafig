@@ -18,9 +18,16 @@ class Step2 extends Component {
     componentDidMount() {
         var elems = $('.mySelect');
         M.FormSelect.init(elems, {});
-        Axios.get(`https://emmafig.com/api1/profesionales/`+this.props.id_sede)
+        Axios.get(`https://emmafig.com/api1/profesionales/` + this.props.id_sede)
             .then(res => {
                 const profesionales = res.data;
+                if(!res.data.length){
+                    this.props.set_state('todos_profesionales', false)
+                    this.props.set_state('id_profesional', '')
+                }
+                else{
+                    this.props.set_state('todos_profesionales', true)
+                }
                 this.setState({ profesionales });
                 var elems = document.querySelectorAll('.modal');
                 M.Modal.init(elems, {});
@@ -29,20 +36,20 @@ class Step2 extends Component {
 
     }
 
-    ucword(word){
-        var lsCadena = word .toLowerCase();
-         lsCadena = lsCadena .charAt(0).toUpperCase() + lsCadena .slice(1);
- 
-     return lsCadena;
-     }
+    ucword(word) {
+        var lsCadena = word.toLowerCase();
+        lsCadena = lsCadena.charAt(0).toUpperCase() + lsCadena.slice(1);
+
+        return lsCadena;
+    }
     render() {
 
-        let prof = this.state.profesionales.map((profesional, index ) => {
+        let prof = this.state.profesionales.map((profesional, index) => {
             let requi = '';
-            if(index == 0){
+            if (index == 0) {
                 requi = true;
             }
-            else{
+            else {
                 requi = false;
             }
             let nombre2 = '';
@@ -53,16 +60,16 @@ class Step2 extends Component {
                 apellido2 = profesional.segundo_apellido
 
             let check = false;
-            if(this.props.id_profesional == profesional.id_usuario){
+            if (this.props.id_profesional == profesional.id_usuario) {
                 check = true;
             }
             return (
-                <div key = {profesional.id_usuario }>
-                    <div  className="input-field ">
+                <div key={profesional.id_usuario}>
+                    <div className="input-field ">
                         <div className="icon_input" >
                             <label>
-                                <input  checked={check}  onChange = {() => { this.props.set_state('id_profesional', profesional.id_usuario); this.props.set_state('profesional', this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2))} } className="with-gap" name="id_profesional" value={profesional.id_usuario} type="radio" />
-                                <span style={{color: 'black'}}>{this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2)}</span>
+                                <input checked={check} onChange={() => { this.props.set_state('id_profesional', profesional.id_usuario); this.props.set_state('profesional', this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2)) }} className="with-gap" name="id_profesional" value={profesional.id_usuario} type="radio" />
+                                <span style={{ color: 'black' }}>{this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2)}</span>
                             </label>
                             <a className=" modal-trigger" href={'#Modal' + profesional.id_usuario}>
                                 <FaUserNurse className="icon" size={25} />
@@ -75,21 +82,21 @@ class Step2 extends Component {
                         <div className="modal-content left-align">
                             <div className="row">
                                 <div className="col s12 m6 l6">
-                                    <img alt= '' style={{width: '100%'}} src = {'http://fig.org.co/atlanticv2/public/img/'+profesional.avatar}>
+                                    <img alt='' style={{ width: '100%' }} src={'http://fig.org.co/atlanticv2/public/img/' + profesional.avatar}>
                                     </img>
 
 
                                 </div>
                                 <div className="col s12 m6 l6">
-                                    <h5 style={{ color: '#c83b8d', fontWeight:'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">Nuestros profesionales</h5>
+                                    <h5 style={{ color: '#c83b8d', fontWeight: 'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">Nuestros profesionales</h5>
                                     <hr></hr>
-                                    <h6 style={{  fontWeight:'bolder', fontFamily: 'lato'  }} >{profesional.primer_nombre + ' ' + nombre2 + ' ' + profesional.primer_apellido + ' ' + apellido2}</h6>
-                                    <h6 style={{ color: '#0f9b9b', fontWeight:'bolder', fontFamily: 'lato'  }} className="title_modal_profesionales">{profesional.especialidad}</h6>
-                                    <h6 style={{ fontWeight:'bolder', fontFamily: 'lato'  }} >Registro Médico Número: {profesional.registro_medico_numero}</h6>
+                                    <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato' }} >{profesional.primer_nombre + ' ' + nombre2 + ' ' + profesional.primer_apellido + ' ' + apellido2}</h6>
+                                    <h6 style={{ color: '#0f9b9b', fontWeight: 'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">{profesional.especialidad}</h6>
+                                    <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato' }} >Registro Médico Número: {profesional.registro_medico_numero}</h6>
                                     <p>{profesional.descripcion}</p>
                                     <br></br>
-                                    
-                                    <h6 style={{ fontWeight:'bolder', fontFamily: 'lato'  }} >Sigue a este profesional en linkedin: <a target="_blank" href={profesional.red_linkedin}><FaLinkedin></FaLinkedin></a></h6>
+
+                                    <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato' }} >Sigue a este profesional en linkedin: <a target="_blank" href={profesional.red_linkedin}><FaLinkedin></FaLinkedin></a></h6>
                                 </div>
 
                             </div>
@@ -104,11 +111,32 @@ class Step2 extends Component {
         })
 
         let todos_check = '';
-        if(this.props.id_profesional){
+        if (this.props.id_profesional) {
             let todos_check = false;
 
         }
-        
+
+        let todos_show = '';
+
+        if (this.state.profesionales.length) {
+
+            todos_show = (
+                <label>
+                    <input checked={(this.props.id_profesional) ? false : true} onChange={() => { this.props.set_state('id_profesional', ''); this.props.set_state('profesional', ''); this.props.set_state('todos_profesionales', true) }} className="with-gap" name="id_profesional" value="0" type="radio" />
+                    <span style={{ color: 'black' }} >Todos</span>
+                </label>
+            )
+
+        } 
+        else{
+            
+            todos_show = (
+                <label>
+                    <span style={{ color: 'black' }} >No existen profesionales para esta sede</span>
+                </label>
+            )
+        }
+
 
         return (
             <div className="row step2">
@@ -117,16 +145,13 @@ class Step2 extends Component {
                     {prof}
                     <div className="input-field ">
                         <div className="icon_input" >
-                            <label>
-                                <input checked = {(this.props.id_profesional)? false: true}   onChange = {() => { this.props.set_state('id_profesional', ''); this.props.set_state('profesional', ''); this.props.set_state('todos_profesionales', true)} }  className="with-gap" name="id_profesional" value="0" type="radio" />
-                                <span style={{color: 'black'}} >Todos</span>
-                            </label>
+                            {todos_show}
                             <br></br>
                             <br></br>
                         </div>
                     </div>
 
-                  
+
 
                 </div>
                 <div className="col s12 m4 img_step1 ">
