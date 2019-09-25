@@ -1,3 +1,4 @@
+
 .cel-error {
   display: none;
   color: #c83b8d !important;
@@ -5,15 +6,22 @@
   font-weight: bold;
   font-size: small;
 }
-.info-codigo {
-  color: #0f9b9b !important;
-  font-weight: bold;
-  font-size: inherit;
+.celular-animation {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+#cont_login,
+#cont_registro {
+  margin-top: 1em;
 }
 .google {
   margin-top: 1em;
   margin-bottom: 1em;
   width: 19.3em;
+}
+.info-codigo {
+  color: #0f9b9b !important;
+  font-weight: bold;
+  font-size: inherit;
 }
 #login_failed, #user_exits {
   display: none;
@@ -33,10 +41,9 @@
   font-weight: bold;
   font-size: 1em;
 }
-#cont_login,
-#cont_registro {
-  margin-top: 1em;
+#user_exits,
+#login_failed{
+  margin-bottom: 1em;
 }
-.celular-animation {
-  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-}
+
+

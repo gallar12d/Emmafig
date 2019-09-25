@@ -204,13 +204,23 @@ class FormRegistro extends Component {
                     if (res.data.status == 202) {
                         alert(res.data.msg)
                         this.setState({
+                            registro: -1,
+                            showOptions: 1,
+                            showButtons: 0,
+                            showConfirmation: 0
+                        })
+                        this.showFields();
+                        this.showOptions();
+                        this.showButtons();
+                        this.showConfirmation();
+                        /*this.setState({
                             showOptions: 1,
                             showConfirmation: 0,
                             showButtons: 0,
                             showFields: -1
-                        })
+                        })*/
 
-                        this.showFields();
+                        //this.showFields();
 
                     }
                 })
@@ -310,7 +320,7 @@ class FormRegistro extends Component {
     }
 
     validarCampos = () => {
-        
+
         let isValid = document.querySelector('#form_perfil').reportValidity();
         let errortext = "Por favor digite un numero de celular para continuar";
         let celular = document.getElementById('celular');
@@ -367,7 +377,7 @@ class FormRegistro extends Component {
                             case '350':
                             case '351':
                                 this.celular = celular.value;
-                                btn_celular.style.display = "none";
+
                                 celularError.style.display = "none";
                                 this.setState({
                                     celular: celular.value,
@@ -376,7 +386,7 @@ class FormRegistro extends Component {
                                     identificacion: identificacion.value,
                                     correo: correo.value
                                 });
-                                Axios.post("http://localhost/api1/rest-api-authentication-example/api/user_exist.php", {
+                                Axios.post("http://localhost:8080/api1/rest-api-authentication-example/api/user_exist.php", {
                                     "tipo_identificacion": tipo_identificacion.value,
                                     "identificacion": identificacion.value
                                 })
@@ -385,6 +395,7 @@ class FormRegistro extends Component {
                                             let user_exits = document.getElementById('user_exits');
                                             user_exits.style.display = 'block';
                                         } else {
+                                            btn_celular.style.display = "none";
                                             this.setState({
                                                 showPreloader: 1
                                             })
@@ -432,7 +443,7 @@ class FormRegistro extends Component {
                 }
                 //this.props.changeComponente
             }
-        } else if (isValid) {
+        } else if (isValid) {//es login
             this.setState({
                 password: password.value,
                 tipo_identificacion: tipo_identificacion.value,
@@ -528,10 +539,10 @@ class FormRegistro extends Component {
         this.showButtons();
         this.showConfirmation();
         document.getElementById("form_perfil").reset();
-        let login_failed = document.getElementById('login_failed');
+        /*let login_failed = document.getElementById('login_failed');
         login_failed.style.display = 'none';
         let user_exits = document.getElementById('user_exits');
-        user_exits.style.display = 'none';
+        user_exits.style.display = 'none';*/
     }
 
     showPreloader = () => {
@@ -558,6 +569,10 @@ class FormRegistro extends Component {
     showFields = () => {
 
         if (this.state.registro == 1) {
+            let alertUser =document.getElementById('user_exits');
+            if(alertUser){
+                alertUser.style.display = 'none';
+            }            
             return (
                 <div id="cont_registro">
                     <CamposPorDefecto text='Registro' />
@@ -591,12 +606,17 @@ class FormRegistro extends Component {
                             <p id="celular-error" className="center cel-error">Por favor digite un numero de celular para continuar</p>
                         </div>
                     </div>
+                    <div id="user_exits" className='alert alert-danger'>Registro fallido. la identificación ya existe.</div>
                     {
                         this.showPreloader()
                     }
                 </div>
             )
         } else if (this.state.registro == 0) {
+            let alertLogin =document.getElementById('login_failed');
+            if(alertLogin){
+                alertLogin.style.display = 'none';
+            }  
             return (
                 <div id="cont_login">
                     <CamposPorDefecto text='Ingreso' />
@@ -608,6 +628,7 @@ class FormRegistro extends Component {
                             <p id="password-error" className="center cel-error">Por favor digite su contraseña</p>
                         </div>
                     </div>
+                    <div id="login_failed" className='alert alert-danger'>Login fallido. Identificación o Contraseña incorrectos.</div>
                     <a onClick={(e) => { e.preventDefault(); this.showRecoveryPass() }} href='!#'>Olvidaste tu contraseña?</a>
                     <br></br>
                     <br></br>
@@ -792,8 +813,6 @@ class FormRegistro extends Component {
         return (
 
             <form id="form_perfil" noValidate>
-                <div id="user_exits" className='alert alert-danger'>Registro fallido. la identificación ya existe.</div>
-                <div id="login_failed" className='alert alert-danger'>Login fallido. Identificación o Contraseña incorrectos.</div>
                 {
                     this.showOptions()
                 }
@@ -832,7 +851,19 @@ function CamposPorDefecto(props) {
         <div id="cont_identificacion" className="row">
             <div className="input-field col s12 l10 offset-l1">
                 <i className="material-icons prefix">assignment_ind</i>
-                <input id="identificacion" type="number" className="validate" required />
+                <input id="identificacion" type="number" className="validate"
+                    onFocus={
+                        () => {
+                            let alertIdent = document.getElementById('user_exits');
+                            let alertLogin = document.getElementById('login_failed');
+                            if (alertIdent) {
+                                alertIdent.style.display = 'none';
+                            }
+                            if (alertLogin) {
+                                alertLogin.style.display = 'none';
+                            }
+                        }
+                    } required />
                 <label htmlFor="identificacion">Identificación *</label>
                 <p id="identificacion-error" className="center cel-error">Por favor digite un numero de identificacion para continuar</p>
             </div>
