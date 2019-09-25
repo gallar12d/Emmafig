@@ -2,7 +2,10 @@
 import "./Seccion1.css";
 import { Fade } from "react-slideshow-image";
 import M from "materialize-css";
+import { Link } from "react-scroll";
 
+
+let elementContacto;
 const fadeImages = ["img/img1.jpg", "img/fondo.png", "img/slide_3.png"];
 
 class CustomSlide extends Component {
@@ -13,35 +16,37 @@ class CustomSlide extends Component {
 
 
   render() {
-    const {  id, imagen, textoppal, textosec, url_ver_mas, url_sec_boton, titulo, alineacion, ...props } = this.props;
-    
+    const { id, imagen, textoppal, textosec, url_ver_mas, url_sec_boton, titulo, alineacion, ...props } = this.props;
+
     return (
       <div  {...props}>
-        <div  id="div-seccion1" className= "each-fade col s3 m6 l12" >
+        <div id="div-seccion1" className="each-fade col s3 m6 l12" >
           <div className="image-container col s3 l3 offset-l2 offset-s1">
-            <img className="panel" src={'http://emmafig.com/api1/public/images/sliders/' + imagen} />
-            <img className="panelFondo" src={ "img/blanco-nada"+alineacion+".png"} />
-            <div id ="contenidoSlider "className={"info" + alineacion}>            
-                <div className="inner">
-               
-                  <div className="divTexto"><h3 className="textTitulo"><b>{titulo}</b><br /><br /></h3>
-                    <h4>
-                    <div className="content" dangerouslySetInnerHTML={{__html: textoppal}}></div>
-                    
-                    </h4>
-                    <div id="PosicionButton">
-                      <a className="waves-effect waves-light btn-small buttonSmall " href="#">Conoce más</a>
-                      <a className="waves-effect waves-light btn-small buttonSmall" href="#">Calcula tu riesgo</a>
-                      <div>
-                      <br /><br/><br/><br/><br/>
-                      </div>
+        
+            <img className="panel" src={'https://emmafig.com/api1/public/images/sliders/' + imagen} />            
+ 
+            <img className="panelFondo" src={"img/blanco-nada" + alineacion + ".png"} />
+            <div id="contenidoSlider " className={"info" + alineacion}>
+              <div className="inner">
+
+                <div className="divTexto"><h3 className="textTitulo"><b>{titulo}</b><br /><br /></h3>
+                  <h4>
+                    <div className="content" dangerouslySetInnerHTML={{ __html: textoppal }}></div>
+
+                  </h4>
+                  <div id="PosicionButton">
+                    <a className="btn-small buttonSmall " href="http://blog.emmafig.com/">Conoce más</a>
+                    <a className="btn-small buttonSmall" href="https://gallar12d.github.io/Emmafig/#/goto/calculadora_section">Calcula tu riesgo</a>
+                    <div>
+                      <br /><br /><br /><br /><br />
                     </div>
                   </div>
-                </div>            
+                </div>
+              </div>
             </div>
           </div>
         </div>
-    
+
 
       </div>
     );
@@ -82,7 +87,7 @@ class Seccion1 extends Component {
   }
 
   render() {
-    
+
     const listItems = this.state.sliders.map((d) => <CustomSlide key={d.id_slider} id={d.id_slider} imagen={d.imagen} textoppal={d.texto_principal} textosec={d.texto_secundario} url_ver_mas={d.url_ver_mas} url_sec_boton={d.url_segundo_boton} titulo={d.nombre} alineacion={d.alineacion}></CustomSlide>);
 
     return (
