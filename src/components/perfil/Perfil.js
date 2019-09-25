@@ -37,8 +37,11 @@ class Perfil extends Component {
     onChange(e) {
         
            
-
-            let fileName = e.target.files[0].name;
+        var elem = document.getElementById("loaderphoto")
+        elem.style.display = "inline-block"
+        var imagen = document.getElementById("profile_picture")
+        imagen.style.display = "none"
+           
             this.fileUpload(e.target.files[0]).then((response) => {
 
                 
@@ -56,6 +59,8 @@ class Perfil extends Component {
                         file: srcProfileImg,
                       
                     })
+                    elem.style.display = "none"
+                    imagen.style.display = "inline-block"
                     
                    
                  
@@ -154,7 +159,8 @@ class Perfil extends Component {
                         })
 
                         var elem = document.getElementById("loaderphoto")
-                        elem.parentNode.removeChild(elem)
+                        elem.style.display = "none"
+                        
 
 
 
@@ -284,7 +290,8 @@ class Perfil extends Component {
             })
         } else if (this.state.resultados == null && this.state.resultados_emf != null) {
             tableDataEmf = this.state.resultados_emf.map(function (e) {
-                strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
+                /*strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";*/
+                strUrl = "https://emmafig.com/api1/pdf?id=" + e.id_estimacion;
                 return <tr>
 
                     <td>

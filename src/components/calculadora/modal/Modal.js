@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Modal.css';
-import M from 'materialize-css'
+import M from 'materialize-css';
 import FormRegistro from '../formulario/FormRegistro';
 import $ from 'jquery';
 class Modal extends Component {
@@ -10,9 +10,8 @@ class Modal extends Component {
         this.modal = 1;
 
     }
-    componentDidMount() {        
+    componentDidMount() {
         var elems = document.getElementById('modal1');
-        var instances = M.Modal.init(elems, {dismissible: false});
         
     }
     render() {
