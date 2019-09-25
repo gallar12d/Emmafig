@@ -35,6 +35,7 @@ class ComponentMaster extends Component {
             loginCitas: 0,
             riesgo: 0,
             respuestas: []//respuestas de la calculadora
+            
 
         }
         //this.clickLogin = this.clickLogin.bind(this);
@@ -269,7 +270,8 @@ class ComponentMaster extends Component {
                             saveRespuestas={this.saveRespuestas.bind(this)}
                             changeLogin={this.changeLogin.bind(this)} 
                             changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} 
-                            resultadoGotoCita = {this.resultadoGotoCita.bind(this)}                            
+                            resultadoGotoCita = {this.resultadoGotoCita.bind(this)}
+                            modalIsOpen = {this.state.modalIsOpen}                           
                         />
                         <Citas id_usuario = {this.state.id} logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
 
@@ -293,6 +295,7 @@ class ComponentMaster extends Component {
 
     }
 
+    
     render() {
 
         return (
