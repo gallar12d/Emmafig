@@ -100,6 +100,7 @@ class ComponentMaster extends Component {
         elementMenu = element1;
     }
     shouldComponentUpdate(nextProps, nextState) {
+       
         var checkState;
         console.log(this.state.changeCompt);
         console.log(nextState['changeCompt']);
