@@ -130,7 +130,7 @@ class Citas extends Component {
 
             stilo = {
                 
-                height: '71vh'
+                height: '74vh'
             };
         }
 
@@ -139,7 +139,7 @@ class Citas extends Component {
         return (
             <div id="citas"  style={stilo} >
                 <div className="container headcitas">
-                    <div className="row ">
+                    <div className="row row_titulo ">
                         <h4 className="titulocitas">
                             Agenda tu cita
                         </h4>

@@ -2,7 +2,9 @@
 #citas{
     background-color: #f3f3f3;
 }
-
+    .row_titulo{
+        margin-bottom: 14px !important;
+    }
 
     .row.espacioPack {
         width: 85%;
