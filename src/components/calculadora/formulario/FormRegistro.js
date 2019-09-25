@@ -384,7 +384,7 @@ class FormRegistro extends Component {
                                     identificacion: identificacion.value,
                                     correo: correo.value
                                 });
-                                Axios.post("https://emmafig.com/api1/api/user_exist.php", {
+                                Axios.post("https://emmafig.com/api1/rest-authentication/api/user_exist.php", {
                                     "tipo_identificacion": tipo_identificacion.value,
                                     "identificacion": identificacion.value
                                 })
