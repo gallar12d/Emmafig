@@ -105,7 +105,7 @@ class Step3 extends Component {
 
             }
             else{
-                turn = <h6>No existen turnos</h6>;
+                turn = <h6 style={{width: '200%'}}>No existen turnos disponibles para este profesional!</h6>;
 
             }
 

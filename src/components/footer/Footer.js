@@ -27,7 +27,7 @@ class Footer extends Component {
                             <div className="col">
 
                                 <p id="little_text_footer" className="grey-text text-lighten-4">
-                                    Somos una entidad privada, dedicada a la gestión del conocimiento para la busqueda de soluciones
+                                    Somos una entidad privada, dedicada a la gestión del conocimiento para la búsqueda de soluciones
                                     reales e innovadoras que contribuyan a promover la salud, la calidad de la vida y el bienestar social.
                                 </p>
                             </div>
@@ -66,7 +66,7 @@ class Footer extends Component {
 
                                     </div>
                                     <div className="col s10">
-                                        <span>Citologia en base liquida ginecológica</span>
+                                        <span>Citología en base líquida ginecológica</span>
 
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@ class Footer extends Component {
 
                                     </div>
                                     <div className="col s10">
-                                        <span>Citologia en base liquida no-ginecológica</span>
+                                        <span>Citología en base líquida no-ginecológica</span>
 
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@ class Footer extends Component {
 
                                     </div>
                                     <div className="col s10">
-                                        <span>Estudios de inmunohistoquimica</span>
+                                        <span>Estudios de inmunohistoquímica</span>
 
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@ class Footer extends Component {
                                                     </div>
                                                     <div className="col s10 m10 l11">
                                                         <a href="http://fig.org.co/pgnafig/" target="_blank" className="r-link ai-element ai-element_type2 ai-element3" id="linksFooter">
-                                                            Fundacion Innovagen
+                                                            Fundación Innovagen
                                     </a>
                                                     </div>
 
@@ -185,8 +185,7 @@ class Footer extends Component {
         <div className="col">
             <h5 className="titulo_footer">SOCIAL MEDIA</h5>
             <p className="grey-text text-lighten-4">
-                Lorem Ipsum is simply dummy text of the
-                printing and typesetting industry
+                Síguenos en nuestras principales redes sociales
             </p>
         </div>
     </div>

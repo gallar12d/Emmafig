@@ -110,7 +110,7 @@ class Resultado extends Component {
         let opcion = '';
         if (this.props.login) {
             opcion = <div className="col s4 m4 l4">
-                <a id="btn_mas_detalles" className="boton-res waves-light col s12 m12 l12">Saber más</a>
+                <a id="btn_mas_detalles" className="boton-res waves-light col s12 m12 l12" href='http://blog.emmafig.com/' target="_blank">Saber más</a>
             </div>
         } else {
             opcion = <div className="col s4 m4 l4">
@@ -200,7 +200,7 @@ class Resultado extends Component {
                                 this.showOpcion()
                             }
                             <div className="col s4 m4 l4">
-                                <a id="btn_conocer_mas" className="boton-res waves-light col s12 m12 l12">Pedir cita</a>
+                                <a id="btn_conocer_mas" className="boton-res waves-light col s12 m12 l12" onClick={this.props.resultadoGotoCita}>Pedir cita</a>
                             </div>
                         </div>
                     </div>
