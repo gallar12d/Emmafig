@@ -819,7 +819,7 @@ class FormRegistro extends Component {
     }
 
     render() {
-
+         
         return (
 
             <form id="form_perfil" noValidate>
