@@ -115,15 +115,15 @@ class Perfil extends Component {
 
                 var nombre1 = res.data.primer_nombre.toLowerCase();
                 var apellido1 = res.data.primer_apellido.toLowerCase();
-                var nombre2= res.data.segundo_nombre.toLowerCase() ;
-                var apellido2 = res.data.segundo_apellido.toLowerCase();
+                //var nombre2= res.data.segundo_nombre.toLowerCase() ;
+                //var apellido2 = res.data.segundo_apellido.toLowerCase();
                 
                 this.setState({
                     primer_nombre: this.capitalize(nombre1),
-                    segundo_nombre: this.capitalize(nombre2),
+                   
                     primer_apellido: this.capitalize(apellido1),
-                    segundo_apellido: this.capitalize(apellido2),
-                    fecha_nacimiento: this.capitalize(res.data.fecha_nacimiento),
+                    
+                    
                     no_identificacion: this.capitalize(res.data.no_identificacion)
 
                 })
