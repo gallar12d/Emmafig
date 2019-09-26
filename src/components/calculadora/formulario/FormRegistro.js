@@ -504,9 +504,9 @@ class FormRegistro extends Component {
     showOptions = () => {
         if (this.state.showOptions == 1) {
             return (
-                <div>
-                    <p className="center titulo-registro">Registrate</p>
-                    <p className="center subtitulo-registro">Podrás participar de promociones en nuestros servicios, además recibirás noticias de eventos <br />totalmente gratis</p>
+                <div id="cont_opciones">
+                    <p id="titulo_opciones" className="center info-codigo">Registrate</p>
+                    <p className="center info-codigo">Podrás participar de promociones en nuestros servicios, además recibirás noticias de eventos <br />totalmente gratis</p>
                     <div id="btn_ingresar" className="row">
                         <a className="waves-light btn col s10 offset-s1" id="btn_ingresar_a" onClick={this.isLogin}>Ingresar</a>
                     </div>
@@ -842,7 +842,7 @@ class FormRegistro extends Component {
     }
 }
 function CamposPorDefecto(props) {
-    return <div><p className="center info-codigo">!Bienvenido¡</p>
+    return <div><p id="titulo_defecto" className="center info-codigo">!Bienvenido¡</p>
         <p className="center info-codigo">Para continuar con el {props.text} por favor ingresa los siguientes datos</p>
 
         <div className="row">
