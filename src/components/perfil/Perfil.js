@@ -257,7 +257,7 @@ class Perfil extends Component {
             })
 
             tableDataEmf = this.state.resultados_emf.map(function (e) {
-                strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
+                strUrl = "https://emmafig.com/api1/pdf?id=" + e.id_estimacion;
                 return <tr>
 
                     <td>
