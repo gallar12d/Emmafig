@@ -80,6 +80,7 @@ class Editprofile extends Component {
                             loader.style.display = "none"
                            
                             alert("usuario actualizado correctamente")
+                            window.location.reload()
                             let result = res.data;
                             console.log(result)
                             
@@ -95,6 +96,7 @@ class Editprofile extends Component {
                         .then(res => {
                             
                             alert("usuario actualizado correctamente")
+                            window.location.reload()
                             let result = res.data;
                             console.log(result)
                             loader.style.display = "none"
@@ -124,6 +126,7 @@ class Editprofile extends Component {
 
                                 } else {
                                     alert("usuario actualizado correctamente")
+                                    window.location.reload()
                                 
                                    
                                     
@@ -142,6 +145,7 @@ class Editprofile extends Component {
                         .then(res => {
                             document.getElementById("numeroTelefono").value ="";
                             alert("usuario actualizado correctamente")
+                            window.location.reload()
                             loader.style.display = "none"
                             let result = res.data;
                             console.log(result)

@@ -87,7 +87,8 @@ class Contacto extends Component {
         var telefono2_sede = document.getElementById("telefono2_sede");
         var telefono2_sede_small = document.getElementById("telefono2_sede_small");
         var telefono2_sede_med = document.getElementById("telefono2_sede_med");
-
+        var tel2_down = document.getElementById("telefono_sede_small_down");
+       
         if (sede == 1) {
             //sede de popayan
 
@@ -114,11 +115,11 @@ class Contacto extends Component {
                 btnSantSmall.classList.remove("sede_div_clicked")
                 btnSantSmall.classList.add("sede_div");
             }
-          
-
+           
+            tel2_down.style.display = "inline-block"
             telefono1_sede.innerHTML = "(2) 837 2935 - (2) 838 2135"
             telefono2_sede.innerHTML = "317 441 2170"
-            telefono1_sede_small.innerHTML = "(2) 837 2935 - (2) 838 2135"
+            telefono1_sede_small.innerHTML = "(2) 837 2935 - (2) 838 2135 "
             telefono2_sede_small.innerHTML = "317 441 2170"
             telefono1_sede_med.innerHTML = "(2) 837 2935 - (2) 838 2135"
             telefono2_sede_med.innerHTML = "317 441 2170"
@@ -154,6 +155,7 @@ class Contacto extends Component {
                 btnPopayanSmall.classList.remove("sede_div_clicked")
                 btnPopayanSmall.classList.add("sede_div");
             }
+            tel2_down.style.display = "none"
             
             telefono1_sede.innerHTML = "(2) 844 3333"
             telefono2_sede.innerHTML = "315 389 2600"
@@ -161,7 +163,7 @@ class Contacto extends Component {
             telefono2_sede_small.innerHTML = "315 389 2600"
             telefono1_sede_med.innerHTML = "(2) 844 3333"
             telefono2_sede_med.innerHTML = "315 389 2600"
-
+            
             this.updateMap(3.003815, -76.482547)
             this.routesFunction("https://www.google.com/maps/dir//Fundación+InnovaGen,+Cl.+2+%23%238-53,+Santander+de+Quilichao,+Cauca/@3.0038081,-76.4847344,17z/data=!3m1!4b1!4m16!1m6!3m5!1s0x8e307fdce17b8995:0x719d78d915028b90!2sFundación+InnovaGen!8m2!3d3.0038081!4d-76.4825457!4m8!1m0!1m5!1m1!1s0x8e307fdce17b8995:0x719d78d915028b90!2m2!1d-76.4825457!2d3.0038081!3e2")
 
@@ -190,12 +192,15 @@ class Contacto extends Component {
                 btnSantSmall.classList.remove("sede_div_clicked")
                 btnSantSmall.classList.add("sede_div");
             }
+            tel2_down.style.display = "none"
             telefono1_sede.innerHTML = "No disponible"
             telefono2_sede.innerHTML = "3006586605"
             telefono1_sede_small.innerHTML = "No disponible"
             telefono2_sede_small.innerHTML = "3006586605"
             telefono1_sede_med.innerHTML = "No disponible"
             telefono2_sede_med.innerHTML = "3006586605"
+            
+        
             
             this.updateMap(3.399965, -76.546063)
             this.routesFunction("https://www.google.com/maps/dir//Cra.+64a+%235-20,+Cali,+Valle+del+Cauca/@3.3999716,-76.5470417,18.25z/data=!4m17!1m7!3m6!1s0x8e30a1542cd9578d:0x997c24c3108e8312!2sCra.+64a+%235-20,+Cali,+Valle+del+Cauca!3b1!8m2!3d3.3999499!4d-76.5460627!4m8!1m0!1m5!1m1!1s0x8e30a1542cd9578d:0x997c24c3108e8312!2m2!1d-76.5460627!2d3.3999499!3e2?hl=es-CO")
@@ -332,7 +337,7 @@ class Contacto extends Component {
                                 <div className="col s12 m12 l12 " id="head_info_div">
 
 
-                                    <span className="headline"> Sedes:</span>
+                                    <span className="headline"> Sedes</span>
 
                                 </div>
 
@@ -369,7 +374,7 @@ class Contacto extends Component {
 
 
                                     <h3 className="titulos">
-                                        <span className="headline">Horarios </span>
+                                        <span className="headline">Horarios</span>
                                     </h3>
                                 </div>
 
@@ -410,34 +415,62 @@ class Contacto extends Component {
                             <div className="row " id="head_info" >
                                 <div className="col l12  " id="col_0_pading" >
 
+                                    
+
+                                        <h3 className="titulos">
+                                            <span className="headline">
+                                                Contacto  
+                                        </span>
+                                        </h3>
+
+                                   
 
 
-                                    <h3 className="titulos">
-                                        <span className="headline"><i className="small material-icons">call</i>Telefonos </span>
-                                    </h3>
+
                                 </div>
 
                             </div>
 
-                            <div id="label_viernes" className="row ">
-                                <div className="col s6 m6 l6" id="col_0_pading">
-                                    <span className="horariotext"> Fijo</span>
+                            <div id="label_viernes" className="row  ">
+                                
+                                <div className="col s2 m2 l2 resetPading " >
+                                    <i className="small material-icons iconContacto ">call</i>
 
                                 </div>
-                                <div className="col s6 m6 l6" id="col_0_pading">
+                                <div className="col s10 m10 l10 contactoText resetPading " >
+                                    <div className="col s12">
 
-                                    <span className="horario_hour" id="telefono1_sede_small" >(2) 837 2935 - (2) 838 2135</span>
+                                    <span className="horario_hour" id="telefono1_sede_small" >(2) 837 2935 </span>
+                                    </div>
+                                    <div className="col s12">
+
+                                    <span className="horario_hour" id="telefono_sede_small_down" >(2) 838 2135</span>
+                                    </div>
+                                    
                                 </div>
 
                             </div>
-                            <div className="row " id="head_info">
+                            <div className="row " id="label_viernes">
 
-                                <div className="col s6 m6 l6" id="col_0_pading">
-                                    <span className="horariotext cell_sede" id="cell_sede_small"> Celular</span>
+                                <div className="col s2 m2 l2  resetPading ">
+                               
+                                <i className="small material-icons iconContacto "> phone_android</i>
 
                                 </div>
-                                <div className="col s6 m6 l6" id="col_0_pading">
+                                <div className="col s10 m10 l10 contactoText ">
                                     <span className="horario_hour" id="telefono2_sede_small">317 441 2170</span>
+                                </div>
+                                
+                            </div>
+                            <div className="row" id="label_viernes">
+
+                            <div className="col s2 m2 l2  resetPading ">
+                               
+                                <i className="small material-icons iconContacto "> email</i>
+
+                                </div>
+                                <div className="col s6 m6 l6 contactoText ">
+                                    <span className="horario_hour" id="email_sede_small">contacto@fig.org.co</span>
                                 </div>
                             </div>
 
@@ -542,38 +575,58 @@ class Contacto extends Component {
 
 
 
-
                             <div className="row " id="head_info" >
                                 <div className="col l12  " id="col_0_pading" >
 
+                                    
+
+                                        <h3 className="titulos">
+                                            <span className="headline">
+                                                Contacto  
+                                        </span>
+                                        </h3>
+
+                                   
 
 
-                                    <h3 className="titulos">
-                                        <span className="headline"><i className="small material-icons">call</i>Telefonos </span>
-                                    </h3>
+
                                 </div>
 
                             </div>
 
-                            <div id="label_viernes" className="row ">
-                                <div className="col s6 m6 l6" id="col_0_pading">
-                                    <span className="horariotext" > Fijo</span>
+                            <div id="label_viernes" className="row  ">
+                                
+                                <div className="col s2 m2 l2 resetPading " >
+                                    <i className="small material-icons iconContacto ">call</i>
 
                                 </div>
-                                <div className="col s6 m6 l6" id="col_0_pading">
+                                <div className="col s10 m10 l10 contactoText " >
 
-                                    <span className="horario_hour" id="telefono1_sede_med">(2) 837 2935 - (2) 838 2135</span>
+                                    <span className="horario_hour" id="telefono1_sede_med" >(2) 837 2935 - (2) 838 2135</span>
                                 </div>
 
                             </div>
-                            <div className="row " id="head_info">
+                            <div className="row " id="label_viernes">
 
-                                <div className="col s6 m6 l6" id="col_0_pading">
-                                    <span className="horariotext cell_sede" id="cell_sede_med"> Celular</span>
+                                <div className="col s2 m2 l2  resetPading ">
+                               
+                                <i className="small material-icons iconContacto "> phone_android</i>
 
                                 </div>
-                                <div className="col s6 m6 l6" id="col_0_pading">
+                                <div className="col s6 m6 l6 contactoText ">
                                     <span className="horario_hour" id="telefono2_sede_med">317 441 2170</span>
+                                </div>
+                                
+                            </div>
+                            <div className="row" id="label_viernes">
+
+                            <div className="col s2 m2 l2  resetPading ">
+                               
+                                <i className="small material-icons iconContacto "> email</i>
+
+                                </div>
+                                <div className="col s6 m6 l6 contactoText ">
+                                    <span className="horario_hour" id="email_sede">contacto@fig.org.co</span>
                                 </div>
                             </div>
 
@@ -663,34 +716,55 @@ class Contacto extends Component {
                             <div className="row " id="head_info" >
                                 <div className="col l12  " id="col_0_pading" >
 
+                                    
+
+                                        <h3 className="titulos">
+                                            <span className="headline">
+                                                Contacto  
+                                        </span>
+                                        </h3>
+
+                                   
 
 
-                                    <h3 className="titulos">
-                                        <span className="headline"><i className="small material-icons">call</i>Telefonos </span>
-                                    </h3>
+
                                 </div>
 
                             </div>
 
-                            <div id="label_viernes" className="row ">
-                                <div className="col s6 m6 l6" id="col_0_pading">
-                                    <span className="horariotext" > Fijo</span>
+                            <div id="label_viernes" className="row  ">
+                                
+                                <div className="col s2 m2 l2 resetPading " >
+                                    <i className="small material-icons iconContacto ">call</i>
 
                                 </div>
-                                <div className="col s6 m6 l6" id="col_0_pading">
+                                <div className="col s10 m10 l10 contactoText " >
 
                                     <span className="horario_hour" id="telefono1_sede" >(2) 837 2935 - (2) 838 2135</span>
                                 </div>
 
                             </div>
-                            <div className="row " id="head_info">
+                            <div className="row " id="label_viernes">
 
-                                <div className="col s6 m6 l6" id="col_0_pading">
-                                    <span className="horariotext cell_sede" id="cell_sede"> Celular</span>
+                                <div className="col s2 m2 l2  resetPading ">
+                               
+                                <i className="small material-icons iconContacto "> phone_android</i>
 
                                 </div>
-                                <div className="col s6 m6 l6" id="col_0_pading">
+                                <div className="col s6 m6 l6 contactoText ">
                                     <span className="horario_hour" id="telefono2_sede">317 441 2170</span>
+                                </div>
+                                
+                            </div>
+                            <div className="row" id="label_viernes">
+
+                            <div className="col s2 m2 l2  resetPading ">
+                               
+                                <i className="small material-icons iconContacto "> email</i>
+
+                                </div>
+                                <div className="col s6 m6 l6 contactoText ">
+                                    <span className="horario_hour" id="email_sede">contacto@fig.org.co</span>
                                 </div>
                             </div>
 
