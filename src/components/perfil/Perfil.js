@@ -88,7 +88,7 @@ class Perfil extends Component {
     }
     capitalize(s) {
         var capitalize;
-        if(s){
+        if(s) {
 
             capitalize = s[0].toUpperCase() + s.slice(1);
         }else{
