@@ -29,7 +29,7 @@ class Step4 extends Component {
         //traer data de usuario
 
        
-        Axios.get("http://emmafig.com/api1/getUser/"+this.props.id_usuario)
+        Axios.get("https://emmafig.com/api1/getUser/"+this.props.id_usuario)
                 .then(res => {
                     let result = res.data;
                     this.setState({ user:  res.data.user })
@@ -166,7 +166,13 @@ class Step4 extends Component {
     }
 
     validate_form_user(e) {
-        e.preventDefault();
+
+    if(!window.confirm('Está seguro que los anteriores datos son válidos?')){
+        return false;
+    }
+    
+
+     e.preventDefault();
       var next =  $('.btn_next')
       console.log(next)
         var validity = $('#form_user')[0].checkValidity()

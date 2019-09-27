@@ -34,14 +34,24 @@ class ComponentMaster extends Component {
             id: "",
             loginCitas: 0,
             riesgo: 0,
-            respuestas: []//respuestas de la calculadora
+            respuestas: []         
 
         }
         //this.clickLogin = this.clickLogin.bind(this);
 
     }
 
-    
+    resultadoGotoCita(){
+        let simulateClick = elem => {
+            let evt = new MouseEvent('click', {
+                bubbles: true,
+                view: window
+            });
+            elem.dispatchEvent(evt)
+        };
+        let anclaCitas = document.getElementById('citas_section');
+        simulateClick(anclaCitas);
+    }
 
 
     componentDidMount() {
@@ -52,7 +62,18 @@ class ComponentMaster extends Component {
            
             this.changeLogin()
         }
-      
+        
+        /*document.getElementById('btn_conocer_mas').addEventListener('click',function(){
+            let simulateClick = elem => {
+                let evt = new MouseEvent('click', {
+                    bubbles: true,
+                    view: window
+                });
+                elem.dispatchEvent(evt)
+            };
+            simulateClick('citas_section');
+        });*/
+
         if (ancla == "login" ){
             if(localStorage.getItem('jwt') == null){
 
@@ -100,6 +121,7 @@ class ComponentMaster extends Component {
         elementMenu = element1;
     }
     shouldComponentUpdate(nextProps, nextState) {
+       
         var checkState;
         console.log(this.state.changeCompt);
         console.log(nextState['changeCompt']);
@@ -248,6 +270,7 @@ class ComponentMaster extends Component {
                             saveRespuestas={this.saveRespuestas.bind(this)}
                             changeLogin={this.changeLogin.bind(this)} 
                             changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} 
+                            resultadoGotoCita = {this.resultadoGotoCita.bind(this)}                                                     
                         />
                         <Citas id_usuario = {this.state.id} logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
 
@@ -271,11 +294,12 @@ class ComponentMaster extends Component {
 
     }
 
+       
     render() {
 
         return (
             <div className="mainComponent">
-                {<Menu login={this.state.login} primer_nombre={this.state.primer_nombre} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
+                {<Menu setModalIsOpen={this.setModalIsOpen} login={this.state.login} primer_nombre={this.state.primer_nombre} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
                 {this.showComponent()}
                
             </div>

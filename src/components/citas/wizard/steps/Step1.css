@@ -1,7 +1,7 @@
 .step1 .icon_input{
     color: #0f9b9b;
 display: grid;
-grid-template-columns: 4% 96%;
+grid-template-columns: 4% 92%;
 grid-gap: 23px;
   align-items: center;
   font-weight: bolder;

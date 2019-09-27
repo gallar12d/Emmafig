@@ -110,7 +110,7 @@ class Resultado extends Component {
         let opcion = '';
         if (this.props.login) {
             opcion = <div className="col s4 m4 l4">
-                <a id="btn_mas_detalles" className="boton-res waves-light col s12 m12 l12">Saber más</a>
+                <a id="btn_mas_detalles" className="boton-res waves-light col s12 m12 l12" href='http://blog.emmafig.com/' target="_blank">Saber más</a>
             </div>
         } else {
             opcion = <div className="col s4 m4 l4">
@@ -175,12 +175,12 @@ class Resultado extends Component {
                                 <table className="centered">
                                     <thead>
                                         <tr>
-                                            <th>Cuantos años tienes</th>
-                                            <th>Tienes mas de tres hijos</th>
-                                            <th>Más de dos compañeros sexuales</th>
-                                            <th>Con Pareja</th>
-                                            <th>Relaciones antes de los 15 años</th>
-                                            <th>Etnia</th>
+                                            <th>¿Cuántos años tienes?</th>
+                                            <th>¿Vives en una zona urbana?</th>
+                                            <th>¿A qué grupo étnico pertences?</th>
+                                            <th>¿Has tenido 3 o más compañeros sexuales en los últimos 5 años?</th>
+                                            <th>¿Tienes 5 o más hijos?</th>
+                                            <th>¿Tienes cónyuge o pareja estable?</th>
                                         </tr>
                                     </thead>
 
@@ -194,13 +194,13 @@ class Resultado extends Component {
                         </div>
                         <div className="row row-resultado">
                             <div className="col s4 m4 l4">
-                                <a id="btn_reiniciar" className="boton-res waves-light col s12 m12 l12" onClick={this.props.backComponente}>Reiniciar</a>
+                                <a id="btn_reiniciar" className="boton-res waves-light col s12 m12 l12" onClick={this.props.backComponente}>Recalcular</a>
                             </div>
                             {
                                 this.showOpcion()
                             }
                             <div className="col s4 m4 l4">
-                                <a id="btn_conocer_mas" className="boton-res waves-light col s12 m12 l12">Pedir cita</a>
+                                <a id="btn_conocer_mas" className="boton-res waves-light col s12 m12 l12" onClick={this.props.resultadoGotoCita}>Pedir cita</a>
                             </div>
                         </div>
                     </div>

@@ -2,7 +2,9 @@
 #citas{
     background-color: #f3f3f3;
 }
-
+    .row_titulo{
+        margin-bottom: 14px !important;
+    }
 
     .row.espacioPack {
         width: 85%;
@@ -19,9 +21,9 @@
         margin-top:0;
     }
     h5 {
-        font-size: 1.24rem;
+        
         font-family: lato;
-        font-weight: bold;
+        
     }
     div#citas {
         background-color: #f3f3f3;

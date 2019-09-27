@@ -21,8 +21,9 @@ class Perfil extends Component {
             segundo_apellido: '',
             fecha_nacimiento: '',
             no_identificacion: '',
-            file: '',
-            
+            file: ''
+           
+           
         }
 
         this.onChange = this.onChange.bind(this)
@@ -34,28 +35,34 @@ class Perfil extends Component {
 
 
     onChange(e) {
-        e.preventDefault() // Stop form submit
-        
-       
         
            
+        var elem = document.getElementById("loaderphoto")
+        elem.style.display = "inline-block"
+        var imagen = document.getElementById("profile_picture")
+        imagen.style.display = "none"
            
-
-            let fileName = e.target.files[0].name;
             this.fileUpload(e.target.files[0]).then((response) => {
-              
+
+                
                 var result = response.data;
-                fileName = fileName.split('.').pop();
                 
     
-                if (result == 1) {
+                if (result.code == 1) {
+                    
+                  
                     //traer id de usuario desde el local storage
                     //console.log(localStorage.getItem('id'))
-                    var srcProfileImg = "https://fig.org.co/atlanticv2/public/userAvatar/" + localStorage.getItem('id') + "/" + localStorage.getItem('id') +"."+fileName
+                    var srcProfileImg = "https://fig.org.co/atlanticv2/public/userAvatar/" + localStorage.getItem('id') + "/"+ result.file_name
                     
                     this.setState({
-                        file: srcProfileImg
+                        file: srcProfileImg,
+                      
                     })
+                    elem.style.display = "none"
+                    imagen.style.display = "inline-block"
+                    
+                   
                  
                 } else {
                     alert("error al cambiar la foto de perfil");
@@ -81,7 +88,7 @@ class Perfil extends Component {
     }
     capitalize(s) {
         var capitalize;
-        if(s){
+        if(s) {
 
             capitalize = s[0].toUpperCase() + s.slice(1);
         }else{
@@ -108,15 +115,15 @@ class Perfil extends Component {
 
                 var nombre1 = res.data.primer_nombre.toLowerCase();
                 var apellido1 = res.data.primer_apellido.toLowerCase();
-                var nombre2= res.data.segundo_nombre.toLowerCase() ;
-                var apellido2 = res.data.segundo_apellido.toLowerCase();
+                //var nombre2= res.data.segundo_nombre.toLowerCase() ;
+                //var apellido2 = res.data.segundo_apellido.toLowerCase();
                 
                 this.setState({
                     primer_nombre: this.capitalize(nombre1),
-                    segundo_nombre: this.capitalize(nombre2),
+                   
                     primer_apellido: this.capitalize(apellido1),
-                    segundo_apellido: this.capitalize(apellido2),
-                    fecha_nacimiento: this.capitalize(res.data.fecha_nacimiento),
+                    
+                    
                     no_identificacion: this.capitalize(res.data.no_identificacion)
 
                 })
@@ -130,7 +137,7 @@ class Perfil extends Component {
                 var id_usuario = localStorage.getItem('id');
                 id_user.append('id_usuario', id_usuario);
                 axios
-                    .post("http://emmafig.com/api1/searchProfilePicture", id_user)
+                    .post("https://emmafig.com/api1/searchProfilePicture", id_user)
                     .then(res => {
                         let result = res.data;
                         console.log(result);
@@ -152,7 +159,8 @@ class Perfil extends Component {
                         })
 
                         var elem = document.getElementById("loaderphoto")
-                        elem.parentNode.removeChild(elem)
+                        elem.style.display = "none"
+                        
 
 
 
@@ -160,21 +168,19 @@ class Perfil extends Component {
 
 
                 axios
-                    .post("http://emmafig.com/api1/searchHistorialCitas", id_user)
+                    .post("https://emmafig.com/api1/searchHistorialCitas", id_user)
                     .then(res => {
                         let result = res.data;
 
                         //actualizar estado 
                         //result = JSON.parse(result)
-                        console.log(result);
-                        console.log(result.resultados_atl)
-                        this.setState({
-                            data_resultados: result
-                        })
+                        
+                      
+                       
                         if (result.code == 200) {
                             this.setState({
-                                resultados: this.state.data_resultados.resultados_atl,
-                                resultados_emf: this.state.data_resultados.resultados_emf
+                                resultados: result.resultados_atl,
+                                resultados_emf: result.resultados_emf
                             })
                         } else {
                             document.getElementById("msj_error").innerHTML = "no se encontraron resultados";
@@ -232,7 +238,7 @@ class Perfil extends Component {
         let tableData;
         let tableDataEmf;
 
-        if (this.state.data_resultados.resultados_atl != null && this.state.data_resultados.resultados_emf != null) {
+        if (this.state.resultados != null && this.state.resultados_emf != null) {
 
             tableData = this.state.resultados.map(function (e) {
                 strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
@@ -251,7 +257,7 @@ class Perfil extends Component {
             })
 
             tableDataEmf = this.state.resultados_emf.map(function (e) {
-                strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
+                strUrl = "https://emmafig.com/api1/pdf?id=" + e.id_estimacion;
                 return <tr>
 
                     <td>
@@ -265,11 +271,10 @@ class Perfil extends Component {
                     </td>
                 </tr>
             })
-        } else if (this.state.data_resultados.resultados_atl != null && this.state.data_resultados.resultados_emf == null) {
+        } else if (this.state.resultados != null && this.state.resultados_emf == null) {
 
             tableData = this.state.resultados.map(function (e) {
                 strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
-                
 
                 return <tr>
                     <td>
@@ -283,9 +288,10 @@ class Perfil extends Component {
                     </td>
                 </tr>
             })
-        } else if (this.state.data_resultados.resultados_atl == null && this.state.data_resultados.resultados_emf != null) {
+        } else if (this.state.resultados == null && this.state.resultados_emf != null) {
             tableDataEmf = this.state.resultados_emf.map(function (e) {
-                strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
+                /*strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";*/
+                strUrl = "https://emmafig.com/api1/pdf?id=" + e.id_estimacion;
                 return <tr>
 
                     <td>

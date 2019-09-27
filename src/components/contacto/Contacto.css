@@ -7,7 +7,17 @@
     position: relative;
     margin-top: 0px;
     margin-bottom: 0px !important;
-    height: 550px !important;
+    height: 560px !important;
+}
+.float_icon{
+    float: left;
+}
+.resetPading{
+    padding: 0px;
+}
+.iconContacto{
+    padding-top:3px;
+   
 }
 .info_div_small{
     position: absolute;
@@ -73,8 +83,12 @@
 }
 #head_info{
     
-    margin-bottom: 8px !important; 
+    margin-bottom: 0px !important; 
     
+}
+.contactoText{
+    text-align: start;
+    margin-top: 4%;
 }
 .telefonos{
     margin-top: 30px;
@@ -345,6 +359,7 @@ div.container_btn_sedes{
     padding: 0px !important;
     
 }
+
 #sede_div_parent{
     margin-top: 30px ;
     padding: 2px 0px 0px 0px !important ; 
@@ -588,26 +603,14 @@ div.container_btn_sedes{
  
  */
  @media only screen and (max-width: 375px){
-    #btnsedeSantander{
-
-        width: 80px !important;
-        height: 30px !important;
-        font-size: 11px;
-        padding: 0% 8px !important;
-        text-align: initial;
-        
-    }
-    
-   
-     #btnsedePopayan{
-      
-         width: 80px !important;
-         
-         height: 30px !important;
-         font-size: 11px;
-        padding: 0% 8px !important;
-        text-align: initial;
-     }  
+   .headline_sede{
+       font-size: 15px !important;
+   } 
+   .routes{
+       margin-left: 50%;
+       font-size: 13px;
+   }
+  
     
     div.container_btn_sedes{
    
@@ -707,6 +710,8 @@ div.container_btn_sedes{
         margin-bottom: 0px !important;
         height: 500px !important;
     }
+  
+
     .info_div_small{
         position: absolute;
         top: 0px;
@@ -720,6 +725,7 @@ div.container_btn_sedes{
         height: 100%;
         
         background-color: #c83b8d;
+        
         color: aliceblue;
               
         text-align: start;
@@ -729,7 +735,7 @@ div.container_btn_sedes{
     
     .headline{
         font-weight: bolder;
-        font-size:25px;
+        font-size:20px;
        
        
         line-height: 1.5 !important;
@@ -742,7 +748,7 @@ div.container_btn_sedes{
         
     }
     .horariotext{
-        font-size: 15px;
+        font-size: 13px;
         
         line-height: 1.2;
         font-weight: bolder;
@@ -752,9 +758,6 @@ div.container_btn_sedes{
     }
     .horario_hour{
         font-size:13px;
-       font-weight: 100;
-       
-      
-       
+
     }
   }
