@@ -34,7 +34,10 @@ class Editprofile extends Component {
             document.getElementById("primer_apellido").value = result.user.primer_apellido;
             document.getElementById("segundo_apellido").value = result.user.segundo_apellido;
             document.getElementById("email").value = result.user.correo;
+            document.getElementById("label_primer_nombre").classList.add("active")
+            document.getElementById("label_primer_apellido").classList.add("active")
             document.getElementById("numeroTelefono").value = result.user.telefono1;
+            
             if(result.user.segundo_nombre != null  && result.user.segundo_nombre != ""){
                 document.getElementById("label_segundo_nombre").classList.add("active");
             }
@@ -202,7 +205,7 @@ class Editprofile extends Component {
                                 <div className="input-field col s12 ">
 
                                     <input id="primer_nombre" type="text" className="validate" name="primer_nombre" required maxLength="10" />
-                                    <label className="active" htmlFor="primer_nombre">Primer nombre *</label>
+                                    <label id="label_primer_nombre" htmlFor="primer_nombre">Primer nombre *</label>
 
 
                                 </div>
@@ -213,7 +216,7 @@ class Editprofile extends Component {
                                 </div>
                                 <div className="input-field col s12 ">
                                     <input id="primer_apellido" type="text" className="validate" required maxLength="10" />
-                                    <label className="active" htmlFor="primer_apellido">Primer apellido *</label>
+                                    <label id="label_primer_apellido" htmlFor="primer_apellido">Primer apellido *</label>
                                 </div>
                                 <div className="input-field col s12 ">
                                     <input id="segundo_apellido" type="text" className="validate" maxLength="10" />

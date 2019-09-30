@@ -22,8 +22,8 @@ class Perfil extends Component {
             fecha_nacimiento: '',
             no_identificacion: '',
             file: ''
-           
-           
+
+
         }
 
         this.onChange = this.onChange.bind(this)
@@ -35,40 +35,40 @@ class Perfil extends Component {
 
 
     onChange(e) {
-        
-           
+
+
         var elem = document.getElementById("loaderphoto")
         elem.style.display = "inline-block"
         var imagen = document.getElementById("profile_picture")
         imagen.style.display = "none"
-           
-            this.fileUpload(e.target.files[0]).then((response) => {
 
-                
-                var result = response.data;
-                
-    
-                if (result.code == 1) {
-                    
-                  
-                    //traer id de usuario desde el local storage
-                    //console.log(localStorage.getItem('id'))
-                    var srcProfileImg = "https://fig.org.co/atlanticv2/public/userAvatar/" + localStorage.getItem('id') + "/"+ result.file_name
-                    
-                    this.setState({
-                        file: srcProfileImg,
-                      
-                    })
-                    elem.style.display = "none"
-                    imagen.style.display = "inline-block"
-                    
-                   
-                 
-                } else {
-                    alert("error al cambiar la foto de perfil");
-                }
-            })
-    
+        this.fileUpload(e.target.files[0]).then((response) => {
+
+
+            var result = response.data;
+
+
+            if (result.code == 1) {
+
+
+                //traer id de usuario desde el local storage
+                //console.log(localStorage.getItem('id'))
+                var srcProfileImg = "https://fig.org.co/atlanticv2/public/userAvatar/" + localStorage.getItem('id') + "/" + result.file_name
+
+                this.setState({
+                    file: srcProfileImg,
+
+                })
+                elem.style.display = "none"
+                imagen.style.display = "inline-block"
+
+
+
+            } else {
+                alert("error al cambiar la foto de perfil");
+            }
+        })
+
         //this.setState({ file: e.target.files[0] })
     }
     fileUpload(file) {
@@ -88,16 +88,22 @@ class Perfil extends Component {
     }
     capitalize(s) {
         var capitalize;
-        if(s) {
+
+        if (s.length > 0) {
 
             capitalize = s[0].toUpperCase() + s.slice(1);
-        }else{
+        } else {
             capitalize = "";
-            
+
         }
         return capitalize;
 
     }
+    formatNumber (n) {
+        n = String(n).replace(/\D/g, "");
+      return n === '' ? n : Number(n).toLocaleString();
+    }
+
 
 
     componentDidMount() {
@@ -115,16 +121,34 @@ class Perfil extends Component {
 
                 var nombre1 = res.data.primer_nombre.toLowerCase();
                 var apellido1 = res.data.primer_apellido.toLowerCase();
-                //var nombre2= res.data.segundo_nombre.toLowerCase() ;
-                //var apellido2 = res.data.segundo_apellido.toLowerCase();
-                
+                var nombre2;
+                var apellido2;
+                if (res.data.segundo_nombre) {
+
+                    nombre2 = res.data.segundo_nombre.toLowerCase();
+                } else {
+                    nombre2 = ""
+                }
+                if (res.data.segundo_apellido) {
+
+                    apellido2 = res.data.segundo_apellido.toLowerCase();
+                } else {
+                    apellido2 = ""
+                }
+
+
+
+
+
+
                 this.setState({
                     primer_nombre: this.capitalize(nombre1),
-                   
+                    segundo_nombre: this.capitalize(nombre2), 
+
                     primer_apellido: this.capitalize(apellido1),
-                    
-                    
-                    no_identificacion: this.capitalize(res.data.no_identificacion)
+                    segundo_apellido: this.capitalize(apellido2),
+
+                    no_identificacion: this.formatNumber(res.data.no_identificacion)
 
                 })
 
@@ -160,7 +184,7 @@ class Perfil extends Component {
 
                         var elem = document.getElementById("loaderphoto")
                         elem.style.display = "none"
-                        
+
 
 
 
@@ -174,9 +198,9 @@ class Perfil extends Component {
 
                         //actualizar estado 
                         //result = JSON.parse(result)
-                        
-                      
-                       
+
+
+
                         if (result.code == 200) {
                             this.setState({
                                 resultados: result.resultados_atl,

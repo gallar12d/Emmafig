@@ -14,6 +14,10 @@ class CustomSlide extends Component {
     this.state = {};
   }
 
+ 
+
+ 
+
 
   render() {
     const { id, imagen, textoppal, textosec, url_ver_mas, url_sec_boton, titulo, alineacion, ...props } = this.props;
@@ -36,7 +40,7 @@ class CustomSlide extends Component {
                   </h4>
                   <div id="PosicionButton">
                     <a className="btn-small buttonSmall " href="http://blog.emmafig.com/">Conoce más</a>
-                    <a className="btn-small buttonSmall" href="https://gallar12d.github.io/Emmafig/#/goto/calculadora_section">Calcula tu riesgo</a>
+                    <a className="btn-small buttonSmall" onClick={this.props.simulateClickFunction}>Calcula tu riesgo</a>
                     <div>
                       <br /><br /><br /><br /><br />
                     </div>
@@ -69,6 +73,7 @@ class Seccion1 extends Component {
     };
   }
 
+
   componentDidMount() {
     fetch("https://emmafig.com/api1/getSliders")
       .then(res => res.json())
@@ -88,7 +93,7 @@ class Seccion1 extends Component {
 
   render() {
 
-    const listItems = this.state.sliders.map((d) => <CustomSlide key={d.id_slider} id={d.id_slider} imagen={d.imagen} textoppal={d.texto_principal} textosec={d.texto_secundario} url_ver_mas={d.url_ver_mas} url_sec_boton={d.url_segundo_boton} titulo={d.nombre} alineacion={d.alineacion}></CustomSlide>);
+    const listItems = this.state.sliders.map((d) => <CustomSlide simulateClickFunction = {this.props.activateScrollCalculadora} key={d.id_slider} id={d.id_slider} imagen={d.imagen} textoppal={d.texto_principal} textosec={d.texto_secundario} url_ver_mas={d.url_ver_mas} url_sec_boton={d.url_segundo_boton} titulo={d.nombre} alineacion={d.alineacion}></CustomSlide>);
 
     return (
       <section className="page-section layoutSeccion1" id="seccion1">
