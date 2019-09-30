@@ -401,9 +401,9 @@ class Cuestionario extends Component {
                         <i id="close-info" className="small material-icons" onClick={this.closeInfo}>highlight_off</i>
                     </span>
                     <p>
-                        !Felicitaciones¡
+                        ¡Felicitaciones, has terminado el cuestionario!
                     </p>
-                    <p>Has terminado el cuestionario por favor presione siguiente para obtener el resultado</p>
+                    <p>Por favor, presiona el botón siguiente para obtener el resultado</p>
                 </div>
                 <div className="row">
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
@@ -503,7 +503,7 @@ class Cuestionario extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div id="cont-pregunta1" className="row" pgindex="1">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta1" className="center-align contenido-pregunta">1. ¿Cuantos años tienes?</h4>
+                            <h4 id="pregunta1" className="center-align contenido-pregunta">1. ¿Cuántos años tienes?</h4>
                             <p id="info1" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
@@ -511,11 +511,16 @@ class Cuestionario extends Component {
                         <div className="col l2 s6 offset-s3 offset-l5">
                             <select id="op11" className="browser-default selectEdad" onChange={this.handleOptionChange} defaultValue={0}>
                                 <option value="0">Escoge un opción</option>
-                                <option value="1">Menor de 15 años</option>
-                                <option value="2">Entre 15 y 20 años</option>
-                                <option value="3">Entre 21 y 30 años</option>
-                                <option value="4">Entre 31 y 50 años</option>
-                                <option value="5">Mayor de 50 años</option>
+                                <option value="1">Menor de 25 años</option>
+                                <option value="2">Entre 25 y 29 años</option>
+                                <option value="3">Entre 30 y 34 años</option>
+                                <option value="4">Entre 35 y 39 años</option>
+                                <option value="5">Entre 40 y 44 años</option>
+                                <option value="1">Entre 45 y 49 años</option>
+                                <option value="2">Entre 50 y 54 años</option>
+                                <option value="3">Entre 55 y 59 años</option>
+                                <option value="4">Entre 60 y 64 años</option>
+                                <option value="5">65 años o más</option>
                             </select>
                         </div>
                         {/*<label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
@@ -529,7 +534,7 @@ class Cuestionario extends Component {
                     </div>
                     <div id="cont-pregunta2" className="row" pgindex="2">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta2" className="center-align contenido-pregunta">2. ¿Tienes más de tres hijos?</h4>
+                            <h4 id="pregunta2" className="center-align contenido-pregunta">2. ¿Vives en una zona urbana?</h4>
                             <p id="info2" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
@@ -545,23 +550,27 @@ class Cuestionario extends Component {
                     </div>
                     <div id="cont-pregunta3" className="row" pgindex="3">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta3" className="center-align contenido-pregunta">3. ¿Has tenido mas de dos compañeros sexuales?</h4>
+                            <h4 id="pregunta3" className="center-align contenido-pregunta">3. ¿A qué grupo étnico pertences?</h4>
                             <p id="info3" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta3" className="row" oprindex="3">
                         <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
                             <input id="op31" className="with-gap" name="group3" type="radio" value="1" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Sí</span>
+                            <span className="contenido-respuesta">Afro</span>
                         </label>
                         <label className="col s2 m2 l1">
                             <input id="op31" className="with-gap" name="group3" type="radio" value="0" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">No</span>
+                            <span className="contenido-respuesta">Indígena</span>
+                        </label>
+                        <label className="col s2 m2 l1">
+                            <input id="op31" className="with-gap" name="group3" type="radio" value="0" onChange={this.handleOptionChange} />
+                            <span className="contenido-respuesta">Mestizo</span>
                         </label>
                     </div>
                     <div id="cont-pregunta4" className="row" pgindex="4">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta4" className="center-align contenido-pregunta">4. ¿Tienes pareja actualmente?</h4>
+                            <h4 id="pregunta4" className="center-align contenido-pregunta">4. ¿Has tenido 3 o más compañeros sexuales en los últimos 5 años?</h4>
                             <p id="info4" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
@@ -577,7 +586,7 @@ class Cuestionario extends Component {
                     </div>
                     <div id="cont-pregunta5" className="row" pgindex="5">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta5" className="center-align contenido-pregunta">5. ¿Has tenido relaciones sexuales antes de los 15 años?</h4>
+                            <h4 id="pregunta5" className="center-align contenido-pregunta">5. ¿Tienes 5 o más hijos?</h4>
                             <p id="info5" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
@@ -593,18 +602,18 @@ class Cuestionario extends Component {
                     </div>
                     <div id="cont-pregunta6" className="row" pgindex="6">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
-                            <h4 id="pregunta6" className="center-align contenido-pregunta">6. ¿Perteneces a alguna etnia?</h4>
+                            <h4 id="pregunta6" className="center-align contenido-pregunta">6. ¿Tienes cónyuge o pareja estable?</h4>
                             <p id="info6" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta6" className="row" oprindex="6">
                         <label className="col s2 m2 l1 offset-m2 offset-l4 offset-s5">
                             <input id="op61" className="with-gap" name="group6" type="radio" value="1" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Afro</span>
+                            <span className="contenido-respuesta">Sí</span>
                         </label>
                         <label className="col s2 m2 l1 offset-s5">
                             <input id="op62" className="with-gap" name="group6" type="radio" value="2" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Indigena</span>
+                            <span className="contenido-respuesta">No</span>
                         </label>
                         <label className="col s2 m2 l2 offset-s5 offset-m1">
                             <input id="op62" className="with-gap" name="group6" type="radio" value="0" onChange={this.handleOptionChange} />
