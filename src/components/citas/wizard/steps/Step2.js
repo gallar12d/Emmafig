@@ -123,7 +123,7 @@ class Step2 extends Component {
             todos_show = (
                 <label>
                     <input checked={(this.props.id_profesional) ? false : true} onChange={() => { this.props.set_state('id_profesional', ''); this.props.set_state('profesional', ''); this.props.set_state('todos_profesionales', true) }} className="with-gap" name="id_profesional" value="0" type="radio" />
-                    <span style={{ color: 'black' }} >Todos</span>
+                    <span style={{ color: 'black' }} >Todas las agendas</span>
                 </label>
             )
 
@@ -140,7 +140,7 @@ class Step2 extends Component {
 
         return (
             <div className="row step2">
-                <div className="col s12 m4 offset-m2 ">
+                <div className="col s12 m4 offset-m2 scrollable_profesionals ">
                     <h6 className="left-align step2_subtitle">Selecciona el profesional que desees</h6>
                     {prof}
                     <div className="input-field ">

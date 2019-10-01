@@ -6,10 +6,26 @@
         margin-bottom: 14px !important;
     }
 
-    .row.espacioPack {
-        width: 85%;
+    
+    @media only screen and (min-width: 992px) {
+        .row.espacioPack {
+            width: 85%;
+        }
     }
-    .container.headcitas {
+
+    @media only screen and (min-width: 601px) and (max-width: 991px){
+        .row.espacioPack {
+            width: 70%;
+        }
+    }
+
+    @media only screen and (max-width: 600px){
+        .row.espacioPack {
+            width: 20em;
+        }
+    }
+
+   .container.headcitas {
         padding-top: 15px; 
         margin-top: 0;
     }

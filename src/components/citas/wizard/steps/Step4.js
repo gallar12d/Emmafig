@@ -155,6 +155,8 @@ class Step4 extends Component {
             $(this).off('mousewheel.disableScroll')
           })
 
+          this.open_modal()
+
     }
     open_modal() {
 
@@ -178,12 +180,29 @@ class Step4 extends Component {
         var validity = $('#form_user')[0].checkValidity()
 
         if (validity) {
+
+            //
+            if(this.props.paciente_primer_nombre == 'User'){
+                alert('Debes ingresar un primer nombre válido!')
+                return false;
+            }
+            if(this.props.paciente_segundo_nombre == 'User'){
+                alert('Debes ingresar un segundo nombre válido o dejar el campo vacío')
+                return false;
+            }
+            if(this.props.paciente_primer_apellido == 'User'){
+                alert('Debes ingresar un primer apellido válido!')
+                return false;
+            }
+            if(this.props.paciente_segundo_apellido == 'User'){
+                alert('Debes ingresar un segundo apellido válido o dejar el campo vacío')
+                return false;
+            }
+
             var elem = $('#modal_cita')
             var instance = M.Modal.getInstance(elem);
             this.props.set_state('informacion_paciente', true)
-            instance.close();
-
-            // 
+            instance.close();            // 
             //next.click();
             this.props.activate_step(this.props.step + 1);
             this.props.actualizar(this.props.step + 1);
@@ -310,7 +329,7 @@ class Step4 extends Component {
                         <div className="row">
                             <div className="col m12 left-align">
                                 <h5 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#c83b8d' }}>
-                                    Datos necesarios para tu cita
+                                    Completa tus datos para la reserva de cita!
                               </h5>
                               <span>Campos con un asterisco (*) son obligatorios</span>
                             </div>
