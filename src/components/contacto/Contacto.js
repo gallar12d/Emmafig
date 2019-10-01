@@ -54,7 +54,7 @@ class Contacto extends Component {
 
     }
 
-    routesFunction(urlGMAP){
+    routesFunction(urlGMAP) {
         this.setState({
             urlMap: urlGMAP
         });
@@ -80,7 +80,7 @@ class Contacto extends Component {
         var h_semana_small = document.getElementById("horario_semana_small");
         var h_sabado_small = document.getElementById("horario_sabado_small");
 
-        
+
         var telefono1_sede = document.getElementById("telefono1_sede");
         var telefono1_sede_small = document.getElementById("telefono1_sede_small");
         var telefono1_sede_med = document.getElementById("telefono1_sede_med");
@@ -88,7 +88,10 @@ class Contacto extends Component {
         var telefono2_sede_small = document.getElementById("telefono2_sede_small");
         var telefono2_sede_med = document.getElementById("telefono2_sede_med");
         var tel2_down = document.getElementById("telefono_sede_small_down");
-       
+        var email_sede = document.getElementById("email_sede");
+        var email_sede_med = document.getElementById("email_sede_med");
+        var email_sede_small =  document.getElementById("email_sede_small");
+
         if (sede == 1) {
             //sede de popayan
 
@@ -115,14 +118,21 @@ class Contacto extends Component {
                 btnSantSmall.classList.remove("sede_div_clicked")
                 btnSantSmall.classList.add("sede_div");
             }
+            console.log(getComputedStyle(tel2_down, null).display);
            
             tel2_down.style.display = "inline-block"
+
+
+            telefono1_sede_small.innerHTML = "(2) 837 2935  "
+
             telefono1_sede.innerHTML = "(2) 837 2935 - (2) 838 2135"
             telefono2_sede.innerHTML = "317 441 2170"
-            telefono1_sede_small.innerHTML = "(2) 837 2935 - (2) 838 2135 "
             telefono2_sede_small.innerHTML = "317 441 2170"
             telefono1_sede_med.innerHTML = "(2) 837 2935 - (2) 838 2135"
             telefono2_sede_med.innerHTML = "317 441 2170"
+            email_sede.innerHTML = "ipspopayan@fig.org.co"
+            email_sede_small.innerHTML = "ipspopayan@fig.org.co"
+            email_sede_med.innerHTML = "ipspopayan@fig.org.co";
 
             this.updateMap(2.451680, -76.601451);
             this.routesFunction("https://www.google.com/maps/dir//Fundaci%C3%B3n+InnovaGen,+Cl.+11+%23%23+7+12,+Popay%C3%A1n,+Cauca/@2.4516693,-76.6025416,18z/data=!4m16!1m6!3m5!1s0x8e300374b8ac6ebb:0x2d4a45d11cc15c70!2sFundaci%C3%B3n+InnovaGen!8m2!3d2.4516693!4d-76.6014473!4m8!1m0!1m5!1m1!1s0x8e300374b8ac6ebb:0x2d4a45d11cc15c70!2m2!1d-76.6014473!2d2.4516693!3e2")
@@ -132,7 +142,7 @@ class Contacto extends Component {
 
         } else if (sede == 2) {
             //sede santander
-           
+
             btnSant.classList.remove("sede_div")
             btnSant.classList.add("sede_div_clicked");
             btnSantMed.classList.remove("sede_div")
@@ -156,14 +166,18 @@ class Contacto extends Component {
                 btnPopayanSmall.classList.add("sede_div");
             }
             tel2_down.style.display = "none"
-            
+
             telefono1_sede.innerHTML = "(2) 844 3333"
             telefono2_sede.innerHTML = "315 389 2600"
             telefono1_sede_small.innerHTML = "(2) 844 3333"
             telefono2_sede_small.innerHTML = "315 389 2600"
             telefono1_sede_med.innerHTML = "(2) 844 3333"
             telefono2_sede_med.innerHTML = "315 389 2600"
-            
+
+            email_sede.innerHTML = "ipssantander@fig.org.co"
+            email_sede_small.innerHTML = "ipssantander@fig.org.co"
+            email_sede_med.innerHTML = "ipssantander@fig.org.co";
+
             this.updateMap(3.003815, -76.482547)
             this.routesFunction("https://www.google.com/maps/dir//Fundación+InnovaGen,+Cl.+2+%23%238-53,+Santander+de+Quilichao,+Cauca/@3.0038081,-76.4847344,17z/data=!3m1!4b1!4m16!1m6!3m5!1s0x8e307fdce17b8995:0x719d78d915028b90!2sFundación+InnovaGen!8m2!3d3.0038081!4d-76.4825457!4m8!1m0!1m5!1m1!1s0x8e307fdce17b8995:0x719d78d915028b90!2m2!1d-76.4825457!2d3.0038081!3e2")
 
@@ -199,9 +213,12 @@ class Contacto extends Component {
             telefono2_sede_small.innerHTML = "3006586605"
             telefono1_sede_med.innerHTML = "No disponible"
             telefono2_sede_med.innerHTML = "3006586605"
-            
-        
-            
+            email_sede.innerHTML = "No disponible"
+            email_sede_small.innerHTML = "No disponible"
+            email_sede_med.innerHTML = "No disponible";
+
+
+
             this.updateMap(3.399965, -76.546063)
             this.routesFunction("https://www.google.com/maps/dir//Cra.+64a+%235-20,+Cali,+Valle+del+Cauca/@3.3999716,-76.5470417,18.25z/data=!4m17!1m7!3m6!1s0x8e30a1542cd9578d:0x997c24c3108e8312!2sCra.+64a+%235-20,+Cali,+Valle+del+Cauca!3b1!8m2!3d3.3999499!4d-76.5460627!4m8!1m0!1m5!1m1!1s0x8e30a1542cd9578d:0x997c24c3108e8312!2m2!1d-76.5460627!2d3.3999499!3e2?hl=es-CO")
 
@@ -348,7 +365,7 @@ class Contacto extends Component {
 
                             </div>
 
-                                <div className="container_sedes">
+                            <div className="container_sedes">
 
                                 <div className="col s12 m12 l12" id="btnPopayanSmall" className="sede_div_clicked" >
 
@@ -357,7 +374,7 @@ class Contacto extends Component {
                                 </div>
                                 <div className="col s12 m12 l12" id="btnSantSmall" className="sede_div" >
 
-                                    <span className="headline_sede" onClick={() => this.showHorarios(2,"8AM - 6PM", "8AM - 12AM")}>Santander</span>
+                                    <span className="headline_sede" onClick={() => this.showHorarios(2, "8AM - 6PM", "8AM - 12AM")}>Santander de Quilichao</span>
 
                                 </div>
                                 <div className="col s12 m12 l12" id="btnCaliSmall" className="sede_div">
@@ -412,18 +429,18 @@ class Contacto extends Component {
 
 
 
-                            <div className="row " id="head_info" >
-                                <div className="col l12  " id="col_0_pading" >
+                            <div className="row spaceTop" id="head_info" >
+                                <div className="col l12 " id="col_0_pading" >
 
-                                    
 
-                                        <h3 className="titulos">
-                                            <span className="headline">
-                                                Contacto  
+
+                                    <h3 className="titulos">
+                                        <span className="headline">
+                                            Contacto
                                         </span>
-                                        </h3>
+                                    </h3>
 
-                                   
+
 
 
 
@@ -432,45 +449,45 @@ class Contacto extends Component {
                             </div>
 
                             <div id="label_viernes" className="row  ">
-                                
+
                                 <div className="col s2 m2 l2 resetPading " >
                                     <i className="small material-icons iconContacto ">call</i>
 
                                 </div>
-                                <div className="col s10 m10 l10 contactoText resetPading " >
+                                <div className="col s10 m10 l10  resetPading " >
                                     <div className="col s12">
 
-                                    <span className="horario_hour" id="telefono1_sede_small" >(2) 837 2935 </span>
+                                        <span className="horario_hour" id="telefono1_sede_small" >(2) 837 2935 </span>
                                     </div>
                                     <div className="col s12">
 
-                                    <span className="horario_hour" id="telefono_sede_small_down" >(2) 838 2135</span>
+                                        <span className="horario_hour" id="telefono_sede_small_down" >(2) 838 2135</span>
                                     </div>
-                                    
+
                                 </div>
 
                             </div>
                             <div className="row " id="label_viernes">
 
                                 <div className="col s2 m2 l2  resetPading ">
-                               
-                                <i className="small material-icons iconContacto "> phone_android</i>
+
+                                    <i className="small material-icons iconContacto "> phone_android</i>
 
                                 </div>
                                 <div className="col s10 m10 l10 contactoText ">
                                     <span className="horario_hour" id="telefono2_sede_small">317 441 2170</span>
                                 </div>
-                                
+
                             </div>
                             <div className="row" id="label_viernes">
 
-                            <div className="col s2 m2 l2  resetPading ">
-                               
-                                <i className="small material-icons iconContacto "> email</i>
+                                <div className="col s2 m2 l2  resetPading ">
+
+                                    <i className="small material-icons iconContacto "> email</i>
 
                                 </div>
                                 <div className="col s6 m6 l6 contactoText ">
-                                    <span className="horario_hour" id="email_sede_small">contacto@fig.org.co</span>
+                                    <span className="horario_hour" id="email_sede_small">ipspopayan@fig.org.co</span>
                                 </div>
                             </div>
 
@@ -508,28 +525,28 @@ class Contacto extends Component {
                                 <div className="col s12 m12 l12 " id="head_info_div">
 
 
-                                    <span className="headline"> Sedes:</span>
+                                    <span className="headline"> Sedes</span>
 
                                 </div>
                             </div>
 
 
-                                <div className="col s12 m12 l12" id="btnPopayanMed" className="sede_div_clicked"  >
-                              
-                                    <span className="headline_sede" onClick={() => this.showHorarios(1, "8AM - 6PM", "8AM - 12AM")}>Popayán</span>
+                            <div className="col s12 m12 l12" id="btnPopayanMed" className="sede_div_clicked"  >
 
-                                </div>
-                                <div className="col s12 m12 l12" id="btnSantMed" className="sede_div" >
+                                <span className="headline_sede" onClick={() => this.showHorarios(1, "8AM - 6PM", "8AM - 12AM")}>Popayán</span>
 
-                                    <span className="headline_sede" onClick={() => this.showHorarios(2, "8AM - 6PM", "8AM - 12AM")}>Santander</span>
+                            </div>
+                            <div className="col s12 m12 l12" id="btnSantMed" className="sede_div" >
 
-                                </div>
-                                <div className="col s12 m12 l12" id="btnCaliMed" className="sede_div">
+                                <span className="headline_sede" onClick={() => this.showHorarios(2, "8AM - 6PM", "8AM - 12AM")}>Santander de Quilichao</span>
 
-                                    <span className="headline_sede" onClick={() => this.showHorarios(3, "8AM - 6PM", "8AM - 12AM")}>Cali</span>
+                            </div>
+                            <div className="col s12 m12 l12" id="btnCaliMed" className="sede_div">
 
-                                </div>
-                                <a className="routes" href={this.state.urlMap} target="_blank">¿Como llegar?</a>
+                                <span className="headline_sede" onClick={() => this.showHorarios(3, "8AM - 6PM", "8AM - 12AM")}>Cali</span>
+
+                            </div>
+                            <a className="routes" href={this.state.urlMap} target="_blank">¿Como llegar?</a>
 
 
                             <div className="row " id="head_info" >
@@ -575,18 +592,18 @@ class Contacto extends Component {
 
 
 
-                            <div className="row " id="head_info" >
+                            <div className="row spaceTop" id="head_info" >
                                 <div className="col l12  " id="col_0_pading" >
 
-                                    
 
-                                        <h3 className="titulos">
-                                            <span className="headline">
-                                                Contacto  
+
+                                    <h3 className="titulos">
+                                        <span className="headline">
+                                            Contacto
                                         </span>
-                                        </h3>
+                                    </h3>
 
-                                   
+
 
 
 
@@ -595,7 +612,7 @@ class Contacto extends Component {
                             </div>
 
                             <div id="label_viernes" className="row  ">
-                                
+
                                 <div className="col s2 m2 l2 resetPading " >
                                     <i className="small material-icons iconContacto ">call</i>
 
@@ -609,24 +626,24 @@ class Contacto extends Component {
                             <div className="row " id="label_viernes">
 
                                 <div className="col s2 m2 l2  resetPading ">
-                               
-                                <i className="small material-icons iconContacto "> phone_android</i>
+
+                                    <i className="small material-icons iconContacto "> phone_android</i>
 
                                 </div>
                                 <div className="col s6 m6 l6 contactoText ">
                                     <span className="horario_hour" id="telefono2_sede_med">317 441 2170</span>
                                 </div>
-                                
+
                             </div>
                             <div className="row" id="label_viernes">
 
-                            <div className="col s2 m2 l2  resetPading ">
-                               
-                                <i className="small material-icons iconContacto "> email</i>
+                                <div className="col s2 m2 l2  resetPading ">
+
+                                    <i className="small material-icons iconContacto "> email</i>
 
                                 </div>
                                 <div className="col s6 m6 l6 contactoText ">
-                                    <span className="horario_hour" id="email_sede">contacto@fig.org.co</span>
+                                    <span className="horario_hour" id="email_sede_med">ipspopayan@fig.org.co</span>
                                 </div>
                             </div>
 
@@ -647,7 +664,7 @@ class Contacto extends Component {
                                 <div className="col s12 m12 l12 " id="head_info_div">
 
 
-                                    <span className="headline"> Sedes:</span>
+                                    <span className="headline"> Sedes</span>
 
                                 </div>
 
@@ -661,7 +678,7 @@ class Contacto extends Component {
                                 </div>
                                 <div className="col s12 m12 l12" id="btnSant" className="sede_div" >
 
-                                    <span className="headline_sede" onClick={() => this.showHorarios(2, "8AM - 6PM", "8AM - 12AM")}>Santander</span>
+                                    <span className="headline_sede" onClick={() => this.showHorarios(2, "8AM - 6PM", "8AM - 12AM")}>Santander de Quilichao</span>
 
                                 </div>
                                 <div className="col s12 m12 l12" id="btnCali" className="sede_div">
@@ -671,7 +688,7 @@ class Contacto extends Component {
                                 </div>
                                 <a className="routes" href={this.state.urlMap} target="_blank">¿Como llegar?</a>
                             </div>
-                            
+
                             <div className="row " id="head_info" >
                                 <div className="col l12  " id="col_0_pading" >
 
@@ -713,18 +730,18 @@ class Contacto extends Component {
 
 
 
-                            <div className="row " id="head_info" >
+                            <div className="row spaceTop" id="head_info" >
                                 <div className="col l12  " id="col_0_pading" >
 
-                                    
 
-                                        <h3 className="titulos">
-                                            <span className="headline">
-                                                Contacto  
+
+                                    <h3 className="titulos">
+                                        <span className="headline">
+                                            Contacto
                                         </span>
-                                        </h3>
+                                    </h3>
 
-                                   
+
 
 
 
@@ -733,7 +750,7 @@ class Contacto extends Component {
                             </div>
 
                             <div id="label_viernes" className="row  ">
-                                
+
                                 <div className="col s2 m2 l2 resetPading " >
                                     <i className="small material-icons iconContacto ">call</i>
 
@@ -747,24 +764,24 @@ class Contacto extends Component {
                             <div className="row " id="label_viernes">
 
                                 <div className="col s2 m2 l2  resetPading ">
-                               
-                                <i className="small material-icons iconContacto "> phone_android</i>
+
+                                    <i className="small material-icons iconContacto "> phone_android</i>
 
                                 </div>
                                 <div className="col s6 m6 l6 contactoText ">
                                     <span className="horario_hour" id="telefono2_sede">317 441 2170</span>
                                 </div>
-                                
+
                             </div>
                             <div className="row" id="label_viernes">
 
-                            <div className="col s2 m2 l2  resetPading ">
-                               
-                                <i className="small material-icons iconContacto "> email</i>
+                                <div className="col s2 m2 l2  resetPading ">
+
+                                    <i className="small material-icons iconContacto "> email</i>
 
                                 </div>
                                 <div className="col s6 m6 l6 contactoText ">
-                                    <span className="horario_hour" id="email_sede">contacto@fig.org.co</span>
+                                    <span className="horario_hour" id="email_sede">ipspopayan@fig.org.co</span>
                                 </div>
                             </div>
 
