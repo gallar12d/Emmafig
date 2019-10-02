@@ -33,7 +33,7 @@ class Resultado extends Component {
 
     componentDidMount() {
         let riesgo = 0;
-        if(this.props.result == 'Alto'){
+        if (this.props.result == 'Alto') {
             riesgo = 1;
         }
         this.props.saveRespuestas(this.props.respuestas, riesgo);
@@ -120,36 +120,49 @@ class Resultado extends Component {
         return opcion;
     }
     formatRespuestas = () => {
-
+                                          
         switch (this.props.respuestas[0]) {
-            case 1: formatos[0] = 'Menor de 15 años';
+            case 1: formatos[0] = 'Menor de 25 años';
                 break;
-            case 2: formatos[0] = 'Entre 15 y 20 años';
+            case 2: formatos[0] = 'Entre 25 y 29 años';
                 break;
-            case 3: formatos[0] = 'Entre 21 y 30 años';
+            case 3: formatos[0] = 'Entre 30 y 34 años';
                 break;
-            case 4: formatos[0] = 'Entre 31 y 50 años';
+            case 4: formatos[0] = 'Entre 35 y 39 años';
                 break;
-            default: formatos[0] = 'Mayor de 50 años';
+            case 5: formatos[0] = 'Entre 40 y 44 años';
+                break;
+            case 6: formatos[0] = 'Entre 45 y 49 años';
+                break;
+            case 7: formatos[0] = 'Entre 50 y 54 años';
+                break;
+            case 8: formatos[0] = 'Entre 55 y 59 años';
+                break;
+            case 9: formatos[0] = 'Entre 60 y 64 años';
+                break;
+            default: formatos[0] = '65 años o más';
                 break;
         }
 
-        for (var i = 1; i <= 4; i++) {
+        for (var i = 3; i <= 5; i++) {
             if (this.props.respuestas[i] == 1) {
                 formatos[i] = 'Sí'
             } else {
                 formatos[i] = 'No'
             }
         }
-        switch (this.props.respuestas[5]) {
-            case '0': formatos[5] = 'Ninguna';
-                console.log('Ninguna');
+        switch(this.props.respuestas[1]){
+            case '1': formatos[1] = 'Sí';                
                 break;
-            case '1': formatos[5] = 'Afro';
-                console.log('Afro');
+            case '0': formatos[1] = 'No';                
+                break;            
+        }
+        switch (this.props.respuestas[2]) {
+            case '0': formatos[2] = 'Afro';                
                 break;
-            case '2': formatos[5] = 'Indigena';
-                console.log('Indigena');
+            case '1': formatos[2] = 'Indígena';                
+                break;
+            case '2': formatos[2] = 'Mestizo';               
                 break;
         }
         console.log(formatos);
