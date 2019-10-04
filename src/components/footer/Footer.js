@@ -6,6 +6,7 @@ class Footer extends Component {
         this.state = {
             logoFacebook: process.env.PUBLIC_URL + "/img/iconFacebook.png",
             logoInnovagen : process.env.PUBLIC_URL + "/img/logo-innova-blanco.png",
+            logoSena : process.env.PUBLIC_URL + "/img/sena.png",
             hide: 0
         }
     }
@@ -196,6 +197,10 @@ class Footer extends Component {
                                 </a>
                             </div>
                         </div>
+                        <div id="cont_logos" className="row">
+                            <img id="logoInnovagen" src={this.state.logoInnovagen} className="col l6 s7"></img>
+                            <img id="logoSena" src={this.state.logoSena} className="col l3 s4"></img>                              
+                        </div>
                     </div>
 
                 </div>
@@ -203,7 +208,7 @@ class Footer extends Component {
                 <div id="footer_copyright" className="footer-copyright">
                     <div className="container">
                         <p >Con cariño para las mujeres del mundo; FUNDACION INNOVAGEN y SENA SECCIONAL - POPAYÁN 2019</p>
-                        <img src={this.state.logoInnovagen}></img>                      
+                                            
                     </div>
                 </div>
             </footer>
