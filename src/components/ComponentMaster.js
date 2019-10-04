@@ -52,6 +52,18 @@ class ComponentMaster extends Component {
         let anclaCitas = document.getElementById('citas_section');
         simulateClick(anclaCitas);
     }
+    activateScrollCalculadora(){
+ 
+        let simulateClick = elem => {
+            let evt = new MouseEvent('click', {
+                bubbles: true,
+                view: window
+            });
+            elem.dispatchEvent(evt)
+        };
+        let anclaCalculadora = document.getElementById('calculadora_section');
+        simulateClick(anclaCalculadora);
+    }
 
 
     componentDidMount() {
@@ -229,7 +241,7 @@ class ComponentMaster extends Component {
                 btnMenu = document.getElementById(elementMenu);
                 setTimeout(function () {
                     simulateClick(btnMenu);
-                }, 1000);
+                }, 1500);
 
 
             } else {
@@ -245,7 +257,7 @@ class ComponentMaster extends Component {
                     btnMenu = document.getElementById(this.state.ancla);
                     setTimeout(function () {
                         simulateClick(btnMenu);
-                    }, 3000);
+                    }, 3500);
 
                 }else if(ancla == 'login'){
                     this.changeComponente(1)
@@ -261,7 +273,7 @@ class ComponentMaster extends Component {
             case 0:
                 return (
                     <div className="mainpage">
-                        <Seccion1 />
+                        <Seccion1 activateScrollCalculadora ={this.activateScrollCalculadora.bind(this)}  />
                         
                         
                         <Calculadora                             
