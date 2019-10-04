@@ -233,7 +233,8 @@ class Cuestionario extends Component {
                         etnia: this.state.selectedValues[2]
                         
                     }
-                }).then(res => {                    
+                }).then(res => {  
+                    console.log(res);                  
                     this.props.changeComponente(res.data.riesgo, this.state.selectedValues);
                     if (this.props.login == 1) {
                         this.saveResult(res.data.riesgo);
