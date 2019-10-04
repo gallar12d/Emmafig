@@ -3,6 +3,8 @@ import './Resultado.css'
 import M from 'materialize-css'
 import '../../../../node_modules/materialize-social/css/materialize.css'
 import '../../../../node_modules/font-awesome/css/font-awesome.min.css'
+import ProgressBar from 'react-bootstrap/ProgressBar'
+
 import axios from 'axios';
 /*import './materialize-social.css'*/
 let formatos = [0, 0, 0, 0, 0, 0];
@@ -120,7 +122,7 @@ class Resultado extends Component {
         return opcion;
     }
     formatRespuestas = () => {
-                                          
+
         switch (this.props.respuestas[0]) {
             case 1: formatos[0] = 'Menor de 25 años';
                 break;
@@ -151,18 +153,18 @@ class Resultado extends Component {
                 formatos[i] = 'No'
             }
         }
-        switch(this.props.respuestas[1]){
-            case '1': formatos[1] = 'Sí';                
+        switch (this.props.respuestas[1]) {
+            case '1': formatos[1] = 'Sí';
                 break;
-            case '0': formatos[1] = 'No';                
-                break;            
+            case '0': formatos[1] = 'No';
+                break;
         }
         switch (this.props.respuestas[2]) {
-            case '0': formatos[2] = 'Afro';                
+            case '0': formatos[2] = 'Afro';
                 break;
-            case '1': formatos[2] = 'Indígena';                
+            case '1': formatos[2] = 'Indígena';
                 break;
-            case '2': formatos[2] = 'Mestizo';               
+            case '2': formatos[2] = 'Mestizo';
                 break;
         }
         console.log(formatos);
@@ -181,6 +183,11 @@ class Resultado extends Component {
                             <h1 id="titulo-res" className="flow-text right-align">Resultado</h1>
                             <h6 id="subtitulo-res" className="flow-text right-align">Emma dice que tu nivel de riesgo es </h6>
                             <h1 id="contenido-res" className="flow-text right-align">{this.props.result}</h1>
+                            <ProgressBar>
+                                <ProgressBar variant="success" now={35} key={1} />
+                                <ProgressBar variant="warning" now={20} key={2} />
+                                <ProgressBar variant="danger" now={10} key={3} />
+                            </ProgressBar>
                             <p id="detalle-res">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
                         </div>
                         <div className="row row-resultado">
