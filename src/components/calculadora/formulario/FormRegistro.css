@@ -6,9 +6,17 @@
   font-weight: bold;
   font-size: small;
 }
+
+.validate_phone_msg{
+  font-family: lato;
+  color: #26a69a;
+  font-weight: bolder;
+  font-size: small;
+}
 .celular-animation {
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
+
 #cont_login,
 #cont_registro {
   margin-top: 1em;

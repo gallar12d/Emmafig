@@ -211,8 +211,8 @@ class Footer extends Component {
                 </div>
 
                 <div id="footer_copyright" className="footer-copyright">
-                    <div className="container">
-                        <p >Con cariño para las mujeres del mundo; FUNDACION INNOVAGEN y SENA SECCIONAL - POPAYÁN 2019</p>
+                    <div className="container center-align">
+                        <p className="center-align">Con cariño para las mujeres del mundo; FUNDACION INNOVAGEN y SENA SECCIONAL - POPAYÁN 2019</p>
 
                     </div>
                 </div>

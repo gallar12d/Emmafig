@@ -31,6 +31,12 @@ class Menu extends Component {
         M.Dropdown.init(this.Dropdown);
         M.Collapsible.init(this.Collapsible);
     }
+    ucword(word) {
+        var lsCadena = word.toLowerCase();
+        lsCadena = lsCadena.charAt(0).toUpperCase() + lsCadena.slice(1);
+
+        return lsCadena;
+    }
 
     GenerateClick(state, elementMenu) {
         /*
@@ -66,7 +72,7 @@ class Menu extends Component {
         if (this.props.login == 1) {
             usuario = <li>
                 <a id="perfil" className="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
-                    {this.props.primer_nombre} <i className="material-icons right">arrow_drop_down</i>
+                    {this.ucword(this.props.primer_nombre)} <i className="material-icons right">arrow_drop_down</i>
                 </a>
                 <ul id="dropdown1" className="dropdown-content" >
                     <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
@@ -74,18 +80,18 @@ class Menu extends Component {
                     <li className="divider"></li>
                     <li><a onClick={() => {
                         this.props.changeLogin(); window.location.reload(); 
-                    }}>Cerrar sesion</a></li>
+                    }}>Cerrar sesión</a></li>
                 </ul>
             </li>
             usuario_sm = <div>
 
                 <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
-                <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
+                <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuración</a></li>
             </div>
             cerrar_sesion =
             <li><a onClick={() => {
                 this.props.changeLogin(); window.location.reload(); 
-            }}>Cerrar sesion</a></li>
+            }}>Cerrar sesión</a></li>
 
         }
 

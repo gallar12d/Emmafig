@@ -5,13 +5,8 @@ import $ from 'jquery';
 import { FaUserNurse } from 'react-icons/fa';
 import { MdLocationOn, MdEvent, MdAccessAlarms } from 'react-icons/md'
 import { IoIosPerson } from 'react-icons/io';
-
 import Buttons from '../buttons/Buttons'
 import Axios from 'axios';
-
-
-
-
 
 class Step4 extends Component {
     constructor(props) {
@@ -20,7 +15,6 @@ class Step4 extends Component {
             imagen: process.env.PUBLIC_URL + "/img/citas_step2.svg",
             profesionales: [],
             user: {}
-
         };
     }
 
@@ -28,111 +22,111 @@ class Step4 extends Component {
 
         //traer data de usuario
 
-       
-        Axios.get("https://emmafig.com/api1/getUser/"+this.props.id_usuario)
-                .then(res => {
-                    let result = res.data;
-                    this.setState({ user:  res.data.user })
-                    this.setState({
-                        paciente_primer_nombre: res.data.user.primer_nombre,
-                        paciente_segundo_nombre: res.data.user.segundo_nombre,
-                        paciente_primer_apellido: res.data.user.primer_apellido,
-                        paciente_segundo_apellido: res.data.user.segundo_apellido,
-                        paciente_numero_identificacion: res.data.user.no_identificacion,
-                        paciente_tipo_identificacion: res.data.user.tipo_identificacion,
-                        paciente_numero1: res.data.user.telefono1,
-                        paciente_numero2: res.data.user.telefono2,
-                        paciente_email: res.data.user.correo
-                    }) 
-                    if(res.data.user.primer_nombre){
-                        this.props.set_state('paciente_primer_nombre', res.data.user.primer_nombre) 
 
-                    }
-                    else{
-                        this.props.set_state('paciente_primer_nombre', '') 
-                        
-                    }
-                    if(res.data.user.segundo_nombre){
-                        this.props.set_state('paciente_segundo_nombre', res.data.user.segundo_nombre)
+        Axios.get("https://emmafig.com/api1/getUser/" + this.props.id_usuario)
+            .then(res => {
+                let result = res.data;
+                this.setState({ user: res.data.user })
+                this.setState({
+                    paciente_primer_nombre: res.data.user.primer_nombre,
+                    paciente_segundo_nombre: res.data.user.segundo_nombre,
+                    paciente_primer_apellido: res.data.user.primer_apellido,
+                    paciente_segundo_apellido: res.data.user.segundo_apellido,
+                    paciente_numero_identificacion: res.data.user.no_identificacion,
+                    paciente_tipo_identificacion: res.data.user.tipo_identificacion,
+                    paciente_numero1: res.data.user.telefono1,
+                    paciente_numero2: res.data.user.telefono2,
+                    paciente_email: res.data.user.correo
+                })
+                if (res.data.user.primer_nombre) {
+                    this.props.set_state('paciente_primer_nombre', res.data.user.primer_nombre)
 
-                    }
-                    else{
-                        this.props.set_state('paciente_segundo_nombre', '') 
-                        
-                    }
-                    if(res.data.user.primer_apellido){
-                        this.props.set_state('paciente_primer_apellido', res.data.user.primer_apellido) 
-                        
+                }
+                else {
+                    this.props.set_state('paciente_primer_nombre', '')
 
-                    }
-                    else{
-                        this.props.set_state('paciente_primer_apellido', '') 
-                        
-                        
-                    }
-                    if(res.data.user.segundo_apellido){
-                        this.props.set_state('paciente_segundo_apellido', res.data.user.segundo_apellido) 
-                        
+                }
+                if (res.data.user.segundo_nombre) {
+                    this.props.set_state('paciente_segundo_nombre', res.data.user.segundo_nombre)
 
-                    }
-                    else{
-                        this.props.set_state('paciente_segundo_apellido', '') 
-                        
-                        
-                    }
-                    if(res.data.user.no_identificacion){
-                        this.props.set_state('paciente_numero_identificacion', res.data.user.no_identificacion) 
-                        
+                }
+                else {
+                    this.props.set_state('paciente_segundo_nombre', '')
 
-                    }
-                    else{
-                        this.props.set_state('paciente_numero_identificacion','') 
-                        
-                        
-                    }
-                    if(res.data.user.tipo_identificacion){
-                        this.props.set_state('paciente_tipo_identificacion', res.data.user.tipo_identificacion) 
-                        
+                }
+                if (res.data.user.primer_apellido) {
+                    this.props.set_state('paciente_primer_apellido', res.data.user.primer_apellido)
 
-                    }
-                    else{
-                        this.props.set_state('paciente_tipo_identificacion', '') 
-                        
-                        
-                    }
-                    if(res.data.user.telefono1){
-                        this.props.set_state('paciente_numero1', res.data.user.telefono1) 
-                        
 
-                    }
-                    else{
-                        this.props.set_state('paciente_numero1', '') 
-                        
-                        
-                    }
-                    if(res.data.user.telefono2){
-                        this.props.set_state('paciente_numero2', res.data.user.telefono2) 
-                        
+                }
+                else {
+                    this.props.set_state('paciente_primer_apellido', '')
 
-                    }
-                    else{
-                        this.props.set_state('paciente_numero2', '') 
-                        
-                        
-                    }
-                    if(res.data.user.correo){
-                        this.props.set_state('paciente_email', res.data.user.correo)  
-                        
 
-                    }
-                    else{
-                        this.props.set_state('paciente_email', '')  
-                        
-                        
-                    }
-         
+                }
+                if (res.data.user.segundo_apellido) {
+                    this.props.set_state('paciente_segundo_apellido', res.data.user.segundo_apellido)
 
-                });
+
+                }
+                else {
+                    this.props.set_state('paciente_segundo_apellido', '')
+
+
+                }
+                if (res.data.user.no_identificacion) {
+                    this.props.set_state('paciente_numero_identificacion', res.data.user.no_identificacion)
+
+
+                }
+                else {
+                    this.props.set_state('paciente_numero_identificacion', '')
+
+
+                }
+                if (res.data.user.tipo_identificacion) {
+                    this.props.set_state('paciente_tipo_identificacion', res.data.user.tipo_identificacion)
+
+
+                }
+                else {
+                    this.props.set_state('paciente_tipo_identificacion', '')
+
+
+                }
+                if (res.data.user.telefono1) {
+                    this.props.set_state('paciente_numero1', res.data.user.telefono1)
+
+
+                }
+                else {
+                    this.props.set_state('paciente_numero1', '')
+
+
+                }
+                if (res.data.user.telefono2) {
+                    this.props.set_state('paciente_numero2', res.data.user.telefono2)
+
+
+                }
+                else {
+                    this.props.set_state('paciente_numero2', '')
+
+
+                }
+                if (res.data.user.correo) {
+                    this.props.set_state('paciente_email', res.data.user.correo)
+
+
+                }
+                else {
+                    this.props.set_state('paciente_email', '')
+
+
+                }
+
+
+            });
 
 
         var elems = $('.mySelect');
@@ -148,14 +142,14 @@ class Step4 extends Component {
 
         $('form').on('focus', 'input[type=number]', function (e) {
             $(this).on('mousewheel.disableScroll', function (e) {
-              e.preventDefault()
+                e.preventDefault()
             })
-          })
-          $('form').on('blur', 'input[type=number]', function (e) {
+        })
+        $('form').on('blur', 'input[type=number]', function (e) {
             $(this).off('mousewheel.disableScroll')
-          })
+        })
 
-          this.open_modal()
+        this.open_modal()
 
     }
     open_modal() {
@@ -168,59 +162,44 @@ class Step4 extends Component {
     }
 
     validate_form_user(e) {
-
-    if(!window.confirm('Está seguro que los anteriores datos son válidos?')){
-        return false;
-    }
-    
-
-     e.preventDefault();
-      var next =  $('.btn_next')
-      console.log(next)
+        e.preventDefault();
+        var next = $('.btn_next')
+        console.log(next)
         var validity = $('#form_user')[0].checkValidity()
-
-        if (validity) {
-
-            //
-            if(this.props.paciente_primer_nombre == 'User'){
+        if (validity) {        
+           
+            if (this.props.paciente_primer_nombre == 'User') {
                 alert('Debes ingresar un primer nombre válido!')
-                return false;
+
+               return false;
             }
-            if(this.props.paciente_segundo_nombre == 'User'){
+            if (this.props.paciente_segundo_nombre == 'User') {
                 alert('Debes ingresar un segundo nombre válido o dejar el campo vacío')
                 return false;
             }
-            if(this.props.paciente_primer_apellido == 'User'){
+            if (this.props.paciente_primer_apellido == 'User') {
                 alert('Debes ingresar un primer apellido válido!')
                 return false;
             }
-            if(this.props.paciente_segundo_apellido == 'User'){
+            if (this.props.paciente_segundo_apellido == 'User') {
                 alert('Debes ingresar un segundo apellido válido o dejar el campo vacío')
+                return false;
+            }
+
+            if(!window.confirm('Está seguro que los anteriores datos son válidos?')){
                 return false;
             }
 
             var elem = $('#modal_cita')
             var instance = M.Modal.getInstance(elem);
             this.props.set_state('informacion_paciente', true)
-            instance.close();            // 
-            //next.click();
+            instance.close();  
             this.props.activate_step(this.props.step + 1);
             this.props.actualizar(this.props.step + 1);
-
-
-
         }
         else {
             $('#form_user')[0].reportValidity()
-
-
         }
-
-
-
-        //validate validityCheck api html5 for this form
-        //close modal
-
 
     }
 
@@ -230,11 +209,9 @@ class Step4 extends Component {
     render() {
 
 
-
-
-
         return (
             <div className="row step4">
+
                 <div className="col s12 m4 offset-m2 ">
                     <div className="icon_input">
                         <div className='floting'>
@@ -331,7 +308,7 @@ class Step4 extends Component {
                                 <h5 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#c83b8d' }}>
                                     Completa tus datos para la reserva de cita!
                               </h5>
-                              <span>Campos con un asterisco (*) son obligatorios</span>
+                                <span>Campos con un asterisco (*) son obligatorios</span>
                             </div>
 
                         </div>
@@ -348,22 +325,22 @@ class Step4 extends Component {
 
                                 <div className="input-field col s12 m6">
                                     <input onChange={(e) => this.props.set_state('paciente_primer_nombre', e.target.value)} defaultValue={this.state.user.primer_nombre} required id="primer_nombre" type="text" className="validate"></input>
-                                    <label className = {(this.state.user.primer_nombre) ? 'active': ''} htmlFor="first_name">Primer nombre *</label>
+                                    <label className={(this.state.user.primer_nombre) ? 'active' : ''} htmlFor="first_name">Primer nombre *</label>
                                 </div>
                                 <div className="input-field col s12 m6">
                                     <input onChange={(e) => this.props.set_state('paciente_segundo_nombre', e.target.value)} defaultValue={this.state.user.segundo_nombre} id="segundo_nombre" type="text" className="validate"></input>
-                                    <label className = {(this.state.user.segundo_nombre) ? 'active': ''} htmlFor="first_name">Segundo nombre</label>
+                                    <label className={(this.state.user.segundo_nombre) ? 'active' : ''} htmlFor="first_name">Segundo nombre</label>
                                 </div>
                                 <div className="input-field col s12 m6">
                                     <input onChange={(e) => this.props.set_state('paciente_primer_apellido', e.target.value)} defaultValue={this.state.user.primer_apellido} required id="primer_apellido" type="text" className="validate"></input>
-                                    <label className = {(this.state.user.primer_apellido) ? 'active': ''} htmlFor="first_name">Primer apellido *</label>
+                                    <label className={(this.state.user.primer_apellido) ? 'active' : ''} htmlFor="first_name">Primer apellido *</label>
                                 </div>
                                 <div className="input-field col s12 m6">
                                     <input onChange={(e) => this.props.set_state('paciente_segundo_apellido', e.target.value)} defaultValue={this.state.user.segundo_apellido} id="segundo_apellido" type="text" className="validate"></input>
-                                    <label className = {(this.state.user.segundo_apellido) ? 'active': ''} htmlFor="first_name">Segundo apellido </label>
+                                    <label className={(this.state.user.segundo_apellido) ? 'active' : ''} htmlFor="first_name">Segundo apellido </label>
                                 </div>
                                 <div className="input-field col s12 m6">
-                                    <select  onChange={(e) => this.props.set_state('paciente_tipo_identificacion', e.target.value)} id="tipo_id" name="tipo-id" required value={this.state.user.tipo_identificacion}>
+                                    <select onChange={(e) => this.props.set_state('paciente_tipo_identificacion', e.target.value)} id="tipo_id" name="tipo-id" required value={this.state.user.tipo_identificacion}>
                                         <option value='-1' disabled >Tipo de identificación *</option>
 
                                         <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
@@ -379,19 +356,19 @@ class Step4 extends Component {
 
                                 <div className="input-field col s12 m6">
                                     <input disabled onChange={(e) => this.props.set_state('paciente_numero_identificacion', e.target.value)} defaultValue={this.state.user.no_identificacion} required id="numero_identificacion" type="number" className="validate"></input>
-                                    <label className = {(this.state.user.no_identificacion) ? 'active': ''} htmlFor="first_name">Número de identificación *</label>
+                                    <label className={(this.state.user.no_identificacion) ? 'active' : ''} htmlFor="first_name">Número de identificación *</label>
                                 </div>
                                 <div className="input-field col s12 m6">
                                     <input onChange={(e) => this.props.set_state('paciente_numero1', e.target.value)} defaultValue={this.state.user.telefono1} required id="telefono1" type="number" className="validate"></input>
-                                    <label className = {(this.state.user.telefono1) ? 'active': ''} htmlFor="first_name">Teléfono de contacto 1 *</label>
+                                    <label className={(this.state.user.telefono1) ? 'active' : ''} htmlFor="first_name">Teléfono de contacto 1 *</label>
                                 </div>
                                 <div className="input-field col s12 m6">
                                     <input onChange={(e) => this.props.set_state('paciente_numero2', e.target.value)} defaultValue={this.state.user.telefono2} id="telefono2" type="number" className="validate"></input>
-                                    <label className = {(this.state.user.telefono2) ? 'active': ''} htmlFor="first_name">Teléfono de contacto 2</label>
+                                    <label className={(this.state.user.telefono2) ? 'active' : ''} htmlFor="first_name">Teléfono de contacto 2</label>
                                 </div>
                                 <div className="input-field col s12 m12">
                                     <input onChange={(e) => this.props.set_state('paciente_email', e.target.value)} defaultValue={this.state.user.correo} id="email" type="email" className="validate"></input>
-                                    <label className = {(this.state.user.correo) ? 'active': ''} htmlFor="first_name">Correo electrónico</label>
+                                    <label className={(this.state.user.correo) ? 'active' : ''} htmlFor="first_name">Correo electrónico</label>
                                 </div>
                             </form>
 
@@ -403,7 +380,7 @@ class Step4 extends Component {
 
                     </div>
                     <div className="modal-footer">
-                        <button onClick={ this.validate_form_user.bind(this) } className="btn   ">Confirmar</button>
+                        <button onClick={this.validate_form_user.bind(this)} className="btn   ">Confirmar</button>
                     </div>
                 </div>
 

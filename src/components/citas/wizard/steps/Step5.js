@@ -20,6 +20,13 @@ class Step5 extends Component {
         };
     }
 
+    ucword(word) {
+        var lsCadena = word.toLowerCase();
+        lsCadena = lsCadena.charAt(0).toUpperCase() + lsCadena.slice(1);
+
+        return lsCadena;
+    }
+
     formatdate(date = '2019-09-06') {
 
         var meses = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
@@ -45,6 +52,10 @@ class Step5 extends Component {
 
     componentDidMount() {
 
+        let elems = $('#modal_sms')
+        M.Modal.init(elems, {});
+        $('#modal_sms').append('<button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">x</button>');
+
 
 
         const dataForm = new FormData();
@@ -57,7 +68,7 @@ class Step5 extends Component {
         dataForm.append("telefono1", this.props.paciente_numero1);
         dataForm.append("telefono2", this.props.paciente_numero2)
         dataForm.append("email", this.props.paciente_email)
-        dataForm.append("id_turno", this.props.id_turno);        
+        dataForm.append("id_turno", this.props.id_turno);
         let new_turno = this.props.turno;
         new_turno = new_turno.replace(" ", "");
         dataForm.append("turno", new_turno);
@@ -73,8 +84,8 @@ class Step5 extends Component {
                 .then(res => {
                     let result = res.data;
                     this.setState({ cargando: false })
-
                     this.props.set_state('cita', true)
+                    this.open_modal();
 
                 });
 
@@ -83,9 +94,11 @@ class Step5 extends Component {
 
 
     }
-
-
-
+    open_modal() {
+        var elem = $('#modal_sms')
+        var instance = M.Modal.getInstance(elem);
+        instance.open();
+    }
 
     render() {
         let mostrar = '';
@@ -102,7 +115,7 @@ class Step5 extends Component {
                 <div className="card resume ">
                     <div className="card-content white-text">
                         <br></br>
-                        <h5>{this.props.paciente_primer_nombre}, hemos agendado tu cita</h5>
+                        <h5>{this.ucword(this.props.paciente_primer_nombre)}, hemos agendado tu cita!</h5>
                         <hr></hr>
                         <div className="align-left">
                             <h5 className="no_margin">Fecha: &nbsp; </h5>
@@ -168,6 +181,16 @@ class Step5 extends Component {
                             <img className="avatar_step5" src={this.state.avatar} />
                         </div>
 
+                    </div>
+                </div>
+
+                <div id="modal_sms" class="modal">
+                    <div class="modal-content">
+                        <h5>Se ha enviado un mensaje de texto a tu celular con el resumen de tu reserva!</h5>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <a  class="modal-close waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
             </div>
