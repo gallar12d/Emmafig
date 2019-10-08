@@ -19,6 +19,9 @@
     padding-top:3px;
    
 }
+.spaceTop{
+    margin-top: 12px !important;
+}
 .info_div_small{
     position: absolute;
     top: 0px;
@@ -392,6 +395,9 @@ div.container_btn_sedes{
 
 @media screen and (max-width:1024px) and (min-width:640px) {
     /* reglas CSS */
+    #telefono_sede_small_down{
+        display: none;
+    }
    
  
     .info_div_hide{
@@ -451,7 +457,9 @@ div.container_btn_sedes{
   }
 
 @media only screen and (max-width:640px) and (orientation: landscape) {
-    
+    #telefono_sede_small_down{
+        display: none;
+    }
     
     .info_div_hide{
         position: absolute;
@@ -603,8 +611,11 @@ div.container_btn_sedes{
  
  */
  @media only screen and (max-width: 375px){
+    #telefono_sede_small_down{
+        display: inline-block;
+    }
    .headline_sede{
-       font-size: 15px !important;
+       font-size: 14px !important;
    } 
    .routes{
        margin-left: 50%;
