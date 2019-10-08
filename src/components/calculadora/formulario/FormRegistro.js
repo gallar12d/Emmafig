@@ -647,6 +647,7 @@ class FormRegistro extends Component {
                                     <a href="#/terminos_condiciones" target="_blank"> Términos y condiciones</a></span>
                                 </label>
                             </p>
+                            <br></br>
                             <p id="terminos-error" className="center cel-error">Debe aceptar los términos y condiciones para continuar</p>
                         </div>
                     </div>

@@ -23,7 +23,7 @@ class Editprofile extends Component {
         //document.getElementById("primer_nombre").value
         let dataForm = new FormData();
         dataForm.append("id_usuario", localStorage.getItem('id'));
-        axios.get("http://emmafig.com/api1/getUser/"+localStorage.getItem('id')).then(res  => {
+        axios.get("https://emmafig.com/api1/getUser/"+localStorage.getItem('id')).then(res  => {
             var result =  res.data;
             console.log(result)
             /*
@@ -78,7 +78,7 @@ class Editprofile extends Component {
                     dataUpdate.append("segundo_nombre", document.getElementById("segundo_nombre").value)
                     dataUpdate.append("primer_apellido", document.getElementById("primer_apellido").value)
                     dataUpdate.append("segundo_apellido", document.getElementById("segundo_apellido").value)
-                    axios.post("http://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
+                    axios.post("https://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
                         .then(res => {
                             loader.style.display = "none"
                            
@@ -95,7 +95,7 @@ class Editprofile extends Component {
                     dataUpdate.append("email", document.getElementById("email").value)
                     dataUpdate.append("bandera_update", 'email')
                     dataUpdate.append("id_usuario", id_usuario)
-                    axios.post("http://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
+                    axios.post("https://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
                         .then(res => {
                             
                             alert("usuario actualizado correctamente")
@@ -120,7 +120,7 @@ class Editprofile extends Component {
                         dataUpdate.append("bandera_update", 'password')
                         dataUpdate.append("id_usuario", id_usuario)
                         dataUpdate.append("password", document.getElementById("newPassword").value)
-                        axios.post("http://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
+                        axios.post("https://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
                             .then(res => {
                                 loader.style.display = "none"
                                 let result = res.data;
@@ -144,7 +144,7 @@ class Editprofile extends Component {
                     dataUpdate.append("bandera_update", 'telefono')
                     dataUpdate.append("id_usuario", id_usuario)
                     dataUpdate.append("telefono", document.getElementById("numeroTelefono").value);
-                    axios.post("http://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
+                    axios.post("https://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
                         .then(res => {
                             document.getElementById("numeroTelefono").value ="";
                             alert("usuario actualizado correctamente")
@@ -155,6 +155,8 @@ class Editprofile extends Component {
                             
                         })
                     break;
+                    default:
+                        break;
 
             }
         } else {
@@ -204,7 +206,7 @@ class Editprofile extends Component {
 
                                 <div className="input-field col s12 ">
 
-                                    <input id="primer_nombre" type="text" className="validate" name="primer_nombre" required maxLength="10" />
+                                    <input  id="primer_nombre" type="text" className="validate" name="primer_nombre" required maxLength="10" />
                                     <label id="label_primer_nombre" htmlFor="primer_nombre">Primer nombre *</label>
 
 

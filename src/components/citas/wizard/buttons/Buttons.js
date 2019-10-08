@@ -50,7 +50,7 @@ class Buttons extends Component {
         }
 
         else if(this.props.step == 5){
-            mostrar = <button className="btn btn_next" onClick={ this.finish.bind(this) } type="button" >Aceptar</button>
+            mostrar = <button className="btn btn_next" onClick={ this.finish.bind(this) } type="button" >Terminar</button>
 
         }
 

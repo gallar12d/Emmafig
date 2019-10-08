@@ -306,7 +306,7 @@ class Step4 extends Component {
                         <div className="row">
                             <div className="col m12 left-align">
                                 <h5 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#c83b8d' }}>
-                                    Completa tus datos para la reserva de cita!
+                                    Completa y/o modifica tus datos para la reserva de cita!
                               </h5>
                                 <span>Campos con un asterisco (*) son obligatorios</span>
                             </div>
