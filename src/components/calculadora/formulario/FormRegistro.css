@@ -21,6 +21,9 @@
 #cont_registro {
   margin-top: 1em;
 }
+#cont_opciones{
+  margin-top: 2em;
+}
 #cont_terminos{
   margin-bottom: 3em;
 }
@@ -45,6 +48,10 @@
 .subtitulo-registro {
   color: #6f6f6e !important;
   font-size: 0.8em;
+}
+#titulo_defecto,
+#titulo_opciones{
+  font-size: 1.2em;
 }
 .titulo-registro {
   margin-top: 1em;

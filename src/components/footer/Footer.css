@@ -3,7 +3,9 @@
     padding: 0px;
     font-family: 'lato';
 }
-
+#cont_logos{
+    margin-top: 3em;
+}
 #footer{
     background-color: #0F9b9b !important;
     text-align: start;
@@ -20,6 +22,7 @@
 #iconWSP{
     display: inline-block !important;
 }
+
 .titulo_footer{
     font-size: 20px;
     font-weight: bolder;

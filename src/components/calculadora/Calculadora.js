@@ -62,7 +62,10 @@ class Calculadora extends Component {
             respuestas: respuestas 
         });         
         if(result != -1){
-            if(result == 0){
+            this.setState({
+                fin_resultado: result
+            })
+            /*if(result == 0){
                 this.setState({
                     fin_resultado: 'Bajo'
                 })
@@ -70,7 +73,7 @@ class Calculadora extends Component {
                 this.setState({
                     fin_resultado: 'Alto'
                 })
-            }
+            }*/
             
         }
 
