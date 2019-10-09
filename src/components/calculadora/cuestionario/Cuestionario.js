@@ -553,7 +553,7 @@ class Cuestionario extends Component {
                             <input id="op31" className="with-gap" name="group3" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Afro</span>
                         </label>
-                        <label className="col s2 m2 l1">
+                        <label className="col s2 m2 l1 offset-s5">
                             <input id="op32" className="with-gap" name="group3" type="radio" value="1" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Indígena</span>
                         </label>
@@ -605,7 +605,7 @@ class Cuestionario extends Component {
                             <input id="op61" className="with-gap" name="group6" type="radio" value="1" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Sí</span>
                         </label>
-                        <label className="col s2 m2 l1 offset-s5">
+                        <label className="col s2 m2 l1">
                             <input id="op62" className="with-gap" name="group6" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">No</span>
                         </label>                        
