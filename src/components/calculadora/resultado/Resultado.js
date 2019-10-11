@@ -122,12 +122,10 @@ class Resultado extends Component {
     }
     formatRespuestas = () => {        
         switch (this.props.respuestas[0]) {
-            case '1': formatos[0] = 'Menor de 25 años';
-                    console.log('caso 1');
+            case '1': formatos[0] = 'Menor de 25 años';                    
                     break;
-            case '2': formatos[0] = 'Entre 25 y 29 años';
-                    console.log('caso 2');
-                break;
+            case '2': formatos[0] = 'Entre 25 y 29 años';                    
+                    break;
             case '3': formatos[0] = 'Entre 30 y 34 años';
                     console.log('caso 3');
                 break;
