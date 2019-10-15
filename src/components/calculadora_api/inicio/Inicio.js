@@ -10,7 +10,7 @@ class Inicio extends Component {
 
         this.state = {
             img_avatar: process.env.PUBLIC_URL + "/img/avatar-section1.png",
-            logo_emma: process.env.PUBLIC_URL + "/img/MarcadeAguaColor.png",
+            logo_emma: process.env.PUBLIC_URL + "/img/papilomapp-logo.png",
             begin: process.env.PUBLIC_URL + "/img/fwdbotnempezar/btn-empezar1-c-2.svg",
             style: {
                 opacity: 0,

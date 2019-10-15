@@ -121,7 +121,7 @@ class Testimonios extends Component {
           <img alt="algo" src={this.state.background}></img>
         </div>
         <h2 className="espacioTitulo tituloTestimonials">Testimonios </h2>
-        <h5 className="subtituloTestimonials">Subtítulo y descripción de <b>testimonios</b> de la <b>Fundación InnovaGen</b></h5>
+        <h5 className="subtituloTestimonials">Espacio donde nuestros clientes expresan sus experiencias con nuestros servicios</h5>
         <div className="espaciado2">
           <Slider {...settings}>
             {listItems}
