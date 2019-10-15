@@ -120,28 +120,35 @@ class Resultado extends Component {
         }
         return opcion;
     }
-    formatRespuestas = () => {
-
+    formatRespuestas = () => {        
         switch (this.props.respuestas[0]) {
-            case 1: formatos[0] = 'Menor de 25 años';
+            case '1': formatos[0] = 'Menor de 25 años';                    
+                    break;
+            case '2': formatos[0] = 'Entre 25 y 29 años';                    
+                    break;
+            case '3': formatos[0] = 'Entre 30 y 34 años';
+                    console.log('caso 3');
                 break;
-            case 2: formatos[0] = 'Entre 25 y 29 años';
+            case '4': formatos[0] = 'Entre 35 y 39 años';
+                    console.log('caso 4');
                 break;
-            case 3: formatos[0] = 'Entre 30 y 34 años';
+            case '5': formatos[0] = 'Entre 40 y 44 años';
+                    console.log('caso 5');
                 break;
-            case 4: formatos[0] = 'Entre 35 y 39 años';
+            case '6': formatos[0] = 'Entre 45 y 49 años';
+                    console.log('caso 6');
                 break;
-            case 5: formatos[0] = 'Entre 40 y 44 años';
+            case '7': formatos[0] = 'Entre 50 y 54 años';
+                    console.log('caso 7');
                 break;
-            case 6: formatos[0] = 'Entre 45 y 49 años';
+            case '8': formatos[0] = 'Entre 55 y 59 años';
+                    console.log('caso 8');
                 break;
-            case 7: formatos[0] = 'Entre 50 y 54 años';
-                break;
-            case 8: formatos[0] = 'Entre 55 y 59 años';
-                break;
-            case 9: formatos[0] = 'Entre 60 y 64 años';
+            case '9': formatos[0] = 'Entre 60 y 64 años';
+                    console.log('caso 9');
                 break;
             default: formatos[0] = '65 años o más';
+                    console.log('caso 10');
                 break;
         }
 

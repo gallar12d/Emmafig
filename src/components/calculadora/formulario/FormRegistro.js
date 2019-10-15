@@ -305,7 +305,6 @@ class FormRegistro extends Component {
                     console.log(error.response.data);
                     console.log(error.response.status);
                     console.log(error.response.headers);
-
                 }
             });
     }
@@ -375,7 +374,6 @@ class FormRegistro extends Component {
                             case '350':
                             case '351':
                                 this.celular = celular.value;
-
                                 celularError.style.display = "none";
                                 this.setState({
                                     celular: celular.value,
@@ -384,20 +382,26 @@ class FormRegistro extends Component {
                                     identificacion: identificacion.value,
                                     correo: correo.value
                                 });
+                                this.setState({
+                                    showPreloader: 1
+                                })
+                                this.showPreloader();
                                 Axios.post("https://emmafig.com/api1/rest-authentication/api/user_exist.php", {
                                     "tipo_identificacion": tipo_identificacion.value,
                                     "identificacion": identificacion.value
                                 })
                                     .then(res => {
+                                        this.setState({
+                                            showPreloader: 0
+                                        });
+                                        this.showPreloader();
                                         if (res.data.existe == 'true') {
                                             let user_exits = document.getElementById('user_exits');
                                             user_exits.style.display = 'block';
+                                           
                                         } else {
                                             btn_celular.style.display = "none";
-                                            this.setState({
-                                                showPreloader: 1
-                                            })
-                                            this.showPreloader();
+                                            
                                             /*fetch("https://emmafig.com/api1/sendKey.php?celular=" + celular.value)
                                                 .then(res => res.json())
                                                 .then(
@@ -425,10 +429,10 @@ class FormRegistro extends Component {
                                                     }
                                                 )*/
                                                 //simular el envio de sms
-                                                this.setState({
+                                                /*this.setState({
                                                     showPreloader: 0
                                                 });
-                                                this.showPreloader()
+                                                this.showPreloader()*/
                                                 
                                                 this.setState({
                                                     codigo: 1234,
