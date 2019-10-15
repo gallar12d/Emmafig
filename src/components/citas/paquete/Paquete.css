@@ -61,16 +61,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#219799', end
         margin-top: 0%;
         border-radius: 7px;
         background-color: #ececec;
+        
+    }
+
+    #citas .card-action .btn_hover_pack{
+       
         color: #c73a8c;
         font-family: lato;
         font-weight: bolder;
-    }
-
-    #citas .card-action button:hover{
-       
-        color: #177475;
       
     }
+
+    
 
 
     #citas .card:hover .card-action{
