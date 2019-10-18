@@ -1,4 +1,6 @@
-
+.btn, .btn-large, .btn-small{
+    background-color: #0ba7ad;
+}
 .resetPading{
     padding: 0px !important;
 }
@@ -33,7 +35,7 @@
 }
 
 .tabs .tab a{
-    color: #492c51!important;
+    color: #492c51 !important;
 }
 .profile-img .file {
     position: relative;
@@ -45,7 +47,7 @@
     border: none;
     border-radius: 0;
     font-size: 15px;
-    background: #0F9b9b;
+    background: #0ba7ad;
 }
 .profile-img .file input {
     position: absolute;
@@ -176,16 +178,13 @@ thead, tbody tr {
 thead{
     margin-left: -6px;
 }
-
-
-
 tbody::-webkit-scrollbar{
     width: 6px;
     background-color:  rgb(168, 169, 169);
     height: 15px;
 }
 tbody::-webkit-scrollbar-thumb{
-    background-color: #0f9b9b;
+    background-color: #0ba7ad;
 }
 
 

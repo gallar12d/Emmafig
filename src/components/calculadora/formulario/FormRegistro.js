@@ -8,6 +8,7 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import GoogleLogin from 'react-google-login';
 import Axios from 'axios';
 import $ from "jquery";
+import ModalInscrip from './modalInscripcion/ModalInscrip';
 class FormRegistro extends Component {
 
     constructor(props) {
@@ -124,7 +125,6 @@ class FormRegistro extends Component {
     validarCodigo = () => {
         let codigo = document.getElementById('codigo');
         let codigoError = document.getElementById('codigo-error');
-
         let btn_confirm = document.getElementById('btn_confirm');
         let cont_celular = document.getElementById('cont_celular');
         let cont_confirm = document.getElementById('cont_confirm');
@@ -164,6 +164,8 @@ class FormRegistro extends Component {
                     )
                         .then(res => {
                             console.log(res.data.message);
+                            //alert('Registro exitoso');
+                            M.Modal.getInstance(document.getElementById('modal2')).open();                            
                             this.login();
                         })
                         .catch((error) => {
@@ -487,6 +489,7 @@ class FormRegistro extends Component {
         $('form').on('blur', 'input[type=number]', function (e) {
             $(this).off('mousewheel.disableScroll')
         })
+        var elems = document.getElementById('modal2');
         
     }
 
@@ -531,7 +534,7 @@ class FormRegistro extends Component {
                         <a className="waves-light btn col s10 offset-s1" id="btn_ingresar_a" onClick={this.isLogin}>Ingresar</a>
                     </div>
                     <div id="btn_registro" className="row">
-                        <a className="waves-light btn col s10 offset-s1" onClick={this.isRegistro}>Registrarse</a>
+                        <a className="waves-light btn col s10 offset-s1 btn_registro" id="btn_ingresar_r" onClick={this.isRegistro}>Registrarse</a>
                     </div>
                 </div>
             )
@@ -762,7 +765,7 @@ class FormRegistro extends Component {
                         <a className=" waves-light btn col s10 offset-s1" id="btn_aceptar_form_login" onClick={this.validarCampos}>Aceptar</a>
                     </div>
                     <div id="btn_cancelar" className="row">
-                        <a className=" waves-light btn col s10 offset-s1" onClick={this.reiniciarForm}>Regresar</a>
+                        <a className=" waves-light btn col s10 offset-s1" id="btn_cancelar_f" onClick={this.reiniciarForm}>Regresar</a>
                     </div>
                 </div>
             )
@@ -846,8 +849,7 @@ class FormRegistro extends Component {
 
     render() {
          
-        return (
-
+        return (            
             <form id="form_perfil" noValidate>
                 {
                     this.showOptions()
