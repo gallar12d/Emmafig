@@ -534,7 +534,7 @@ class FormRegistro extends Component {
                         <a className="waves-light btn col s10 offset-s1" id="btn_ingresar_a" onClick={this.isLogin}>Ingresar</a>
                     </div>
                     <div id="btn_registro" className="row">
-                        <a className="waves-light btn col s10 offset-s1" onClick={this.isRegistro}>Registrarse</a>
+                        <a className="waves-light btn col s10 offset-s1 btn_registro" id="btn_ingresar_r" onClick={this.isRegistro}>Registrarse</a>
                     </div>
                 </div>
             )
@@ -765,7 +765,7 @@ class FormRegistro extends Component {
                         <a className=" waves-light btn col s10 offset-s1" id="btn_aceptar_form_login" onClick={this.validarCampos}>Aceptar</a>
                     </div>
                     <div id="btn_cancelar" className="row">
-                        <a className=" waves-light btn col s10 offset-s1" onClick={this.reiniciarForm}>Regresar</a>
+                        <a className=" waves-light btn col s10 offset-s1" id="btn_cancelar_f" onClick={this.reiniciarForm}>Regresar</a>
                     </div>
                 </div>
             )
