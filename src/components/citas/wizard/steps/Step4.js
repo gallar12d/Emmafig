@@ -215,11 +215,11 @@ class Step4 extends Component {
                 <div className="col s12 m4 offset-m2 ">
                     <div className="icon_input">
                         <div className='floting'>
-                            <MdLocationOn color={'#0f9b9b'} size={35} />
+                            <MdLocationOn color={'#0ba7ad'} size={35} />
 
                         </div>
                         <div className='floting'>
-                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0f9b9b' }}>Punto de atención:</h6>
+                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0ba7ad' }}>Punto de atención:</h6>
 
                         </div>
                         <div className='floting'>
@@ -229,11 +229,11 @@ class Step4 extends Component {
                     </div>
                     <div className="icon_input">
                         <div className='floting'>
-                            <MdEvent color={'#0f9b9b'} size={35} />
+                            <MdEvent color={'#0ba7ad'} size={35} />
 
                         </div>
                         <div className='floting'>
-                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0f9b9b' }}>Fecha de la cita:</h6>
+                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0ba7ad' }}>Fecha de la cita:</h6>
 
                         </div>
                         <div className='floting'>
@@ -244,11 +244,11 @@ class Step4 extends Component {
                     </div>
                     <div className="icon_input">
                         <div className='floting'>
-                            <FaUserNurse color={'#0f9b9b'} size={35} />
+                            <FaUserNurse color={'#0ba7ad'} size={35} />
 
                         </div>
                         <div className='floting'>
-                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0f9b9b' }}>Profesional:</h6>
+                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0ba7ad' }}>Profesional:</h6>
 
                         </div>
                         <div className='floting'>
@@ -259,11 +259,11 @@ class Step4 extends Component {
                     </div>
                     <div className="icon_input">
                         <div className='floting'>
-                            <MdAccessAlarms color={'#0f9b9b'} size={35} />
+                            <MdAccessAlarms color={'#0ba7ad'} size={35} />
 
                         </div>
                         <div className='floting'>
-                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0f9b9b' }}>Hora de la cita:</h6>
+                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0ba7ad' }}>Hora de la cita:</h6>
 
                         </div>
                         <div className='floting'>
@@ -274,7 +274,7 @@ class Step4 extends Component {
                     </div>
                     <div className="icon_input">
                         <div className='floting'>
-                            <IoIosPerson color={'#0f9b9b'} size={35} />
+                            <IoIosPerson color={'#0ba7ad'} size={35} />
 
                         </div>
                         <div style={{ width: '100%' }} className='floting'>
@@ -305,7 +305,7 @@ class Step4 extends Component {
                     <div className="modal-content">
                         <div className="row">
                             <div className="col m12 left-align">
-                                <h5 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#c83b8d' }}>
+                                <h5 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#492c51' }}>
                                     Completa y/o modifica tus datos para la reserva de cita!
                               </h5>
                                 <span>Campos con un asterisco (*) son obligatorios</span>

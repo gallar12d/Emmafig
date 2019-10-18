@@ -43,11 +43,11 @@ p.text-green {
     color: white !important;
 }
 .slick-current .hoverable.card.panel_radius {
-    background-color: #c83b8d;
+    background-color: #492c51;
 }
  img.avatar{
     
-    border: 5px solid #0f9b9b;
+    border: 5px solid #0ba7ad;
     width: 50%;
     margin-left: 25%;
     margin-top: 4px;
@@ -57,7 +57,7 @@ p.text-green {
 }
 .slick-current img.avatar{
     
-    border: 5px solid #c83b8d;
+    border: 5px solid #492c51;
     width: 50%;
    
     margin-left: 25%;
@@ -90,7 +90,7 @@ h6.nombres {
 
 .slick-dots li.slick-active button:before {
     opacity: 1 !important;
-    color: #c83b8d !important;
+    color: #492c51 !important;
 }
 .slick-dots li button:before {
     
