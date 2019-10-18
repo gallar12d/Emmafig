@@ -40,7 +40,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#219799', end
         min-height: 30%;
     }
     #citas .card-content h4 {
-        color: #c73a8c;
+        color: #492c51;
         font-family: lato;
         font-weight: bolder;
         font-size: 2rem;        
@@ -66,7 +66,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#219799', end
 
     #citas .card-action .btn_hover_pack{
        
-        color: #c73a8c;
+        color: #492c51;
         font-family: lato;
         font-weight: bolder;
       
@@ -76,7 +76,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#219799', end
 
 
     #citas .card:hover .card-action{
-        background-color: #c73a8c;
+        background-color: #492c51;
     }
     #citas .card .card-action:last-child {
         /* border-radius: inherit; */
@@ -101,7 +101,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#219799', end
     }
 
     #citas div.widthmodal .btn-flat:focus, .btn-flat:hover {
-        background-color: #c73a8c;
+        background-color: #492c51;
        
     }
 

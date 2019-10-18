@@ -95,10 +95,10 @@ class Step2 extends Component {
     
                                     </div>
                                     <div className="col s12 m6 l6">
-                                        <h5 style={{ color: '#c83b8d', fontWeight: 'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">Nuestros profesionales</h5>
+                                        <h5 style={{ color: '#492c51', fontWeight: 'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">Nuestros profesionales</h5>
                                         <hr></hr>
                                         <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato' }} >{profesional.primer_nombre + ' ' + nombre2 + ' ' + profesional.primer_apellido + ' ' + apellido2}</h6>
-                                        <h6 style={{ color: '#0f9b9b', fontWeight: 'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">{profesional.especialidad}</h6>
+                                        <h6 style={{ color: '#0ba7ad', fontWeight: 'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">{profesional.especialidad}</h6>
                                         <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato' }} >Registro Médico Número: {profesional.registro_medico_numero}</h6>
                                         <p>{profesional.descripcion}</p>
                                         <br></br>

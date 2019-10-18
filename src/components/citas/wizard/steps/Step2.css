@@ -1,5 +1,5 @@
 .step2 .icon_input{
-    color: #0f9b9b;
+    color: #0ba7ad;
 
   align-items: center;
   font-weight: bolder;
@@ -15,7 +15,7 @@
 
 }
 .scrollable_profesionals::-webkit-scrollbar-thumb {
-  background-color: #0f9b9b !important;
+  background-color: #0ba7ad !important;
 }
 .scrollable_profesionals::-webkit-scrollbar {
   width: 6px;
@@ -41,15 +41,15 @@
   margin: 0px;
 }
 .step2[type="radio"]:not(:checked)+span:before, [type="radio"]:not(:checked)+span:after {
-  border: 2px solid #0f9b9b;
+  border: 2px solid #0ba7ad;
 }
 .step2 a.modal-trigger {
-  color: #0f9b9b;
+  color: #0ba7ad;
 }
 
 .btn_modal_close{
    
-    background-color: #0f9b9b;
+    background-color: #0ba7ad;
     
     border-radius: 7px;
     color: white;
@@ -58,5 +58,5 @@
 .step2 .modal {width: 80%}
 
 .step2 [type="radio"]:not(:checked)+span:before, [type="radio"]:not(:checked)+span:after {
-  border: 2px solid #0f9b9b;
+  border: 2px solid #0ba7ad;
 }
