@@ -9,7 +9,7 @@ import Inscripcion from './inscripcion/Inscripcion';
 import Resultado from './resultado/Resultado';
 import Modal from './modal/Modal';
 import axios from 'axios';
-
+import ModalInscrip from './formulario/modalInscripcion/ModalInscrip';
 import './Calculadora.css';
 
 
@@ -120,6 +120,7 @@ class Calculadora extends Component {
 
         return (
             <div id="contenedor-calculadora">
+                <ModalInscrip/>
                 <Modal changeComponente={this.changeComponente} changeLogin={this.props.changeLogin}/>
                 {this.showComponente()}
             </div>
