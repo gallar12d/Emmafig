@@ -161,14 +161,22 @@ class ComponentMaster extends Component {
             id: localStorage.getItem('id')
         });
         
-        if(this.state.loginCalculadora == 1 && this.state.login == 1){
+        /*if(this.state.loginCalculadora == 1 && this.state.login == 1){
             this.setState({
                 changeCompt: 1
             })
             this.saveResult();
             this.showComponent();
-        }   
-        
+        }*/   
+        if(this.state.login == 1){            
+            if(this.state.loginCalculadora == 1){
+                this.saveResult();
+            }   
+            this.setState({
+                changeCompt: 1
+            });         
+            this.showComponent();
+        }
     }
 
     changeLoginCalculadora = () => {
