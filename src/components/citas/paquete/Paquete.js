@@ -23,6 +23,7 @@ class Paquete extends Component {
 
     }
     addItem(id, nombre) {
+        this.props.changeOrigen('Citas')
 
         if(this.props.login == 0){
             var elem = document.getElementById('modal1');
