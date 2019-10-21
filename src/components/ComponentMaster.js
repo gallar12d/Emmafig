@@ -34,7 +34,8 @@ class ComponentMaster extends Component {
             id: "",
             loginCitas: 0,
             riesgo: 0,
-            respuestas: []         
+            respuestas: [],
+            origen: 'initial'        
 
         }
         //this.clickLogin = this.clickLogin.bind(this);
@@ -181,13 +182,20 @@ class ComponentMaster extends Component {
 
     changeLoginCalculadora = () => {
         this.setState({
-            loginCalculadora: 1
+            loginCalculadora: 1,
+            origen: 'calculadora'
         });
     }
     
     changeLoginCitas = () => {
         this.setState({
             loginCitas: 1
+        });
+    }
+
+    changeOrigen = (origen = 'initial') => {
+        this.setState({
+            origen: origen
         });
     }
 
