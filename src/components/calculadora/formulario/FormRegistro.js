@@ -7,6 +7,8 @@ import './FormRegistro.css';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from 'react-google-login';
 import Axios from 'axios';
+import swal from 'sweetalert';
+
 import $ from "jquery";
 import ModalInscrip from './modalInscripcion/ModalInscrip';
 class FormRegistro extends Component {
@@ -165,9 +167,13 @@ class FormRegistro extends Component {
                     )
                         .then(res => {
                             console.log(res.data.message);
-                            //alert('Registro exitoso');
-                            M.Modal.getInstance(document.getElementById('modal2')).open();                            
-                            this.login();
+                            swal("¡Felicitaciones!", "Registro exitoso", "success")
+                                .then((value) => {
+                                    this.login();
+                                });                            
+                            
+                            //M.Modal.getInstance(document.getElementById('modal2')).open();                            
+                            //
                         })
                         .catch((error) => {
                             if (error.response) {

@@ -31,7 +31,8 @@
     "react-slideshow-image": "^1.3.0",
     "react-spring": "^8.0.27",
     "redux-form-validators": "^3.3.2",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "sweetalert": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
