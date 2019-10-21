@@ -152,7 +152,7 @@ class ComponentMaster extends Component {
             return (<h1>hola mundo</h1>)
         }
     }*/
-    changeLogin = () => {
+    changeLogin = (origen = null) => {
       
         this.setState({
             login: this.state.prevLogin,

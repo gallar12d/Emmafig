@@ -244,7 +244,7 @@ class Perfil extends Component {
                                 resultados_emf: result.resultados_emf
                             })
                         } else {
-                            document.getElementById("msj_error").innerHTML = "no se encontraron resultados";
+                            document.getElementById("msj_error").innerHTML = "No se encontraron resultados";
                         }
                         if (this.state.resultados != null || result.code == 400 || this.state.resultados_emf != null) {
 
@@ -498,8 +498,8 @@ class Perfil extends Component {
                                     <select id="selectResult">
 
                                         <option value="todos">Todos</option>
-                                        <option value="atl">Resultados medicos</option>
-                                        <option value="emf">Estimacion de riesgo</option>
+                                        <option value="atl">Resultados médicos</option>
+                                        <option value="emf">Estimación de riesgo</option>
 
                                     </select>
 
