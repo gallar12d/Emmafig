@@ -159,7 +159,8 @@ class FormRegistro extends Component {
                         "celular": this.state.celular,
                         "password": this.state.password,
                         "tipo_identificacion": this.state.tipo_identificacion,
-                        "identificacion": this.state.identificacion
+                        "identificacion": this.state.identificacion,
+                        "canal_registro": 'emmafig'
                     }
                     )
                         .then(res => {
