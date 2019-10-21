@@ -34,7 +34,8 @@ class ComponentMaster extends Component {
             id: "",
             loginCitas: 0,
             riesgo: 0,
-            respuestas: []         
+            respuestas: [],
+            origen: ''        
 
         }
         //this.clickLogin = this.clickLogin.bind(this);
