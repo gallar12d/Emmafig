@@ -193,6 +193,12 @@ class ComponentMaster extends Component {
         });
     }
 
+    changeOrigen = (origen = 'initial') => {
+        this.setState({
+            origen: origen
+        });
+    }
+
     saveRespuestas = (respuestas, riesgo) => {
         console.log('respuestas master'+ respuestas);
         this.setState({
