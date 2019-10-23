@@ -184,6 +184,8 @@ class ComponentMaster extends Component {
                         });
                         this.showComponent();
                         break;
+                default:
+                    break;
             }            
         }
     }
