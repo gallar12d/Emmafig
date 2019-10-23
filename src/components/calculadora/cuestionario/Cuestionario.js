@@ -222,6 +222,7 @@ class Cuestionario extends Component {
                 preguntaActual.style.display = "block";
             } else if (this.countOptSelecteds(opts) == 6) {                
                 //axios.get('http://104.197.119.186/app/', {
+                this.props.showPreloader();
                 axios.get('https://emmafig.com/api1/algoritmo_prueba.php', {
                     params: {
                         //Edad_cat: this.state.selectedValues[0],
@@ -230,11 +231,11 @@ class Cuestionario extends Component {
                         comp_sex_may_3: this.state.selectedValues[3],
                         hijos_may_5: this.state.selectedValues[4],
                         con_pareja: this.state.selectedValues[5],
-                        etnia: this.state.selectedValues[2]
-                        
+                        etnia: this.state.selectedValues[2]                        
                     }
                 }).then(res => {  
-                    console.log(res);                  
+                    console.log(res);
+                    this.props.hidePreloader();                  
                     this.props.changeComponente(res.data.riesgo, this.state.selectedValues);
                     if (this.props.login == 1) {
                         this.saveResult(res.data.riesgo);

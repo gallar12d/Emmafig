@@ -12,7 +12,7 @@ import $ from "jquery";
 import { thisTypeAnnotation } from '@babel/types';
 import M from 'materialize-css';
 import axios from "axios";
-
+import swal from 'sweetalert2';
 
 let elementMenu;
 var btnMenu;
@@ -66,6 +66,9 @@ class ComponentMaster extends Component {
         simulateClick(anclaCalculadora);
     }
 
+    clickInicio(){
+        alert();       
+    }
 
     componentDidMount() {
 
@@ -242,6 +245,19 @@ class ComponentMaster extends Component {
             });
     }
 
+    showPreloader(){
+        swal.fire({
+            title: 'Calculando...',
+            text: 'Por favor espere',
+            imageUrl: '/img/basicloader.gif',
+            allowOutsideClick: false,
+            showConfirmButton: false
+          })
+    }
+
+    hidePreloader(){
+        swal.close();
+    }
     componentDidUpdate() {
         ancla = this.props.ancla;
         if (this.state.login == 0) {
@@ -307,6 +323,8 @@ class ComponentMaster extends Component {
                             changeLogin={this.changeLogin.bind(this)}
                             changeLoginCalculadora={this.changeLoginCalculadora.bind(this)}
                             resultadoGotoCita={this.resultadoGotoCita.bind(this)}
+                            showPreloader={this.showPreloader}
+                            hidePreloader={this.hidePreloader}
                         />
                         <Citas id_usuario={this.state.id} logCitas={this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
 
@@ -335,7 +353,7 @@ class ComponentMaster extends Component {
 
         return (
             <div className="mainComponent">
-                {<Menu changeOrigen={this.changeOrigen} setModalIsOpen={this.setModalIsOpen} login={this.state.login} primer_nombre={this.state.primer_nombre} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
+                {<Menu clickInicio={this.clickInicio} changeOrigen={this.changeOrigen} setModalIsOpen={this.setModalIsOpen} login={this.state.login} primer_nombre={this.state.primer_nombre} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
                 {this.showComponent()}
 
             </div>
