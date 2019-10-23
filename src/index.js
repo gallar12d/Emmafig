@@ -11,7 +11,8 @@ import "slick-carousel/slick/slick-theme.css";
 import FaqMaster from './FaqMaster';
 import PerfilMaster from './PerfilMaster';
 import EditperfilMaster from './EditPerfilMaster';
-import Terminos_Condiciones from './components/terminos_condiciones/Terminos'
+import Terminos_Condiciones from './components/terminos_condiciones/Terminos';
+import Somos from './components/quienes_somos/Somos'
 
 
 const routing = (
@@ -26,7 +27,8 @@ const routing = (
             <Route exact path="/faq" component={FaqMaster} />
             <Route exact path="/perfil" component={PerfilMaster} />    
             <Route exact path="/Editperfil" component={EditperfilMaster} />      
-            <Route exact path="/terminos_condiciones" component={Terminos_Condiciones} />       
+            <Route exact path="/terminos_condiciones" component={Terminos_Condiciones} /> 
+            <Route exact path="/somos" component={Somos} />      
             <Route component={NotFound} />
         </Switch>
       </div>

@@ -38,7 +38,7 @@ class CustomSlide extends Component {
                   </h4>
                   <div id="PosicionButton">
                     <a className="btn-small buttonSmall " href="http://blog.emmafig.com/" target="_blank">Conoce más</a>
-                    <a className="btn-small buttonSmall" onClick={this.props.simulateClickFunction}>Calcula tu riesgo</a>
+                    {/* <a hidden className="btn-small buttonSmall" onClick={this.props.simulateClickFunction}>Calcula tu riesgo</a> */}
                     <div>
                       <br />
                     </div>
@@ -51,7 +51,7 @@ class CustomSlide extends Component {
                   <div className=""><h2 className="texto-encima"><b>{titulo}</b></h2></div>
                   <div className="PosicionButtonMovil">
                     <a className="btn-small buttonSmall " href="http://blog.emmafig.com/" target="_blank">Conoce más</a>
-                    <a className="btn-small buttonSmall" onClick={this.props.simulateClickFunction}>Calcula tu riesgo</a>
+                    {/*<a hidden className="btn-small buttonSmall" onClick={this.props.simulateClickFunction}>Calcula tu riesgo</a>*/}
                   </div>
                     </div>
                  

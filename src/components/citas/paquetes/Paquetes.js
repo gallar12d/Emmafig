@@ -29,7 +29,7 @@ class Paquetes extends Component {
 
     }
     render() {
-        const listItems = this.state.paquetes.map((d) => <Paquete loginCitas={this.props.loginCitas} login={this.props.login} avatar={d.imagen} item_selected = {this.props.item} id={d.id_paquete} key={d.id_paquete} titulo={d.nombre} valor_antiguo={d.valor_antiguo} valor={d.valor} descripcion={d.descripcion} recomendaciones={d.recomendaciones}></Paquete>);
+        const listItems = this.state.paquetes.map((d) => <Paquete changeOrigen = {this.props.changeOrigen}  loginCitas={this.props.loginCitas} login={this.props.login} avatar={d.imagen} item_selected = {this.props.item} id={d.id_paquete} key={d.id_paquete} titulo={d.nombre} valor_antiguo={d.valor_antiguo} valor={d.valor} descripcion={d.descripcion} recomendaciones={d.recomendaciones}></Paquete>);
         return (            
                 <div className="row espacioPack">
                        {listItems}                       

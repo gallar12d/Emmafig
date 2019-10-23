@@ -187,6 +187,8 @@ class ComponentMaster extends Component {
                         });
                         this.showComponent();
                         break;
+                default:
+                    break;
             }            
         }
     }
@@ -326,8 +328,7 @@ class ComponentMaster extends Component {
                             showPreloader={this.showPreloader}
                             hidePreloader={this.hidePreloader}
                         />
-                        <Citas id_usuario={this.state.id} logCitas={this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
-
+                        <Citas  origen =  {this.state.origen} changeOrigen = {this.changeOrigen.bind(this)} id_usuario = {this.state.id} logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
 
                         <Testimonios />
                         <Contacto />

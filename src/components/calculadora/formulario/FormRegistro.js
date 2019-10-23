@@ -535,7 +535,7 @@ class FormRegistro extends Component {
         if (this.state.showOptions == 1) {
             return (
                 <div id="cont_opciones">
-                    <p id="titulo_opciones" className="center info-codigo">Registrate</p>
+                    <p id="titulo_opciones" className="center info-codigo">Regístrate</p>
                     <p className="center info-codigo">Podrás participar de promociones en nuestros servicios, además recibirás noticias de eventos <br />totalmente gratis</p>
                     <div id="btn_ingresar" className="row">
                         <a className="waves-light btn col s10 offset-s1" id="btn_ingresar_a" onClick={this.isLogin}>Ingresar</a>

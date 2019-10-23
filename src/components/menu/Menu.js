@@ -61,8 +61,8 @@ class Menu extends Component {
         let inicio;
         let inicio_sm;
         if (this.props.login == 0) {
-            inicio = <li><a className="modal-trigger" href='#modal1' onClick={() => {this.props.changeOrigen('menu'); this.props.clickInicio()}}><span id="txt_boton_entrar">Entrar</span></a></li>
-            inicio_sm = <a className="modal-trigger hide-on-large-only aling-right" href='#modal1'><span id="txt_boton_entrar">Entrar</span></a>
+            inicio = <li><a className="modal-trigger" href='#modal1' onClick={() => {this.props.changeOrigen('menu')}}><span id="txt_boton_entrar">Regístrate</span></a></li>
+            inicio_sm = <a className="modal-trigger hide-on-large-only aling-right" href='#modal1'><span id="txt_boton_entrar">Regístrate</span></a>
         } else {
             inicio = null;
             inicio_sm = null;
@@ -129,6 +129,10 @@ class Menu extends Component {
                             </a>
                             {inicio_sm}
                             <ul className=" menuItems right hide-on-med-and-down">
+                                <li >
+
+                                <a href={'/somos'}>Quienes somos</a>
+                                </li>
                                 <li id="citas_li">
 
                                     <Link
@@ -297,31 +301,16 @@ class Menu extends Component {
                
                 <ul className="sidenav" id="mobile-demo">
                     {usuario_sm}
-                    <li id="hiddenTerminos">
+                    
+                    <li id="citas_li_sm">
 
-
-
-                        <Link
-                            onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCalculadora_sm") }}
-
-                            activateclass="activate"
-                            to="contenedor-calculadora"
-                            spy={true}
-                            smooth={true}
-                            offset={-55}
-                            duration={500}
-                        >
-                            Calculadora
-                                </Link>
-
-
+                        <li >
+                            <a href='somos'>Quienes somos</a>
+                        </li>
 
                     </li>
 
                     <li id="citas_li_sm">
-
-
-
 
                         <Link
 
