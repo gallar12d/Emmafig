@@ -61,7 +61,7 @@ class Menu extends Component {
         let inicio;
         let inicio_sm;
         if (this.props.login == 0) {
-            inicio = <li><a className="modal-trigger" href='#modal1' onClick={() => {this.props.changeOrigen('menu')}}><span id="txt_boton_entrar">Regístrate</span></a></li>
+            inicio = <li><a className="modal-trigger" href='#modal1' onClick={() => {this.props.changeOrigen('menu'); this.props.clickInicio()}}><span id="txt_boton_entrar">Regístrate</span></a></li>
             inicio_sm = <a className="modal-trigger hide-on-large-only aling-right" href='#modal1'><span id="txt_boton_entrar">Regístrate</span></a>
         } else {
             inicio = null;
