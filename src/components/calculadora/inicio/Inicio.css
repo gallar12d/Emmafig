@@ -1,3 +1,7 @@
+#avatar_emma {
+  width: 100%;
+}
+
 #contenedor-inicio {
   opacity: 0;
   will-change: transform, opacity;
@@ -7,6 +11,8 @@
 
 #contenedor-inicio #inicio-imagenes {
   margin-bottom: 0;
+  padding-top: 1em;
+  padding-bottom: 2em;
 }
 
 #contenedor-inicio #inicio-imagenes #avatar_emma {
@@ -15,7 +21,7 @@
 }
 
 #contenedor-inicio #btn_begin {
-  margin-top: 15%;
+  /*margin-top: 15%;*/
   cursor: pointer;
 }
 
@@ -46,34 +52,33 @@
 #contenedor-inicio #btn_begin:hover .cls-3 {
   fill: #492c5d;
 }
-
-#avatar_emma {
-  width: 100%;
+.encabezado {
+  color: #0ba7ad;
 }
-
 #logo_emmafig {
   width: 100%;
 }
-
 .texto {
   font-family: "Roboto";
   font-size: 25px;
   fill: #6f6f6e;
 }
-
-.encabezado {
-  color: #0ba7ad;
+#subtitulo-cal{      
+  margin-top: 0.1rem;
+  font-size: 1.64rem;
+  color: #000;
 }
+
 
 @media (max-width: 780px) {
   #btn_begin {
-    width: 100%;
+    width: 130%;
   }
 }
 
 @media (min-width: 1100px) {
   #btn_begin {
-    width: 80%;
+    width: 130%;
   }
 }
 /*# sourceMappingURL=Inicio.css.map */
