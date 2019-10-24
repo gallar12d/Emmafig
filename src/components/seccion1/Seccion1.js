@@ -38,7 +38,6 @@ class CustomSlide extends Component {
                   </h4>
                   <div id="PosicionButton">
                     <a className="btn-small buttonSmall " href="http://blog.emmafig.com/" target="_blank">Conoce más</a>
-                    <a className="btn-small buttonSmall" onClick={this.props.simulateClickFunction}>Calcula tu riesgo</a>
                     <div>
                       <br />
                     </div>
@@ -71,7 +70,10 @@ const fadeProperties = {
   duration: 12000,
   transitionDuration: 600,
   infinite: true,
-  indicators: false,
+  indicators: true,
+  onChange: (oldIndex, newIndex) => {
+    console.log(`fade transition from ${oldIndex} to ${newIndex}`);
+  },
   arrows: true
 };
 
