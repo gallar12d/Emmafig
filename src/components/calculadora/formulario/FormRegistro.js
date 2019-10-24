@@ -536,12 +536,12 @@ class FormRegistro extends Component {
             return (
                 <div id="cont_opciones">
                     <p id="titulo_opciones" className="center info-codigo">Regístrate</p>
-                    <p className="center info-codigo">Podrás participar de promociones en nuestros servicios, además recibirás noticias de eventos <br />totalmente gratis</p>
+                    <p className="center info-codigo">Accede a tus resultados <br />totalmente gratis</p>
                     <div id="btn_ingresar" className="row">
-                        <a className="waves-light btn col s10 offset-s1" id="btn_ingresar_a" onClick={this.isLogin}>Ingresar</a>
+                        <a className="waves-light btn col s10 offset-s1" id="btn_ingresar_a" onClick={this.isLogin}>Ingresa</a>
                     </div>
                     <div id="btn_registro" className="row">
-                        <a className="waves-light btn col s10 offset-s1 btn_registro" id="btn_ingresar_r" onClick={this.isRegistro}>Registrarse</a>
+                        <a className="waves-light btn col s10 offset-s1 btn_registro" id="btn_ingresar_r" onClick={this.isRegistro}>Regístrate</a>
                     </div>
                 </div>
             )
@@ -611,7 +611,16 @@ class FormRegistro extends Component {
             }
             return (
                 <div id="cont_registro">
-                    <CamposPorDefecto text='Registro' />
+                    <CamposPorDefecto text='registro' />
+                    <div id="cont_celular" className="row">
+                        <div className="input-field col s12 l10 offset-l1">
+                            <i className="material-icons prefix">phone</i>
+                            <input  id="celular" type="number" className="validate noscroll" minLength="10" required />
+                            <label htmlFor="celular">Celular *</label>
+                            <p id="celular-error" className="center cel-error">Por favor digite un número de celular para continuar</p>
+                              
+                        </div>
+                    </div>
                     <div id="cont_correo" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">https</i>
@@ -634,19 +643,12 @@ class FormRegistro extends Component {
                             <p id="password-error" className="center cel-error">Por favor digite su confirmación de password</p>
                         </div>
                     </div>
-                    <div id="cont_celular" className="row">
-                        <div className="input-field col s12 l10 offset-l1">
-                            <i className="material-icons prefix">phone</i>
-                            <input  id="celular" type="number" className="validate noscroll" minLength="10" required />
-                            <label htmlFor="celular">Celular *</label>
-                            <p id="celular-error" className="center cel-error">Por favor digite un número de celular para continuar</p>
-                            <div>
-                                <small id="phone_msg" className="  celular-animation validate_phone_msg">
-                                    Recuerda que tu número de celular debe ser válido, ya que por este medio te enviaremos información personal y confidencial
-                                </small>
-                            </div>   
-                        </div>
-                    </div>
+                     <div>
+                             <small id="phone_msg" className="  celular-animation validate_phone_msg">
+                                    Recuerda que la tu información debe ser válida, ya que por te enviaremos información personal y confidencial a través de estos medios.
+                            </small>
+                    </div> 
+                    
                     <div id="cont_terminos" className="row">
                         <div className="input-field col s12 l12">
                             <p>
@@ -658,13 +660,14 @@ class FormRegistro extends Component {
                                         }
                                     } required />
                                     <span>He leído y acepto los
-                                    <a href="#/terminos_condiciones" target="_blank"> Términos y condiciones</a></span>
+                                    <a href="#/terminos_condiciones" target="_blank"> Política de Tratamiento de Datos</a></span>
                                 </label>
                             </p>
                             <br></br>
                             <p id="terminos-error" className="center cel-error">Debe aceptar los términos y condiciones para continuar</p>
                         </div>
                     </div>
+                   
                     <div id="user_exits" className='alert alert-danger'>Registro fallido. la identificación ya existe.</div>
                     {
                         this.showPreloader()
@@ -678,7 +681,7 @@ class FormRegistro extends Component {
             }
             return (
                 <div id="cont_login">
-                    <CamposPorDefecto text='Ingreso' />
+                    <CamposPorDefecto text='ingreso' />
                     <div id="cont_password" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">https</i>
@@ -877,8 +880,8 @@ class FormRegistro extends Component {
     }
 }
 function CamposPorDefecto(props) {
-    return <div><p id="titulo_defecto" className="center info-codigo">!Bienvenido¡</p>
-        <p className="center info-codigo">Para continuar con el {props.text} por favor ingresa los siguientes datos</p>
+    return <div><p id="titulo_defecto" className="center info-codigo">¡Bienvenida!</p>
+        <p className="center info-codigo">Para continuar con el {props.text}, diligencia los siguientes datos</p>
 
         <div className="row">
             <div className="input-field col s12 l10 offset-l1">

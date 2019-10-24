@@ -190,7 +190,7 @@ class Resultado extends Component {
                     </div>
                     <div id="cont-info-detalles" className="col s12 m9 l8">
                         <div id="contenedor-titulo-ins" className="right-align">
-                            <h1 id="titulo-res" className="flow-text right-align">Resultado</h1>
+                            <h1 id="titulo-res" className="flow-text right-align">Estimación</h1>
                             <h6 id="subtitulo-res" className="flow-text right-align">Emma dice que tu nivel de riesgo es </h6>
                             <h1 id="contenido-res" className="flow-text right-align">{this.changeDecimal()} %</h1>
                             {/*<p id="detalle-res">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>*/}
