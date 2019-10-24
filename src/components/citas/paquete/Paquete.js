@@ -88,7 +88,7 @@ class Paquete extends Component {
                         <div className="card-action">
                             <button  type="button" className=" btn_hover_pack agendarbtn btn btn-secondary  modal-trigger" href={'#Modal' + this.props.id}>Conoce más</button>
                             <br></br>
-                            <button type="button"  onClick={this.addItem.bind(this, this.props.id, this.props.titulo)} className="btn_hover_pack btn btn-secondary">Separa tu cita</button>
+                            <button type="button"  onClick={this.addItem.bind(this, this.props.id, this.props.titulo)} className="btn_hover_pack btn btn-secondary">Agenda tu cita</button>
                         </div>
                     </div>
                 </div>

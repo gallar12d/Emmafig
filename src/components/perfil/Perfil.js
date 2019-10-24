@@ -129,22 +129,22 @@ class Perfil extends Component {
                 switch (tipo_id){
                     case 'Cédula de ciudadanía':
                                     this.setState({
-                                        tipo_identificacion: "C.C:"
+                                        tipo_identificacion: "C.C."
                                     })
                         break;
                     case 'Tarjeta de identidad':
                         this.setState({
-                            tipo_identificacion: "T.I:"
+                            tipo_identificacion: "T.I."
                         })
                         break;
                     case 'Registro civil':
                         this.setState({
-                            tipo_identificacion: "R.C:"
+                            tipo_identificacion: "R.C."
                         })
                         break;
-                    case 'Cédula extrangera':
+                    case 'Cédula extranjería':
                         this.setState({
-                            tipo_identificacion: "C.E:"
+                            tipo_identificacion: "C.E."
                         })
                         break;
                     case 'NIT':
