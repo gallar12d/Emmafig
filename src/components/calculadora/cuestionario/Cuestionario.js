@@ -111,7 +111,7 @@ class Cuestionario extends Component {
         console.log(event.target.value);
         let opts = this.state.selectedOptions;
         let values = this.state.selectedValues;
-        let info_end = document.getElementById("info-fin-cuestionario");
+        //let info_end = document.getElementById("info-fin-cuestionario");
         if (op == 1) {
             if (event.target.value == 0) {
                 opts[op - 1] = 0;
@@ -119,9 +119,9 @@ class Cuestionario extends Component {
                 opts[op - 1] = 1;//la pregunta la asigna como diligenciada
                 this.updateSeguimiento(op);
                 values[op - 1] = event.target.value;
-                if (this.countOptSelecteds(opts) == 6) {
+                /*if (this.countOptSelecteds(opts) == 6) {
                     info_end.style.clipPath = "circle(75%)";
-                }
+                }*/
                 this.setState({
                     selectedOptions: opts,
                     selectedValues: values
@@ -139,9 +139,9 @@ class Cuestionario extends Component {
             opts[op - 1] = 1;//la pregunta la asigna como diligenciada
             this.updateSeguimiento(op);
             values[op - 1] = event.target.value;
-            if (this.countOptSelecteds(opts) == 6) {
+            /*if (this.countOptSelecteds(opts) == 6) {
                 info_end.style.clipPath = "circle(75%)";
-            }
+            }*/
             this.setState({
                 selectedOptions: opts,
                 selectedValues: values
@@ -164,26 +164,51 @@ class Cuestionario extends Component {
     }
 
     nextHandleMouseOver() {
-        this.setState({
-            btn_next: process.env.PUBLIC_URL + "/img/next-btn-hover.svg"
-        });
+        if(this.state.item == 6){
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/calcular-btn-hover.svg"
+            });
+        }else{
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/next-btn-hover.svg"
+            });
+        }
+
+        
     }
 
     nextHandleMouseOut() {
-        this.setState({
+        if(this.state.item == 6){
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/calcular-btn.svg"
+            });
+        }else{
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg"
+            });
+        }
+        /*this.setState({
             btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg"
-        });
+        });*/
     }
     nextClick() {
-
-        let next = this.state.item;
+   
+        let next = this.state.item;        
         const cont_btn_ant = document.getElementById("cont_btn_prev");
         const cont_btn_next = document.getElementById("cont_btn_next");
         const btn_next = document.getElementById("btn_next");
 
         let opts = this.state.selectedOptions;
         let item = this.state.item;
-
+        if(item == 6){
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/calcular-btn.svg"
+            });
+        }else{            
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg"
+            });
+        }
         const info = document.getElementById("info" + item);
         if (opts[item - 1] == 1) {
             info.style.display = "none";
@@ -303,6 +328,11 @@ class Cuestionario extends Component {
         const cont_btn_ant = document.getElementById("cont_btn_prev");
         const cont_btn_next = document.getElementById("cont_btn_next");
         const btn_next = document.getElementById("btn_next");
+        if(this.state.btn_next == process.env.PUBLIC_URL + "/img/calcular-btn.svg"){
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg"
+            });
+        }
         if (this.state.item > 1) {
             cont_btn_ant.style.display = "block";
             cont_btn_next.classList.add("left");
@@ -503,9 +533,9 @@ class Cuestionario extends Component {
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta1" className="row" oprindex="1">
-                        <div className="col l2 s6 offset-s3 offset-l5">
+                        <div className="col l4 s4 offset-s4 offset-l4">
                             <select id="op11" className="browser-default selectEdad" onChange={this.handleOptionChange} defaultValue={0}>
-                                <option value="0">Escoge un opción</option>
+                                <option value="0">Seleccione una opción</option>
                                 <option value="1">Menor de 25 años</option>
                                 <option value="2">Entre 25 y 29 años</option>
                                 <option value="3">Entre 30 y 34 años</option>
