@@ -25,7 +25,7 @@ class Contacto extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            img_marker: process.env.PUBLIC_URL + "/img/marker.png",
+            img_marker: process.env.PUBLIC_URL + "/img/marker2.png",
             hide: 0,
             sede: false,
 
@@ -382,7 +382,7 @@ class Contacto extends Component {
                                     <span className="headline_sede" onClick={() => this.showHorarios(3, "8AM - 6PM", "8AM - 12AM")}>Cali</span>
 
                                 </div>
-                                <a className="routes" href={this.state.urlMap} target="_blank">¿Como llegar?</a>
+                                <a className="routes" href={this.state.urlMap} target="_blank">¿Cómo llegar?</a>
                             </div>
 
                             <div className="row " id="head_info" >
@@ -546,7 +546,7 @@ class Contacto extends Component {
                                 <span className="headline_sede" onClick={() => this.showHorarios(3, "8AM - 6PM", "8AM - 12AM")}>Cali</span>
 
                             </div>
-                            <a className="routes" href={this.state.urlMap} target="_blank">¿Como llegar?</a>
+                            <a className="routes" href={this.state.urlMap} target="_blank">¿Cómo llegar?</a>
 
 
                             <div className="row " id="head_info" >
@@ -686,7 +686,7 @@ class Contacto extends Component {
                                     <span className="headline_sede" onClick={() => this.showHorarios(3, "8AM - 6PM", "8AM - 12AM")}>Cali</span>
 
                                 </div>
-                                <a className="routes" href={this.state.urlMap} target="_blank">¿Como llegar?</a>
+                                <a className="routes" href={this.state.urlMap} target="_blank">¿Cómo llegar?</a>
                             </div>
 
                             <div className="row " id="head_info" >
@@ -854,10 +854,10 @@ class GMapReact extends React.Component {
                     "elementType": "geometry",
                     "stylers": [
                         {
-                            "lightness": 100
+                            "lightness": 0
                         },
                         {
-                            "visibility": "simplified"
+                            "visibility": "show"
                         }
                     ]
                 },
@@ -866,10 +866,11 @@ class GMapReact extends React.Component {
                     "elementType": "labels",
                     "stylers": [
                         {
-                            "visibility": "off"
+                            "visibility": "show"
                         }
                     ]
                 },
+                                
                 {
                     "featureType": "transit.line",
                     "elementType": "geometry",

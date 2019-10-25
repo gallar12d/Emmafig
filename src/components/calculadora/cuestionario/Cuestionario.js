@@ -220,27 +220,22 @@ class Cuestionario extends Component {
                 opcRespOK.style.display = "none";
                 opcRespActual.style.display = "block";
                 preguntaActual.style.display = "block";
-            } else if (this.countOptSelecteds(opts) == 6) {
-                let etnia_afro = 0;
-                let etnia_indigena = 0;
-                if (this.state.selectedValues[5] == '1') {
-                    etnia_afro = 1
-                } else if (this.state.selectedValues[5] == '2') {
-                    etnia_indigena = 1;
-                }
+            } else if (this.countOptSelecteds(opts) == 6) {                
                 //axios.get('http://104.197.119.186/app/', {
+                this.props.showPreloader();
                 axios.get('https://emmafig.com/api1/algoritmo_prueba.php', {
                     params: {
                         //Edad_cat: this.state.selectedValues[0],
                         edad: this.state.selectedValues[0],
-                        hijos_may_3: this.state.selectedValues[1],
-                        comp_sex_may_2: this.state.selectedValues[2],
-                        con_pareja: this.state.selectedValues[3],
-                        sex_antes_15: this.state.selectedValues[4],
-                        etnia_indigena: this.state.selectedValues[5],
-                        etnia_afro: etnia_afro
+                        procedencia_urbana: this.state.selectedValues[1],
+                        comp_sex_may_3: this.state.selectedValues[3],
+                        hijos_may_5: this.state.selectedValues[4],
+                        con_pareja: this.state.selectedValues[5],
+                        etnia: this.state.selectedValues[2]                        
                     }
-                }).then(res => {                    
+                }).then(res => {  
+                    console.log(res);
+                    this.props.hidePreloader();                  
                     this.props.changeComponente(res.data.riesgo, this.state.selectedValues);
                     if (this.props.login == 1) {
                         this.saveResult(res.data.riesgo);
@@ -516,11 +511,11 @@ class Cuestionario extends Component {
                                 <option value="3">Entre 30 y 34 años</option>
                                 <option value="4">Entre 35 y 39 años</option>
                                 <option value="5">Entre 40 y 44 años</option>
-                                <option value="1">Entre 45 y 49 años</option>
-                                <option value="2">Entre 50 y 54 años</option>
-                                <option value="3">Entre 55 y 59 años</option>
-                                <option value="4">Entre 60 y 64 años</option>
-                                <option value="5">65 años o más</option>
+                                <option value="6">Entre 45 y 49 años</option>
+                                <option value="7">Entre 50 y 54 años</option>
+                                <option value="8">Entre 55 y 59 años</option>
+                                <option value="9">Entre 60 y 64 años</option>
+                                <option value="10">65 años o más</option>
                             </select>
                         </div>
                         {/*<label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
@@ -555,16 +550,16 @@ class Cuestionario extends Component {
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta3" className="row" oprindex="3">
-                        <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
-                            <input id="op31" className="with-gap" name="group3" type="radio" value="1" onChange={this.handleOptionChange} />
+                        <label className="col s2 m2 l1 offset-m2 offset-l4 offset-s5">
+                            <input id="op31" className="with-gap" name="group3" type="radio" value="0" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Afro</span>
                         </label>
-                        <label className="col s2 m2 l1">
-                            <input id="op31" className="with-gap" name="group3" type="radio" value="0" onChange={this.handleOptionChange} />
+                        <label className="col s2 m2 l1 offset-s5">
+                            <input id="op32" className="with-gap" name="group3" type="radio" value="1" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Indígena</span>
                         </label>
-                        <label className="col s2 m2 l1">
-                            <input id="op31" className="with-gap" name="group3" type="radio" value="0" onChange={this.handleOptionChange} />
+                        <label className="col s2 m2 l2 offset-s5 offset-m1">
+                            <input id="op33" className="with-gap" name="group3" type="radio" value="2" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Mestizo</span>
                         </label>
                     </div>
@@ -607,18 +602,14 @@ class Cuestionario extends Component {
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta6" className="row" oprindex="6">
-                        <label className="col s2 m2 l1 offset-m2 offset-l4 offset-s5">
+                        <label className="col s2 m2 l1 offset-s4 offset-m4 offset-l5">
                             <input id="op61" className="with-gap" name="group6" type="radio" value="1" onChange={this.handleOptionChange} />
                             <span className="contenido-respuesta">Sí</span>
                         </label>
-                        <label className="col s2 m2 l1 offset-s5">
-                            <input id="op62" className="with-gap" name="group6" type="radio" value="2" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">No</span>
-                        </label>
-                        <label className="col s2 m2 l2 offset-s5 offset-m1">
+                        <label className="col s2 m2 l1">
                             <input id="op62" className="with-gap" name="group6" type="radio" value="0" onChange={this.handleOptionChange} />
-                            <span className="contenido-respuesta">Ninguna</span>
-                        </label>
+                            <span className="contenido-respuesta">No</span>
+                        </label>                        
                     </div>
                 </form>
                 <div id="contenedor-botones" className="row">

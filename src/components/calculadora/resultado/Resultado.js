@@ -6,6 +6,7 @@ import '../../../../node_modules/font-awesome/css/font-awesome.min.css'
 import axios from 'axios';
 /*import './materialize-social.css'*/
 let formatos = [0, 0, 0, 0, 0, 0];
+let riesgo;
 class Resultado extends Component {
 
     constructor(props) {
@@ -29,14 +30,14 @@ class Resultado extends Component {
         this.masHandleClick = this.masHandleClick.bind(this);
         this.mountStyle = this.mountStyle.bind(this);
         this.unMountStyle = this.unMountStyle.bind(this);
+        this.changeDecimal = this.changeDecimal.bind(this);
     }
 
     componentDidMount() {
-        let riesgo = 0;
-        if(this.props.result == 'Alto'){
-            riesgo = 1;
-        }
-        this.props.saveRespuestas(this.props.respuestas, riesgo);
+        let porcentaje = this.props.result * 100;
+        let riesgo = porcentaje.toFixed(2);
+        console.log(riesgo);
+        this.props.saveRespuestas(this.props.respuestas, this.props.result);
         axios.post(' https://emmafig.com/api1/updateResultSeguimiento', {
             //axios.post('http://localhost/api1/updateResultSeguimiento',{
             "id_seguimiento": localStorage.getItem('id_seguimiento'),
@@ -119,40 +120,64 @@ class Resultado extends Component {
         }
         return opcion;
     }
-    formatRespuestas = () => {
-
+    formatRespuestas = () => {        
         switch (this.props.respuestas[0]) {
-            case 1: formatos[0] = 'Menor de 15 años';
+            case '1': formatos[0] = 'Menor de 25 años';                    
+                    break;
+            case '2': formatos[0] = 'Entre 25 y 29 años';                    
+                    break;
+            case '3': formatos[0] = 'Entre 30 y 34 años';
+                    console.log('caso 3');
                 break;
-            case 2: formatos[0] = 'Entre 15 y 20 años';
+            case '4': formatos[0] = 'Entre 35 y 39 años';
+                    console.log('caso 4');
                 break;
-            case 3: formatos[0] = 'Entre 21 y 30 años';
+            case '5': formatos[0] = 'Entre 40 y 44 años';
+                    console.log('caso 5');
                 break;
-            case 4: formatos[0] = 'Entre 31 y 50 años';
+            case '6': formatos[0] = 'Entre 45 y 49 años';
+                    console.log('caso 6');
                 break;
-            default: formatos[0] = 'Mayor de 50 años';
+            case '7': formatos[0] = 'Entre 50 y 54 años';
+                    console.log('caso 7');
+                break;
+            case '8': formatos[0] = 'Entre 55 y 59 años';
+                    console.log('caso 8');
+                break;
+            case '9': formatos[0] = 'Entre 60 y 64 años';
+                    console.log('caso 9');
+                break;
+            default: formatos[0] = '65 años o más';
+                    console.log('caso 10');
                 break;
         }
 
-        for (var i = 1; i <= 4; i++) {
+        for (var i = 3; i <= 5; i++) {
             if (this.props.respuestas[i] == 1) {
                 formatos[i] = 'Sí'
             } else {
                 formatos[i] = 'No'
             }
         }
-        switch (this.props.respuestas[5]) {
-            case '0': formatos[5] = 'Ninguna';
-                console.log('Ninguna');
+        switch (this.props.respuestas[1]) {
+            case '1': formatos[1] = 'Sí';
                 break;
-            case '1': formatos[5] = 'Afro';
-                console.log('Afro');
+            case '0': formatos[1] = 'No';
                 break;
-            case '2': formatos[5] = 'Indigena';
-                console.log('Indigena');
+        }
+        switch (this.props.respuestas[2]) {
+            case '0': formatos[2] = 'Afro';
+                break;
+            case '1': formatos[2] = 'Indígena';
+                break;
+            case '2': formatos[2] = 'Mestizo';
                 break;
         }
         console.log(formatos);
+    }
+    changeDecimal(){
+        let num = this.props.result * 100;
+        return parseFloat(num).toFixed(2);
     }
     render() {
 
@@ -160,19 +185,19 @@ class Resultado extends Component {
 
             <div style={this.state.style} id="contenedor-resultado">
                 <div id="contenedor-detalles" className="row">
-                    <div id="contenedor-emma">
+                    <div id="contenedor-emma" className="hide-on-small-only">
                         <img id="img-emma" src={this.state.img_emma} />
                     </div>
                     <div id="cont-info-detalles" className="col s12 m9 l8">
                         <div id="contenedor-titulo-ins" className="right-align">
-                            <h1 id="titulo-res" className="flow-text right-align">Resultado</h1>
+                            <h1 id="titulo-res" className="flow-text right-align">Estimación</h1>
                             <h6 id="subtitulo-res" className="flow-text right-align">Emma dice que tu nivel de riesgo es </h6>
-                            <h1 id="contenido-res" className="flow-text right-align">{this.props.result}</h1>
-                            <p id="detalle-res">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                            <h1 id="contenido-res" className="flow-text right-align">{this.changeDecimal()} %</h1>
+                            {/*<p id="detalle-res">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>*/}
                         </div>
                         <div className="row row-resultado">
                             <div className="col l12">
-                                <table className="centered">
+                                <table className="centered" className="hide-on-small-only">
                                     <thead>
                                         <tr>
                                             <th>¿Cuántos años tienes?</th>
@@ -188,6 +213,67 @@ class Resultado extends Component {
                                         <tr>
                                             {formatos.map((item, index) => <td key={index}>{item}</td>)}
                                         </tr>
+                                    </tbody>
+                                </table>
+                                <table className="centered" className="show-on-small hide-on-med-and-up">
+                                    <thead>
+                                        <tr>
+                                            <th>Pregunta</th>
+                                            <th>Respuesta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <td>
+                                            <tr>
+                                                <td>
+                                                    ¿Cuántos años tienes?
+                                                </td>
+                                                <td>
+                                                    {formatos[0]}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    ¿Vives en una zona urbana?
+                                                </td>
+                                                <td>
+                                                    {formatos[1]}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    ¿A qué grupo étnico pertences?
+                                                </td>
+                                                <td>
+                                                    {formatos[2]}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    ¿Has tenido 3 o más compañeros sexuales en los últimos 5 años?
+                                                </td>
+                                                <td>
+                                                    {formatos[3]}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    ¿Tienes 5 o más hijos?
+                                                </td>
+                                                <td>
+                                                    {formatos[4]}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    ¿Tienes cónyuge o pareja estable?
+                                                </td>
+                                                <td>
+                                                    {formatos[5]}
+                                                </td>
+                                            </tr>
+
+                                        </td>
                                     </tbody>
                                 </table>
                             </div>

@@ -125,11 +125,11 @@ class Step3 extends Component {
 
                     <div className="icon_input">
                         <div className='floting'>
-                            <MdLocationOn color={'#0f9b9b'} size={35} />
+                            <MdLocationOn color={'#0ba7ad'} size={35} />
 
                         </div>
                         <div className='floting'>
-                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0f9b9b' }}>Punto de atención:</h6>
+                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0ba7ad' }}>Punto de atención:</h6>
 
                         </div>
                         <div className='floting'>
@@ -139,11 +139,11 @@ class Step3 extends Component {
                     </div>
                     <div className="icon_input">
                         <div className='floting'>
-                            <MdEvent color={'#0f9b9b'} size={35} />
+                            <MdEvent color={'#0ba7ad'} size={35} />
 
                         </div>
                         <div className='floting'>
-                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0f9b9b' }}>Fecha de la cita:</h6>
+                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0ba7ad' }}>Fecha de la cita:</h6>
 
                         </div>
                         <div className='floting'>
@@ -154,11 +154,11 @@ class Step3 extends Component {
                     </div>
                     <div className="icon_input">
                         <div className='floting'>
-                            <FaUserNurse color={'#0f9b9b'} size={35} />
+                            <FaUserNurse color={'#0ba7ad'} size={35} />
 
                         </div>
                         <div className='floting'>
-                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0f9b9b' }}>Profesional:</h6>
+                            <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato', color: '#0ba7ad' }}>Profesional:</h6>
 
                         </div>
                         <div className='floting'>
@@ -169,7 +169,7 @@ class Step3 extends Component {
                     </div>
                     <div className="icon_input">
                         <div className='floting'>
-                            <MdAccessAlarms color={'#0f9b9b'} size={35} />
+                            <MdAccessAlarms color={'#0ba7ad'} size={35} />
 
                         </div>
                         <div style={{ width: '100%' }} className='floting'>

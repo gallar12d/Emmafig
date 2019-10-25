@@ -23,6 +23,7 @@ class Paquete extends Component {
 
     }
     addItem(id, nombre) {
+        this.props.changeOrigen('Citas')
 
         if(this.props.login == 0){
             var elem = document.getElementById('modal1');
@@ -60,11 +61,11 @@ class Paquete extends Component {
 
         if (this.props.id == 1 || this.props.id == 2) {
             word = 'Qué es la ' + word
-            whatis = <h4 style={{'color': '#c73a8c', 'fontWeith': 'bolder'}}>{word} </h4>
+            whatis = <h4 style={{'color': '#492c51', 'fontWeith': 'bolder'}}>{word} </h4>
         }
         else {
             word = 'Qué es el ' + word
-            whatis = <h4 style={{'color': '#c73a8c', 'fontWeith': 'bolder'}}>{word} </h4>
+            whatis = <h4 style={{'color': '#492c51', 'fontWeith': 'bolder'}}>{word} </h4>
 
         }
 
@@ -85,9 +86,9 @@ class Paquete extends Component {
                             <p>Si separas tu cita por este medio</p>
                         </div>
                         <div className="card-action">
-                            <button type="button" className=" agendarbtn btn btn-secondary  modal-trigger" href={'#Modal' + this.props.id}>Conoce más</button>
+                            <button  type="button" className=" btn_hover_pack agendarbtn btn btn-secondary  modal-trigger" href={'#Modal' + this.props.id}>Conoce más</button>
                             <br></br>
-                            <button type="button" onClick={this.addItem.bind(this, this.props.id, this.props.titulo)} className="btn btn-secondary">Separa tu cita</button>
+                            <button type="button"  onClick={this.addItem.bind(this, this.props.id, this.props.titulo)} className="btn_hover_pack btn btn-secondary">Agenda tu cita</button>
                         </div>
                     </div>
                 </div>
@@ -105,7 +106,7 @@ class Paquete extends Component {
                             <p>{this.props.descripcion}</p>
 
                             <br></br>
-                            <h4 style={{'color': '#c73a8c', 'fontWeith': 'bolder'}}>Recomendaciones para la toma de muestra</h4>
+                            <h4 style={{'color': '#492c51', 'fontWeith': 'bolder'}}>Recomendaciones para la toma de muestra</h4>
                             <hr></hr>
 
                             <p>Para acceder al servicio de {word2}, por favor tenga en cuenta:</p>

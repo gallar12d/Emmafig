@@ -5,9 +5,9 @@ import Footer from '../footer/Footer';
 
 
 import '../menu/Menu.css'
-import './Terminos.css';
+import './Somos.css';
 
-class Terminos extends Component {
+class Somos extends Component {
     constructor(props) {
 
         super(props);
@@ -64,11 +64,10 @@ class Terminos extends Component {
 
 
                 <div className="container">
-                    <h4>TERMINOS Y CONDICIONES</h4>
+                    <h4>QUIENES SOMOS</h4>
                     <div className="row">
                         <div className=" col m12">
-                            <b>FUNDACIÓN INNOVAGEN</b> con sede principal en la Calle 11N # 7-12 de Popayán, teléfono (2) 837 2935, (2) 838 2135 Cel: 317 441 2170 y dirección web www.fig.org.co correo electrónico contacto@fundacioninnovagen.org como responsable y encargado del tratamiento y custodia de datos personales informa que:
-
+                            En la Fundación InnovaGen con más de 8 años en el mercado del cauca y vale del cauca, buscamos contribuir a la generación de nuevo conocimiento científico y tecnológico a través de la gestión y ejecución de investigación básica y aplicada en biología molecular, medicina y ciencias afines; así como promover, desarrollar y prestar servicios de salud a la población, soportados en tecnologías de punta para el mejoramiento de la calidad de vida y la salud pública de la región y el país. Por tal razón, queremos seguir comunicándonos con Usted para informarle sobre las novedades de nuestros productos y servicios, así como de las promociones y/o campañas sobre los mismos, realizar encuestas de satisfacción y fortalecer nuestros canales de servicio al cliente.
                         </div> 
                         
                         
@@ -101,4 +100,4 @@ class Terminos extends Component {
 
 
 }
-export default Terminos;
+export default Somos;

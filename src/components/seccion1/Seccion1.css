@@ -1,7 +1,7 @@
 .containerSection1 {
   width: 100%;
   min-width: 100%;
-  /*height: 70vh!important;
+  height: 70%!important;
   /*height: 70vh!important;*/
   /* Font styles */
   font-size: 1.1em;
@@ -20,7 +20,7 @@
 #div-seccion1 .panel {
   position: absolute;
   width: 100%;
-  min-height: 80vh;
+ /* min-height: 80vh;*/
   background-size: cover;
   top: 0;
   left: 0;
@@ -110,7 +110,7 @@
   border-radius: 6px !important;
   background-color: #0ba7ad !important;
   line-height: 32.4px;
-  font-size: 17px !important;
+  font-size: 20px !important;
   display: inline-block;
   -moz-user-select: none;
   vertical-align: middle;
@@ -118,9 +118,14 @@
   letter-spacing: .5px;
   padding: 0 14px;
   margin: 4px;
-  margin-top: 15px;
+  margin-top: 20px;
   text-transform: none;
   font-weight: bolder;
+}
+
+#div-seccion1 .btn-floating.btn-small {
+  width: 140px;
+  height: 32.4px;
 }
 
 }
@@ -212,7 +217,7 @@ display: none;
     border-radius: 6px !important;
     background-color: #0ba7ad !important;
     line-height: 32.4px;
-    font-size: 17px !important;
+    font-size: 20px !important;
     display: inline-block;
     -moz-user-select: none;
     vertical-align: middle;
@@ -222,6 +227,11 @@ display: none;
     margin: 4px;
     text-transform: none;
     font-weight: bolder;
+  }
+
+  #div-seccion1 .btn-floating.btn-small {
+    width: 140px;
+    height: 32.4px;
   }
   
   }

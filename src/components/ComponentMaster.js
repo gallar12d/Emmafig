@@ -12,7 +12,7 @@ import $ from "jquery";
 import { thisTypeAnnotation } from '@babel/types';
 import M from 'materialize-css';
 import axios from "axios";
-
+import swal from 'sweetalert2';
 
 let elementMenu;
 var btnMenu;
@@ -34,14 +34,15 @@ class ComponentMaster extends Component {
             id: "",
             loginCitas: 0,
             riesgo: 0,
-            respuestas: []         
+            respuestas: [],
+            origen: 'initial'
 
         }
         //this.clickLogin = this.clickLogin.bind(this);
 
     }
 
-    resultadoGotoCita(){
+    resultadoGotoCita() {
         let simulateClick = elem => {
             let evt = new MouseEvent('click', {
                 bubbles: true,
@@ -52,8 +53,8 @@ class ComponentMaster extends Component {
         let anclaCitas = document.getElementById('citas_section');
         simulateClick(anclaCitas);
     }
-    activateScrollCalculadora(){
- 
+    activateScrollCalculadora() {
+
         let simulateClick = elem => {
             let evt = new MouseEvent('click', {
                 bubbles: true,
@@ -65,16 +66,19 @@ class ComponentMaster extends Component {
         simulateClick(anclaCalculadora);
     }
 
+    clickInicio(){
+        alert();       
+    }
 
     componentDidMount() {
-        
+
         ancla = this.props.ancla;
-        console.log('jwt '+localStorage.getItem('jwt'));
-        if(localStorage.getItem('jwt') !== null){
-           
+        console.log('jwt ' + localStorage.getItem('jwt'));
+        if (localStorage.getItem('jwt') !== null) {
+
             this.changeLogin()
         }
-        
+
         /*document.getElementById('btn_conocer_mas').addEventListener('click',function(){
             let simulateClick = elem => {
                 let evt = new MouseEvent('click', {
@@ -86,8 +90,8 @@ class ComponentMaster extends Component {
             simulateClick('citas_section');
         });*/
 
-        if (ancla == "login" ){
-            if(localStorage.getItem('jwt') == null){
+        if (ancla == "login") {
+            if (localStorage.getItem('jwt') == null) {
 
                 setTimeout(function () {
                     let simulateClick = elem => {
@@ -97,19 +101,19 @@ class ComponentMaster extends Component {
                         });
                         elem.dispatchEvent(evt)
                     };
-    
+
                     M.Modal.getInstance(document.getElementById('modal1')).open();
                     var btnIngresar = document.getElementById("btn_ingresar_a");
-    
+
                     simulateClick(btnIngresar);
-        
+
                 }, 3000);
             }
-           
 
 
 
-        }else{
+
+        } else {
             this.setState({
 
                 ancla: ancla
@@ -118,11 +122,11 @@ class ComponentMaster extends Component {
     }
 
 
-    
 
 
-    changeComponente(state){
-       
+
+    changeComponente(state) {
+
 
         this.setState({
             changeCompt: state
@@ -133,7 +137,7 @@ class ComponentMaster extends Component {
         elementMenu = element1;
     }
     shouldComponentUpdate(nextProps, nextState) {
-       
+
         var checkState;
         console.log(this.state.changeCompt);
         console.log(nextState['changeCompt']);
@@ -153,58 +157,83 @@ class ComponentMaster extends Component {
         }
     }*/
     changeLogin = () => {
-      
+
         this.setState({
             login: this.state.prevLogin,
             prevLogin: this.state.login,
             primer_nombre: localStorage.getItem('primer_nombre'),
             id: localStorage.getItem('id')
         });
-        
-        if(this.state.loginCalculadora == 1 && this.state.login == 1){
+
+        /*if(this.state.loginCalculadora == 1 && this.state.login == 1){
             this.setState({
                 changeCompt: 1
             })
             this.saveResult();
             this.showComponent();
-        }   
-        
+        }*/
+        if (this.state.login == 1) {
+            switch (this.state.origen) {
+                case 'calculadora': 
+                        this.saveResult();
+                        this.setState({
+                            changeCompt: 1
+                        });
+                        this.showComponent();
+                        break;
+                case 'menu': 
+                        this.setState({
+                            changeCompt: 1
+                        });
+                        this.showComponent();
+                        break;
+                default:
+                    break;
+            }            
+        }
     }
 
     changeLoginCalculadora = () => {
         this.setState({
-            loginCalculadora: 1
+            loginCalculadora: 1,
+            origen: 'calculadora'
         });
     }
-    
+
     changeLoginCitas = () => {
         this.setState({
             loginCitas: 1
         });
     }
 
+    changeOrigen = (origen = 'initial') => {
+        this.setState({
+            origen: origen
+        });
+    }
+
     saveRespuestas = (respuestas, riesgo) => {
-        console.log('respuestas master'+ respuestas);
+        console.log('respuestas master' + respuestas);
         this.setState({
             respuestas: respuestas,
             riesgo: riesgo
         })
-        
+
     }
 
     saveResult = () => {
-        console.log('respuestas master setstate 1'+ this.state.respuestas[0]);        
+        console.log('respuestas master setstate 1' + this.state.respuestas[0]);
         axios.post('https://emmafig.com/api1/saveEstimacion', {
-        //axios.post('http://localhost/api1/saveEstimacion', {           
-                "valor_respuesta1": this.state.respuestas[0],
-                "valor_respuesta2": this.state.respuestas[1],
-                "valor_respuesta3": this.state.respuestas[2],
-                "valor_respuesta4": this.state.respuestas[3],                
-                "valor_respuesta5": this.state.respuestas[4],
-                "valor_respuesta6": this.state.respuestas[5],
-                "riesgo": this.state.riesgo,
-                "id_atl_usuario": localStorage.getItem('id')
-            
+            //axios.post('http://localhost/api1/saveEstimacion', {           
+            "valor_respuesta1": this.state.respuestas[0],
+            "valor_respuesta2": this.state.respuestas[1],
+            "valor_respuesta3": this.state.respuestas[2],
+            "valor_respuesta4": this.state.respuestas[3],
+            "valor_respuesta5": this.state.respuestas[4],
+            "valor_respuesta6": this.state.respuestas[5],
+            "riesgo": this.state.riesgo,
+            "id_atl_usuario": localStorage.getItem('id')
+
         }).then(res => {
             console.log('Estimacion guardad');
             //this.props.changeComponente(res.data.riesgo, this.state.selectedValues);
@@ -217,18 +246,31 @@ class ComponentMaster extends Component {
                 }
             });
     }
-    
+
+    showPreloader(){
+        swal.fire({
+            title: 'Calculando...',
+            text: 'Por favor espere',
+            imageUrl: '/img/basicloader.gif',
+            allowOutsideClick: false,
+            showConfirmButton: false
+          })
+    }
+
+    hidePreloader(){
+        swal.close();
+    }
     componentDidUpdate() {
         ancla = this.props.ancla;
-        if(this.state.login == 0){
+        if (this.state.login == 0) {
             localStorage.removeItem('jwt');
             localStorage.removeItem('id');
             localStorage.removeItem('primer_nombre');
-       
+
 
         }
         if (this.state.changeCompt != 1 && this.state.changeCompt != 2) {
-           
+
             console.log(elementMenu);
             if (elementMenu != undefined || elementMenu != null) {
                 let simulateClick = elem => {
@@ -259,7 +301,7 @@ class ComponentMaster extends Component {
                         simulateClick(btnMenu);
                     }, 3500);
 
-                }else if(ancla == 'login'){
+                } else if (ancla == 'login') {
                     this.changeComponente(1)
 
                 }
@@ -273,20 +315,21 @@ class ComponentMaster extends Component {
             case 0:
                 return (
                     <div className="mainpage">
-                        <Seccion1 activateScrollCalculadora ={this.activateScrollCalculadora.bind(this)}  />
-                        
-                        
-                        <Calculadora                             
+                        <Seccion1 activateScrollCalculadora={this.activateScrollCalculadora.bind(this)} />
+
+
+                        <Calculadora
                             login={this.state.login}
                             res={this.state.respuestas}
                             saveRespuestas={this.saveRespuestas.bind(this)}
-                            changeLogin={this.changeLogin.bind(this)} 
-                            changeLoginCalculadora={this.changeLoginCalculadora.bind(this)} 
-                            resultadoGotoCita = {this.resultadoGotoCita.bind(this)}                                                     
+                            changeLogin={this.changeLogin.bind(this)}
+                            changeLoginCalculadora={this.changeLoginCalculadora.bind(this)}
+                            resultadoGotoCita={this.resultadoGotoCita.bind(this)}
+                            showPreloader={this.showPreloader}
+                            hidePreloader={this.hidePreloader}
                         />
-                        <Citas id_usuario = {this.state.id} logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
+                        <Citas  origen =  {this.state.origen} changeOrigen = {this.changeOrigen.bind(this)} id_usuario = {this.state.id} logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
 
-                        
                         <Testimonios />
                         <Contacto />
                         <Footer />
@@ -306,14 +349,14 @@ class ComponentMaster extends Component {
 
     }
 
-       
+
     render() {
 
         return (
             <div className="mainComponent">
-                {<Menu setModalIsOpen={this.setModalIsOpen} login={this.state.login} primer_nombre={this.state.primer_nombre} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
+                {<Menu clickInicio={this.clickInicio} changeOrigen={this.changeOrigen} setModalIsOpen={this.setModalIsOpen} login={this.state.login} primer_nombre={this.state.primer_nombre} changeComptStateMain={this.state.changeCompt} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)} changeLogin={this.changeLogin.bind(this)}></Menu>}
                 {this.showComponent()}
-               
+
             </div>
         );
 

@@ -31,6 +31,12 @@ class Menu extends Component {
         M.Dropdown.init(this.Dropdown);
         M.Collapsible.init(this.Collapsible);
     }
+    ucword(word) {
+        var lsCadena = word.toLowerCase();
+        lsCadena = lsCadena.charAt(0).toUpperCase() + lsCadena.slice(1);
+
+        return lsCadena;
+    }
 
     GenerateClick(state, elementMenu) {
         /*
@@ -55,8 +61,8 @@ class Menu extends Component {
         let inicio;
         let inicio_sm;
         if (this.props.login == 0) {
-            inicio = <li><a className="modal-trigger" href='#modal1'><span id="txt_boton_entrar">Entrar</span></a></li>
-            inicio_sm = <a className="modal-trigger hide-on-large-only aling-right" href='#modal1'><span id="txt_boton_entrar">Entrar</span></a>
+            inicio = <li><a className="modal-trigger" href='#modal1' onClick={() => {this.props.changeOrigen('menu')}}><span id="txt_boton_entrar">Inicia sesión</span></a></li>
+            inicio_sm = <a className="modal-trigger hide-on-large-only aling-right" href='#modal1'><span id="txt_boton_entrar">Regístrate</span></a>
         } else {
             inicio = null;
             inicio_sm = null;
@@ -66,7 +72,7 @@ class Menu extends Component {
         if (this.props.login == 1) {
             usuario = <li>
                 <a id="perfil" className="dropdown-trigger" ref={Dropdown => { this.Dropdown = Dropdown; }} data-target="dropdown1">
-                    {this.props.primer_nombre} <i className="material-icons right">arrow_drop_down</i>
+                    {this.ucword(this.props.primer_nombre)} <i className="material-icons right">arrow_drop_down</i>
                 </a>
                 <ul id="dropdown1" className="dropdown-content" >
                     <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
@@ -74,18 +80,18 @@ class Menu extends Component {
                     <li className="divider"></li>
                     <li><a onClick={() => {
                         this.props.changeLogin(); window.location.reload(); 
-                    }}>Cerrar sesion</a></li>
+                    }}>Cerrar sesión</a></li>
                 </ul>
             </li>
             usuario_sm = <div>
 
                 <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
-                <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuracion</a></li>
+                <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuración</a></li>
             </div>
             cerrar_sesion =
             <li><a onClick={() => {
                 this.props.changeLogin(); window.location.reload(); 
-            }}>Cerrar sesion</a></li>
+            }}>Cerrar sesión</a></li>
 
         }
 
@@ -123,6 +129,10 @@ class Menu extends Component {
                             </a>
                             {inicio_sm}
                             <ul className=" menuItems right hide-on-med-and-down">
+                                <li >
+
+                                <a href={'/somos'}>Quienes somos</a>
+                                </li>
                                 <li id="citas_li">
 
                                     <Link
@@ -291,31 +301,16 @@ class Menu extends Component {
                
                 <ul className="sidenav" id="mobile-demo">
                     {usuario_sm}
-                    <li id="hiddenTerminos">
+                    
+                    <li id="citas_li_sm">
 
-
-
-                        <Link
-                            onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "scroolCalculadora_sm") }}
-
-                            activateclass="activate"
-                            to="contenedor-calculadora"
-                            spy={true}
-                            smooth={true}
-                            offset={-55}
-                            duration={500}
-                        >
-                            Calculadora
-                                </Link>
-
-
+                        <li >
+                            <a href='somos'>Quienes somos</a>
+                        </li>
 
                     </li>
 
                     <li id="citas_li_sm">
-
-
-
 
                         <Link
 

@@ -65,7 +65,7 @@ class Citas extends Component {
         
 
        
-        if(this.props.login == 1 && !this.state.step_update && this.props.logCitas == 1 ){
+        if(this.props.login == 1 && !this.state.step_update && this.props.origen == 'Citas' ){
             
             this.setState({step_activated: 1})
             this.setState({step_update: true})
@@ -102,7 +102,7 @@ class Citas extends Component {
         if(this.state.step_activated == 0){
             seccion = ( 
             <div>
-                <Paquetes loginCitas={this.props.loginCitas} login={this.props.login}   item ={this.itemSelected}>                
+                <Paquetes changeOrigen = {this.props.changeOrigen} loginCitas={this.props.loginCitas} login={this.props.login}   item ={this.itemSelected}>                
                 </Paquetes>
                 <div className="moreServices">
                     <a alt='' target="_blank" href="http://www.fig.org.co">Conoce otros servicios</a>

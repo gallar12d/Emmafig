@@ -7,7 +7,10 @@ import './FormRegistro.css';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from 'react-google-login';
 import Axios from 'axios';
+import swal from 'sweetalert';
+
 import $ from "jquery";
+import ModalInscrip from './modalInscripcion/ModalInscrip';
 class FormRegistro extends Component {
 
     constructor(props) {
@@ -124,7 +127,6 @@ class FormRegistro extends Component {
     validarCodigo = () => {
         let codigo = document.getElementById('codigo');
         let codigoError = document.getElementById('codigo-error');
-
         let btn_confirm = document.getElementById('btn_confirm');
         let cont_celular = document.getElementById('cont_celular');
         let cont_confirm = document.getElementById('cont_confirm');
@@ -144,11 +146,11 @@ class FormRegistro extends Component {
 
 
         if (normal_validate) {
-            if (codigo.value == this.state.codigo) {
+            if ( this.state.codigo) {
                 if (isValid) {
-                    cont_confirm.style.display = 'none';
-                    btn_confirm.style.display = 'none';
-                    codigo.setAttribute("disabled", "true");
+                   // cont_confirm.style.display = 'none';
+                    //btn_confirm.style.display = 'none';
+                    //codigo.setAttribute("disabled", "true");
                     Axios.post('https://emmafig.com/api1/rest-authentication/api/create_user.php', {
                         //Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
                         "primer_nombre": 'User',
@@ -159,12 +161,19 @@ class FormRegistro extends Component {
                         "celular": this.state.celular,
                         "password": this.state.password,
                         "tipo_identificacion": this.state.tipo_identificacion,
-                        "identificacion": this.state.identificacion
+                        "identificacion": this.state.identificacion,
+                        "canal_registro": 'emmafig'
                     }
                     )
                         .then(res => {
                             console.log(res.data.message);
-                            this.login();
+                            swal("¡Felicitaciones!", "Registro exitoso", "success")
+                                .then((value) => {
+                                    this.login();
+                                });                            
+                            
+                            //M.Modal.getInstance(document.getElementById('modal2')).open();                            
+                            //
                         })
                         .catch((error) => {
                             if (error.response) {
@@ -305,7 +314,6 @@ class FormRegistro extends Component {
                     console.log(error.response.data);
                     console.log(error.response.status);
                     console.log(error.response.headers);
-
                 }
             });
     }
@@ -319,7 +327,7 @@ class FormRegistro extends Component {
     validarCampos = () => {
 
         let isValid = document.querySelector('#form_perfil').reportValidity();
-        let errortext = "Por favor digite un numero de celular para continuar";
+        let errortext = "Por favor digite un número de celular para continuar";
         let celular = document.getElementById('celular');
         let celularError = document.getElementById('celular-error');
         let passwordError = document.getElementById('password-error');
@@ -375,7 +383,6 @@ class FormRegistro extends Component {
                             case '350':
                             case '351':
                                 this.celular = celular.value;
-
                                 celularError.style.display = "none";
                                 this.setState({
                                     celular: celular.value,
@@ -384,21 +391,27 @@ class FormRegistro extends Component {
                                     identificacion: identificacion.value,
                                     correo: correo.value
                                 });
+                                this.setState({
+                                    showPreloader: 1
+                                })
+                                this.showPreloader();
                                 Axios.post("https://emmafig.com/api1/rest-authentication/api/user_exist.php", {
                                     "tipo_identificacion": tipo_identificacion.value,
                                     "identificacion": identificacion.value
                                 })
                                     .then(res => {
+                                        this.setState({
+                                            showPreloader: 0
+                                        });
+                                        this.showPreloader();
                                         if (res.data.existe == 'true') {
                                             let user_exits = document.getElementById('user_exits');
                                             user_exits.style.display = 'block';
+                                           
                                         } else {
                                             btn_celular.style.display = "none";
-                                            this.setState({
-                                                showPreloader: 1
-                                            })
-                                            this.showPreloader();
-                                            fetch("https://emmafig.com/api1/sendKey.php?celular=" + celular.value)
+                                            
+                                            /*fetch("https://emmafig.com/api1/sendKey.php?celular=" + celular.value)
                                                 .then(res => res.json())
                                                 .then(
                                                     (result) => {
@@ -414,21 +427,37 @@ class FormRegistro extends Component {
                                                                 codigo_recovery: null
                                                             });
                                                             this.setState({
-                                                                showConfirmation: 1
+                                                                showConfirmation: 0
                                                             });
-                                                            this.showConfirmation();
+                                                            //this.showConfirmation();
+                                                            this.validarCodigo()
                                                         }
                                                     },
                                                     (error) => {
                                                         alert('Error');
                                                     }
-                                                )
+                                                )*/
+                                                //simular el envio de sms
+                                                /*this.setState({
+                                                    showPreloader: 0
+                                                });
+                                                this.showPreloader()*/
+                                                
+                                                this.setState({
+                                                    codigo: 1234,
+                                                    codigo_recovery: null
+                                                });
+                                                this.setState({
+                                                    showConfirmation: 0
+                                                });
+                                                //this.showConfirmation();
+                                                this.validarCodigo()
                                         }
                                     })
 
 
                                 break;
-                            default: errortext = "Numero de celular no valido";
+                            default: errortext = "Número de celular no valido";
                                 celularError.innerHTML = errortext;
                                 celularError.style.display = "block";
                                 celularError.classList.remove("celular-animation");
@@ -467,6 +496,7 @@ class FormRegistro extends Component {
         $('form').on('blur', 'input[type=number]', function (e) {
             $(this).off('mousewheel.disableScroll')
         })
+        var elems = document.getElementById('modal2');
         
     }
 
@@ -504,14 +534,14 @@ class FormRegistro extends Component {
     showOptions = () => {
         if (this.state.showOptions == 1) {
             return (
-                <div>
-                    <p className="center titulo-registro">Registrate</p>
-                    <p className="center subtitulo-registro">Podrás participar de promociones en nuestros servicios, además recibirás noticias de eventos <br />totalmente gratis</p>
+                <div id="cont_opciones">
+                    <p id="titulo_opciones" className="center info-codigo">Regístrate</p>
+                    <p className="center info-codigo">Accede a tus resultados <br />totalmente gratis</p>
                     <div id="btn_ingresar" className="row">
-                        <a className="waves-light btn col s10 offset-s1" id="btn_ingresar_a" onClick={this.isLogin}>Ingresar</a>
+                        <a className="waves-light btn col s10 offset-s1" id="btn_ingresar_a" onClick={this.isLogin}>Ingresa</a>
                     </div>
                     <div id="btn_registro" className="row">
-                        <a className="waves-light btn col s10 offset-s1" onClick={this.isRegistro}>Registrarse</a>
+                        <a className="waves-light btn col s10 offset-s1 btn_registro" id="btn_ingresar_r" onClick={this.isRegistro}>Regístrate</a>
                     </div>
                 </div>
             )
@@ -581,12 +611,21 @@ class FormRegistro extends Component {
             }
             return (
                 <div id="cont_registro">
-                    <CamposPorDefecto text='Registro' />
+                    <CamposPorDefecto text='registro' />
+                    <div id="cont_celular" className="row">
+                        <div className="input-field col s12 l10 offset-l1">
+                            <i className="material-icons prefix">phone</i>
+                            <input  id="celular" type="number" className="validate noscroll" minLength="10" required />
+                            <label htmlFor="celular">Celular *</label>
+                            <p id="celular-error" className="center cel-error">Por favor digite un número de celular para continuar</p>
+                              
+                        </div>
+                    </div>
                     <div id="cont_correo" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">https</i>
                             <input id="correo" type="email" className="validate" />
-                            <label htmlFor="password">email</label>
+                            <label htmlFor="password">Correo electrónico</label>
                         </div>
                     </div>
                     <div id="cont_password" className="row">
@@ -604,14 +643,12 @@ class FormRegistro extends Component {
                             <p id="password-error" className="center cel-error">Por favor digite su confirmación de password</p>
                         </div>
                     </div>
-                    <div id="cont_celular" className="row">
-                        <div className="input-field col s12 l10 offset-l1">
-                            <i className="material-icons prefix">phone</i>
-                            <input id="celular" type="number" className="validate noscroll" minLength="10" required />
-                            <label htmlFor="celular">Celular *</label>
-                            <p id="celular-error" className="center cel-error">Por favor digite un numero de celular para continuar</p>
-                        </div>
-                    </div>
+                     <div>
+                             <small id="phone_msg" className="  celular-animation validate_phone_msg">
+                                    Recuerda que la tu información debe ser válida, ya que por te enviaremos información personal y confidencial a través de estos medios.
+                            </small>
+                    </div> 
+                    
                     <div id="cont_terminos" className="row">
                         <div className="input-field col s12 l12">
                             <p>
@@ -623,12 +660,14 @@ class FormRegistro extends Component {
                                         }
                                     } required />
                                     <span>He leído y acepto los
-                                    <a href="#/terminos_condiciones" target="_blank"> Términos y condiciones</a></span>
+                                    <a href="#/terminos_condiciones" target="_blank"> Política de Tratamiento de Datos</a></span>
                                 </label>
                             </p>
+                            <br></br>
                             <p id="terminos-error" className="center cel-error">Debe aceptar los términos y condiciones para continuar</p>
                         </div>
                     </div>
+                   
                     <div id="user_exits" className='alert alert-danger'>Registro fallido. la identificación ya existe.</div>
                     {
                         this.showPreloader()
@@ -642,7 +681,7 @@ class FormRegistro extends Component {
             }
             return (
                 <div id="cont_login">
-                    <CamposPorDefecto text='Ingreso' />
+                    <CamposPorDefecto text='ingreso' />
                     <div id="cont_password" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">https</i>
@@ -736,7 +775,7 @@ class FormRegistro extends Component {
                         <a className=" waves-light btn col s10 offset-s1" id="btn_aceptar_form_login" onClick={this.validarCampos}>Aceptar</a>
                     </div>
                     <div id="btn_cancelar" className="row">
-                        <a className=" waves-light btn col s10 offset-s1" onClick={this.reiniciarForm}>Regresar</a>
+                        <a className=" waves-light btn col s10 offset-s1" id="btn_cancelar_f" onClick={this.reiniciarForm}>Regresar</a>
                     </div>
                 </div>
             )
@@ -820,8 +859,7 @@ class FormRegistro extends Component {
 
     render() {
          
-        return (
-
+        return (            
             <form id="form_perfil" noValidate>
                 {
                     this.showOptions()
@@ -842,8 +880,8 @@ class FormRegistro extends Component {
     }
 }
 function CamposPorDefecto(props) {
-    return <div><p className="center info-codigo">!Bienvenido¡</p>
-        <p className="center info-codigo">Para continuar con el {props.text} por favor ingresa los siguientes datos</p>
+    return <div><p id="titulo_defecto" className="center info-codigo">¡Bienvenida!</p>
+        <p className="center info-codigo">Para continuar con el {props.text}, diligencia los siguientes datos</p>
 
         <div className="row">
             <div className="input-field col s12 l10 offset-l1">

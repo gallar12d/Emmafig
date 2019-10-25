@@ -1,17 +1,41 @@
+#btn_ingresar_a, 
+#btn_ingresar_r,
+#btn_aceptar_form_login,
+#btn_cancelar_f{
+  background: #0ba7ad;
+}
+
+#btn_ingresar_a:hover, 
+#btn_ingresar_r:hover,
+#btn_aceptar_form_login:hover,
+#btn_cancelar_f:hover{
+  background: #492c51;
+}
 
 .cel-error {
   display: none;
-  color: #c83b8d !important;
+  color: #492c51 !important;
   font-style: italic;
   font-weight: bold;
+  font-size: small;
+}
+
+.validate_phone_msg{
+  font-family: lato;
+  color: #0ba7ad;
+  font-weight: bolder;
   font-size: small;
 }
 .celular-animation {
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
+
 #cont_login,
 #cont_registro {
   margin-top: 1em;
+}
+#cont_opciones{
+  margin-top: 2em;
 }
 #cont_terminos{
   margin-bottom: 3em;
@@ -22,7 +46,7 @@
   width: 19.3em;
 }
 .info-codigo {
-  color: #0f9b9b !important;
+  color: #0ba7ad !important;
   font-weight: bold;
   font-size: inherit;
 }
@@ -37,6 +61,10 @@
 .subtitulo-registro {
   color: #6f6f6e !important;
   font-size: 0.8em;
+}
+#titulo_defecto,
+#titulo_opciones{
+  font-size: 1.2em;
 }
 .titulo-registro {
   margin-top: 1em;
