@@ -111,7 +111,7 @@ class Cuestionario extends Component {
         console.log(event.target.value);
         let opts = this.state.selectedOptions;
         let values = this.state.selectedValues;
-        let info_end = document.getElementById("info-fin-cuestionario");
+        //let info_end = document.getElementById("info-fin-cuestionario");
         if (op == 1) {
             if (event.target.value == 0) {
                 opts[op - 1] = 0;
@@ -119,9 +119,9 @@ class Cuestionario extends Component {
                 opts[op - 1] = 1;//la pregunta la asigna como diligenciada
                 this.updateSeguimiento(op);
                 values[op - 1] = event.target.value;
-                if (this.countOptSelecteds(opts) == 6) {
+                /*if (this.countOptSelecteds(opts) == 6) {
                     info_end.style.clipPath = "circle(75%)";
-                }
+                }*/
                 this.setState({
                     selectedOptions: opts,
                     selectedValues: values
@@ -139,9 +139,9 @@ class Cuestionario extends Component {
             opts[op - 1] = 1;//la pregunta la asigna como diligenciada
             this.updateSeguimiento(op);
             values[op - 1] = event.target.value;
-            if (this.countOptSelecteds(opts) == 6) {
+            /*if (this.countOptSelecteds(opts) == 6) {
                 info_end.style.clipPath = "circle(75%)";
-            }
+            }*/
             this.setState({
                 selectedOptions: opts,
                 selectedValues: values
@@ -164,26 +164,51 @@ class Cuestionario extends Component {
     }
 
     nextHandleMouseOver() {
-        this.setState({
-            btn_next: process.env.PUBLIC_URL + "/img/next-btn-hover.svg"
-        });
+        if(this.state.item == 6){
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/calcular-btn-hover.svg"
+            });
+        }else{
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/next-btn-hover.svg"
+            });
+        }
+
+        
     }
 
     nextHandleMouseOut() {
-        this.setState({
+        if(this.state.item == 6){
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/calcular-btn.svg"
+            });
+        }else{
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg"
+            });
+        }
+        /*this.setState({
             btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg"
-        });
+        });*/
     }
     nextClick() {
-
-        let next = this.state.item;
+   
+        let next = this.state.item;        
         const cont_btn_ant = document.getElementById("cont_btn_prev");
         const cont_btn_next = document.getElementById("cont_btn_next");
         const btn_next = document.getElementById("btn_next");
 
         let opts = this.state.selectedOptions;
         let item = this.state.item;
-
+        if(item == 6){
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/calcular-btn.svg"
+            });
+        }else{            
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg"
+            });
+        }
         const info = document.getElementById("info" + item);
         if (opts[item - 1] == 1) {
             info.style.display = "none";
@@ -303,6 +328,11 @@ class Cuestionario extends Component {
         const cont_btn_ant = document.getElementById("cont_btn_prev");
         const cont_btn_next = document.getElementById("cont_btn_next");
         const btn_next = document.getElementById("btn_next");
+        if(this.state.btn_next == process.env.PUBLIC_URL + "/img/calcular-btn.svg"){
+            this.setState({
+                btn_next: process.env.PUBLIC_URL + "/img/next-btn.svg"
+            });
+        }
         if (this.state.item > 1) {
             cont_btn_ant.style.display = "block";
             cont_btn_next.classList.add("left");
@@ -398,7 +428,7 @@ class Cuestionario extends Component {
                     <p>
                         ¡Felicitaciones, has terminado el cuestionario!
                     </p>
-                    <p>Por favor, presiona el botón siguiente para obtener el resultado</p>
+                    <p>Por favor,presiona el botón siguiente para obtener el resultado</p>
                 </div>
                 <div className="row">
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
@@ -499,13 +529,13 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta1" className="row" pgindex="1">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta1" className="center-align contenido-pregunta">1. ¿Cuántos años tienes?</h4>
-                            <p id="info1" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
+                            <p id="info1" className="center-align cuestionario-info">Contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta1" className="row" oprindex="1">
-                        <div className="col l2 s6 offset-s3 offset-l5">
+                        <div className="col l4 s4 offset-s4 offset-l4">
                             <select id="op11" className="browser-default selectEdad" onChange={this.handleOptionChange} defaultValue={0}>
-                                <option value="0">Escoge un opción</option>
+                                <option value="0">Seleccione una opción</option>
                                 <option value="1">Menor de 25 años</option>
                                 <option value="2">Entre 25 y 29 años</option>
                                 <option value="3">Entre 30 y 34 años</option>
@@ -530,7 +560,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta2" className="row" pgindex="2">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta2" className="center-align contenido-pregunta">2. ¿Vives en una zona urbana?</h4>
-                            <p id="info2" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
+                            <p id="info2" className="center-align cuestionario-info">Contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta2" className="row" oprindex="2">
@@ -546,7 +576,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta3" className="row" pgindex="3">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta3" className="center-align contenido-pregunta">3. ¿A qué grupo étnico pertences?</h4>
-                            <p id="info3" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
+                            <p id="info3" className="center-align cuestionario-info">Contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta3" className="row" oprindex="3">
@@ -566,7 +596,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta4" className="row" pgindex="4">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta4" className="center-align contenido-pregunta">4. ¿Has tenido 3 o más compañeros sexuales en los últimos 5 años?</h4>
-                            <p id="info4" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
+                            <p id="info4" className="center-align cuestionario-info">Contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta4" className="row" oprindex="4">
@@ -582,7 +612,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta5" className="row" pgindex="5">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta5" className="center-align contenido-pregunta">5. ¿Tienes 5 o más hijos?</h4>
-                            <p id="info5" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
+                            <p id="info5" className="center-align cuestionario-info">Contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta5" className="row" oprindex="5">
@@ -598,7 +628,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta6" className="row" pgindex="6">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta6" className="center-align contenido-pregunta">6. ¿Tienes cónyuge o pareja estable?</h4>
-                            <p id="info6" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
+                            <p id="info6" className="center-align cuestionario-info">Contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta6" className="row" oprindex="6">
