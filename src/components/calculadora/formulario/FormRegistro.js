@@ -10,7 +10,7 @@ import Axios from 'axios';
 import swal from 'sweetalert';
 
 import $ from "jquery";
-import ModalInscrip from './modalInscripcion/ModalInscrip';
+//import ModalInscrip from './modalInscripcion/ModalInscrip';
 class FormRegistro extends Component {
 
     constructor(props) {
@@ -153,9 +153,9 @@ class FormRegistro extends Component {
                     //codigo.setAttribute("disabled", "true");
                     Axios.post('https://emmafig.com/api1/rest-authentication/api/create_user.php', {
                         //Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
-                        "primer_nombre": 'User',
+                        "primer_nombre": 'Usuario',
                         "segundo_nombre": '',
-                        "primer_apellido": 'User',
+                        "primer_apellido": 'Usuario',
                         "segundo_apellido": '',
                         "correo": this.state.correo,
                         "celular": this.state.celular,
@@ -617,7 +617,7 @@ class FormRegistro extends Component {
                             <i className="material-icons prefix">phone</i>
                             <input  id="celular" type="number" className="validate noscroll" minLength="10" required />
                             <label htmlFor="celular">Celular *</label>
-                            <p id="celular-error" className="center cel-error">Por favor digite un número de celular para continuar</p>
+                            <p id="celular-error" className="center cel-error">Digite un número de celular para continuar</p>
                               
                         </div>
                     </div>
@@ -640,7 +640,7 @@ class FormRegistro extends Component {
                             <i className="material-icons prefix">https</i>
                             <input id="confirm_password" type="password" className="validate" required />
                             <label htmlFor="confirm_password">Confirmar contraseña *</label>
-                            <p id="password-error" className="center cel-error">Por favor digite su confirmación de password</p>
+                            <p id="password-error" className="center cel-error">Digite su confirmación de password</p>
                         </div>
                     </div>
                      <div>
@@ -687,7 +687,7 @@ class FormRegistro extends Component {
                             <i className="material-icons prefix">https</i>
                             <input id="password" type="password" className="validate" required />
                             <label htmlFor="password">Contraseña *</label>
-                            <p id="password-error" className="center cel-error">Por favor digite su contraseña</p>
+                            <p id="password-error" className="center cel-error">digite su contraseña</p>
                         </div>
                     </div>
                     <div id="login_failed" className='alert alert-danger'>Login fallido. Identificación o Contraseña incorrectos.</div>
@@ -706,10 +706,6 @@ class FormRegistro extends Component {
                     <div id="btn_enviar_codigo" className="row">
                         <a className=" waves-light btn col s10 offset-s1" id="btn_recovery" onClick={this.recoveryPhone}>Enviar código</a>
                     </div>
-
-
-
-
                 </div>
             )
 
@@ -722,13 +718,13 @@ class FormRegistro extends Component {
         if (this.state.showConfirmation == 1) {
             return (
                 <div id='cont_confirm2'>
-                    <p id="info-confirm2" className="center info-codigo">Por favor ingresa el código de confirmación que se envió a tu celular</p>
+                    <p id="info-confirm2" className="center info-codigo">Ingresa el código de confirmación que se envió a tu celular</p>
                     <div id="cod-confirm2" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">confirmation_number</i>
                             <input id="codigo2" type="number" className="validate" required />
                             <label htmlFor="codigo">Código</label>
-                            <p id="codigo-error2" className="center cel-error">Por favor digite el código de confirmación correctamente</p>
+                            <p id="codigo-error2" className="center cel-error">Digite el código de confirmación correctamente</p>
                         </div>
                     </div>
 
@@ -747,13 +743,13 @@ class FormRegistro extends Component {
         if (this.state.showConfirmation == 1) {
             return (
                 <div id='cont_confirm'>
-                    <p id="info-confirm" className="center info-codigo">Por favor ingresa el código de confirmación que se envió a tu celular</p>
+                    <p id="info-confirm" className="center info-codigo">Ingresa el código de confirmación que se envió a tu celular</p>
                     <div id="cod-confirm" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">confirmation_number</i>
                             <input id="codigo" type="number" className="validate" required />
                             <label htmlFor="codigo">Código</label>
-                            <p id="codigo-error" className="center cel-error">Por favor digite el código de confirmación correctamente</p>
+                            <p id="codigo-error" className="center cel-error">Digite el código de confirmación correctamente</p>
                         </div>
                     </div>
                     <div id="btn_confirm" className="row">
@@ -829,7 +825,7 @@ class FormRegistro extends Component {
                             <i className="small material-icons prefix">person</i>
                             <input id="name" type="text" className="validate" required="" aria-required="true" />
                             <label htmlFor="name">Nombre *</label>
-                            <p id="nombre-error" className="center cel-error">Por favor digite su nombre</p>
+                            <p id="nombre-error" className="center cel-error">digite su nombre</p>
                         </div>
                     </div>
                     <div className="row">

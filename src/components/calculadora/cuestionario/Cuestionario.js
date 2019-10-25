@@ -428,7 +428,7 @@ class Cuestionario extends Component {
                     <p>
                         ¡Felicitaciones, has terminado el cuestionario!
                     </p>
-                    <p>Por favor, presiona el botón siguiente para obtener el resultado</p>
+                    <p>Por favor,presiona el botón siguiente para obtener el resultado</p>
                 </div>
                 <div className="row">
                     <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3 encabezado">
@@ -529,7 +529,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta1" className="row" pgindex="1">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta1" className="center-align contenido-pregunta">1. ¿Cuántos años tienes?</h4>
-                            <p id="info1" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
+                            <p id="info1" className="center-align cuestionario-info">Contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta1" className="row" oprindex="1">
@@ -560,7 +560,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta2" className="row" pgindex="2">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta2" className="center-align contenido-pregunta">2. ¿Vives en una zona urbana?</h4>
-                            <p id="info2" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
+                            <p id="info2" className="center-align cuestionario-info">Contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta2" className="row" oprindex="2">
@@ -576,7 +576,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta3" className="row" pgindex="3">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta3" className="center-align contenido-pregunta">3. ¿A qué grupo étnico pertences?</h4>
-                            <p id="info3" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
+                            <p id="info3" className="center-align cuestionario-info">Contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta3" className="row" oprindex="3">
@@ -596,7 +596,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta4" className="row" pgindex="4">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta4" className="center-align contenido-pregunta">4. ¿Has tenido 3 o más compañeros sexuales en los últimos 5 años?</h4>
-                            <p id="info4" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
+                            <p id="info4" className="center-align cuestionario-info">Contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta4" className="row" oprindex="4">
@@ -612,7 +612,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta5" className="row" pgindex="5">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta5" className="center-align contenido-pregunta">5. ¿Tienes 5 o más hijos?</h4>
-                            <p id="info5" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
+                            <p id="info5" className="center-align cuestionario-info">Contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta5" className="row" oprindex="5">
@@ -628,7 +628,7 @@ class Cuestionario extends Component {
                     <div id="cont-pregunta6" className="row" pgindex="6">
                         <div className="col s10 m8 l6 offset-s1 offset-m2 offset-l3">
                             <h4 id="pregunta6" className="center-align contenido-pregunta">6. ¿Tienes cónyuge o pareja estable?</h4>
-                            <p id="info6" className="center-align cuestionario-info">Por favor contesta esta pregunta para continuar</p>
+                            <p id="info6" className="center-align cuestionario-info">Contesta esta pregunta para continuar</p>
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta6" className="row" oprindex="6">

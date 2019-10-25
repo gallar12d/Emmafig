@@ -51,6 +51,12 @@
   padding-bottom: 15px;
 }
 
+.detalles{
+  font-size: 1.3em;
+}
+.detalles a{
+  text-decoration: underline;
+}
 #detalle-res {
   margin-bottom: 1.5em;
 }

@@ -191,9 +191,9 @@ class Resultado extends Component {
                     <div id="cont-info-detalles" className="col s12 m9 l8">
                         <div id="contenedor-titulo-ins" className="right-align">
                             <h1 id="titulo-res" className="flow-text right-align">Estimación</h1>
-                            <h6 id="subtitulo-res" className="flow-text right-align">Emma dice que tu nivel de riesgo es </h6>
+                            <h6 id="subtitulo-res" className="flow-text right-align">Tu nivel de riesgo es </h6>
                             <h1 id="contenido-res" className="flow-text right-align">{this.changeDecimal()} %</h1>
-                            {/*<p id="detalle-res">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>*/}
+                            <p id="detalle-res" className="left-align detalles">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium . . . <a id="btn_mas_detalles" className="modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles</a></p>
                         </div>
                         <div className="row row-resultado">
                             <div className="col l12">
@@ -279,14 +279,14 @@ class Resultado extends Component {
                             </div>
                         </div>
                         <div className="row row-resultado">
-                            <div className="col s4 m4 l4">
+                            <div className="col s6 m6 l6">
                                 <a id="btn_reiniciar" className="boton-res waves-light col s12 m12 l12" onClick={this.props.backComponente}>Recalcular</a>
                             </div>
                             {
-                                this.showOpcion()
+                                /*this.showOpcion()*/
                             }
-                            <div className="col s4 m4 l4">
-                                <a id="btn_conocer_mas" className="boton-res waves-light col s12 m12 l12" onClick={this.props.resultadoGotoCita}>Pedir cita</a>
+                            <div className="col s6 m6 l6">
+                                <a id="btn_conocer_mas" className="boton-res waves-light col s12 m12 l12" onClick={this.props.resultadoGotoCita}>Agenda tu cita</a>
                             </div>
                         </div>
                     </div>
