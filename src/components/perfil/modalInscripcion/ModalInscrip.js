@@ -18,13 +18,13 @@ class ModalInscrip extends Component {
         return (
 
             <div id='modal2' className="modal">
-                {/*<div className="modal-content">                    
+                <div className="modal-content">                    
                     <h5 className='titulo_reg'>¡Felicitaciones!</h5>
                     <h6 className="subtitulo_reg">Registro exitoso</h6>
                     <p className="center info-codigo">Podrás participar de promociones en nuestros servicios, además recibirás noticias de eventos <br />totalmente gratis</p>
                     <a className="waves-light btn col s10 offset-s1 btn_ok">Aceptar</a>                    
-                </div>*/}
-                <div id="encabezado">
+                </div>
+                {/*<div id="encabezado">
                     <img src="images/arribasoporte_1-100.jpg" class="encabezado" />
                 </div>
                     <div id="contenido">
@@ -103,7 +103,7 @@ class ModalInscrip extends Component {
                         </div>
                         <div id="footer">
                             <img src="images/Soporte-Abajo-100.jpg" class="footer"/>
-                        </div>
+                        </div>*/}
                     </div>
 
                         );
