@@ -1,7 +1,7 @@
 .containerSection1 {
   width: 100%;
   min-width: 100%;
-  /*height: 70vh!important;
+  height: 70%!important;
   /*height: 70vh!important;*/
   /* Font styles */
   font-size: 1.1em;
@@ -20,7 +20,7 @@
 #div-seccion1 .panel {
   position: absolute;
   width: 100%;
-  min-height: 80vh;
+ /* min-height: 80vh;*/
   background-size: cover;
   top: 0;
   left: 0;
@@ -96,7 +96,7 @@
 
 
 .textTitulo{
-  color:  #0F9b9b;
+  color:  #0ba7ad;
   font-weight: 300!important;
   font-family: 'Roboto'!important;
 
@@ -108,9 +108,9 @@
 
 #div-seccion1 .buttonSmall{
   border-radius: 6px !important;
-  background-color: #0F9b9b !important;
+  background-color: #0ba7ad !important;
   line-height: 32.4px;
-  font-size: 17px !important;
+  font-size: 20px !important;
   display: inline-block;
   -moz-user-select: none;
   vertical-align: middle;
@@ -118,9 +118,14 @@
   letter-spacing: .5px;
   padding: 0 14px;
   margin: 4px;
-  margin-top: 15px;
+  margin-top: 20px;
   text-transform: none;
   font-weight: bolder;
+}
+
+#div-seccion1 .btn-floating.btn-small {
+  width: 140px;
+  height: 32.4px;
 }
 
 }
@@ -193,7 +198,7 @@ display: none;
   }
 
   .PosicionButtonMovil{
-    color:  #0F9b9b;
+    color:  #0ba7ad;
     font-weight: 300!important;
     font-family: 'Roboto'!important;
   }
@@ -202,7 +207,7 @@ display: none;
     height: 50%;
     width: 100%;
     position: absolute;
-    /*background-color: #0F9b9b!important;*/
+    /*background-color: #0ba7ad!important;*/
     bottom: 0%;
     /*border-top: transparent  70px solid;*/
    /* display: block;*/
@@ -210,9 +215,9 @@ display: none;
 
   #div-seccion1 .buttonSmall{
     border-radius: 6px !important;
-    background-color: #0F9b9b !important;
+    background-color: #0ba7ad !important;
     line-height: 32.4px;
-    font-size: 17px !important;
+    font-size: 20px !important;
     display: inline-block;
     -moz-user-select: none;
     vertical-align: middle;
@@ -223,18 +228,14 @@ display: none;
     text-transform: none;
     font-weight: bolder;
   }
+
+  #div-seccion1 .btn-floating.btn-small {
+    width: 140px;
+    height: 32.4px;
+  }
   
   }
 /*Fin configuración para móviles*/
-                  
-
-
-
-
-
-
-
-
 
 .imagenEmma{
   position: relative;
@@ -296,6 +297,7 @@ display: none;
   align-items: center;
   justify-content: center;
   background-size: cover;
+  height: 300px;
 }
 
 #div-seccion1 .each-slide span {
@@ -329,10 +331,12 @@ display: none;
   background: #adceed;
 }
 
-
+#div-seccion1 .react-slideshow-container div.indicators{
+  background: #492c51!important;
+}
 
 #div-seccion1 .buttonSmall:hover {
-  background-color: #c83b8d !important;
+  background-color: #492c51 !important;
   color:  #f8f4f6 !important;/* Green */
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
