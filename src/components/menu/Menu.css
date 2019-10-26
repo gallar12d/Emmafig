@@ -1,6 +1,9 @@
+.dropdown-content li>a, .dropdown-content li>span {   
+    color: #0ba7ad !important;   
+}
 nav .nav-wrapper {
     
-    background-color: #0F9b9b;
+    background-color: #0ba7ad;
 }
 
 nav .brand-logo {

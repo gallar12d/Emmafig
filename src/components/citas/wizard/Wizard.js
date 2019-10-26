@@ -73,10 +73,6 @@ class Wizard extends Component {
             $('.cuestionario-info').hide()
             setTimeout(function () { $('.cuestionario-info').show() }, 1);
 
-
-
-
-
         }
 
         return pasa;
@@ -86,9 +82,6 @@ class Wizard extends Component {
 
 
     actualizar(step) {
-
-
-
 
         for (let i = 1; i <= 4; i++) {
 
@@ -125,7 +118,6 @@ class Wizard extends Component {
             }
         }
 
-
     }
 
     render() {
@@ -159,30 +151,15 @@ class Wizard extends Component {
             title = this.props.nombre_servicio;
             title = title.replace('|', '');
         }
-         
-
-
-
         return (
             <div className="row wizardCitas">
-
                 <Steps {...this.state} />
-
                 <div style={{marginBottom: '0px'}} className="row">
                     <div className="col s12 m4 offset-m2  ">
-                    <h4 className="title_service_selected" style={{ color: '#c73a8c', fontWeight: 'bolder', textAlign: 'left' }}>{title}</h4>
-
-
+                    <h4 className="title_service_selected" style={{ color: '#492c51', fontWeight: 'bolder', textAlign: 'left' }}>{title}</h4>
                     </div>
                 </div>
-
-
                 {step}
-
-                
-
-
-
                 <div className="row">
                     <div className="col s12 m4 offset-m2 ">
                         <p id="info2" className="cuestionario-info info-animation" style={{ textAlign: 'left' }}>Por favor diligencia toda la información  para continuar</p>
@@ -191,9 +168,7 @@ class Wizard extends Component {
                     </div>
                 </div>
 
-
             </div>
-
 
         );
 

@@ -120,28 +120,35 @@ class Resultado extends Component {
         }
         return opcion;
     }
-    formatRespuestas = () => {
-
+    formatRespuestas = () => {        
         switch (this.props.respuestas[0]) {
-            case 1: formatos[0] = 'Menor de 25 años';
+            case '1': formatos[0] = 'Menor de 25 años';                    
+                    break;
+            case '2': formatos[0] = 'Entre 25 y 29 años';                    
+                    break;
+            case '3': formatos[0] = 'Entre 30 y 34 años';
+                    console.log('caso 3');
                 break;
-            case 2: formatos[0] = 'Entre 25 y 29 años';
+            case '4': formatos[0] = 'Entre 35 y 39 años';
+                    console.log('caso 4');
                 break;
-            case 3: formatos[0] = 'Entre 30 y 34 años';
+            case '5': formatos[0] = 'Entre 40 y 44 años';
+                    console.log('caso 5');
                 break;
-            case 4: formatos[0] = 'Entre 35 y 39 años';
+            case '6': formatos[0] = 'Entre 45 y 49 años';
+                    console.log('caso 6');
                 break;
-            case 5: formatos[0] = 'Entre 40 y 44 años';
+            case '7': formatos[0] = 'Entre 50 y 54 años';
+                    console.log('caso 7');
                 break;
-            case 6: formatos[0] = 'Entre 45 y 49 años';
+            case '8': formatos[0] = 'Entre 55 y 59 años';
+                    console.log('caso 8');
                 break;
-            case 7: formatos[0] = 'Entre 50 y 54 años';
-                break;
-            case 8: formatos[0] = 'Entre 55 y 59 años';
-                break;
-            case 9: formatos[0] = 'Entre 60 y 64 años';
+            case '9': formatos[0] = 'Entre 60 y 64 años';
+                    console.log('caso 9');
                 break;
             default: formatos[0] = '65 años o más';
+                    console.log('caso 10');
                 break;
         }
 
@@ -183,10 +190,10 @@ class Resultado extends Component {
                     </div>
                     <div id="cont-info-detalles" className="col s12 m9 l8">
                         <div id="contenedor-titulo-ins" className="right-align">
-                            <h1 id="titulo-res" className="flow-text right-align">Resultado</h1>
-                            <h6 id="subtitulo-res" className="flow-text right-align">Emma dice que tu nivel de riesgo es </h6>
+                            <h1 id="titulo-res" className="flow-text right-align">Estimación</h1>
+                            <h6 id="subtitulo-res" className="flow-text right-align">Tu nivel de riesgo es </h6>
                             <h1 id="contenido-res" className="flow-text right-align">{this.changeDecimal()} %</h1>
-                            {/*<p id="detalle-res">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>*/}
+                            <p id="detalle-res" className="left-align detalles">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium . . . <a id="btn_mas_detalles" className="modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles</a></p>
                         </div>
                         <div className="row row-resultado">
                             <div className="col l12">
@@ -272,14 +279,14 @@ class Resultado extends Component {
                             </div>
                         </div>
                         <div className="row row-resultado">
-                            <div className="col s4 m4 l4">
+                            <div className="col s6 m6 l6">
                                 <a id="btn_reiniciar" className="boton-res waves-light col s12 m12 l12" onClick={this.props.backComponente}>Recalcular</a>
                             </div>
                             {
-                                this.showOpcion()
+                                /*this.showOpcion()*/
                             }
-                            <div className="col s4 m4 l4">
-                                <a id="btn_conocer_mas" className="boton-res waves-light col s12 m12 l12" onClick={this.props.resultadoGotoCita}>Pedir cita</a>
+                            <div className="col s6 m6 l6">
+                                <a id="btn_conocer_mas" className="boton-res waves-light col s12 m12 l12" onClick={this.props.resultadoGotoCita}>Agenda tu cita</a>
                             </div>
                         </div>
                     </div>

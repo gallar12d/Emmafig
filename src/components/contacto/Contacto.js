@@ -25,7 +25,7 @@ class Contacto extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            img_marker: process.env.PUBLIC_URL + "/img/marker.png",
+            img_marker: process.env.PUBLIC_URL + "/img/marker2.png",
             hide: 0,
             sede: false,
 

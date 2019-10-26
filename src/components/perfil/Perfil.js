@@ -3,7 +3,7 @@ import './Perfil.css'
 import M from "materialize-css";
 import axios from "axios";
 import $ from 'jquery';
-
+import ModalResultado from './modalInscripcion/ModalInscrip';
 
 let tableDataAtl;
 let tableDataEmf
@@ -23,13 +23,15 @@ class Perfil extends Component {
             fecha_nacimiento: '',
             no_identificacion: '',
             tipo_identificacion: '',
-            file: ''
+            file: '',
+            id_estimacion: ''
 
 
         }
 
         this.onChange = this.onChange.bind(this)
         this.fileUpload = this.fileUpload.bind(this)
+        this.changeIdEstimacion = this.changeIdEstimacion.bind(this);
 
 
     }
@@ -129,22 +131,22 @@ class Perfil extends Component {
                 switch (tipo_id){
                     case 'Cédula de ciudadanía':
                                     this.setState({
-                                        tipo_identificacion: "C.C:"
+                                        tipo_identificacion: "C.C."
                                     })
                         break;
                     case 'Tarjeta de identidad':
                         this.setState({
-                            tipo_identificacion: "T.I:"
+                            tipo_identificacion: "T.I."
                         })
                         break;
                     case 'Registro civil':
                         this.setState({
-                            tipo_identificacion: "R.C:"
+                            tipo_identificacion: "R.C."
                         })
                         break;
-                    case 'Cédula extrangera':
+                    case 'Cédula extranjería':
                         this.setState({
-                            tipo_identificacion: "C.E:"
+                            tipo_identificacion: "C.E."
                         })
                         break;
                     case 'NIT':
@@ -244,7 +246,7 @@ class Perfil extends Component {
                                 resultados_emf: result.resultados_emf
                             })
                         } else {
-                            document.getElementById("msj_error").innerHTML = "no se encontraron resultados";
+                            document.getElementById("msj_error").innerHTML = "No se encontraron resultados";
                         }
                         if (this.state.resultados != null || result.code == 400 || this.state.resultados_emf != null) {
 
@@ -349,6 +351,12 @@ class Perfil extends Component {
 
     }
 
+    changeIdEstimacion = (id) => {
+        this.setState({
+            id_estimacion: id
+        });
+    }
+
     render() {
         var strUrl;
         let tableData;
@@ -372,18 +380,18 @@ class Perfil extends Component {
                 </tr>
             })
 
-            tableDataEmf = this.state.resultados_emf.map(function (e) {
+            tableDataEmf = this.state.resultados_emf.map( (e) => {
                 strUrl = "https://emmafig.com/api1/pdf?id=" + e.id_estimacion;
                 return <tr>
-
                     <td>
                         ESTIMACION DE RIESGO
-            </td>
+                    </td>
                     <td>
                         {e.fecha_estimacion}
                     </td>
                     <td>
-                        <a target="_blank" href={strUrl}>Ver </a>
+                        {/*<a target="_blank" href={strUrl}>Ver </a>*/}
+                        <a data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => {this.changeIdEstimacion(e.id_estimacion)}}>Ver</a>
                     </td>
                 </tr>
             })
@@ -405,7 +413,7 @@ class Perfil extends Component {
                 </tr>
             })
         } else if (this.state.resultados == null && this.state.resultados_emf != null) {
-            tableDataEmf = this.state.resultados_emf.map(function (e) {
+            tableDataEmf = this.state.resultados_emf.map( (e) => {
                 /*strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";*/
                 strUrl = "https://emmafig.com/api1/pdf?id=" + e.id_estimacion;
                 return <tr>
@@ -417,7 +425,8 @@ class Perfil extends Component {
                         {e.fecha_estimacion}
                     </td>
                     <td>
-                        <a target="_blank" href={strUrl}>Ver </a>
+                        {/*<a target="_blank" href={strUrl}>Ver </a>*/}
+                        <a  data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => {this.changeIdEstimacion(e.id_estimacion)}}>Ver</a>
                     </td>
                 </tr>
             })
@@ -425,10 +434,10 @@ class Perfil extends Component {
 
 
         return (
-
+            
             <div className="Perfil">
 
-
+                <ModalResultado id_estimacion={this.state.id_estimacion}/>
                 <div className="container emp-profile">
 
                     <div className="row">
@@ -494,19 +503,19 @@ class Perfil extends Component {
                                 <div className="col s12 m4 l4">
                                     <h6 className="alig">¿Qué tipo de resultados deseas ver?</h6>
                                 </div>
-                                <div class="col s12 m4 l4">
+                                <div className="col s12 m4 l4">
                                     <select id="selectResult">
 
                                         <option value="todos">Todos</option>
-                                        <option value="atl">Resultados medicos</option>
-                                        <option value="emf">Estimacion de riesgo</option>
+                                        <option value="atl">Resultados médicos</option>
+                                        <option value="emf">Estimación de riesgo</option>
 
                                     </select>
 
                                 </div>
                                 <div className="col s12 m4 l4 buttonContent">
 
-                                    <a class="waves-light btn-small" onClick={() => this.serchResultadosFiltro()}>Buscar</a>
+                                    <a className="waves-light btn-small" onClick={() => this.serchResultadosFiltro()}>Buscar</a>
 
                                 </div>
                             </div>

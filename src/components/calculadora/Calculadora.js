@@ -9,7 +9,7 @@ import Inscripcion from './inscripcion/Inscripcion';
 import Resultado from './resultado/Resultado';
 import Modal from './modal/Modal';
 import axios from 'axios';
-
+//import ModalInscrip from './formulario/modalInscripcion/ModalInscrip';
 import './Calculadora.css';
 
 
@@ -99,7 +99,13 @@ class Calculadora extends Component {
     showComponente = () => {
         switch (this.state.componente) {
             case 1: return <Inicio changeComponente={this.changeComponente.bind(this)} />
-            case 2: return <Cuestionario changeComponente={this.changeComponente.bind(this)} login={this.props.login}  id_seguimiento={this.props.id_seguimiento}/>
+            case 2: return <Cuestionario 
+                                changeComponente={this.changeComponente.bind(this)} 
+                                login={this.props.login}  
+                                id_seguimiento={this.props.id_seguimiento}
+                                showPreloader={this.props.showPreloader}
+                                hidePreloader={this.props.hidePreloader}
+                                />
             case 3: return <Resultado 
                                 saveRespuestas = {this.props.saveRespuestas}
                                 login={this.props.login} 
@@ -119,7 +125,7 @@ class Calculadora extends Component {
     render() {
 
         return (
-            <div id="contenedor-calculadora">
+            <div id="contenedor-calculadora">                
                 <Modal changeComponente={this.changeComponente} changeLogin={this.props.changeLogin}/>
                 {this.showComponente()}
             </div>
