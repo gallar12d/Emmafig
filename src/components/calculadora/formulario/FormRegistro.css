@@ -20,6 +20,9 @@
   font-size: small;
 }
 
+.icon-select{
+  left: 0;
+}
 .validate_phone_msg{
   font-family: lato;
   color: #0ba7ad;

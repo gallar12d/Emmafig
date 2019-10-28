@@ -43,6 +43,7 @@ class ComponentMaster extends Component {
     }
 
     resultadoGotoCita() {
+        console.log('click goto cita')
         let simulateClick = elem => {
             let evt = new MouseEvent('click', {
                 bubbles: true,
@@ -340,7 +341,7 @@ class ComponentMaster extends Component {
 
                 );
             case 1:
-                return <Perfil />
+                return <Perfil resultadoGotoCita={this.resultadoGotoCita.bind(this)} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}/>
             case 2:
                 return <EditPerfil></EditPerfil>
             default:

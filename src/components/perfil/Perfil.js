@@ -3,7 +3,7 @@ import './Perfil.css'
 import M from "materialize-css";
 import axios from "axios";
 import $ from 'jquery';
-
+import ModalResultado from './modalInscripcion/ModalInscrip';
 
 let tableDataAtl;
 let tableDataEmf
@@ -23,13 +23,16 @@ class Perfil extends Component {
             fecha_nacimiento: '',
             no_identificacion: '',
             tipo_identificacion: '',
-            file: ''
-
+            file: '',
+            id_estimacion: '',
+            porcentaje_perfil: 0, //Adición para calcular porcentaje de perfil
+            estimacion_selected: ''
 
         }
 
         this.onChange = this.onChange.bind(this)
         this.fileUpload = this.fileUpload.bind(this)
+        this.changeIdEstimacion = this.changeIdEstimacion.bind(this);
 
 
     }
@@ -120,17 +123,29 @@ class Perfil extends Component {
         }
         )
             .then(res => {
-
+                var porcentajePerfil = 0;
                 var nombre1 = res.data.primer_nombre.toLowerCase();
+                /*Calcular el porcentaje de perfil completado*/
+                if(res.data.primer_nombre.toLowerCase() != "Usuario"){
+                    porcentajePerfil = porcentajePerfil + 25;
+                }
                 var apellido1 = res.data.primer_apellido.toLowerCase();
+                if(res.data.primer_apellido.toLowerCase() != "Usuario"){
+                    porcentajePerfil = porcentajePerfil + 25;
+                }
+                if(res.data.fecha_nacimiento !== null){
+                    porcentajePerfil = porcentajePerfil + 25;
+                }
+                /* FIN Calcular el porcentaje de perfil completado*/
+
                 var nombre2;
                 var apellido2;
                 var tipo_id = res.data.tipo_identificacion;
-                switch (tipo_id){
+                switch (tipo_id) {
                     case 'Cédula de ciudadanía':
-                                    this.setState({
-                                        tipo_identificacion: "C.C."
-                                    })
+                        this.setState({
+                            tipo_identificacion: "C.C."
+                        })
                         break;
                     case 'Tarjeta de identidad':
                         this.setState({
@@ -154,7 +169,7 @@ class Perfil extends Component {
                         break;
 
                 }
-               
+
                 console.log(res.data);
                 if (res.data.segundo_nombre) {
 
@@ -169,11 +184,6 @@ class Perfil extends Component {
                     apellido2 = ""
                 }
 
-
-
-
-
-
                 this.setState({
                     primer_nombre: this.capitalize(nombre1),
                     segundo_nombre: this.capitalize(nombre2),
@@ -181,10 +191,12 @@ class Perfil extends Component {
                     primer_apellido: this.capitalize(apellido1),
                     segundo_apellido: this.capitalize(apellido2),
 
-                    no_identificacion: this.formatNumber(res.data.no_identificacion)
+                    no_identificacion: this.formatNumber(res.data.no_identificacion),
+                    porcentaje_perfil: this.formatNumber(porcentajePerfil) // Adicionar porcentaje de perfil a state
 
                 })
-
+                /*Asignar porcentaje a barra de progreso */
+                document.getElementById("barraPerfil").style.width = porcentajePerfil+"%";
                 //userData.append("identificacion", res.data.no_identificacion)
 
                 //consultar si hay foto de perfil
@@ -203,11 +215,9 @@ class Perfil extends Component {
                         var srcProfile;
                         var srcProfileImg;
                         if (result.filename[0].avatar != null) {
-
                             //console.log(result.filename[0].avatar);
                             srcProfile = result.filename[0].avatar
                             srcProfileImg = "https://fig.org.co/atlanticv2/public/userAvatar/" + id_usuario + "/" + srcProfile
-
                         } else {
 
                             srcProfileImg = process.env.PUBLIC_URL + "/img/default-profile.png"
@@ -218,26 +228,13 @@ class Perfil extends Component {
 
                         var elem = document.getElementById("loaderphoto")
                         elem.style.display = "none"
-
-
-
-
-
-
-
                     })
-                    
-
                 axios
                     .post("https://emmafig.com/api1/searchHistorialCitas", id_user)
                     .then(res => {
                         let result = res.data;
-
                         //actualizar estado 
                         //result = JSON.parse(result)
-
-
-
                         if (result.code == 200) {
                             this.setState({
                                 resultados: result.resultados_atl,
@@ -247,19 +244,10 @@ class Perfil extends Component {
                             document.getElementById("msj_error").innerHTML = "No se encontraron resultados";
                         }
                         if (this.state.resultados != null || result.code == 400 || this.state.resultados_emf != null) {
-
-                           
                             loaderTabla.style.display = "none"
-
-
-
-
                             return false
-
-
                         }
                     })
-
             })
             .catch(function (error) {
                 if (error.response) {
@@ -268,9 +256,6 @@ class Perfil extends Component {
                     console.log(error.response.headers);
                 }
             });
-
-
-
     }
 
 
@@ -278,9 +263,7 @@ class Perfil extends Component {
     changePictureProfile(e) {
         const url = 'https://fig.org.co/atlanticv2/usuarios/updateProfilePicture';
         const pictureFile = new FormData();
-
         pictureFile.append('imgFile', e.target.files[0].name)
-
         //traer id de usuario desde el local storage
         //console.log(localStorage.getItem('id'))
         pictureFile.append("id_usuario", localStorage.getItem('id'))
@@ -292,17 +275,14 @@ class Perfil extends Component {
         axios.post(url, pictureFile, config).then(res => {
             let result = res.data;
             console.log(result)
-
         })
-
-
     }
 
-    serchResultadosFiltro(){
+    serchResultadosFiltro() {
         document.getElementById("msj_error").innerHTML = "";
         var e = document.getElementById("selectResult")
         this.setState({
-            resultados:[],
+            resultados: [],
             resultados_emf: []
         })
         var loaderTabla = document.getElementById("loader")
@@ -314,51 +294,125 @@ class Perfil extends Component {
         dataForm.append("id_usuario", localStorage.getItem("id"));
         dataForm.append("filtro", selectValue);
         axios
-        .post("https://emmafig.com/api1/searchHistorialCitas", dataForm)
-        .then(res => {
-            let result = res.data;
-
-            //actualizar estado 
-            //result = JSON.parse(result)
-
-
-
-            if (result.code == 200) {
-                this.setState({
-                    resultados: result.resultados_atl,
-                    resultados_emf: result.resultados_emf
-                })
-                
-            } else {
-                document.getElementById("msj_error").innerHTML = "no se encontraron resultados";
-            }
-            if (this.state.resultados != null || result.code == 400 || this.state.resultados_emf != null) {
-
-                loaderTabla.style.display = "none"
-                tbody.style.display = "inline-block"
-                
-
-
-
-
-                return false
-
-
-            }
-        })
+            .post("https://emmafig.com/api1/searchHistorialCitas", dataForm)
+            .then(res => {
+                let result = res.data;
+                //actualizar estado 
+                //result = JSON.parse(result)
+                if (result.code == 200) {
+                    this.setState({
+                        resultados: result.resultados_atl,
+                        resultados_emf: result.resultados_emf
+                    })
+                } else {
+                    document.getElementById("msj_error").innerHTML = "no se encontraron resultados";
+                }
+                if (this.state.resultados != null || result.code == 400 || this.state.resultados_emf != null) {
+                    loaderTabla.style.display = "none"
+                    tbody.style.display = "inline-block"
+                    return false
+                }
+            })
 
     }
+
+    formatRespuesta(resultado) 
+    {             
+        console.log(resultado);
+        let r1 = 'No';
+        let r2 = 'No';
+        let r3 = 'No';
+        let r4 = 'No';
+        let r5 = 'No';
+        let r6 = 'No';        
+        switch (resultado['valor_respuesta1']) {
+            case '1': r1 = 'Menor de 25 años';
+                break;
+            case '2': r1 = 'Entre 25 y 29 años';
+                break;
+            case '3': r1 = 'Entre 30 y 34 años';
+                break;
+            case '4': r1 = 'Entre 35 y 39 años';
+                break;
+            case '5': r1 = 'Entre 40 y 44 años';                
+                break;
+            case '7': r1 = 'Entre 45 y 49 años';                    
+                break;
+            case '8': r1 = 'Entre 50 y 54 años';                    
+                break;
+            case '9': r1 = 'Entre 55 y 59 años';                    
+                break;           
+            default: r1 = '65 años o más';                    
+                break;
+        }
+        if(resultado['valor_respuesta2'] == 1){
+            r2 = 'Sí';
+        }
+        switch (resultado['valor_respuesta3']) {
+            case 0: r3 = 'Afro';                
+                break;
+            case 1: r3 = 'Indígena';               
+                break;
+            case 2: r3 = 'Mestizo';                
+                break;
+        }
+        if(resultado['valor_respuesta4'] == 1){
+            r4 = 'Sí';
+        }
+        if(resultado['valor_respuesta5'] == 1){
+            r5 = 'Sí';
+        }
+        if(resultado['valor_respuesta6'] == 1){
+            r6 = 'Sí';
+        }
+        
+        let data =  {
+            'riesgo' : resultado['riesgo'],
+            'p1' : '¿Cuantos años tienes?',
+            'r1'      : r1,
+            'text1' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p2' : '¿Vives en una zona urbana?',
+            'r2'      : r2,
+            'text2' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p3' : '¿A qué grupo étnico pertences?',
+            'r3'      : r3,
+            'text3' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p4' : '¿Has tenido 3 o más compañeros sexuales en los últimos 5 años?',
+            'r4'      : r4,
+            'text4' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p5' : '¿Tienes 5 o más hijos?',
+            'r5'      : r5,
+            'text5' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p6' : '¿Tienes cónyuge o pareja estable?',
+            'r6'      : r6,
+            'text6' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
+        };
+        return data;        
+    }
+
+    changeIdEstimacion = (index) => {
+        
+        this.formatRespuesta(this.state.resultados_emf[index]);
+        this.setState({
+            estimacion_selected: this.formatRespuesta(this.state.resultados_emf[index])
+        });
+    }
+    /*Función para la redirección del link completa tu perfil*/ 
+    GenerateClick(state, elementMenu) {
+        this.setState({
+            componentChange: state
+        })
+        this.props.scroolComponent(elementMenu)
+    }
+    /*FIN Función para la redirección del link completa tu perfil*/ 
 
     render() {
         var strUrl;
         let tableData;
         let tableDataEmf;
-
         if (this.state.resultados != null && this.state.resultados_emf != null) {
-
             tableData = this.state.resultados.map(function (e) {
                 strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";
-
                 return <tr>
                     <td>
                         {e.nombre_servicio}
@@ -372,18 +426,18 @@ class Perfil extends Component {
                 </tr>
             })
 
-            tableDataEmf = this.state.resultados_emf.map(function (e) {
+            tableDataEmf = this.state.resultados_emf.map( (e, index) => {
                 strUrl = "https://emmafig.com/api1/pdf?id=" + e.id_estimacion;
                 return <tr>
-
                     <td>
                         ESTIMACION DE RIESGO
-            </td>
+                    </td>
                     <td>
                         {e.fecha_estimacion}
                     </td>
                     <td>
-                        <a target="_blank" href={strUrl}>Ver </a>
+                        {/*<a target="_blank" href={strUrl}>Ver </a>*/}
+                        <a data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => {this.changeIdEstimacion(index)}}>Ver</a>
                     </td>
                 </tr>
             })
@@ -405,7 +459,7 @@ class Perfil extends Component {
                 </tr>
             })
         } else if (this.state.resultados == null && this.state.resultados_emf != null) {
-            tableDataEmf = this.state.resultados_emf.map(function (e) {
+            tableDataEmf = this.state.resultados_emf.map( (e, index) => {
                 /*strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";*/
                 strUrl = "https://emmafig.com/api1/pdf?id=" + e.id_estimacion;
                 return <tr>
@@ -417,7 +471,8 @@ class Perfil extends Component {
                         {e.fecha_estimacion}
                     </td>
                     <td>
-                        <a target="_blank" href={strUrl}>Ver </a>
+                        {/*<a target="_blank" href={strUrl}>Ver </a>*/}
+                        <a  data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => {this.changeIdEstimacion(index)}}>Ver</a>
                     </td>
                 </tr>
             })
@@ -428,14 +483,11 @@ class Perfil extends Component {
 
             <div className="Perfil">
 
-
+                <ModalResultado resultado={this.state.estimacion_selected} resultadoGotoCita={this.props.resultadoGotoCita} scroolComponent={this.props.scroolComponent} updateStateComponent={this.props.updateStateComponent}/>
                 <div className="container emp-profile">
-
                     <div className="row">
                         <div className="col l5 m5">
-
-
-                            <div id="loaderphoto" className="preloader-wrapper big active">
+                           <div id="loaderphoto" className="preloader-wrapper big active">
                                 <div className="spinner-layer spinner-green-only" >
                                     <div className="circle-clipper left">
                                         <div className="circle"></div>
@@ -452,7 +504,6 @@ class Perfil extends Component {
                                         <img id="profile_picture" src={this.state.file} alt="" />
 
                                     </div>
-
                                 </div>
                                 <div className="file btn btn-lg btn-primary">
                                     Cambiar Foto
@@ -461,8 +512,6 @@ class Perfil extends Component {
                                         <input type="file" id="foto_perfil" name="file" />
                                     </form>
                                 </div>
-
-
                             </div>
                         </div>
                         <div className="col l6 m6 s12">
@@ -470,58 +519,55 @@ class Perfil extends Component {
                                 <h5 id="textCapitalize">
 
                                     {this.state.primer_nombre + ' ' + this.state.segundo_nombre + ' ' + this.state.primer_apellido + ' ' + this.state.segundo_apellido}
-
-
                                 </h5>
-                                
                                 <h6>
                                     {this.state.tipo_identificacion} {this.state.no_identificacion}
                                 </h6>
-
-
                             </div>
                         </div>
-
                     </div>
+                     {/*Barra de progreso para perfil*/}
                     <div className="row">
-                        
-
+                        <div className="col l12 m12 s12">
+                            <div className="row">
+                                <h5 className="col s10 left-align">Información de perfil</h5>
+                                <h5 className="col s2 right-align">{this.state.porcentaje_perfil}%</h5>
+                                <h7 className="col s12 left-align"><a href="#" >Completa tu perfíl</a> y obtén un bono de descuento para ser redimido en la Fundación InnovaGen.</h7>
+                            </div>                           
+                            <div className="progress">
+                                <div className="determinate" id="barraPerfil"></div>                                
+                            </div>
+                        </div>
+                    </div>
+                    {/*Fin barra de progreso para perfil */}
+                    <div className="row">
                         <div className="col l12 m12 s12">
                             <h3>HISTORIAL DE RESULTADOS</h3>
                             <div className="filtroGroup">
-                            <div className="row rowFiltroGroup">
-
-                                <div className="col s12 m4 l4">
-                                    <h6 className="alig">¿Qué tipo de resultados deseas ver?</h6>
-                                </div>
-                                <div class="col s12 m4 l4">
-                                    <select id="selectResult">
-
-                                        <option value="todos">Todos</option>
-                                        <option value="atl">Resultados médicos</option>
-                                        <option value="emf">Estimación de riesgo</option>
-
-                                    </select>
-
-                                </div>
-                                <div className="col s12 m4 l4 buttonContent">
-
-                                    <a class="waves-light btn-small" onClick={() => this.serchResultadosFiltro()}>Buscar</a>
-
+                                <div className="row rowFiltroGroup">
+                                    <div className="col s12 m4 l4">
+                                        <h6 className="alig">¿Qué tipo de resultados deseas ver?</h6>
+                                    </div>
+                                    <div className="col s12 m4 l4">
+                                        <select id="selectResult">
+                                            <option value="todos">Todos</option>
+                                            <option value="atl">Resultados médicos</option>
+                                            <option value="emf">Estimación de riesgo</option>
+                                        </select>
+                                    </div>
+                                    <div className="col s12 m4 l4 buttonContent">
+                                        <a className="waves-light btn-small" onClick={() => this.serchResultadosFiltro()}>Buscar</a>
+                                    </div>
                                 </div>
                             </div>
-
-                        </div>
                             <table className="striped" id="tableResultados" >
                                 <thead>
                                     <tr>
-                                        <th>Resultado</th>
+                                        <th>Resultado</th>7
                                         <th>Fecha </th>
                                         <th>Informe</th>
-
                                     </tr>
                                 </thead>
-
                                 <p id="msj_error"></p>
                                 <div className="preloader-wrapper small active" id="loader">
                                     <div className="spinner-layer spinner-green-only">
@@ -535,32 +581,14 @@ class Perfil extends Component {
                                     </div>
                                 </div>
                                 <tbody id="tbodyResult">
-                                    
-
                                     {tableData}
                                     {tableDataEmf}
-                                   
-                                    
-                                    
-
                                 </tbody>
-
                             </table>
-
-
-
-
                         </div>
-
-
                     </div>
-
-
-
                 </div>
-
             </div>
-
         );
     }
 }

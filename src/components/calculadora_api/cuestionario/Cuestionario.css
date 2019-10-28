@@ -123,6 +123,8 @@
 }
 #subtitulo-cal{      
     margin-top: 0.1rem;
+    font-size: 1.64rem;
+    color: #000;
 }
 .texto{
     font-family:'Roboto';

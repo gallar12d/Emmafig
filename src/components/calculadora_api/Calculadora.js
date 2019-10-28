@@ -115,7 +115,7 @@ class Calculadora extends Component {
     render() {
 
         return (
-            <div id="contenedor-calculadora">
+            <div id="contenedor-calculadora">                
                 <Modal changeComponente={this.changeComponente} changeLogin={this.props.changeLogin}/>
                 {this.showComponente()}
             </div>

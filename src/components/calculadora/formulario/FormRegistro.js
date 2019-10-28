@@ -10,7 +10,7 @@ import Axios from 'axios';
 import swal from 'sweetalert';
 
 import $ from "jquery";
-import ModalInscrip from './modalInscripcion/ModalInscrip';
+//import ModalInscrip from './modalInscripcion/ModalInscrip';
 class FormRegistro extends Component {
 
     constructor(props) {
@@ -29,10 +29,13 @@ class FormRegistro extends Component {
             avatar: '',
             id_social: '',
             canal_registro: '',
-            registro: -1,
-            showOptions: 1,
+            //registro: -1,
+            registro: 0,
+            //showOptions: 1,
+            showOptions: 0,
             LoginSuccesfull: 0,
-            showButtons: 0,
+            //showButtons: 0,
+            showButtons: 1,
             showPreloader: 0,
             codigo_recovery: '',
             tipo_identificacion_recovery: '',
@@ -78,7 +81,7 @@ class FormRegistro extends Component {
     }
     closeModal = () => {
         M.Modal.getInstance(document.getElementById('modal1')).close();
-        this.props.changeLogin();        
+        this.props.changeLogin();
         this.reiniciarForm();
     }
     /*responseFacebook = (response) => {
@@ -146,16 +149,16 @@ class FormRegistro extends Component {
 
 
         if (normal_validate) {
-            if ( this.state.codigo) {
+            if (this.state.codigo) {
                 if (isValid) {
-                   // cont_confirm.style.display = 'none';
+                    // cont_confirm.style.display = 'none';
                     //btn_confirm.style.display = 'none';
                     //codigo.setAttribute("disabled", "true");
                     Axios.post('https://emmafig.com/api1/rest-authentication/api/create_user.php', {
                         //Axios.post('http://localhost/api1/rest-api-authentication-example/api/create_user.php', {
-                        "primer_nombre": 'User',
+                        "primer_nombre": 'Usuario',
                         "segundo_nombre": '',
-                        "primer_apellido": 'User',
+                        "primer_apellido": 'Usuario',
                         "segundo_apellido": '',
                         "correo": this.state.correo,
                         "celular": this.state.celular,
@@ -170,8 +173,8 @@ class FormRegistro extends Component {
                             swal("¡Felicitaciones!", "Registro exitoso", "success")
                                 .then((value) => {
                                     this.login();
-                                });                            
-                            
+                                });
+
                             //M.Modal.getInstance(document.getElementById('modal2')).open();                            
                             //
                         })
@@ -407,10 +410,10 @@ class FormRegistro extends Component {
                                         if (res.data.existe == 'true') {
                                             let user_exits = document.getElementById('user_exits');
                                             user_exits.style.display = 'block';
-                                           
+
                                         } else {
                                             btn_celular.style.display = "none";
-                                            
+
                                             /*fetch("https://emmafig.com/api1/sendKey.php?celular=" + celular.value)
                                                 .then(res => res.json())
                                                 .then(
@@ -437,21 +440,21 @@ class FormRegistro extends Component {
                                                         alert('Error');
                                                     }
                                                 )*/
-                                                //simular el envio de sms
-                                                /*this.setState({
-                                                    showPreloader: 0
-                                                });
-                                                this.showPreloader()*/
-                                                
-                                                this.setState({
-                                                    codigo: 1234,
-                                                    codigo_recovery: null
-                                                });
-                                                this.setState({
-                                                    showConfirmation: 0
-                                                });
-                                                //this.showConfirmation();
-                                                this.validarCodigo()
+                                            //simular el envio de sms
+                                            /*this.setState({
+                                                showPreloader: 0
+                                            });
+                                            this.showPreloader()*/
+
+                                            this.setState({
+                                                codigo: 1234,
+                                                codigo_recovery: null
+                                            });
+                                            this.setState({
+                                                showConfirmation: 0
+                                            });
+                                            //this.showConfirmation();
+                                            this.validarCodigo()
                                         }
                                     })
 
@@ -497,10 +500,10 @@ class FormRegistro extends Component {
             $(this).off('mousewheel.disableScroll')
         })
         var elems = document.getElementById('modal2');
-        
+
     }
 
-    
+
 
     validarEmail = (valor) => {
         console.log(valor);
@@ -519,7 +522,7 @@ class FormRegistro extends Component {
             showOptions: 0,
             showButtons: 1
         });
-        this.showOptions()
+        //this.showOptions()
         this.showButtons()
     }
     isLogin = () => {
@@ -528,7 +531,7 @@ class FormRegistro extends Component {
             showOptions: 0,
             showButtons: 1
         });
-        this.showOptions()
+        //this.showOptions()
         this.showButtons()
     }
     showOptions = () => {
@@ -615,10 +618,10 @@ class FormRegistro extends Component {
                     <div id="cont_celular" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">phone</i>
-                            <input  id="celular" type="number" className="validate noscroll" minLength="10" required />
+                            <input id="celular" type="number" className="validate noscroll" minLength="10" required />
                             <label htmlFor="celular">Celular *</label>
-                            <p id="celular-error" className="center cel-error">Por favor digite un número de celular para continuar</p>
-                              
+                            <p id="celular-error" className="center cel-error">Digite un número de celular para continuar</p>
+
                         </div>
                     </div>
                     <div id="cont_correo" className="row">
@@ -640,15 +643,15 @@ class FormRegistro extends Component {
                             <i className="material-icons prefix">https</i>
                             <input id="confirm_password" type="password" className="validate" required />
                             <label htmlFor="confirm_password">Confirmar contraseña *</label>
-                            <p id="password-error" className="center cel-error">Por favor digite su confirmación de password</p>
+                            <p id="password-error" className="center cel-error">Digite su confirmación de password</p>
                         </div>
                     </div>
-                     <div>
-                             <small id="phone_msg" className="  celular-animation validate_phone_msg">
-                                    Recuerda que la tu información debe ser válida, ya que por te enviaremos información personal y confidencial a través de estos medios.
+                    <div>
+                        <small id="phone_msg" className="  celular-animation validate_phone_msg">
+                            Recuerda que la tu información debe ser válida, ya que por te enviaremos información personal y confidencial a través de estos medios.
                             </small>
-                    </div> 
-                    
+                    </div>
+
                     <div id="cont_terminos" className="row">
                         <div className="input-field col s12 l12">
                             <p>
@@ -667,7 +670,7 @@ class FormRegistro extends Component {
                             <p id="terminos-error" className="center cel-error">Debe aceptar los términos y condiciones para continuar</p>
                         </div>
                     </div>
-                   
+
                     <div id="user_exits" className='alert alert-danger'>Registro fallido. la identificación ya existe.</div>
                     {
                         this.showPreloader()
@@ -687,7 +690,7 @@ class FormRegistro extends Component {
                             <i className="material-icons prefix">https</i>
                             <input id="password" type="password" className="validate" required />
                             <label htmlFor="password">Contraseña *</label>
-                            <p id="password-error" className="center cel-error">Por favor digite su contraseña</p>
+                            <p id="password-error" className="center cel-error">digite su contraseña</p>
                         </div>
                     </div>
                     <div id="login_failed" className='alert alert-danger'>Login fallido. Identificación o Contraseña incorrectos.</div>
@@ -706,10 +709,6 @@ class FormRegistro extends Component {
                     <div id="btn_enviar_codigo" className="row">
                         <a className=" waves-light btn col s10 offset-s1" id="btn_recovery" onClick={this.recoveryPhone}>Enviar código</a>
                     </div>
-
-
-
-
                 </div>
             )
 
@@ -722,13 +721,13 @@ class FormRegistro extends Component {
         if (this.state.showConfirmation == 1) {
             return (
                 <div id='cont_confirm2'>
-                    <p id="info-confirm2" className="center info-codigo">Por favor ingresa el código de confirmación que se envió a tu celular</p>
+                    <p id="info-confirm2" className="center info-codigo">Ingresa el código de confirmación que se envió a tu celular</p>
                     <div id="cod-confirm2" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">confirmation_number</i>
                             <input id="codigo2" type="number" className="validate" required />
                             <label htmlFor="codigo">Código</label>
-                            <p id="codigo-error2" className="center cel-error">Por favor digite el código de confirmación correctamente</p>
+                            <p id="codigo-error2" className="center cel-error">Digite el código de confirmación correctamente</p>
                         </div>
                     </div>
 
@@ -747,13 +746,13 @@ class FormRegistro extends Component {
         if (this.state.showConfirmation == 1) {
             return (
                 <div id='cont_confirm'>
-                    <p id="info-confirm" className="center info-codigo">Por favor ingresa el código de confirmación que se envió a tu celular</p>
+                    <p id="info-confirm" className="center info-codigo">Ingresa el código de confirmación que se envió a tu celular</p>
                     <div id="cod-confirm" className="row">
                         <div className="input-field col s12 l10 offset-l1">
                             <i className="material-icons prefix">confirmation_number</i>
                             <input id="codigo" type="number" className="validate" required />
                             <label htmlFor="codigo">Código</label>
-                            <p id="codigo-error" className="center cel-error">Por favor digite el código de confirmación correctamente</p>
+                            <p id="codigo-error" className="center cel-error">Digite el código de confirmación correctamente</p>
                         </div>
                     </div>
                     <div id="btn_confirm" className="row">
@@ -767,6 +766,18 @@ class FormRegistro extends Component {
         }
 
     }
+    changeOption() {
+        if (this.state.registro == 0) {
+            return (
+                <div id="btn_registro" className="row">
+                    <a className="waves-light btn col s10 offset-s1 btn_registro" id="btn_ingresar_r" onClick={this.isRegistro}>Regístrate</a>
+                </div>)
+        } else {
+            return (<div id="btn_ingresar" className="row">
+                <a className="waves-light btn col s10 offset-s1" id="btn_ingresar_a" onClick={this.isLogin}>Ingresa</a>
+            </div>)
+        }
+    }
     showButtons() {
         if (this.state.showButtons == 1) {
             return (
@@ -774,9 +785,10 @@ class FormRegistro extends Component {
                     <div id="btn_celular" className="row">
                         <a className=" waves-light btn col s10 offset-s1" id="btn_aceptar_form_login" onClick={this.validarCampos}>Aceptar</a>
                     </div>
-                    <div id="btn_cancelar" className="row">
-                        <a className=" waves-light btn col s10 offset-s1" id="btn_cancelar_f" onClick={this.reiniciarForm}>Regresar</a>
-                    </div>
+                    {this.changeOption()}
+                    {/*<div id="btn_cancelar" className="row">
+                        <a className=" waves-light btn col s10 offset-s1" id="btn_cancelar_f" onClick={this.reiniciarForm}>Regístrate</a>
+            </div>*/}
                 </div>
             )
         } else {
@@ -829,7 +841,7 @@ class FormRegistro extends Component {
                             <i className="small material-icons prefix">person</i>
                             <input id="name" type="text" className="validate" required="" aria-required="true" />
                             <label htmlFor="name">Nombre *</label>
-                            <p id="nombre-error" className="center cel-error">Por favor digite su nombre</p>
+                            <p id="nombre-error" className="center cel-error">digite su nombre</p>
                         </div>
                     </div>
                     <div className="row">
@@ -858,8 +870,8 @@ class FormRegistro extends Component {
     }
 
     render() {
-         
-        return (            
+
+        return (
             <form id="form_perfil" noValidate>
                 {
                     this.showOptions()
@@ -885,14 +897,22 @@ function CamposPorDefecto(props) {
 
         <div className="row">
             <div className="input-field col s12 l10 offset-l1">
-
+                {/*<i className="material-icons prefix">assignment_ind</i>
                 <select id="tipo_identificacion" className="browser-default" defaultValue='1' required>
                     <option value="" disabled>Tipo de Identifcación *</option>
                     <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
                     <option value="Tarjeta de identidad">Tarjeta de identidad</option>
                     <option value="Cédula de extranjería">Cédula de extranjería</option>
-                </select>
-
+                </select>*/}
+                <div class="input-field">
+                    <i className="material-icons prefix icon-select">assignment_ind</i>
+                    <select id="tipo_identificacion"  defaultValue='1' required>
+                        <option value="" disabled>Tipo de Identifcación *</option>
+                        <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+                        <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                        <option value="Cédula de extranjería">Cédula de extranjería</option>
+                    </select>                   
+                </div>
                 <p id="tipo_iden_error" className="center cel-error">Por favor Escoja un tipo de Identifcación</p>
             </div>
         </div>
