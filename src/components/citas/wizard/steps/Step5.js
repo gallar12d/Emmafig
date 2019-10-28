@@ -77,6 +77,10 @@ class Step5 extends Component {
         dataForm.append("nombre_paquete", this.props.textItem);
         dataForm.append("sede", this.props.sede);
 
+        if(this.props.id_bono){
+            dataForm.append("id_bono", this.props.id_bono);
+        }
+
 
         if (!this.props.cita) {
             axios
@@ -178,7 +182,7 @@ class Step5 extends Component {
                     <div className="col s12 m4 ">
                         <div>
 
-                            <img className="avatar_step5" src={this.state.avatar} />
+                            <img hidden className="avatar_step5" src={this.state.avatar} />
                         </div>
 
                     </div>

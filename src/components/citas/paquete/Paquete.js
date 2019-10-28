@@ -18,9 +18,16 @@ class Paquete extends Component {
         $(document).ready(function () {
             var elems = document.querySelectorAll('.modal');
             M.Modal.init(elems, {});
-        });
+            $('.card').on('mouseenter', function(e){            
+            
+                $(this).find('.btn_hover_pack ').addClass('pulse');})
+                $('.card').on('mouseleave', function(e){            
+            
+                $(this).find('.btn_hover_pack ').removeClass('pulse');})
+            
+            });
         $('.modal').append('<button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">x</button>');
-
+        
     }
     addItem(id, nombre) {
         this.props.changeOrigen('Citas')
@@ -88,7 +95,7 @@ class Paquete extends Component {
                         <div className="card-action">
                             <button  type="button" className=" btn_hover_pack agendarbtn btn btn-secondary  modal-trigger" href={'#Modal' + this.props.id}>Conoce más</button>
                             <br></br>
-                            <button type="button"  onClick={this.addItem.bind(this, this.props.id, this.props.titulo)} className="btn_hover_pack btn btn-secondary">Agenda tu cita</button>
+                            <button type="button"  onClick={this.addItem.bind(this, this.props.id, this.props.titulo)} className=" btn-floating  btn_hover_pack btn btn-secondary">Agenda tu cita</button>
                         </div>
                     </div>
                 </div>

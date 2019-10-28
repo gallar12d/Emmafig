@@ -72,6 +72,8 @@ class ComponentMaster extends Component {
 
     componentDidMount() {
 
+        
+
         ancla = this.props.ancla;
         console.log('jwt ' + localStorage.getItem('jwt'));
         if (localStorage.getItem('jwt') !== null) {

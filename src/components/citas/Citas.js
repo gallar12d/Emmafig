@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Citas.css'
 import Paquetes from './paquetes/Paquetes'
 import Wizard from './wizard/Wizard'
-import Step5 from './wizard/steps/Step5'
+import Step4 from './wizard/steps/Step4'
 import Modal from '../calculadora/modal/Modal'
 import $ from 'jquery'
 
@@ -35,7 +35,9 @@ class Citas extends Component {
             paciente_email: '',
             cita: false,
             step_update: false,
-            orientation: ''
+            orientation: '',
+            id_bono: false,
+            
 
 
 
@@ -57,14 +59,17 @@ class Citas extends Component {
             this.setState({orientation: screenOrientation})
         });
 
+        
+
        
     }
 
 
-    componentDidUpdate(){
+    componentDidUpdate(){   
         
-
-       
+        
+        
+              
         if(this.props.login == 1 && !this.state.step_update && this.props.origen == 'Citas' ){
             
             this.setState({step_activated: 1})
@@ -72,6 +77,12 @@ class Citas extends Component {
 
         }
     }
+
+
+    
+        
+
+    
 
    
 
@@ -96,6 +107,7 @@ class Citas extends Component {
     }
 
     render() {
+        
 
         let seccion;
         
@@ -105,7 +117,7 @@ class Citas extends Component {
                 <Paquetes changeOrigen = {this.props.changeOrigen} loginCitas={this.props.loginCitas} login={this.props.login}   item ={this.itemSelected}>                
                 </Paquetes>
                 <div className="moreServices">
-                    <a alt='' target="_blank" href="http://www.fig.org.co">Conoce otros servicios</a>
+                    <a className="btn btn_otros_servicios" alt='' target="_blank" href="http://www.fig.org.co">Conoce otros servicios</a>
                 </div>       
         
             </div>
@@ -130,7 +142,7 @@ class Citas extends Component {
 
             stilo = {
                 
-                height: '74vh'
+                height: '78vh'
             };
         }
 
@@ -147,6 +159,7 @@ class Citas extends Component {
                     </div>                    
                 </div>
                {seccion}
+               
                <Modal id='modal1'  changeLogin={this.props.changeLogin}/> 
                
                

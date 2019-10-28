@@ -51,12 +51,20 @@
     }
 
     .moreServices a {
-        color: #492c51;
+        color: white;
         font-family: lato;
-        font-size: 1.3rem;
+        
         font-weight: bolder;
+        border-radius: 10px !important;
+        
+        background-color: #136969 !important;
+        font-size: smaller !important;
     }
     .moreServices a:hover {
         text-decoration: underline;
+    }
+
+    .btn_otros_servicios{
+            
     }
 
