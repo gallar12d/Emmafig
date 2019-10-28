@@ -25,7 +25,9 @@ class Perfil extends Component {
             tipo_identificacion: '',
             file: '',
             id_estimacion: '',
-            porcentaje_perfil: 0 //Adición para calcular porcentaje de perfil
+            porcentaje_perfil: 0, //Adición para calcular porcentaje de perfil
+            estimacion_selected: ''
+
         }
 
         this.onChange = this.onChange.bind(this)
@@ -314,9 +316,85 @@ class Perfil extends Component {
 
     }
 
-    changeIdEstimacion = (id) => {
+    formatRespuesta(resultado) 
+    {             
+        console.log(resultado);
+        let r1 = 'No';
+        let r2 = 'No';
+        let r3 = 'No';
+        let r4 = 'No';
+        let r5 = 'No';
+        let r6 = 'No';        
+        switch (resultado['valor_respuesta1']) {
+            case '1': r1 = 'Menor de 25 años';
+                break;
+            case '2': r1 = 'Entre 25 y 29 años';
+                break;
+            case '3': r1 = 'Entre 30 y 34 años';
+                break;
+            case '4': r1 = 'Entre 35 y 39 años';
+                break;
+            case '5': r1 = 'Entre 40 y 44 años';                
+                break;
+            case '7': r1 = 'Entre 45 y 49 años';                    
+                break;
+            case '8': r1 = 'Entre 50 y 54 años';                    
+                break;
+            case '9': r1 = 'Entre 55 y 59 años';                    
+                break;           
+            default: r1 = '65 años o más';                    
+                break;
+        }
+        if(resultado['valor_respuesta2'] == 1){
+            r2 = 'Sí';
+        }
+        switch (resultado['valor_respuesta3']) {
+            case 0: r3 = 'Afro';                
+                break;
+            case 1: r3 = 'Indígena';               
+                break;
+            case 2: r3 = 'Mestizo';                
+                break;
+        }
+        if(resultado['valor_respuesta4'] == 1){
+            r4 = 'Sí';
+        }
+        if(resultado['valor_respuesta5'] == 1){
+            r5 = 'Sí';
+        }
+        if(resultado['valor_respuesta6'] == 1){
+            r6 = 'Sí';
+        }
+        
+        let data =  {
+            'riesgo' : resultado['riesgo'],
+            'p1' : '¿Cuantos años tienes?',
+            'r1'      : r1,
+            'text1' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p2' : '¿Vives en una zona urbana?',
+            'r2'      : r2,
+            'text2' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p3' : '¿A qué grupo étnico pertences?',
+            'r3'      : r3,
+            'text3' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p4' : '¿Has tenido 3 o más compañeros sexuales en los últimos 5 años?',
+            'r4'      : r4,
+            'text4' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p5' : '¿Tienes 5 o más hijos?',
+            'r5'      : r5,
+            'text5' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p6' : '¿Tienes cónyuge o pareja estable?',
+            'r6'      : r6,
+            'text6' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
+        };
+        return data;        
+    }
+
+    changeIdEstimacion = (index) => {
+        
+        this.formatRespuesta(this.state.resultados_emf[index]);
         this.setState({
-            id_estimacion: id
+            estimacion_selected: this.formatRespuesta(this.state.resultados_emf[index])
         });
     }
     /*Función para la redirección del link completa tu perfil*/ 
@@ -348,7 +426,7 @@ class Perfil extends Component {
                 </tr>
             })
 
-            tableDataEmf = this.state.resultados_emf.map((e) => {
+            tableDataEmf = this.state.resultados_emf.map( (e, index) => {
                 strUrl = "https://emmafig.com/api1/pdf?id=" + e.id_estimacion;
                 return <tr>
                     <td>
@@ -359,7 +437,7 @@ class Perfil extends Component {
                     </td>
                     <td>
                         {/*<a target="_blank" href={strUrl}>Ver </a>*/}
-                        <a data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => { this.changeIdEstimacion(e.id_estimacion) }}>Ver</a>
+                        <a data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => {this.changeIdEstimacion(index)}}>Ver</a>
                     </td>
                 </tr>
             })
@@ -381,7 +459,7 @@ class Perfil extends Component {
                 </tr>
             })
         } else if (this.state.resultados == null && this.state.resultados_emf != null) {
-            tableDataEmf = this.state.resultados_emf.map((e) => {
+            tableDataEmf = this.state.resultados_emf.map( (e, index) => {
                 /*strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";*/
                 strUrl = "https://emmafig.com/api1/pdf?id=" + e.id_estimacion;
                 return <tr>
@@ -394,7 +472,7 @@ class Perfil extends Component {
                     </td>
                     <td>
                         {/*<a target="_blank" href={strUrl}>Ver </a>*/}
-                        <a data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => { this.changeIdEstimacion(e.id_estimacion) }}>Ver</a>
+                        <a  data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => {this.changeIdEstimacion(index)}}>Ver</a>
                     </td>
                 </tr>
             })
@@ -405,7 +483,7 @@ class Perfil extends Component {
 
             <div className="Perfil">
 
-                <ModalResultado id_estimacion={this.state.id_estimacion} />
+                <ModalResultado resultado={this.state.estimacion_selected} resultadoGotoCita={this.props.resultadoGotoCita} scroolComponent={this.props.scroolComponent} updateStateComponent={this.props.updateStateComponent}/>
                 <div className="container emp-profile">
                     <div className="row">
                         <div className="col l5 m5">
