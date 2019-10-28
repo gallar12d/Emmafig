@@ -339,7 +339,7 @@ class ComponentMaster extends Component {
 
                 );
             case 1:
-                return <Perfil resultadoGotoCita={this.resultadoGotoCita.bind(this)}/>
+                return <Perfil resultadoGotoCita={this.resultadoGotoCita.bind(this)} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}/>
             case 2:
                 return <EditPerfil></EditPerfil>
             default:

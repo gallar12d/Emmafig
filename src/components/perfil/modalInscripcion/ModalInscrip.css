@@ -65,14 +65,14 @@
 }
 .pregunta,
 .respuesta,
-.texto {
+.texto-resp {
   font-weight: 900;
 }
 .pregunta {
-  color: #0f9b9b;
+  color: #0ba7ad;
 }
 .respuesta {
-  color: #c83b8d;
+  color: #492c51;
 }
 #resultado {
   width: 100%;
@@ -81,7 +81,7 @@
   top: 0;
   font-size: 2em;
   font-weight: 900;
-  color: #c83b8d;
+  color: #492c51;
 }
 .subtitulo_reg {
   color: #492c51;
@@ -90,11 +90,11 @@
   position: absolute;
   top: 12%;
 }
-.texto {
+.texto-resp {
   color: #000000;
   font-size: .7em;
 }
 .titulo_reg {
-  color: #0f9b9b;
+  color: #0ba7ad;
 }
 

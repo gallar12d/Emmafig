@@ -513,7 +513,7 @@ class Perfil extends Component {
             
             <div className="Perfil">
 
-                <ModalResultado resultado={this.state.estimacion_selected} resultadoGotoCita={this.props.resultadoGotoCita}/>
+                <ModalResultado resultado={this.state.estimacion_selected} resultadoGotoCita={this.props.resultadoGotoCita} scroolComponent={this.props.scroolComponent} updateStateComponent={this.props.updateStateComponent}/>
                 <div className="container emp-profile">
 
                     <div className="row">
