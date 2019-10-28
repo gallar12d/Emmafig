@@ -23,8 +23,8 @@ class Editprofile extends Component {
         //document.getElementById("primer_nombre").value
         let dataForm = new FormData();
         dataForm.append("id_usuario", localStorage.getItem('id'));
-        axios.get("https://emmafig.com/api1/getUser/"+localStorage.getItem('id')).then(res  => {
-            var result =  res.data;
+        axios.get("https://emmafig.com/api1/getUser/" + localStorage.getItem('id')).then(res => {
+            var result = res.data;
             console.log(result)
             /*
             console.log(result.infoUser[0].primer_nombre);
@@ -37,19 +37,19 @@ class Editprofile extends Component {
             document.getElementById("label_primer_nombre").classList.add("active")
             document.getElementById("label_primer_apellido").classList.add("active")
             document.getElementById("numeroTelefono").value = result.user.telefono1;
-            
-            if(result.user.segundo_nombre != null  && result.user.segundo_nombre != ""){
+
+            if (result.user.segundo_nombre != null && result.user.segundo_nombre != "") {
                 document.getElementById("label_segundo_nombre").classList.add("active");
             }
-            if(result.user.segundo_apellido != null && result.user.segundo_apellido != ""){
-                
+            if (result.user.segundo_apellido != null && result.user.segundo_apellido != "") {
+
                 document.getElementById("label_segundo_apellido").classList.add("active");
             }
-            if(result.user.telefono1 != null && result.user.segundo_telefono1 != ""){
+            if (result.user.telefono1 != null && result.user.segundo_telefono1 != "") {
                 document.getElementById("labelTel").classList.add("active");
 
             }
-            if(result.user.correo != null && result.user.correo != ""){
+            if (result.user.correo != null && result.user.correo != "") {
 
                 document.getElementById("labelEmail").classList.add("active");
             }
@@ -70,7 +70,7 @@ class Editprofile extends Component {
             var loader = document.getElementById("loaderEdit");
             switch (form) {
                 case 'formPersonalInfo':
-                   
+
                     loader.style.display = "inline-block"
                     dataUpdate.append("bandera_update", 'nombres')
                     dataUpdate.append("id_usuario", id_usuario)
@@ -78,15 +78,17 @@ class Editprofile extends Component {
                     dataUpdate.append("segundo_nombre", document.getElementById("segundo_nombre").value)
                     dataUpdate.append("primer_apellido", document.getElementById("primer_apellido").value)
                     dataUpdate.append("segundo_apellido", document.getElementById("segundo_apellido").value)
+                    dataUpdate.append("email", document.getElementById("email").value)
+                    dataUpdate.append("telefono", document.getElementById("numeroTelefono").value);
                     axios.post("https://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
                         .then(res => {
                             loader.style.display = "none"
-                           
+
                             alert("usuario actualizado correctamente")
                             window.location.reload()
                             let result = res.data;
                             console.log(result)
-                            
+
 
                         })
                     break;
@@ -97,13 +99,13 @@ class Editprofile extends Component {
                     dataUpdate.append("id_usuario", id_usuario)
                     axios.post("https://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
                         .then(res => {
-                            
+
                             alert("usuario actualizado correctamente")
                             window.location.reload()
                             let result = res.data;
                             console.log(result)
                             loader.style.display = "none"
-                            
+
                         })
                     break;
                 case 'formPassword':
@@ -130,9 +132,9 @@ class Editprofile extends Component {
                                 } else {
                                     alert("usuario actualizado correctamente")
                                     window.location.reload()
-                                
-                                   
-                                    
+
+
+
 
                                 }
                             })
@@ -146,17 +148,17 @@ class Editprofile extends Component {
                     dataUpdate.append("telefono", document.getElementById("numeroTelefono").value);
                     axios.post("https://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
                         .then(res => {
-                            document.getElementById("numeroTelefono").value ="";
+                            document.getElementById("numeroTelefono").value = "";
                             alert("usuario actualizado correctamente")
                             window.location.reload()
                             loader.style.display = "none"
                             let result = res.data;
                             console.log(result)
-                            
+
                         })
                     break;
-                    default:
-                        break;
+                default:
+                    break;
 
             }
         } else {
@@ -180,9 +182,9 @@ class Editprofile extends Component {
                             this.Tabs = Tabs;
                         }}>
                             <li className="tab "><a href="#infoUser" className="active"><i className="small material-icons floatElement">person</i>Informacion personal</a></li>
-                            <li className="tab "><a href="#emailContent"><i className="small material-icons floatElement">email</i>Correo</a></li>
-                            <li className="tab  "><a href="#passwordContent"><i className="small material-icons floatElement">fingerprint</i>Contraseña</a></li>
-                            <li className="tab "><a href="#numeroContent"><i className="small material-icons floatElement">phone_android</i>Numero de telefono</a></li>
+                            {/* <li className="tab "><a href="#emailContent"><i className="small material-icons floatElement">email</i>Correo</a></li>*/}
+                            <li className="tab  "><a href="#passwordContent"><i className="small material-icons floatElement">fingerprint</i>Cambiar contraseña</a></li>
+                            {/*<li className="tab "><a href="#numeroContent"><i className="small material-icons floatElement">phone_android</i>Numero de telefono</a></li>*/}
 
                         </ul>
                         <div id="loaderEdit" className="preloader-wrapper big active">
@@ -206,7 +208,7 @@ class Editprofile extends Component {
 
                                 <div className="input-field col s12 ">
 
-                                    <input  id="primer_nombre" type="text" className="validate" name="primer_nombre" required maxLength="10" />
+                                    <input id="primer_nombre" type="text" className="validate" name="primer_nombre" required maxLength="10" />
                                     <label id="label_primer_nombre" htmlFor="primer_nombre">Primer nombre *</label>
 
 
@@ -224,6 +226,15 @@ class Editprofile extends Component {
                                     <input id="segundo_apellido" type="text" className="validate" maxLength="10" />
                                     <label id="label_segundo_apellido" htmlFor="segundo_apellido">Segundo apellido</label>
                                 </div>
+                                <div className="input-field col s12 ">
+                                    <input id="numeroTelefono" type="number" className="validate" maxLength="9" />
+                                    <label id="labelTel" htmlFor="numeroTelefono">Numero de telefono</label>
+                                </div>
+                                <div className="input-field col s12 ">
+                                    <input id="email" type="email" className="validate" />
+                                    <label id="labelEmail" htmlFor="email">Email</label>
+                                </div>
+
                                 <button className="waves-light btn" id="btnSetUserInfo" onClick={(e) => this.validarFormulario("formPersonalInfo", e)} >Guardar cambios</button>
                                 <div className="preloader-wrapper small active" id="loader">
 
@@ -234,7 +245,7 @@ class Editprofile extends Component {
 
                         </div>
 
-                        <div id="emailContent" className="col tab-content">
+                        {/*<div id="emailContent" className="col tab-content">
 
                             <form className="form-content" id="emailForm">
                                 <div className="input-field col s12 ">
@@ -244,7 +255,7 @@ class Editprofile extends Component {
                                 <button className="waves-light btn" id="btnSetEmail" onClick={(e) => this.validarFormulario("emailForm", e)} >Guardar cambios</button>
 
                             </form>
-                        </div>
+                    </div>*/}
 
                         <div id="passwordContent" className="col tab-content">
                             <form className="form-content" id="formPassword">
@@ -277,7 +288,7 @@ class Editprofile extends Component {
 
                         </div>
 
-                        <div id="numeroContent" className="col tab-content">
+                        {/*<div id="numeroContent" className="col tab-content">
                             <form className="form-content" id="formTel">
 
                                 <div className="input-field col s12 ">
@@ -288,7 +299,7 @@ class Editprofile extends Component {
 
 
                             </form>
-                        </div>
+                </div>*/}
 
 
 
