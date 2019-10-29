@@ -196,7 +196,7 @@ class ModalInscrip extends Component {
                 </div>
                 <div id="modalFooter" class="modal-footer">
                     <div className="footer-content">
-                        <Link
+                        <Link 
                             id="citas_section"
                             activateclass="activate"
                             to="citas"
@@ -206,7 +206,7 @@ class ModalInscrip extends Component {
                             duration={500}
 
                         />
-                        <Link
+                        <Link className="btn-res-cita modal-close btn-flat pulse"
                             onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "citas_section") }}
                             activateclass="activate"
                             to="citas"
@@ -215,7 +215,7 @@ class ModalInscrip extends Component {
                             offset={-60}
                             duration={500}
                         >
-                            Citas
+                            Agenda tu cita
                                     </Link>
                         {/*<a className="btn-res-cita modal-close waves-effect waves-green btn-flat" onClick={this.redirectTocita}>Agenda tu cita</a>*/}
                     </div>

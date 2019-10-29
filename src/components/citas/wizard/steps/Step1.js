@@ -73,8 +73,8 @@ class Step1 extends Component {
                     
 
                 </div>
-                <div className="col s12 m4 img_step1 ">
-                <img src={this.state.imagen} />
+                <div hidden className="col s12 m12 img_step1 ">
+                <img  hidden src={this.state.imagen} />
 
                 </div>
 
