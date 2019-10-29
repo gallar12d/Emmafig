@@ -563,7 +563,7 @@ class Perfil extends Component {
                             <table className="striped" id="tableResultados" >
                                 <thead>
                                     <tr>
-                                        <th>Resultado</th>7
+                                        <th>Resultado</th>
                                         <th>Fecha </th>
                                         <th>Informe</th>
                                     </tr>

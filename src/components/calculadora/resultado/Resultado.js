@@ -193,7 +193,7 @@ class Resultado extends Component {
                             <h1 id="titulo-res" className="flow-text right-align">Estimación</h1>
                             <h6 id="subtitulo-res" className="flow-text right-align">Tu nivel de riesgo es </h6>
                             <h1 id="contenido-res" className="flow-text right-align">{this.changeDecimal()} %</h1>
-                            <p id="detalle-res" className="left-align detalles">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium . . . <a id="btn_mas_detalles" className="modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles</a></p>
+                            <p id="detalle-res" className="left-align detalles">Sed ut perspiciatis unde omnis iste natus error . . . <a id="btn_mas_detalles" className="modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles del resultado</a></p>
                         </div>
                         <div className="row row-resultado">
                             <div className="col l12">
