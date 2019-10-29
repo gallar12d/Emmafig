@@ -117,7 +117,7 @@ class Perfil extends Component {
         loaderTabla.style.display = "inline-block"
 
         const userData = new FormData();
-        //axios.post('http://localhost/api1/rest-api-authentication-example/api/getIdentyById.php', {
+        //axios.post('http://localhost/api1/rest-authentication/api/getIdentyById.php', {
         axios.post('https://emmafig.com/api1/rest-authentication/api/getIdentyById.php', {
             "id": localStorage.getItem('id')
         }
@@ -126,14 +126,17 @@ class Perfil extends Component {
                 var porcentajePerfil = 0;
                 var nombre1 = res.data.primer_nombre.toLowerCase();
                 /*Calcular el porcentaje de perfil completado*/
-                if(res.data.primer_nombre.toLowerCase() != "Usuario"){
+                if(res.data.primer_nombre.toLowerCase() != "usuario"){
                     porcentajePerfil = porcentajePerfil + 25;
                 }
                 var apellido1 = res.data.primer_apellido.toLowerCase();
-                if(res.data.primer_apellido.toLowerCase() != "Usuario"){
+                if(res.data.primer_apellido.toLowerCase() != "usuario"){
+                    porcentajePerfil = porcentajePerfil + 25;
+                }   
+                if(res.data.fecha_nacimiento !== null){
                     porcentajePerfil = porcentajePerfil + 25;
                 }
-                if(res.data.fecha_nacimiento !== null){
+                if(res.data.telefono !== undefined && res.data.telefono !== null){
                     porcentajePerfil = porcentajePerfil + 25;
                 }
                 /* FIN Calcular el porcentaje de perfil completado*/
@@ -197,6 +200,10 @@ class Perfil extends Component {
                 })
                 /*Asignar porcentaje a barra de progreso */
                 document.getElementById("barraPerfil").style.width = porcentajePerfil+"%";
+                if(porcentajePerfil == 100){
+                    document.getElementById("div_porcentaje_perfil").style.display = 'none';
+                }
+                
                 //userData.append("identificacion", res.data.no_identificacion)
 
                 //consultar si hay foto de perfil
@@ -397,14 +404,6 @@ class Perfil extends Component {
             estimacion_selected: this.formatRespuesta(this.state.resultados_emf[index])
         });
     }
-    /*Función para la redirección del link completa tu perfil*/ 
-    GenerateClick(state, elementMenu) {
-        this.setState({
-            componentChange: state
-        })
-        this.props.scroolComponent(elementMenu)
-    }
-    /*FIN Función para la redirección del link completa tu perfil*/ 
 
     render() {
         var strUrl;
@@ -483,7 +482,7 @@ class Perfil extends Component {
 
             <div className="Perfil">
 
-                <ModalResultado resultado={this.state.estimacion_selected} resultadoGotoCita={this.props.resultadoGotoCita} scroolComponent={this.props.scroolComponent} updateStateComponent={this.props.updateStateComponent}/>
+                <ModalResultado resultado={this.state.estimacion_selected} resultadoGotoCita={this.props.resultadoGotoCita} scroolComponent={this.props.scroolComponent} updateStateComponent={this.props.updateStateComponent} simulateClickFunction={this.props.activateScrollCalculadora}/>
                 <div className="container emp-profile">
                     <div className="row">
                         <div className="col l5 m5">
@@ -527,12 +526,13 @@ class Perfil extends Component {
                         </div>
                     </div>
                      {/*Barra de progreso para perfil*/}
-                    <div className="row">
+                    <div className="row" id="div_porcentaje_perfil">
                         <div className="col l12 m12 s12">
                             <div className="row">
                                 <h5 className="col s10 left-align">Información de perfil</h5>
                                 <h5 className="col s2 right-align">{this.state.porcentaje_perfil}%</h5>
-                                <h7 className="col s12 left-align"><a href="#" >Completa tu perfíl</a> y obtén un bono de descuento para ser redimido en la Fundación InnovaGen.</h7>
+                                <h7 className="col s12 left-align">{/*<a href="#" >Completa tu perfíl</a> */} Completa tu perfil y obtén un bono de descuento para ser redimido en la Fundación InnovaGen.</h7>
+                                {/*<a  className="btn-small buttonSmall" onClick={this.props.simulateClickFunction}>Calcula tu riesgo</a>*/}
                             </div>                           
                             <div className="progress">
                                 <div className="determinate" id="barraPerfil"></div>                                

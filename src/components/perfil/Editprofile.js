@@ -37,6 +37,7 @@ class Editprofile extends Component {
             document.getElementById("label_primer_nombre").classList.add("active")
             document.getElementById("label_primer_apellido").classList.add("active")
             document.getElementById("numeroTelefono").value = result.user.telefono1;
+            document.getElementById("fecha_nacimiento").value = result.user.fecha_nacimiento;
 
             if (result.user.segundo_nombre != null && result.user.segundo_nombre != "") {
                 document.getElementById("label_segundo_nombre").classList.add("active");
@@ -80,17 +81,30 @@ class Editprofile extends Component {
                     dataUpdate.append("segundo_apellido", document.getElementById("segundo_apellido").value)
                     dataUpdate.append("email", document.getElementById("email").value)
                     dataUpdate.append("telefono", document.getElementById("numeroTelefono").value);
+                    dataUpdate.append("fecha_nacimiento", document.getElementById("fecha_nacimiento").value);
                     axios.post("https://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
+                    //axios.post("http://localhost/atlanticv3/usuarios/updateUserEmmafig", dataUpdate)
                         .then(res => {
-                            loader.style.display = "none"
-
-                            alert("usuario actualizado correctamente")
-                            window.location.reload()
-                            let result = res.data;
-                            console.log(result)
-
-
+                            if (document.getElementById("primer_nombre").value != 'USUARIO' && document.getElementById("primer_apellido").value !== 'USUARIO' && document.getElementById("numeroTelefono").value !== '' && document.getElementById("fecha_nacimiento").value != '') {
+                                var dataForm = new FormData();
+                                dataForm.append("id_usuario", id_usuario);
+                                axios.get("http://localhost/api1/sendCupon/" + id_usuario + '/' + document.getElementById("numeroTelefono").value).then(res => {
+                                    //axios.get("https://emmafig.com/api1/getUser/" + localStorage.getItem('id')).then(res => {
+                                    var result = res.data;
+                                    loader.style.display = "none"
+                                    alert(result.msg);
+                                    window.location.reload()
+                                })
+                            } else {
+                                loader.style.display = "none"
+                                alert("usuario actualizado correctamente")
+                                window.location.reload()
+                                let result = res.data;
+                                console.log(result)
+                            }
                         })
+
+
                     break;
                 case 'emailForm':
                     loader.style.display = "inline-block"
@@ -210,10 +224,7 @@ class Editprofile extends Component {
 
                                     <input id="primer_nombre" type="text" className="validate" name="primer_nombre" required maxLength="10" />
                                     <label id="label_primer_nombre" htmlFor="primer_nombre">Primer nombre *</label>
-
-
                                 </div>
-
                                 <div className="input-field col s12 ">
                                     <input id="segundo_nombre" type="text" className="validate" maxLength="10" />
                                     <label id="label_segundo_nombre" htmlFor="segundo_nombre">Segundo nombre</label>
@@ -225,6 +236,10 @@ class Editprofile extends Component {
                                 <div className="input-field col s12 ">
                                     <input id="segundo_apellido" type="text" className="validate" maxLength="10" />
                                     <label id="label_segundo_apellido" htmlFor="segundo_apellido">Segundo apellido</label>
+                                </div>
+                                <div className="input-field col s12 ">
+                                    <input id="fecha_nacimiento" type="date" className="validate" />
+                                    <label id="label_fecha_nacimiento" htmlFor="fecha_nacimiento">Fecha nacimiento</label>
                                 </div>
                                 <div className="input-field col s12 ">
                                     <input id="numeroTelefono" type="number" className="validate" maxLength="9" />
