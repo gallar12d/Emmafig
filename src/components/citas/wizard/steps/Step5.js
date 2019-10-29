@@ -171,7 +171,7 @@ class Step5 extends Component {
             <div id="step5">
 
                 <div className="row">
-                    <div className="col s12 m4 offset-m2  ">
+                    <div className="col s12 m8 offset-m2    ">
                         <div className="water_mark_parent">
                             <img className="water_mark" src={this.state.water_mark} />
                             {mostrar}
