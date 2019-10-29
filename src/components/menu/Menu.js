@@ -131,7 +131,7 @@ class Menu extends Component {
                             <ul className=" menuItems right hide-on-med-and-down">
                                 <li >
 
-                                <a href={'/somos'}>Quienes somos</a>
+                                <a href='#/somos'>Quienes somos</a>
                                 </li>
                                 <li id="citas_li">
 
@@ -305,7 +305,7 @@ class Menu extends Component {
                     <li id="citas_li_sm">
 
                         <li >
-                            <a href='somos'>Quienes somos</a>
+                            <a href='#/somos'>Quienes somos</a>
                         </li>
 
                     </li>

@@ -648,7 +648,7 @@ class FormRegistro extends Component {
                     </div>
                     <div>
                         <small id="phone_msg" className="  celular-animation validate_phone_msg">
-                            Recuerda que la tu información debe ser válida, ya que por te enviaremos información personal y confidencial a través de estos medios.
+                            Recuerda que tus datos deben ser válidos, ya que te enviaremos información personal y confidencial a través de estos medios.
                             </small>
                     </div>
 

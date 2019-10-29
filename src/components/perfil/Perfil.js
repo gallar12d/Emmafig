@@ -136,7 +136,7 @@ class Perfil extends Component {
                 if(res.data.fecha_nacimiento !== null){
                     porcentajePerfil = porcentajePerfil + 25;
                 }
-                if(res.data.telefono !== undefined && res.data.telefono !== null){
+                if(res.data.correo !== undefined && res.data.correo !== null){
                     porcentajePerfil = porcentajePerfil + 25;
                 }
                 /* FIN Calcular el porcentaje de perfil completado*/

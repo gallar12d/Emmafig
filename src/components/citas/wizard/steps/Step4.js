@@ -163,7 +163,8 @@ class Step4 extends Component {
 
     }
 
-    validate_cupon(){
+    validate_cupon(e){
+        e.preventDefault();
         let cupon = $('#cupon').val();
         let id_user = this.props.id_usuario;
         const dataForm = new FormData();
@@ -444,7 +445,7 @@ class Step4 extends Component {
                                     
                                 </div>
                                 <div className="input-field col s12 m4">
-                                <button onClick={this.validate_cupon.bind(this)} class="btn  waves-light" type="submit" name="action">Validar cupón
+                                <button onClick={this.validate_cupon.bind(this)} class="btn  waves-light"  name="action">Validar cupón
                                     <i class="material-icons right">send</i>
                                 </button>           
                                     

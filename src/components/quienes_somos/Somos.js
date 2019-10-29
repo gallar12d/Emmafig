@@ -32,8 +32,8 @@ class Somos extends Component {
                     <nav>
                         <div className="nav-wrapper">
 
-                            <img className="brand-logo hide-on-med-and-down logo" alt="logo" src={this.state.logo}>
-                            </img>
+                            <a href="#/"><img className="brand-logo hide-on-med-and-down logo" alt="logo" src={this.state.logo}>
+                            </img></a>
 
                             <a href="#!" data-target="mobile-demo" className="sidenav-trigger">
                                 <i className="material-icons">menu</i>
@@ -63,7 +63,7 @@ class Somos extends Component {
 
 
 
-                <div className="container">
+                <div  className="container justi">
                     <h4>QUIENES SOMOS</h4>
                     <div className="row">
                         <div className=" col m12">

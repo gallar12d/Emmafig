@@ -96,7 +96,7 @@ class Footer extends Component {
                     <div className="col s6 m6 l3">
                         <div className="row">
                             <div className="col">
-                                <h5 className="titulo_footer">SOCIAL MEDIA</h5>
+                                <h5 className="titulo_footer">REDES SOCIALES</h5>
                                 <p className="grey-text text-lighten-4">
                                     Has parte de nuestra comunidad
                                 </p>
@@ -126,7 +126,7 @@ class Footer extends Component {
                             <div className="col">
                                 <h5 className="titulo_footer">DESARROLLADO POR</h5>                          
                                 <div id="cont_logos" className="row">
-                                    <img id="logoInnovagen"  src={this.state.logoInnovagen} className="col l8 s7"></img>
+                                    <a target="_blank" href = "http://www.fig.org.co/"><img id="logoInnovagen"  src={this.state.logoInnovagen} className="col l8 s7"></img></a>
                                 </div>
                             </div>
                         </div>
