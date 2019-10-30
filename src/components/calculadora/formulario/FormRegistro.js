@@ -662,8 +662,7 @@ class FormRegistro extends Component {
                                             terminosError.style.display = 'none';
                                         }
                                     } required />
-                                    <span>He leído y acepto los
-                                    <a href="#/terminos_condiciones" target="_blank"> Política de Tratamiento de Datos</a></span>
+                                    <span className="text-terminos">He leído y acepto la<a href="#/terminos_condiciones" target="_blank"> Política de Tratamiento de Datos</a></span>
                                 </label>
                             </p>
                             <br></br>
