@@ -15,6 +15,9 @@
   align-items: center;
   text-transform: none !important;
 }
+#close_modal_res:hover{
+  color: #ffffff;
+}
 #contenido {
   position: relative;
 }
