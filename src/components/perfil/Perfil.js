@@ -480,7 +480,7 @@ class Perfil extends Component {
                         <a  data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => {this.changeIdEstimacion(index)}}>Ver</a>
                     </td>
                     <td>
-                        <a target="_blank" href={strUrl}>Descargar</a>
+                        <a href={strUrl}>Descargar</a>
                     </td>
                 </tr>
             })

@@ -903,7 +903,7 @@ function CamposPorDefecto(props) {
                     <option value="Tarjeta de identidad">Tarjeta de identidad</option>
                     <option value="Cédula de extranjería">Cédula de extranjería</option>
                 </select>*/}
-                <div class="input-field">
+                <div className="input-field">
                     <i className="material-icons prefix icon-select">assignment_ind</i>
                     <select id="tipo_identificacion"  defaultValue='1' required>
                         <option value="" disabled>Tipo de Identifcación *</option>
