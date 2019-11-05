@@ -422,6 +422,7 @@ class Perfil extends Component {
                     <td>
                         <a target="_blank" href={strUrl}>Ver </a>
                     </td>
+                    <td></td>
                 </tr>
             })
 
@@ -437,6 +438,9 @@ class Perfil extends Component {
                     <td>
                         {/*<a target="_blank" href={strUrl}>Ver </a>*/}
                         <a data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => {this.changeIdEstimacion(index)}}>Ver</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href={strUrl}>Descargar</a>
                     </td>
                 </tr>
             })
@@ -455,6 +459,8 @@ class Perfil extends Component {
                     <td>
                         <a target="_blank" href={strUrl}>Ver </a>
                     </td>
+                    <td>                        
+                    </td>
                 </tr>
             })
         } else if (this.state.resultados == null && this.state.resultados_emf != null) {
@@ -472,6 +478,9 @@ class Perfil extends Component {
                     <td>
                         {/*<a target="_blank" href={strUrl}>Ver </a>*/}
                         <a  data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => {this.changeIdEstimacion(index)}}>Ver</a>
+                    </td>
+                    <td>
+                        <a href={strUrl}>Descargar</a>
                     </td>
                 </tr>
             })
@@ -566,6 +575,7 @@ class Perfil extends Component {
                                         <th>Resultado</th>
                                         <th>Fecha </th>
                                         <th>Informe</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <p id="msj_error"></p>
