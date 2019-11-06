@@ -205,11 +205,10 @@ class ModalInscrip extends Component {
                             spy={true}
                             smooth={true}
                             offset={-60}
-                            duration={500}
-                            className="pulse"
+                            duration={500}                            
 
                         />
-                        <Link className="btn-res-cita modal-close btn-flat pulse"
+                        <Link className="modal-close btn-res-cita btn-floating pulse"
                             onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "citas_section") }}
                             activateclass="activate"
                             to="citas"
