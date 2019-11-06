@@ -76,7 +76,7 @@ class Menu extends Component {
                 </a>
                 <ul id="dropdown1" className="dropdown-content" >
                     <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
-                    <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuración</a></li>
+                    <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Actualizar datos</a></li>
                     <li className="divider"></li>
                     <li><a onClick={() => {
                         this.props.changeLogin(); window.location.reload(); 
@@ -86,7 +86,7 @@ class Menu extends Component {
             usuario_sm = <div>
 
                 <li><a href="#" onClick={() => { this.props.updateStateComponent(1); this.GenerateClick(1) }} >Perfil</a></li>
-                <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Configuración</a></li>
+                <li><a href="#" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }}>Actualizar datos</a></li>
             </div>
             cerrar_sesion =
             <li><a onClick={() => {
@@ -188,7 +188,7 @@ class Menu extends Component {
                                 </Link>
                                 </li>
                                 <li id="blog_li">
-                                    <a href="http://blog.emmafig.com/" > Blog </a>
+                                    <a href="https://www.regalaletiempoatuvida.com/blog" > Blog </a>
                                 </li>
                                 <li id="contacto_li">
 
@@ -344,7 +344,7 @@ class Menu extends Component {
 
 
 
-                    <a href="http://blog.emmafig.com/" > Blog </a>
+                    <a href="https://www.regalaletiempoatuvida.com/blog" > Blog </a>
 
                     </li>
                     <li id="contacto_li_sm">

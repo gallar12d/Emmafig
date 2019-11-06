@@ -107,7 +107,7 @@ class Seccion1 extends Component {
     return (
       <section className="page-section layoutSeccion1" id="seccion1">
         <div className="containerSection1">
-          <div className="col-lg-12 ">
+          <div className="container_slide ">
             <Fade {...fadeProperties}>
               {listItems}
             </Fade>
