@@ -254,7 +254,7 @@ class ComponentMaster extends Component {
         swal.fire({
             title: 'Calculando...',
             text: 'Por favor espere',
-            imageUrl: '/img/basicloader.gif',
+            imageUrl: process.env.PUBLIC_URL + "/img/basicloader.gif",
             allowOutsideClick: false,
             showConfirmButton: false
           })
