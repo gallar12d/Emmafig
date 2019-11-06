@@ -15,6 +15,8 @@ class ModalInscrip extends Component {
     }
     componentDidMount() {
         var elems = document.getElementById('modal2');
+        M.Modal.init(elems, {});
+        $('.modal').append('<button id="close_modal_res" class="modal-close btn-flat" style="position:absolute;top:0;right:0;"><i class="material-icons">cancel</i></button>');
 
     }
     changeDecimal() {
@@ -204,6 +206,7 @@ class ModalInscrip extends Component {
                             smooth={true}
                             offset={-60}
                             duration={500}
+                            className="pulse"
 
                         />
                         <Link className="btn-res-cita modal-close btn-flat pulse"

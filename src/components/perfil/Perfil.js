@@ -280,8 +280,7 @@ class Perfil extends Component {
             }
         }
         axios.post(url, pictureFile, config).then(res => {
-            let result = res.data;
-            console.log(result)
+            let result = res.data;            
         })
     }
 
@@ -310,7 +309,7 @@ class Perfil extends Component {
                     this.setState({
                         resultados: result.resultados_atl,
                         resultados_emf: result.resultados_emf
-                    })
+                    })                    
                 } else {
                     document.getElementById("msj_error").innerHTML = "no se encontraron resultados";
                 }
