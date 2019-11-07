@@ -73,7 +73,7 @@
 #div-seccion1 h2 {
   max-width: 100%;
   line-height: normal;
-  font-size: 44px !important;
+  font-size: 40px !important;
   margin: 0 0 10px;
   text-shadow: none;
   padding: 0px !important;
@@ -125,8 +125,7 @@
 
 #div-seccion1 .btn-floating.btn-small {
   width: 140px!important;
-  height: 32.4px!important;
-}
+  height: 32.4px!important;}
 
 }
 /*Fin cofiguración para web*/
