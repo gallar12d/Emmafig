@@ -419,7 +419,7 @@ class Perfil extends Component {
                         {e.fecha_atencion}
                     </td>
                     <td>
-                        <a target="_blank" href={strUrl}>Ver </a>
+                        <a target="_blank" href={strUrl} className="btn-small btn-op">Ver </a>
                     </td>
                     <td></td>
                 </tr>
@@ -436,10 +436,8 @@ class Perfil extends Component {
                     </td>
                     <td>
                         {/*<a target="_blank" href={strUrl}>Ver </a>*/}
-                        <a data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => {this.changeIdEstimacion(index)}}>Ver</a>
-                    </td>
-                    <td>
-                        <a target="_blank" href={strUrl}>Descargar</a>
+                        <a data-id={e.id_estimacion} className="modal-trigger btn-small btn-op" href='#modal2' onClick={() => {this.changeIdEstimacion(index)}}>Ver</a>
+                        <a className="btn-small btn-download btn-op" target="_blank" href={strUrl}><i class="material-icons left">file_download</i>Descargar</a>
                     </td>
                 </tr>
             })
@@ -456,7 +454,7 @@ class Perfil extends Component {
                         {e.fecha_atencion}
                     </td>
                     <td>
-                        <a target="_blank" href={strUrl}>Ver </a>
+                        <a target="_blank" href={strUrl} className="btn-small btn-op">Ver </a>
                     </td>
                     <td>                        
                     </td>
@@ -475,11 +473,9 @@ class Perfil extends Component {
                         {e.fecha_estimacion}
                     </td>
                     <td>
-                        {/*<a target="_blank" href={strUrl}>Ver </a>*/}
-                        <a  data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => {this.changeIdEstimacion(index)}}>Ver</a>
-                    </td>
-                    <td>
-                        <a href={strUrl}>Descargar</a>
+                        {/*<a target="_blank" href={strUrl}>Ver </a>*/}                        
+                        <a  data-id={e.id_estimacion} className="modal-trigger btn-small btn-op" href='#modal2' onClick={() => {this.changeIdEstimacion(index)}}>Ver</a>
+                        <a className="btn-small btn-download btn-op" href={strUrl}><i class="material-icons left">file_download</i>Descargar</a>
                     </td>
                 </tr>
             })
@@ -573,8 +569,8 @@ class Perfil extends Component {
                                     <tr>
                                         <th>Resultado</th>
                                         <th>Fecha </th>
-                                        <th>Informe</th>
                                         <th>Acciones</th>
+                                        
                                     </tr>
                                 </thead>
                                 <p id="msj_error"></p>
