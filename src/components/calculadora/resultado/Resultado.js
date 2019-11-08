@@ -109,7 +109,7 @@ class Resultado extends Component {
 
     showOpcion = () => {
         let opcion = '';
-        if (this.props.login) {
+        /*if (this.props.login) {
             opcion = <div className="col s4 m4 l4">
                 <a id="btn_mas_detalles" className="boton-res waves-light col s12 m12 l12" href='http://blog.emmafig.com/' target="_blank">Saber más</a>
             </div>
@@ -117,6 +117,11 @@ class Resultado extends Component {
             opcion = <div className="col s4 m4 l4">
                 <a id="btn_mas_detalles" className="boton-res waves-light modal-trigger col s12 m12 l12" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles</a>
             </div>
+        }*/
+        if(this.props.login){
+            opcion = <a id="btn_mas_detalles" onClick={this.props.toPerfil}>Más detalles del resultado</a>
+        }else{
+            opcion = <a id="btn_mas_detalles" className="modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles del resultado</a>
         }
         return opcion;
     }
@@ -193,7 +198,7 @@ class Resultado extends Component {
                             <h1 id="titulo-res" className="flow-text right-align">Estimación</h1>
                             <h6 id="subtitulo-res" className="flow-text right-align">Tu nivel de riesgo es </h6>
                             <h1 id="contenido-res" className="flow-text right-align">{this.changeDecimal()} %</h1>
-                            <p id="detalle-res" className="left-align detalles">Sed ut perspiciatis unde omnis iste natus error . . . <a id="btn_mas_detalles" className="modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles del resultado</a></p>
+                            <p id="detalle-res" className="left-align detalles">Sed ut perspiciatis unde omnis iste natus error . . . {this.showOpcion()}</p>
                         </div>
                         <div className="row row-resultado">
                             <div className="col l12">

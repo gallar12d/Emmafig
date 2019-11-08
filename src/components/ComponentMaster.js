@@ -197,6 +197,13 @@ class ComponentMaster extends Component {
         }
     }
 
+    toPerfil = () => {
+        this.setState({
+            changeCompt: 1
+        });
+        this.showComponent();
+    }
+
     changeLoginCalculadora = () => {
         this.setState({
             loginCalculadora: 1,
@@ -331,6 +338,7 @@ class ComponentMaster extends Component {
                             resultadoGotoCita={this.resultadoGotoCita.bind(this)}
                             showPreloader={this.showPreloader}
                             hidePreloader={this.hidePreloader}
+                            toPerfil={this.toPerfil.bind(this)}
                         />
                         <Citas  origen =  {this.state.origen} changeOrigen = {this.changeOrigen.bind(this)} id_usuario = {this.state.id} logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
 
