@@ -16,7 +16,7 @@ class Step4 extends Component {
             profesionales: [],
             user: {},
             cupon: ''
-             
+
         };
     }
 
@@ -151,7 +151,7 @@ class Step4 extends Component {
             $(this).off('mousewheel.disableScroll')
         })
 
-        this.open_modal()
+        //this.open_modal()
 
     }
     open_modal() {
@@ -163,32 +163,34 @@ class Step4 extends Component {
 
     }
 
-    validate_cupon(e){
+    validate_cupon(e) {
         e.preventDefault();
         let cupon = $('#cupon').val();
         let id_user = this.props.id_usuario;
         const dataForm = new FormData();
         dataForm.append("cupon", cupon);
         dataForm.append("id_usuario", id_user);
-        this.setState({ cupon: 'loading' }) 
+        this.setState({ cupon: 'loading' })
 
         Axios
-        .post("https://fig.org.co/atlanticv2/usuarios/validate_cupon", dataForm)
-        .then(res => {
-            let result = res.data;
+            .post("https://fig.org.co/atlanticv2/usuarios/validate_cupon", dataForm)
+            .then(res => {
+                let result = res.data;
 
-            if(result){
-                this.setState({ cupon: 'valido' })  
-                
-                this.props.set_state('id_bono', result);
-            }
-            else{
-                this.setState({ cupon: 'invalido' }) 
+                if (result) {
+                    this.setState({ cupon: 'valido' })
+                    alert('Felicitaciones, su cupón ha sido validado!')
 
-            }
-            
+                    this.props.set_state('id_bono', result);
+                }
+                else {
+                    this.setState({ cupon: 'invalido' })
+                    alert('Cupón no válido para este usuario! ')
 
-        });
+                }
+
+
+            });
 
     }
 
@@ -197,12 +199,12 @@ class Step4 extends Component {
         var next = $('.btn_next')
         console.log(next)
         var validity = $('#form_user')[0].checkValidity()
-        if (validity) {        
-           
-            if (this.props.paciente_primer_nombre == 'User' || this.props.paciente_primer_nombre == 'Usuario' ) {
+        if (validity) {
+
+            if (this.props.paciente_primer_nombre == 'User' || this.props.paciente_primer_nombre == 'Usuario') {
                 alert('Debes ingresar un primer nombre válido!')
 
-               return false;
+                return false;
             }
             if (this.props.paciente_segundo_nombre == 'User' || this.props.paciente_segundo_nombre == 'Usuario') {
                 alert('Debes ingresar un segundo nombre válido o dejar el campo vacío')
@@ -212,19 +214,19 @@ class Step4 extends Component {
                 alert('Debes ingresar un primer apellido válido!')
                 return false;
             }
-            if (this.props.paciente_segundo_apellido == 'User' || this.props.paciente_segundo_apellido == 'Usuario' ) {
+            if (this.props.paciente_segundo_apellido == 'User' || this.props.paciente_segundo_apellido == 'Usuario') {
                 alert('Debes ingresar un segundo apellido válido o dejar el campo vacío')
                 return false;
             }
 
-            if(!window.confirm('Está seguro que los anteriores datos son válidos?')){
+            if (!window.confirm('Está seguro que los anteriores datos son válidos?')) {
                 return false;
             }
 
             var elem = $('#modal_cita')
             var instance = M.Modal.getInstance(elem);
             this.props.set_state('informacion_paciente', true)
-            instance.close();  
+            instance.close();
             this.props.activate_step(this.props.step + 1);
             this.props.actualizar(this.props.step + 1);
         }
@@ -239,36 +241,67 @@ class Step4 extends Component {
 
     render() {
 
-      let  validar_boton = '';
-        if(this.state.cupon == ''){
+        let btn_loading = (
+            <button onClick={this.validate_cupon.bind(this)} class="btn btn_validate_cupon waves-light" name="action">validar
+                                    <i class="material-icons right">send</i>
+            </button>
+        )
+
+        if(this.state.cupon == 'loading'){
+            btn_loading = (
+                <div class="preloader-wrapper small active">
+                    <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div><div class="gap-patch">
+                            <div class="circle"></div>
+                        </div><div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            )
+
+        }
+        else{
+            btn_loading = (
+                <button onClick={this.validate_cupon.bind(this)} class="btn btn_validate_cupon waves-light" name="action">validar
+                                        <i class="material-icons right">send</i>
+                </button>
+            )
+
+        }
+
+        let validar_boton = '';
+        if (this.state.cupon == '') {
             validar_boton = '';
         }
 
-        else if(this.state.cupon == 'valido'){
+        else if (this.state.cupon == 'valido') {
             validar_boton = (
-                <h5>Cupón confirmado</h5>          
-                
-            ) 
+                <h5>Cupón confirmado</h5>
+
+            )
         }
-        else if(this.state.cupon == 'invalido'){
+        else if (this.state.cupon == 'invalido') {
             validar_boton = (
                 <h5>Cupón inválido para este usuario</h5>
-            ) 
+            )
         }
         else {
             validar_boton = (
                 <div class="preloader-wrapper small active">
                     <div class="spinner-layer spinner-blue-only">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div><div class="gap-patch">
-                        <div class="circle"></div>
-                    </div><div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div><div class="gap-patch">
+                            <div class="circle"></div>
+                        </div><div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
                     </div>
                 </div>
-            ) 
+            )
         }
 
 
@@ -377,7 +410,22 @@ class Step4 extends Component {
 
                         </div>
                         <div className="row">
+                            <div className="input-field col s6 m6">
+                                <input id="cupon" type="text" className="validate"></input>
+                                <label htmlFor="first_name">Tienes un cupon?</label>
+
+                            </div>
+                            <div className="input-field col s6 m6">
+                                {btn_loading}
+
+                            </div>
+
+                        </div>
+                        <div className="row">
                             <div className="col m12">
+
+
+
                                 <hr></hr>
 
                             </div>
@@ -434,27 +482,8 @@ class Step4 extends Component {
                                     <input onChange={(e) => this.props.set_state('paciente_email', e.target.value)} defaultValue={this.state.user.correo} id="email" type="email" className="validate"></input>
                                     <label className={(this.state.user.correo) ? 'active' : ''} htmlFor="first_name">Correo electrónico</label>
                                 </div>
-                                <div className="input-field col s12 m12">
-                                    <h6>Tienes un cupón? ingresalo aquí</h6>
-                                    
-                                </div>
-                                <div className="input-field col s12 m4">
-                                    
-                                    <input   id="cupon" type="text" className="validate"></input>
-                                    <label  htmlFor="first_name">Cupón</label>
-                                    
-                                </div>
-                                <div className="input-field col s12 m4">
-                                <button onClick={this.validate_cupon.bind(this)} class="btn  waves-light"  name="action">Validar cupón
-                                    <i class="material-icons right">send</i>
-                                </button>           
-                                    
-                                </div>
-                                <div className="input-field col s12 m4">
-                                    
-                                    {validar_boton}
-                                    
-                                </div>
+
+                                
                             </form>
 
 
@@ -465,7 +494,7 @@ class Step4 extends Component {
 
                     </div>
                     <div className="modal-footer">
-                        <button onClick={this.validate_form_user.bind(this)} className="btn   ">Confirmar</button>
+                        <button onClick={this.validate_form_user.bind(this)} className="btn  btn_confirm ">Confirmar</button>
                     </div>
                 </div>
 

@@ -160,6 +160,7 @@ class Citas extends Component {
                 </div>
                {seccion}
                
+               
                <Modal id='modal1'  changeLogin={this.props.changeLogin}/> 
                
                

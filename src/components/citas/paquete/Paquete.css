@@ -105,6 +105,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#219799', end
         background-color: #492c51;
        
     }
+
+    .pulse{
+        overflow: visible !important;
+        position: relative !important;
+    }
     
 
    

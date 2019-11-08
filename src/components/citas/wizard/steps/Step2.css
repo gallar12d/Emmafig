@@ -24,10 +24,11 @@
 }
 
 .step2 .col.s12.m4.img_step1 {
-  margin-top: -4%;
+    margin-top: 0% !important;
     margin-bottom: -4% !important;
     display: grid;
-    grid-template-columns: 90%;
+    grid-template-columns: 100%;
+    margin-left: 10px;
   }
 
   .step2 svg.icon {

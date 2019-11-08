@@ -108,4 +108,15 @@ animation: shake 1s cubic-bezier(.36,.07,.19,.97) both;
   font-weight: bold;
 }
 
+.step4 .btn_validate_cupon{
+    margin-bottom: 0px;
+    margin-top: 10px;
+    float: left;
+    border-radius: 8px;
+}
+.step4 .btn_confirm{
+  
+  border-radius: 8px;
+}
+
 
