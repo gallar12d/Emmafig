@@ -1,6 +1,12 @@
 .btn, .btn-large, .btn-small{
     background-color: #0ba7ad;
 }
+.btn-op{
+    font-weight: 100;
+}
+.btn-download{
+    margin-left: 1em;;
+}
 .resetPading{
     padding: 0px !important;
 }

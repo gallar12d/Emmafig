@@ -8,9 +8,7 @@
   background-color: #0ba7ad !important;
   color: #ffffff;
   font-size: calc(.5em + 1vw);
-  border-radius: 0.5em;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  border-radius: 0.5em; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,6 +60,7 @@
 }
 #modalFooter {
   text-align: center !important;
+  height: 61px;
 }
 #modal2{
   background-color: #fff;
