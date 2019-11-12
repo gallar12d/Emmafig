@@ -7,10 +7,10 @@
 }
 
 .step4 .col.s12.m4.img_step4 {
-  margin-top: 0%;
-    margin-bottom: -4% !important;
-    display: grid;
-    grid-template-columns: 40%;
+  margin-top: -6%;
+  margin-bottom: -8% !important;
+  display: grid;
+  grid-template-columns: 40%
   }
 
   .step4 svg.icon {

@@ -12,7 +12,7 @@ class Step4 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            imagen: process.env.PUBLIC_URL + "/img/citas_step2.svg",
+            imagen: process.env.PUBLIC_URL + "/img/logo-mariposa1.png",
             profesionales: [],
             user: {},
             cupon: ''
@@ -151,7 +151,7 @@ class Step4 extends Component {
             $(this).off('mousewheel.disableScroll')
         })
 
-        //this.open_modal()
+        this.open_modal()
 
     }
     open_modal() {

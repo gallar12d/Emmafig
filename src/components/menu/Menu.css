@@ -7,12 +7,13 @@ nav .nav-wrapper {
 }
 
 nav .brand-logo {
+    width: 6%;
     float: left;
     position: unset !important;
     margin-left: 10%;
 }
 .logo{
-    margin-top: 11px;
+    margin-top: 0px;
 }
 
 .menuItems{

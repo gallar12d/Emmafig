@@ -15,7 +15,7 @@ class Menu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            logo: process.env.PUBLIC_URL + "/img/logo-Emmafig4.png",
+            logo: process.env.PUBLIC_URL + "/img/logo-regalale1.png",
             gblState: 0,
             element: "",
             componentChange: 0,

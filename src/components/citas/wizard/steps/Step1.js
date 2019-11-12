@@ -12,7 +12,7 @@ class Step1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            imagen: process.env.PUBLIC_URL + "/img/citas_step1.svg"
+            imagen: process.env.PUBLIC_URL + "/img/logo-mariposa1.png"
 
         };
     }
@@ -73,8 +73,8 @@ class Step1 extends Component {
                     
 
                 </div>
-                <div hidden className="col s12 m12 img_step1 ">
-                <img  hidden src={this.state.imagen} />
+                <div  className="col s12 m4 offset-m1 img_step1 ">
+                <img   src={this.state.imagen} />
 
                 </div>
 

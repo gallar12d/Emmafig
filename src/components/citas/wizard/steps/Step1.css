@@ -9,8 +9,8 @@ grid-gap: 23px;
 }
 
 .step1 .col.s12.m4.img_step1 {
-  margin-top: -4%;
-    margin-bottom: -4% !important;
+  margin-top: -6%;
+    margin-bottom: -7% !important;
     display: grid;
     grid-template-columns: 90%;
   }
