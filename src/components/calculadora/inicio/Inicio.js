@@ -10,7 +10,8 @@ class Inicio extends Component {
 
         this.state = {
             img_avatar: process.env.PUBLIC_URL + "/img/avatar-section1.png",
-            logo_emma: process.env.PUBLIC_URL + "/img/papilomapp-logo.png",
+            //logo_emma: process.env.PUBLIC_URL + "/img/papilomapp-logo.png",
+            logo_emma: process.env.PUBLIC_URL + "/img/logortv.png",
             begin: process.env.PUBLIC_URL + "/img/fwdbotnempezar/btn-empezar1-c-2.svg",
             style: {
                 opacity: 0,
@@ -82,7 +83,7 @@ getFechainicialTarea() {
                     </div>
                 </div>
                 <div id="inicio-imagenes" className="row valign-wrapper">
-                    <div className="col s5 l3 offset-l3 offset-s1">
+                    <div className="col s6 l6 offset-l1 offset-s1">
                         <img id="logo_emmafig" src={this.state.logo_emma}></img>
                         {/*<img id="btn_begin" onMouseOver={this.beginHandleMouseOver} onMouseOut={this.beginHandleMouseOut} onClick={this.props.changeComponente} src={this.state.begin}></img>*/}                        
                     </div>

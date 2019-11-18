@@ -3,6 +3,8 @@ import './ModalInscrip.css';
 import M from 'materialize-css';
 import $ from 'jquery';
 import { Link } from "react-scroll";
+let ponerPulse;
+let quitarPulse;
 class ModalInscrip extends Component {
 
     constructor(props) {
@@ -25,7 +27,7 @@ class ModalInscrip extends Component {
 
     quitarPulse = () => {
         let botonPulse = document.getElementById('btn-cita');
-        setTimeout(
+        quitarPulse = setTimeout(
             () => {
                botonPulse.classList.remove("pulse");
                 this.ponerPulse();
@@ -36,7 +38,7 @@ class ModalInscrip extends Component {
 
     ponerPulse = () => {
         let botonPulse = document.getElementById('btn-cita');
-        setTimeout(
+        ponerPulse = setTimeout(
             () => {
                botonPulse.classList.add("pulse");
                this.quitarPulse();
@@ -59,6 +61,12 @@ class ModalInscrip extends Component {
         })
         this.props.scroolComponent(elementMenu)
     }
+
+    componentWillUnmount() {
+        clearTimeout(ponerPulse);
+        clearTimeout(quitarPulse);
+      }
+
     render() {
         return (
 
