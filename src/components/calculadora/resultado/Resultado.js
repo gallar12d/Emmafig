@@ -20,7 +20,8 @@ class Resultado extends Component {
                 opacity: 0,
                 transform: 'translate3d(100%,0,0)'
             },
-            img_emma: process.env.PUBLIC_URL + "/img/emmasection1espejo.svg"
+            img_emma: process.env.PUBLIC_URL + "/img/emmasection1espejo.svg",
+            logo_emma: process.env.PUBLIC_URL + "/img/logortv.png",
         };
 
         this.masHandleMouseOver = this.masHandleMouseOver.bind(this);
@@ -118,9 +119,9 @@ class Resultado extends Component {
                 <a id="btn_mas_detalles" className="boton-res waves-light modal-trigger col s12 m12 l12" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles</a>
             </div>
         }*/
-        if(this.props.login){
+        if (this.props.login) {
             opcion = <a id="btn_mas_detalles" onClick={this.props.toPerfil}>Más detalles del resultado</a>
-        }else{
+        } else {
             opcion = <a id="btn_mas_detalles" className="modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles del resultado</a>
         }
         return opcion;
@@ -190,18 +191,28 @@ class Resultado extends Component {
 
             <div style={this.state.style} id="contenedor-resultado">
                 <div id="contenedor-detalles" className="row">
-                    <div id="contenedor-emma" className="hide-on-small-only">
+                    {/*<div id="contenedor-emma" className="hide-on-small-only">
                         <img id="img-emma" src={this.state.img_emma} />
-                    </div>
-                    <div id="cont-info-detalles" className="col s12 m9 l8">
+                    </div>*/}
+                    <div id="cont-info-detalles" className="col s12 m9 l10 offset-l1">
+                        {/*<div id="cont-info-detalles" className="col s12 m9 l8">
                         <div id="contenedor-titulo-ins" className="right-align">
                             <h1 id="titulo-res" className="flow-text right-align">Estimación</h1>
                             <h6 id="subtitulo-res" className="flow-text right-align">Tu nivel de riesgo es </h6>
                             <h1 id="contenido-res" className="flow-text right-align">{this.changeDecimal()} %</h1>
                             <p id="detalle-res" className="left-align detalles">Sed ut perspiciatis unde omnis iste natus error . . . {this.showOpcion()}</p>
+                        </div>*/}
+                        <div className="col l6">
+                            <img id="logo_emmafig" src={this.state.logo_emma} />
                         </div>
-                        <div className="row row-resultado">
+                        <div id="contenedor-titulo-ins" className="right-align col l6">
+                            <h1 id="titulo-res" className="flow-text right-align">Estimación</h1>
+                            <h6 id="subtitulo-res" className="flow-text right-align">Tu nivel de riesgo es </h6>
+                            <h1 id="contenido-res" className="flow-text right-align">{this.changeDecimal()} %</h1>
+                        </div>
+                        <div className="row row-resultado">                            
                             <div className="col l12">
+                            <p id="detalle-res" className="left-align detalles">Sed ut perspiciatis unde omnis iste natus error . . . {this.showOpcion()}</p>
                                 <table className="centered" className="hide-on-small-only">
                                     <thead>
                                         <tr>

@@ -31,7 +31,7 @@
 
 #contenedor-inicio #btn_begin .cls-2,
 #contenedor-inicio #btn_begin .cls-3 {
-  fill: #0ba7ad;
+  fill: #5EA4AA;
 }
 
 #contenedor-inicio #btn_begin .cls-3 {
@@ -50,10 +50,10 @@
 
 #contenedor-inicio #btn_begin:hover .cls-2,
 #contenedor-inicio #btn_begin:hover .cls-3 {
-  fill: #492c5d;
+  fill: #5E2B6C;
 }
 .encabezado {
-  color: #0ba7ad;
+  color: #5EA4AA;
 }
 #logo_emmafig {
   width: 100%;

@@ -27,18 +27,18 @@
     animation: dash 2s linear forwards;
 }
 .circulo-actual{
-    stroke: #492c51;
+    stroke: #5E2B6C;
     fill: #C6C8C7; 
     
 }
 .circulo-ok{        
-    stroke: #492c51;
-    fill: #492c51;  
+    stroke: #5E2B6C;
+    fill: #5E2B6C;  
     
 }
 .circulo-ok-actual{    
-    stroke: #0ba7ad;
-    fill: #492c51;      
+    stroke: #5EA4AA;
+    fill: #5E2B6C;      
 }
 .contenido-pregunta, .contenido-respuesta{
     font-size: 1.8em;
@@ -65,13 +65,13 @@
 }
 .cuestionario-info{
     display: none;
-    color: #492c51;
+    color: #5E2B6C;
     font-style: italic;
     font-weight: bold;
     font-size: larger;    
 }
 .encabezado{
-    color:#0ba7ad;
+    color:#5EA4AA;
 }
 .item-cuestionario{
     font-family: 'Roboto';  
@@ -87,7 +87,7 @@
     bottom: 10px;
     right: 6em;
     width: 20em;
-    background: #492c51;
+    background: #5E2B6C;
     color: #FFFFFF;
     border-radius: 5px;
     padding: 1em;
@@ -105,7 +105,7 @@
     stroke: #C6C8C7;
 }
 .linea-ok{
-    stroke: #492c51;
+    stroke: #5E2B6C;
 }
 #opc-respuesta-pregunta2,
 #opc-respuesta-pregunta3,
@@ -122,7 +122,7 @@
     font-weight: 500;
 }
 .step2[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after{
-    background-color: #492c51 !important;
+    background-color: #5E2B6C !important;
 }
 
 [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
