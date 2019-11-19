@@ -177,7 +177,7 @@ class Step2 extends Component {
                         <h5 style={{ color: '#492c51', fontWeight: 'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">Nuestros profesionales</h5>
                         <hr></hr>
                         <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato' }} >{this.state.profesionales[this.state.id_selected].primer_nombre + ' ' + nombre2 + ' ' + this.state.profesionales[this.state.id_selected].primer_apellido + ' ' + apellido2}</h6>
-                        <h6 style={{ color: '#0ba7ad', fontWeight: 'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">{this.state.profesionales[this.state.id_selected].especialidad}</h6>
+                        <h6 style={{ color: '#5ea4aa', fontWeight: 'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">{this.state.profesionales[this.state.id_selected].especialidad}</h6>
                         <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato' }} >Registro Médico Número: {this.state.profesionales[this.state.id_selected].registro_medico_numero}</h6>
                         <p>{this.state.profesionales[this.state.id_selected].descripcion}</p>
                         <br></br>
