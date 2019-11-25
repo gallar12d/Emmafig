@@ -48,14 +48,16 @@ function App(props) {
       <Testimonios></Testimonios> 
       <Contacto></Contacto> 
       <Footer></Footer> 
-      
-      <ComponentMaster ancla = {ancla}></ComponentMaster>
-      */}
       <br></br>
       <br></br>
       <br></br>
       <br></br>
       <img src={img}></img>
+      
+      
+      */}
+      
+      <ComponentMaster ancla = {ancla}></ComponentMaster>
       
       
       
