@@ -35,7 +35,7 @@ class Footer extends Component {
                     <div className="col s6 m6 l3">
                         <div className="row">
                             <div className="col s12 m12 l12">
-                                <h5 className="titulo_footer">NUESTROS SERVICIOS</h5>
+                                <h5 className="titulo_footer"><a target="_blank" href = "http://www.fig.org.co/" >NUESTROS SERVICIOS</a></h5>
                             </div>
                             <div className="col s12 m12 l12 ">
                                 <div className="row" id="listPruebas" >

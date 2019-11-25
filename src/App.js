@@ -56,11 +56,6 @@ function App(props) {
       <br></br>
       <br></br>
       <img src={img}></img>*/}
-      
-      
-      
-      
-    
     </div>
    
   );

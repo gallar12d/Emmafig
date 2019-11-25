@@ -13,7 +13,7 @@ class Step2 extends Component {
             profesionales: [],
             turnos: 0,
             htmlProfesionales: [],
-            id_selected: 0
+            id_selected: 1
 
         };
     }
@@ -40,6 +40,8 @@ class Step2 extends Component {
                 $('.modal').append('<button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">x</button>');
             })
 
+            
+
     }
 
     ucword(word) {
@@ -58,6 +60,7 @@ class Step2 extends Component {
 
 
         let prof = '';
+        let index2 = 0;
 
         if (this.state.turnos > 0) {
 
@@ -84,28 +87,36 @@ class Step2 extends Component {
                 }
 
 
-
-
-                return (
-                    <div key={profesional.id_usuario}>
-                        <div className="input-field ">
-                            <div className="icon_input" >
-                                <label>
-                                    <input checked={check} onChange={() => { this.props.set_state('id_profesional', profesional.id_usuario); this.props.set_state('profesional', this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2)) }} className="with-gap" name="id_profesional" value={profesional.id_usuario} type="radio" />
-                                    <span style={{ color: 'black' }}>{this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2)}</span>
-                                </label>
-                                <a onClick={()=> {  this.showprof(index) }} className=" modal-trigger" href={'#/'}>
-                                    <FaUserNurse className="icon" size={25} />
-
-                                </a>
-
+                if(profesional.descripcion){
+                    
+                    return (
+                        <div key={profesional.id_usuario}>
+                            <div className="input-field ">
+                                <div className="icon_input" >
+                                    <label>
+                                        <input checked={check} onChange={() => { this.props.set_state('id_profesional', profesional.id_usuario); this.props.set_state('profesional', this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2)); this.showprof(index)  }} className="with-gap" name="id_profesional" value={profesional.id_usuario} type="radio" />
+                                        <span style={{ color: 'black' }}>{this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2)}</span>
+                                    </label>
+                                    <a onClick={()=> {  this.showprof(index) }} className=" modal-trigger" href={'#/'}>
+                                        <FaUserNurse className="icon" size={25} />
+    
+                                    </a>
+    
+                                </div>
                             </div>
+    
+    
                         </div>
+                    )
+                    index2 = index
 
+                }
 
-                    </div>
-                )
+                
+
+                
             })
+            
 
         }
 
@@ -169,8 +180,8 @@ class Step2 extends Component {
             htmlProfesionales = (
 
                 <div className="row">
-                    <div className="col s6 m6 l6">
-                        <img alt='' style={{ width: '100%' }} src={'http://fig.org.co/atlanticv2/public/img/' + this.state.profesionales[this.state.id_selected].avatar}>
+                    <div style={{ marginTop: '15px'}} className="col s6 m6 l6">
+                        <img alt='' style={{ width: '100%' }} src={'http://emmafig.com/api1/public/images/' + this.state.profesionales[this.state.id_selected].avatar}>
                         </img>
                     </div>
                     <div className="col s6 m6 l6">
