@@ -208,14 +208,14 @@ class Contacto extends Component {
             }
             tel2_down.style.display = "none"
             telefono1_sede.innerHTML = "No disponible"
-            telefono2_sede.innerHTML = "3006586605"
+            telefono2_sede.innerHTML = "300 658 6605"
             telefono1_sede_small.innerHTML = "No disponible"
-            telefono2_sede_small.innerHTML = "3006586605"
+            telefono2_sede_small.innerHTML = "300 658 6605"
             telefono1_sede_med.innerHTML = "No disponible"
-            telefono2_sede_med.innerHTML = "3006586605"
-            email_sede.innerHTML = "No disponible"
-            email_sede_small.innerHTML = "No disponible"
-            email_sede_med.innerHTML = "No disponible";
+            telefono2_sede_med.innerHTML = "300 658 6605"
+            email_sede.innerHTML = "ipscali@fig.org.co"
+            email_sede_small.innerHTML = "ipscali@fig.org.co"
+            email_sede_med.innerHTML = "ipscali@fig.org.co";
 
 
 

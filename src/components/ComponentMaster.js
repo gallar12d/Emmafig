@@ -35,7 +35,8 @@ class ComponentMaster extends Component {
             loginCitas: 0,
             riesgo: 0,
             respuestas: [],
-            origen: 'initial'
+            origen: 'initial',
+            preloader: process.env.PUBLIC_URL + "/img/basicloader.gif"
 
         }
         //this.clickLogin = this.clickLogin.bind(this);
@@ -196,6 +197,13 @@ class ComponentMaster extends Component {
         }
     }
 
+    toPerfil = () => {
+        this.setState({
+            changeCompt: 1
+        });
+        this.showComponent();
+    }
+
     changeLoginCalculadora = () => {
         this.setState({
             loginCalculadora: 1,
@@ -250,11 +258,11 @@ class ComponentMaster extends Component {
             });
     }
 
-    showPreloader(){
+    showPreloader = () => {
         swal.fire({
             title: 'Calculando...',
             text: 'Por favor espere',
-            imageUrl: '/img/basicloader.gif',
+            imageUrl: this.state.preloader,
             allowOutsideClick: false,
             showConfirmButton: false
           })
@@ -330,6 +338,7 @@ class ComponentMaster extends Component {
                             resultadoGotoCita={this.resultadoGotoCita.bind(this)}
                             showPreloader={this.showPreloader}
                             hidePreloader={this.hidePreloader}
+                            toPerfil={this.toPerfil.bind(this)}
                         />
                         <Citas  origen =  {this.state.origen} changeOrigen = {this.changeOrigen.bind(this)} id_usuario = {this.state.id} logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
 

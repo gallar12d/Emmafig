@@ -42,13 +42,25 @@
     overflow: hidden;
     /*
     margin-top: -30%;
-    */
-    width: 70%;
+    
+    width: 70%;*/
     border: none;
     border-radius: 0;
     font-size: 15px;
     background: #0ba7ad;
 }
+
+.edit-perfil{
+    position: relative;
+    overflow: hidden;
+     margin-top: 12px; 
+    /*width: 70%;*/
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #0ba7ad;
+}
+
 .profile-img .file input {
     position: absolute;
     opacity: 0;

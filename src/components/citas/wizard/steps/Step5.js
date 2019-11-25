@@ -190,7 +190,7 @@ class Step5 extends Component {
 
                 <div id="modal_sms" class="modal">
                     <div class="modal-content">
-                        <h5>Se ha enviado un mensaje de texto a tu celular con el resumen de tu reserva!</h5>
+                        <h5>¡Felicitaciones! Hemos enviado un mensaje de texto a tu celular con la asignación de tu cita.</h5>
                         
                     </div>
                     <div class="modal-footer">

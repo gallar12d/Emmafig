@@ -648,7 +648,7 @@ class FormRegistro extends Component {
                     </div>
                     <div>
                         <small id="phone_msg" className="  celular-animation validate_phone_msg">
-                            Recuerda que la tu información debe ser válida, ya que por te enviaremos información personal y confidencial a través de estos medios.
+                            Recuerda que tus datos deben ser válidos, ya que te enviaremos información personal y confidencial a través de estos medios.
                             </small>
                     </div>
 
@@ -903,7 +903,7 @@ function CamposPorDefecto(props) {
                     <option value="Tarjeta de identidad">Tarjeta de identidad</option>
                     <option value="Cédula de extranjería">Cédula de extranjería</option>
                 </select>*/}
-                <div class="input-field">
+                <div className="input-field">
                     <i className="material-icons prefix icon-select">assignment_ind</i>
                     <select id="tipo_identificacion"  defaultValue='1' required>
                         <option value="" disabled>Tipo de Identifcación *</option>

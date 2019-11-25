@@ -1,9 +1,3 @@
-.btn_op {
-  min-width: 80px;
-  max-width: 150px;
-  cursor: pointer;
-}
-
 .boton-res {
   cursor: pointer;
   padding-top: 0.2em !important;
@@ -16,6 +10,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#btn_mas_detalles{
+  cursor: pointer;
+}
+.btn_op {
+  min-width: 80px;
+  max-width: 150px;
+  cursor: pointer;
 }
 
 #contenedor-emma {

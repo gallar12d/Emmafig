@@ -41,7 +41,7 @@
   margin-top: 2em;  
 }
 #cont_terminos{
-  margin-bottom: 3em;  
+  margin-bottom: 2em;  
 }
 .google {
   margin-top: 1em;
@@ -69,7 +69,7 @@
   margin-top: 2em;
 }
 .text-terminos{
-  font-size: small;
+  font-size: small !important;
 }
 #titulo_defecto,
 #titulo_opciones{

@@ -88,7 +88,7 @@ class Editprofile extends Component {
                             if (document.getElementById("primer_nombre").value != 'USUARIO' && document.getElementById("primer_apellido").value !== 'USUARIO' && document.getElementById("numeroTelefono").value !== '' && document.getElementById("fecha_nacimiento").value != '') {
                                 var dataForm = new FormData();
                                 dataForm.append("id_usuario", id_usuario);
-                                axios.get("http://localhost/api1/sendCupon/" + id_usuario + '/' + document.getElementById("numeroTelefono").value).then(res => {
+                                axios.get("https://emmafig.com/api1/sendCupon/" + id_usuario + '/' + document.getElementById("numeroTelefono").value).then(res => {
                                     //axios.get("https://emmafig.com/api1/getUser/" + localStorage.getItem('id')).then(res => {
                                     var result = res.data;
                                     loader.style.display = "none"
