@@ -10,7 +10,7 @@ import Axios from 'axios';
 import swal from 'sweetalert';
 
 import $ from "jquery";
-//import ModalInscrip from './modalInscripcion/ModalInscrip';
+
 class FormRegistro extends Component {
 
     constructor(props) {

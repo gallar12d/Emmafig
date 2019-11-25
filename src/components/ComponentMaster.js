@@ -97,7 +97,7 @@ class ComponentMaster extends Component {
         if (ancla == "login") {
             if (localStorage.getItem('jwt') == null) {
 
-                setTimeout(function () {
+                //setTimeout(function () {
                     let simulateClick = elem => {
                         let evt = new MouseEvent('click', {
                             bubbles: true,
@@ -111,7 +111,7 @@ class ComponentMaster extends Component {
 
                     simulateClick(btnIngresar);
 
-                }, 3000);
+                //}, 3000);
             }
 
 
