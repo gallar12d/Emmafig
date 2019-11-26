@@ -3,16 +3,17 @@
 }
 nav .nav-wrapper {
     
-    background-color: #0ba7ad;
+    background-color: #5EA4AA;
 }
 
 nav .brand-logo {
+    width: 20%;
     float: left;
     position: unset !important;
     margin-left: 10%;
 }
 .logo{
-    margin-top: 11px;
+    margin-top: -70px;
 }
 
 .menuItems{

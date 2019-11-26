@@ -4,5 +4,9 @@
 }
 
 .btn_align button.btn:hover {
-    background-color: #492c51
+    background-color: #5E2B6C
+}
+
+.btn, .btn-large, .btn-small {
+    background-color: #5ea4aa !important;
 }

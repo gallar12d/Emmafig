@@ -1,6 +1,12 @@
 .btn, .btn-large, .btn-small{
     background-color: #0ba7ad;
 }
+.btn-op{
+    font-weight: 100;
+}
+.btn-download{
+    margin-left: 1em;;
+}
 .resetPading{
     padding: 0px !important;
 }
@@ -53,7 +59,7 @@
 .edit-perfil{
     position: relative;
     overflow: hidden;
-     margin-top: 12px; 
+     margin-top: 28px; 
     /*width: 70%;*/
     border: none;
     border-radius: 0;

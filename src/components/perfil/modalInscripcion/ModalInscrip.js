@@ -3,6 +3,8 @@ import './ModalInscrip.css';
 import M from 'materialize-css';
 import $ from 'jquery';
 import { Link } from "react-scroll";
+let ponerPulse;
+let quitarPulse;
 class ModalInscrip extends Component {
 
     constructor(props) {
@@ -13,12 +15,37 @@ class ModalInscrip extends Component {
         }
 
     }
+
+
+
     componentDidMount() {
         var elems = document.getElementById('modal2');
         M.Modal.init(elems, {});
         $('.modal').append('<button id="close_modal_res" class="modal-close btn-flat" style="position:absolute;top:0;right:0;"><i class="material-icons">cancel</i></button>');
-
+        this.quitarPulse();
     }
+
+    quitarPulse = () => {
+        let botonPulse = document.getElementById('btn-cita');
+        quitarPulse = setTimeout(
+            () => {
+               botonPulse.classList.remove("pulse");
+                this.ponerPulse();
+            }, 3000
+        );
+        //botonPulse.classList.remove("pulse");
+    }
+
+    ponerPulse = () => {
+        let botonPulse = document.getElementById('btn-cita');
+        ponerPulse = setTimeout(
+            () => {
+               botonPulse.classList.add("pulse");
+               this.quitarPulse();
+            }, 3000
+        );
+    }
+
     changeDecimal() {
         let num = this.props.resultado['riesgo'] * 100;
         return parseFloat(num).toFixed(2);
@@ -34,6 +61,12 @@ class ModalInscrip extends Component {
         })
         this.props.scroolComponent(elementMenu)
     }
+
+    componentWillUnmount() {
+        clearTimeout(ponerPulse);
+        clearTimeout(quitarPulse);
+      }
+
     render() {
         return (
 
@@ -198,17 +231,17 @@ class ModalInscrip extends Component {
                 </div>
                 <div id="modalFooter" class="modal-footer">
                     <div className="footer-content">
-                        <Link 
+                        <Link
                             id="citas_section"
                             activateclass="activate"
                             to="citas"
                             spy={true}
                             smooth={true}
                             offset={-60}
-                            duration={500}                            
+                            duration={500}
 
                         />
-                        <Link className="modal-close btn-res-cita btn-floating pulse"
+                        <Link id="btn-cita" className="modal-close btn-res-cita btn-floating pulse"
                             onClick={() => { this.props.updateStateComponent(0); this.GenerateClick(0, "citas_section") }}
                             activateclass="activate"
                             to="citas"

@@ -1,5 +1,5 @@
 .step2 .icon_input{
-    color: #0ba7ad;
+    color: #5ea4aa;
 
   align-items: center;
   font-weight: bolder;
@@ -17,13 +17,13 @@
     margin-top: 5px;
 }
 .step2[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
-  background-color: #c83b8d;
+  background-color: #5e2b6c;
   width: 24px;
   height: 24px;
   margin: 0px;
 }
 .step2[type="radio"]:not(:checked)+span:before, [type="radio"]:not(:checked)+span:after {
-  border: 2px solid #0ba7ad;
+  border: 2px solid #5ea4aa;
 }
 
 .step3 .icon_input {
@@ -50,7 +50,7 @@
 }
 
 .step3 [type="radio"]:not(:checked)+span:before, [type="radio"]:not(:checked)+span:after {
-  border: 2px solid #0ba7ad;
+  border: 2px solid #5ea4aa;
 }
 
 .step3 .col_turns span  {
@@ -66,7 +66,7 @@
   height: 15px;
 }
 .step3 .row.row_turns::-webkit-scrollbar-thumb {
-  background-color: #0ba7ad;
+  background-color: #5ea4aa;
 }
 .step3 .row.row_turns{
 animation: shake 1s cubic-bezier(.36,.07,.19,.97) both;

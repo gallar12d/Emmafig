@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Citas.css'
 import Paquetes from './paquetes/Paquetes'
 import Wizard from './wizard/Wizard'
-import Step4 from './wizard/steps/Step4'
+import Step5 from './wizard/steps/Step5'
 import Modal from '../calculadora/modal/Modal'
 import $ from 'jquery'
 
@@ -159,6 +159,7 @@ class Citas extends Component {
                     </div>                    
                 </div>
                {seccion}
+               
                
                <Modal id='modal1'  changeLogin={this.props.changeLogin}/> 
                

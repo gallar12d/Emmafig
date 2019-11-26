@@ -103,9 +103,9 @@ class Paquete extends Component {
                 <div id={'Modal' + this.props.id} className="modal widthmodal">
                     <div className="modal-content left-align">
 
-
+                    
                         <div className="col m6 s12">
-                            <img style={{'width': '100%'}} src = {'http://fig.org.co/atlanticv2/public/img/'+this.props.avatar} />
+                            <img style={{'width': '100%'}} src = {'http://emmafig.com/api1/public/images/'+this.props.avatar} />
                         </div>
                         <div className="col m6 s12">
                             {whatis}

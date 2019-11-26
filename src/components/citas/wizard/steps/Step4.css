@@ -1,5 +1,5 @@
 .step4 .icon_input{
-    color: #0ba7ad;
+    color: #5ea4aa;
 
   align-items: center;
   font-weight: bolder;
@@ -7,23 +7,23 @@
 }
 
 .step4 .col.s12.m4.img_step4 {
-  margin-top: 0%;
-    margin-bottom: -4% !important;
-    display: grid;
-    grid-template-columns: 40%;
+  margin-top: -6%;
+  margin-bottom: -8% !important;
+  display: grid;
+  grid-template-columns: 40%
   }
 
   .step4 svg.icon {
     margin-top: 5px;
 }
 .step2[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
-  background-color: #c83b8d;
+  background-color: #5e2b6c;
   width: 24px;
   height: 24px;
   margin: 0px;
 }
 .step4[type="radio"]:not(:checked)+span:before, [type="radio"]:not(:checked)+span:after {
-  border: 2px solid #0ba7ad;
+  border: 2px solid #5ea4aa;
 }
 
 .step4 .icon_input {
@@ -50,7 +50,7 @@
 }
 
 .step4 [type="radio"]:not(:checked)+span:before, [type="radio"]:not(:checked)+span:after {
-  border: 2px solid #0ba7ad;
+  border: 2px solid #5ea4aa;
 }
 
 .step4 .col_turns span  {
@@ -66,7 +66,7 @@
   height: 15px;
 }
 .step4 .row.row_turns::-webkit-scrollbar-thumb {
-  background-color: #0ba7ad;
+  background-color: #5ea4aa;
 }
 .step4 .row.row_turns{
 animation: shake 1s cubic-bezier(.36,.07,.19,.97) both;
@@ -81,12 +81,12 @@ animation: shake 1s cubic-bezier(.36,.07,.19,.97) both;
 }
 .step4 #modal_cita input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
   
-  border-bottom: 1px solid #0ba7ad;
+  border-bottom: 1px solid #5ea4aa;
 }
 
 .step4 #modal_cita input:not([type]):disabled, input:not([type])[readonly="readonly"], input[type=text]:not(.browser-default):disabled, input[type=text]:not(.browser-default)[readonly="readonly"], input[type=password]:not(.browser-default):disabled, input[type=password]:not(.browser-default)[readonly="readonly"], input[type=email]:not(.browser-default):disabled, input[type=email]:not(.browser-default)[readonly="readonly"], input[type=url]:not(.browser-default):disabled, input[type=url]:not(.browser-default)[readonly="readonly"], input[type=time]:not(.browser-default):disabled, input[type=time]:not(.browser-default)[readonly="readonly"], input[type=date]:not(.browser-default):disabled, input[type=date]:not(.browser-default)[readonly="readonly"], input[type=datetime]:not(.browser-default):disabled, input[type=datetime]:not(.browser-default)[readonly="readonly"], input[type=datetime-local]:not(.browser-default):disabled, input[type=datetime-local]:not(.browser-default)[readonly="readonly"], input[type=tel]:not(.browser-default):disabled, input[type=tel]:not(.browser-default)[readonly="readonly"], input[type=number]:not(.browser-default):disabled, input[type=number]:not(.browser-default)[readonly="readonly"], input[type=search]:not(.browser-default):disabled, input[type=search]:not(.browser-default)[readonly="readonly"], textarea.materialize-textarea:disabled, textarea.materialize-textarea[readonly="readonly"] {
   color: black;
-  border-bottom: 1px solid #0ba7ad;
+  border-bottom: 1px solid #5ea4aa;
 }
 .step4 #modal_cita  .input-field>label {
   color: #000000;
@@ -106,6 +106,17 @@ animation: shake 1s cubic-bezier(.36,.07,.19,.97) both;
   color: #000000;
   font-size: small;
   font-weight: bold;
+}
+
+.step4 .btn_validate_cupon{
+    margin-bottom: 0px;
+    margin-top: 10px;
+    float: left;
+    border-radius: 8px;
+}
+.step4 .btn_confirm{
+  
+  border-radius: 8px;
 }
 
 

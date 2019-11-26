@@ -37,17 +37,17 @@
 }
 
 p.text-green {
-    color: #0a999a !important;
+    color: #5ea4aa !important;
 }
 .slick-current p.text-green {
     color: white !important;
 }
 .slick-current .hoverable.card.panel_radius {
-    background-color: #492c51;
+    background-color: #5e2b6c;
 }
  img.avatar{
     
-    border: 5px solid #0ba7ad;
+    border: 5px solid #5ea4aa;
     width: 50%;
     margin-left: 25%;
     margin-top: 4px;
@@ -57,7 +57,7 @@ p.text-green {
 }
 .slick-current img.avatar{
     
-    border: 5px solid #492c51;
+    border: 5px solid #5e2b6c;
     width: 50%;
    
     margin-left: 25%;
@@ -90,7 +90,7 @@ h6.nombres {
 
 .slick-dots li.slick-active button:before {
     opacity: 1 !important;
-    color: #492c51 !important;
+    color: #5e2b6c !important;
 }
 .slick-dots li button:before {
     

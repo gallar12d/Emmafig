@@ -11,7 +11,9 @@ class Step2 extends Component {
         this.state = {
             imagen: process.env.PUBLIC_URL + "/img/citas_step1.svg",
             profesionales: [],
-            turnos: 0
+            turnos: 0,
+            htmlProfesionales: [],
+            id_selected: 1
 
         };
     }
@@ -19,24 +21,26 @@ class Step2 extends Component {
     componentDidMount() {
         var elems = $('.mySelect');
         M.FormSelect.init(elems, {});
-        Axios.get(`https://emmafig.com/api1/profesionales/` + this.props.id_sede + '/'+this.props.fecha_cita)
+        Axios.get(`https://emmafig.com/api1/profesionales/` + this.props.id_sede + '/' + this.props.fecha_cita)
             .then(res => {
                 const profesionales = res.data.profesionales;
                 const turnos = res.data.turnos;
-                if(!res.data.profesionales.length){
+                if (!res.data.profesionales.length) {
                     this.props.set_state('todos_profesionales', false)
                     this.props.set_state('id_profesional', '')
                 }
-                else{
+                else {
                     this.props.set_state('todos_profesionales', true)
                 }
-                
+
                 this.setState({ profesionales });
                 this.setState({ turnos });
                 var elems = document.querySelectorAll('.modal');
                 M.Modal.init(elems, {});
                 $('.modal').append('<button class="modal-close btn-flat" style="position:absolute;top:0;right:0;">x</button>');
             })
+
+            
 
     }
 
@@ -46,11 +50,22 @@ class Step2 extends Component {
 
         return lsCadena;
     }
+
+    showprof = (id) => {
+        this.setState({id_selected: id})
+
+    }
     render() {
 
-        let prof = '';
 
-        if(this.state.turnos > 0){
+
+        let prof = '';
+        let index2 = 0;
+
+        if (this.state.turnos > 0) {
+
+
+
             prof = this.state.profesionales.map((profesional, index) => {
                 let requi = '';
                 if (index == 0) {
@@ -65,62 +80,48 @@ class Step2 extends Component {
                 let apellido2 = '';
                 if (profesional.segundo_apellido)
                     apellido2 = profesional.segundo_apellido
-    
+
                 let check = false;
                 if (this.props.id_profesional == profesional.id_usuario) {
                     check = true;
                 }
-                return (
-                    <div key={profesional.id_usuario}>
-                        <div className="input-field ">
-                            <div className="icon_input" >
-                                <label>
-                                    <input checked={check} onChange={() => { this.props.set_state('id_profesional', profesional.id_usuario); this.props.set_state('profesional', this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2)) }} className="with-gap" name="id_profesional" value={profesional.id_usuario} type="radio" />
-                                    <span style={{ color: 'black' }}>{this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2)}</span>
-                                </label>
-                                <a className=" modal-trigger" href={'#Modal' + profesional.id_usuario}>
-                                    <FaUserNurse className="icon" size={25} />
+
+
+                if(profesional.descripcion){
+                    
+                    return (
+                        <div key={profesional.id_usuario}>
+                            <div className="input-field ">
+                                <div className="icon_input" >
+                                    <label>
+                                        <input checked={check} onChange={() => { this.props.set_state('id_profesional', profesional.id_usuario); this.props.set_state('profesional', this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2)); this.showprof(index)  }} className="with-gap" name="id_profesional" value={profesional.id_usuario} type="radio" />
+                                        <span style={{ color: 'black' }}>{this.ucword(profesional.primer_nombre) + ' ' + this.ucword(nombre2) + ' ' + this.ucword(profesional.primer_apellido) + ' ' + this.ucword(apellido2)}</span>
+                                    </label>
+                                    <a onClick={()=> {  this.showprof(index) }} className=" modal-trigger" href={'#/'}>
+                                        <FaUserNurse className="icon" size={25} />
     
-                                </a>
-    
-                            </div>
-                        </div>
-                        <div id={'Modal' + profesional.id_usuario} className="modal modal-fixed-footer">
-                            <div className="modal-content left-align">
-                                <div className="row">
-                                    <div className="col s12 m6 l6">
-                                        <img alt='' style={{ width: '100%' }} src={'http://fig.org.co/atlanticv2/public/img/' + profesional.avatar}>
-                                        </img>
-    
-    
-                                    </div>
-                                    <div className="col s12 m6 l6">
-                                        <h5 style={{ color: '#492c51', fontWeight: 'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">Nuestros profesionales</h5>
-                                        <hr></hr>
-                                        <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato' }} >{profesional.primer_nombre + ' ' + nombre2 + ' ' + profesional.primer_apellido + ' ' + apellido2}</h6>
-                                        <h6 style={{ color: '#0ba7ad', fontWeight: 'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">{profesional.especialidad}</h6>
-                                        <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato' }} >Registro Médico Número: {profesional.registro_medico_numero}</h6>
-                                        <p>{profesional.descripcion}</p>
-                                        <br></br>
-    
-                                        <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato' }} >Sigue a este profesional en linkedin: <a target="_blank" href={profesional.red_linkedin}><FaLinkedin></FaLinkedin></a></h6>
-                                    </div>
+                                    </a>
     
                                 </div>
                             </div>
-                            <div className="modal-footer">
-                                <button className=" btn_modal_close modal-close  btn-flat">Aceptar</button>
-                            </div>
-                        </div>
     
-                    </div>
-                )
+    
+                        </div>
+                    )
+                    index2 = index
+
+                }
+
+                
+
+                
             })
+            
 
         }
-        
 
-        
+
+
 
         let todos_check = '';
         if (this.props.id_profesional) {
@@ -130,7 +131,7 @@ class Step2 extends Component {
 
         let todos_show = '';
 
-       
+
 
         if (this.state.profesionales.length && this.state.turnos > 0) {
 
@@ -141,10 +142,10 @@ class Step2 extends Component {
                 </label>
             )
 
-        } 
-        else{
+        }
+        else {
 
-            if(this.state.turnos == 0){
+            if (this.state.turnos == 0) {
                 todos_show = (
                     <label>
                         <span style={{ color: 'black' }} >No existen turnos disponibles para la fecha seleccionada</span>
@@ -152,7 +153,7 @@ class Step2 extends Component {
                 )
 
             }
-            else{
+            else {
                 todos_show = (
                     <label>
                         <span style={{ color: 'black' }} >No existen profesionales para esta sede</span>
@@ -160,9 +161,47 @@ class Step2 extends Component {
                 )
 
             }
-            
-           
+
+
         }
+
+        let htmlProfesionales = '';
+        if (this.state.profesionales.length) {
+
+            let  nombre2 = '';
+            let apellido2 = '';
+
+            if(this.state.profesionales[this.state.id_selected].segundo_nombre){
+                nombre2 = this.state.profesionales[this.state.id_selected].segundo_nombre
+            }
+            if(this.state.profesionales[this.state.id_selected].segundo_apellido){
+                apellido2 = this.state.profesionales[this.state.id_selected].segundo_apellido
+            }
+            htmlProfesionales = (
+
+                <div className="row">
+                    <div style={{ marginTop: '15px'}} className="col s6 m6 l6">
+                        <img alt='' style={{ width: '100%' }} src={'http://emmafig.com/api1/public/images/' + this.state.profesionales[this.state.id_selected].avatar}>
+                        </img>
+                    </div>
+                    <div className="col s6 m6 l6">
+                        <h5 style={{ color: '#492c51', fontWeight: 'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">Nuestros profesionales</h5>
+                        <hr></hr>
+                        <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato' }} >{this.state.profesionales[this.state.id_selected].primer_nombre + ' ' + nombre2 + ' ' + this.state.profesionales[this.state.id_selected].primer_apellido + ' ' + apellido2}</h6>
+                        <h6 style={{ color: '#5ea4aa', fontWeight: 'bolder', fontFamily: 'lato' }} className="title_modal_profesionales">{this.state.profesionales[this.state.id_selected].especialidad}</h6>
+                        <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato' }} >Registro Médico Número: {this.state.profesionales[this.state.id_selected].registro_medico_numero}</h6>
+                        <p>{this.state.profesionales[this.state.id_selected].descripcion}</p>
+                        <br></br>
+
+                        <h6 style={{ fontWeight: 'bolder', fontFamily: 'lato' }} >Sigue a este profesional en linkedin: <a target="_blank" href={this.state.profesionales[this.state.id_selected].red_linkedin}><FaLinkedin></FaLinkedin></a></h6>
+                    </div>
+
+                </div>
+            )
+
+        }
+
+
 
 
         return (
@@ -181,8 +220,10 @@ class Step2 extends Component {
 
 
                 </div>
-                <div className="col s12 m4 img_step1 ">
-                    <img hidden alt="" src={this.state.imagen} />
+                
+                <div className="col s12 m4 img_step1  scrollable_profesionals">
+
+                {htmlProfesionales}
 
                 </div>
 

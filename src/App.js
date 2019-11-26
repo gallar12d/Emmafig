@@ -33,7 +33,8 @@ let options = {
 function App(props) {
 
 
-  let ancla = props.match.params.ancla
+  let ancla = props.match.params.ancla;
+  let img = process.env.PUBLIC_URL + "/img/build_page.jpg";
   
   return (
  
@@ -47,8 +48,21 @@ function App(props) {
       <Testimonios></Testimonios> 
       <Contacto></Contacto> 
       <Footer></Footer> 
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <img src={img}></img>
+      
+      
       */}
+      
       <ComponentMaster ancla = {ancla}></ComponentMaster>
+      
+      
+      
+      
+    
     </div>
    
   );

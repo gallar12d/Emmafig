@@ -403,6 +403,22 @@ class Perfil extends Component {
         });
     }
 
+    GenerateClick(state, elementMenu) {
+        /*
+        this.setState({
+            gblState: this.props.globalStateComponent,
+        })
+        */
+        this.setState({
+            componentChange: state
+        })
+        this.props.scroolComponent(elementMenu)
+
+        //console.log(element);
+        //console.log(this.props.changeComptStateMain);
+        //$("#"+context).trigger("click");
+    }
+
     render() {
         var strUrl;
         let tableData;
@@ -418,7 +434,7 @@ class Perfil extends Component {
                         {e.fecha_atencion}
                     </td>
                     <td>
-                        <a target="_blank" href={strUrl}>Ver </a>
+                        <a target="_blank" href={strUrl} className="btn-small btn-op">Ver </a>
                     </td>
                     <td></td>
                 </tr>
@@ -435,10 +451,8 @@ class Perfil extends Component {
                     </td>
                     <td>
                         {/*<a target="_blank" href={strUrl}>Ver </a>*/}
-                        <a data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => { this.changeIdEstimacion(index) }}>Ver</a>
-                    </td>
-                    <td>
-                        <a target="_blank" href={strUrl}>Descargar</a>
+                        <a data-id={e.id_estimacion} className="modal-trigger btn-small btn-op" href='#modal2' onClick={() => {this.changeIdEstimacion(index)}}>Ver</a>
+                        <a className="btn-small btn-download btn-op" target="_blank" href={strUrl}><i class="material-icons left">file_download</i>Descargar</a>
                     </td>
                 </tr>
             })
@@ -455,7 +469,7 @@ class Perfil extends Component {
                         {e.fecha_atencion}
                     </td>
                     <td>
-                        <a target="_blank" href={strUrl}>Ver </a>
+                        <a target="_blank" href={strUrl} className="btn-small btn-op">Ver </a>
                     </td>
                     <td>
                     </td>
@@ -474,11 +488,9 @@ class Perfil extends Component {
                         {e.fecha_estimacion}
                     </td>
                     <td>
-                        {/*<a target="_blank" href={strUrl}>Ver </a>*/}
-                        <a data-id={e.id_estimacion} className="modal-trigger" href='#modal2' onClick={() => { this.changeIdEstimacion(index) }}>Ver</a>
-                    </td>
-                    <td>
-                        <a href={strUrl}>Descargar</a>
+                        {/*<a target="_blank" href={strUrl}>Ver </a>*/}                        
+                        <a  data-id={e.id_estimacion} className="modal-trigger btn-small btn-op" href='#modal2' onClick={() => {this.changeIdEstimacion(index)}}>Ver</a>
+                        <a className="btn-small btn-download btn-op" href={strUrl}><i class="material-icons left">file_download</i>Descargar</a>
                     </td>
                 </tr>
             })
@@ -541,9 +553,8 @@ class Perfil extends Component {
                                             <div className="determinate" id="barraPerfil"></div>
                                         </div>
                                         <h7 className="col s12">Completa tu perfil y obtén un <b>bono de descuento</b> para ser redimido en tu próxima cita!</h7>
-                                        <div className="edit-perfil btn btn-lg btn-primary">
-                                            Edita tu perfil
-                                    </div>
+                                        <a target="_blank" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }} className="edit-perfil btn-small btn-op">Edita tu perfil</a>
+                                  
                                     </div>
                                 </div>
                                 {/*Fin barra de progreso para perfil */}
@@ -577,8 +588,8 @@ class Perfil extends Component {
                                     <tr>
                                         <th>Resultado</th>
                                         <th>Fecha </th>
-                                        <th>Informe</th>
                                         <th>Acciones</th>
+                                        
                                     </tr>
                                 </thead>
                                 <p id="msj_error"></p>

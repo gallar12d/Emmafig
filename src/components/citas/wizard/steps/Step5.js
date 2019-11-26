@@ -11,7 +11,7 @@ class Step5 extends Component {
         super(props);
         this.state = {
             imagen: process.env.PUBLIC_URL + "/img/preload.gif",
-            avatar: process.env.PUBLIC_URL + "/img/avatar-section5.svg",
+            avatar: process.env.PUBLIC_URL + "/img/logo-mariposa1.png",
             water_mark: process.env.PUBLIC_URL + "/img/water_mark.svg",
             cargando: false,
             cita: false
@@ -21,10 +21,14 @@ class Step5 extends Component {
     }
 
     ucword(word) {
-        var lsCadena = word.toLowerCase();
+        if(word){
+            var lsCadena = word.toLowerCase();
         lsCadena = lsCadena.charAt(0).toUpperCase() + lsCadena.slice(1);
 
         return lsCadena;
+
+        }
+        
     }
 
     formatdate(date = '2019-09-06') {
@@ -171,7 +175,7 @@ class Step5 extends Component {
             <div id="step5">
 
                 <div className="row">
-                    <div className="col s12 m8 offset-m2    ">
+                    <div className="col s12 m4 offset-m2    ">
                         <div className="water_mark_parent">
                             <img className="water_mark" src={this.state.water_mark} />
                             {mostrar}
@@ -179,10 +183,10 @@ class Step5 extends Component {
 
 
                     </div>
-                    <div className="col s12 m4 ">
+                    <div className="col s12 m4 offset-m1 ">
                         <div>
 
-                            <img hidden className="avatar_step5" src={this.state.avatar} />
+                            <img  className="avatar_step5" src={this.state.avatar} />
                         </div>
 
                     </div>
