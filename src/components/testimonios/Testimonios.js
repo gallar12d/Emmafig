@@ -113,7 +113,7 @@ class Testimonios extends Component {
       ]
     };
 
-    const listItems = this.state.testimonios.map((d) => <CustomSlide key={d.id_testimonio} texto={d.texto} imagen={d.url_imagen} nombres={d.nombre} profesion={d.profesion} fecha_testimonio={d.fecha_testimonio}></CustomSlide>);
+    const listItems = this.state.testimonios.map((d, index) =>  <CustomSlide key={d.id_testimonio} texto={d.texto} imagen={d.url_imagen} nombres={d.nombre} profesion={d.profesion} fecha_testimonio={d.fecha_testimonio}></CustomSlide>);
    
     return (
       <div  className="parallax-container" id="testimonios">

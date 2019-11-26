@@ -2,6 +2,11 @@
     color: #000;
 
 }
+ p.text-green {
+    margin: 0;
+    margin-left: -2px !important;
+    margin-right: -2px !important;
+}
 
 .espaciado{
   padding: 10px;
@@ -50,7 +55,7 @@ p.text-green {
     border: 5px solid #5ea4aa;
     width: 50%;
     margin-left: 25%;
-    margin-top: 4px;
+    margin-top: 10px;
 }
 .textofijo {
     height: 100px;
