@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Perfil.css'
 import M from "materialize-css";
 import axios from "axios";
+import $ from 'jquery';
+
 
 //import { ValidatorComponent,ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
@@ -17,11 +19,49 @@ class Editprofile extends Component {
 
     }
 
+    handleOptionChange(event) {
+        var porcentajePerfil = 0;
+                /*Calcular el porcentaje de perfil completado*/
+                if ( $("#primer_nombre").val().toLowerCase() != "usuario" && $("#primer_nombre").val().toLowerCase() != "") {
+                    porcentajePerfil = porcentajePerfil + 25;
+                }
+                if ( $("#primer_apellido").val().toLowerCase() != "usuario" &&  $("#primer_apellido").val().toLowerCase() != "") {
+                    porcentajePerfil = porcentajePerfil + 25;
+                }
+                if ( $("#fecha_nacimiento").val().toLowerCase() !== null &&  $("#fecha_nacimiento").val().toLowerCase() != "") {
+                    porcentajePerfil = porcentajePerfil + 25;
+                    alert( $("#fecha_nacimiento").val());
+                }
+                if ( $("#email").val().toLowerCase() !== undefined &&  $("#email").val().toLowerCase() !== null && $("#email").val().toLowerCase() !== "") {                 
+                    porcentajePerfil = porcentajePerfil + 25;
+                }
+                document.getElementById("barraPerfil").style.width = porcentajePerfil + "%";
+    }
+
     componentDidMount() {
+        // Calcular barra de progreso
+        var porcentajePerfil = 0;
+        /*Calcular el porcentaje de perfil completado*/
+        if ( $("#primer_nombre").val().toLowerCase() != "usuario" && $("#primer_nombre").val().toLowerCase() != "") {
+            porcentajePerfil = porcentajePerfil + 25;
+        }
+        if ( $("#primer_apellido").val().toLowerCase() != "usuario" &&  $("#primer_apellido").val().toLowerCase() != "") {
+            porcentajePerfil = porcentajePerfil + 25;
+        }
+        if ( $("#fecha_nacimiento").val().toLowerCase() !== null &&  $("#fecha_nacimiento").val().toLowerCase() != "") {
+            porcentajePerfil = porcentajePerfil + 25;
+            alert( $("#fecha_nacimiento").val());
+        }
+        if ( $("#email").val().toLowerCase() !== undefined &&  $("#email").val().toLowerCase() !== null && $("#email").val().toLowerCase() !== "") {                 
+            porcentajePerfil = porcentajePerfil + 25;
+        }
+        document.getElementById("barraPerfil").style.width = porcentajePerfil + "%";
+
+
         M.Collapsible.init(this.Collapsible);
         M.Tabs.init(this.Tabs);
         //document.getElementById("primer_nombre").value
-        let dataForm = new FormData();
+        let dataForm = new FormData();        
         dataForm.append("id_usuario", localStorage.getItem('id'));
         axios.get("https://emmafig.com/api1/getUser/" + localStorage.getItem('id')).then(res => {
             var result = res.data;
@@ -56,7 +96,6 @@ class Editprofile extends Component {
             }
 
         })
-
     }
     validarFormulario(form, e) {
         e.preventDefault()
@@ -83,7 +122,7 @@ class Editprofile extends Component {
                     dataUpdate.append("telefono", document.getElementById("numeroTelefono").value);
                     dataUpdate.append("fecha_nacimiento", document.getElementById("fecha_nacimiento").value);
                     axios.post("https://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
-                    //axios.post("http://localhost/atlanticv3/usuarios/updateUserEmmafig", dataUpdate)
+                        //axios.post("http://localhost/atlanticv3/usuarios/updateUserEmmafig", dataUpdate)
                         .then(res => {
                             if (document.getElementById("primer_nombre").value != 'USUARIO' && document.getElementById("primer_apellido").value !== 'USUARIO' && document.getElementById("numeroTelefono").value !== '' && document.getElementById("fecha_nacimiento").value != '') {
                                 var dataForm = new FormData();
@@ -201,6 +240,21 @@ class Editprofile extends Component {
                             {/*<li className="tab "><a href="#numeroContent"><i className="small material-icons floatElement">phone_android</i>Numero de telefono</a></li>*/}
 
                         </ul>
+                        {/*Barra de progreso para perfil*/}
+                        <div className="row" id="div_porcentaje_perfil">
+                            <div className="col l12 m12 s12">
+                                <div className="row">
+                                    <h6 className="col s10 left-align">Información de perfil</h6>
+                                    <h6 className="col s2 right-align">{this.state.porcentaje_perfil}%</h6>
+                                    {/*<a  className="btn-small buttonSmall" onClick={this.props.simulateClickFunction}>Calcula tu riesgo</a>*/}
+                                </div>
+                                <div className="progress">
+                                    <div className="determinate" id="barraPerfil"></div>
+                                </div>
+                            </div>
+                        </div>
+                        {/*Fin barra de progreso para perfil */}
+
                         <div id="loaderEdit" className="preloader-wrapper big active">
                             <div className="spinner-layer spinner-green-only" >
                                 <div className="circle-clipper left">
@@ -222,31 +276,31 @@ class Editprofile extends Component {
 
                                 <div className="input-field col s12 ">
 
-                                    <input id="primer_nombre" type="text" className="validate" name="primer_nombre" required maxLength="10" />
+                                    <input id="primer_nombre" type="text" className="validate" name="primer_nombre" onChange={this.handleOptionChange} required maxLength="10" />
                                     <label id="label_primer_nombre" htmlFor="primer_nombre">Primer nombre *</label>
                                 </div>
                                 <div className="input-field col s12 ">
-                                    <input id="segundo_nombre" type="text" className="validate" maxLength="10" />
+                                    <input id="segundo_nombre" type="text" className="validate" onChange={this.handleOptionChange} maxLength="10" />
                                     <label id="label_segundo_nombre" htmlFor="segundo_nombre">Segundo nombre</label>
                                 </div>
                                 <div className="input-field col s12 ">
-                                    <input id="primer_apellido" type="text" className="validate" required maxLength="10" />
+                                    <input id="primer_apellido" type="text" className="validate" onChange={this.handleOptionChange} required maxLength="10" />
                                     <label id="label_primer_apellido" htmlFor="primer_apellido">Primer apellido *</label>
                                 </div>
                                 <div className="input-field col s12 ">
-                                    <input id="segundo_apellido" type="text" className="validate" maxLength="10" />
+                                    <input id="segundo_apellido" type="text" className="validate" onChange={this.handleOptionChange} maxLength="10" />
                                     <label id="label_segundo_apellido" htmlFor="segundo_apellido">Segundo apellido</label>
                                 </div>
                                 <div className="input-field col s12 ">
-                                    <input id="fecha_nacimiento" type="date" className="validate" />
+                                    <input id="fecha_nacimiento" type="date" className="validate" onChange={this.handleOptionChange} />
                                     <label id="label_fecha_nacimiento" htmlFor="fecha_nacimiento">Fecha nacimiento</label>
                                 </div>
                                 <div className="input-field col s12 ">
-                                    <input id="numeroTelefono" type="number" className="validate" maxLength="9" />
+                                    <input id="numeroTelefono" type="number" className="validate" onChange={this.handleOptionChange} maxLength="9" />
                                     <label id="labelTel" htmlFor="numeroTelefono">Numero de telefono</label>
                                 </div>
                                 <div className="input-field col s12 ">
-                                    <input id="email" type="email" className="validate" />
+                                    <input id="email" type="email" className="validate" onChange={this.handleOptionChange} />
                                     <label id="labelEmail" htmlFor="email">Email</label>
                                 </div>
 
