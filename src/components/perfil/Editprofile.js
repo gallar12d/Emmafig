@@ -14,55 +14,45 @@ class Editprofile extends Component {
 
         super(props);
         this.state = {
+            porcentaje_perfil:0
+        }       
+    }
 
-        }
-
+    formatNumber(n) {
+        n = String(n).replace(/\D/g, "");
+        return n === '' ? n : Number(n).toLocaleString();
     }
 
     handleOptionChange(event) {
         var porcentajePerfil = 0;
-                /*Calcular el porcentaje de perfil completado*/
-                if ( $("#primer_nombre").val().toLowerCase() != "usuario" && $("#primer_nombre").val().toLowerCase() != "") {
-                    porcentajePerfil = porcentajePerfil + 25;
-                }
-                if ( $("#primer_apellido").val().toLowerCase() != "usuario" &&  $("#primer_apellido").val().toLowerCase() != "") {
-                    porcentajePerfil = porcentajePerfil + 25;
-                }
-                if ( $("#fecha_nacimiento").val().toLowerCase() !== null &&  $("#fecha_nacimiento").val().toLowerCase() != "") {
-                    porcentajePerfil = porcentajePerfil + 25;
-                    alert( $("#fecha_nacimiento").val());
-                }
-                if ( $("#email").val().toLowerCase() !== undefined &&  $("#email").val().toLowerCase() !== null && $("#email").val().toLowerCase() !== "") {                 
-                    porcentajePerfil = porcentajePerfil + 25;
-                }
-                document.getElementById("barraPerfil").style.width = porcentajePerfil + "%";
-    }
-
-    componentDidMount() {
-        // Calcular barra de progreso
-        var porcentajePerfil = 0;
         /*Calcular el porcentaje de perfil completado*/
-        if ( $("#primer_nombre").val().toLowerCase() != "usuario" && $("#primer_nombre").val().toLowerCase() != "") {
+        if ($("#primer_nombre").val().toLowerCase() != "usuario" && $("#primer_nombre").val().toLowerCase() != "") {
             porcentajePerfil = porcentajePerfil + 25;
         }
-        if ( $("#primer_apellido").val().toLowerCase() != "usuario" &&  $("#primer_apellido").val().toLowerCase() != "") {
+        if ($("#primer_apellido").val().toLowerCase() != "usuario" && $("#primer_apellido").val().toLowerCase() != "") {
             porcentajePerfil = porcentajePerfil + 25;
         }
-        if ( $("#fecha_nacimiento").val().toLowerCase() !== null &&  $("#fecha_nacimiento").val().toLowerCase() != "") {
+        if ($("#fecha_nacimiento").val().toLowerCase() !== null && $("#fecha_nacimiento").val().toLowerCase() != "") {
             porcentajePerfil = porcentajePerfil + 25;
-            alert( $("#fecha_nacimiento").val());
+            alert($("#fecha_nacimiento").val());
         }
-        if ( $("#email").val().toLowerCase() !== undefined &&  $("#email").val().toLowerCase() !== null && $("#email").val().toLowerCase() !== "") {                 
+        if ($("#email").val().toLowerCase() !== undefined && $("#email").val().toLowerCase() !== null && $("#email").val().toLowerCase() !== "") {
             porcentajePerfil = porcentajePerfil + 25;
         }
         document.getElementById("barraPerfil").style.width = porcentajePerfil + "%";
+       /* this.setState({
+            porcentaje_perfil: this.formatNumber(porcentajePerfil) // Adicionar porcentaje de perfil a state
+        })*/
+    }
 
-
+    componentDidMount() {
         M.Collapsible.init(this.Collapsible);
         M.Tabs.init(this.Tabs);
         //document.getElementById("primer_nombre").value
-        let dataForm = new FormData();        
+        let dataForm = new FormData();
         dataForm.append("id_usuario", localStorage.getItem('id'));
+        // Calcular barra de progreso
+
         axios.get("https://emmafig.com/api1/getUser/" + localStorage.getItem('id')).then(res => {
             var result = res.data;
             console.log(result)
@@ -94,6 +84,25 @@ class Editprofile extends Component {
 
                 document.getElementById("labelEmail").classList.add("active");
             }
+            var porcentajePerfil = 0;
+            /*Calcular el porcentaje de perfil completado*/
+            if ($("#primer_nombre").val().toLowerCase() != "usuario" && $("#primer_nombre").val().toLowerCase() != "") {
+                porcentajePerfil = porcentajePerfil + 25;
+            }
+            if ($("#primer_apellido").val().toLowerCase() != "usuario" && $("#primer_apellido").val().toLowerCase() != "") {
+                porcentajePerfil = porcentajePerfil + 25;
+            }
+            if ($("#fecha_nacimiento").val().toLowerCase() !== null && $("#fecha_nacimiento").val().toLowerCase() != "") {
+                porcentajePerfil = porcentajePerfil + 25;
+                alert($("#fecha_nacimiento").val());
+            }
+            if ($("#email").val().toLowerCase() !== undefined && $("#email").val().toLowerCase() !== null && $("#email").val().toLowerCase() !== "") {
+                porcentajePerfil = porcentajePerfil + 25;
+            }
+            document.getElementById("barraPerfil").style.width = porcentajePerfil + "%";
+            this.setState({
+                porcentaje_perfil: this.formatNumber(porcentajePerfil) // Adicionar porcentaje de perfil a state
+            })
 
         })
     }
