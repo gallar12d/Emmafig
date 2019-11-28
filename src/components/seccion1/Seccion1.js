@@ -53,7 +53,6 @@ class CustomSlide extends Component {
                     {/*<a hidden className="btn-small buttonSmall" onClick={this.props.simulateClickFunction}>Calcula tu riesgo</a>*/}
                   </div>
                     </div>
-                 
                 </div>
               </div>
             </div>

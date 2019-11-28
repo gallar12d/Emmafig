@@ -1,7 +1,7 @@
 .containerSection1 {
   width: 100%;
   min-width: 100%;
-  height: 70%!important;
+  height: 90%!important;
   /*height: 70vh!important;*/
   /* Font styles */
   font-size: 1.1em;
@@ -48,7 +48,7 @@
   max-width: 650px;
   bottom: 25%;
   padding: 0px;
-  padding-left: 40px;
+  padding-left: 70px;
   text-align: left;
 }
 
@@ -78,7 +78,7 @@
 #div-seccion1 h2 {
   max-width: 100%;
   line-height: normal;
-  font-size: 44px !important;
+  font-size: 40px !important;
   margin: 0 0 10px;
   text-shadow: none;
   padding: 0px !important;
@@ -126,11 +126,13 @@
   margin-top: 20px;
   text-transform: none;
   font-weight: bolder;
+
 }
 
 #div-seccion1 .btn-floating.btn-small {
   width: 140px!important;
   height: 36.4px!important;
+  animation: pulse 2s infinite;
 }
 
 }

@@ -126,17 +126,17 @@ class Perfil extends Component {
                 var porcentajePerfil = 0;
                 var nombre1 = res.data.primer_nombre.toLowerCase();
                 /*Calcular el porcentaje de perfil completado*/
-                if(res.data.primer_nombre.toLowerCase() != "usuario"){
+                if (res.data.primer_nombre.toLowerCase() != "usuario") {
                     porcentajePerfil = porcentajePerfil + 25;
                 }
                 var apellido1 = res.data.primer_apellido.toLowerCase();
-                if(res.data.primer_apellido.toLowerCase() != "usuario"){
-                    porcentajePerfil = porcentajePerfil + 25;
-                }   
-                if(res.data.fecha_nacimiento !== null){
+                if (res.data.primer_apellido.toLowerCase() != "usuario") {
                     porcentajePerfil = porcentajePerfil + 25;
                 }
-                if(res.data.correo !== undefined && res.data.correo !== null){
+                if (res.data.fecha_nacimiento !== null) {
+                    porcentajePerfil = porcentajePerfil + 25;
+                }
+                if (res.data.correo !== undefined && res.data.correo !== null) {
                     porcentajePerfil = porcentajePerfil + 25;
                 }
                 /* FIN Calcular el porcentaje de perfil completado*/
@@ -199,11 +199,11 @@ class Perfil extends Component {
 
                 })
                 /*Asignar porcentaje a barra de progreso */
-                document.getElementById("barraPerfil").style.width = porcentajePerfil+"%";
-                if(porcentajePerfil == 100){
+                document.getElementById("barraPerfil").style.width = porcentajePerfil + "%";
+                /*if(porcentajePerfil == 100){
                     document.getElementById("div_porcentaje_perfil").style.display = 'none';
-                }
-                
+                }*/
+
                 //userData.append("identificacion", res.data.no_identificacion)
 
                 //consultar si hay foto de perfil
@@ -280,7 +280,7 @@ class Perfil extends Component {
             }
         }
         axios.post(url, pictureFile, config).then(res => {
-            let result = res.data;            
+            let result = res.data;
         })
     }
 
@@ -309,7 +309,7 @@ class Perfil extends Component {
                     this.setState({
                         resultados: result.resultados_atl,
                         resultados_emf: result.resultados_emf
-                    })                    
+                    })
                 } else {
                     document.getElementById("msj_error").innerHTML = "no se encontraron resultados";
                 }
@@ -322,15 +322,14 @@ class Perfil extends Component {
 
     }
 
-    formatRespuesta(resultado) 
-    {             
+    formatRespuesta(resultado) {
         console.log(resultado);
         let r1 = 'No';
         let r2 = 'No';
         let r3 = 'No';
         let r4 = 'No';
         let r5 = 'No';
-        let r6 = 'No';        
+        let r6 = 'No';
         switch (resultado['valor_respuesta1']) {
             case '1': r1 = 'Menor de 25 años';
                 break;
@@ -340,68 +339,84 @@ class Perfil extends Component {
                 break;
             case '4': r1 = 'Entre 35 y 39 años';
                 break;
-            case '5': r1 = 'Entre 40 y 44 años';                
+            case '5': r1 = 'Entre 40 y 44 años';
                 break;
-            case '7': r1 = 'Entre 45 y 49 años';                    
+            case '7': r1 = 'Entre 45 y 49 años';
                 break;
-            case '8': r1 = 'Entre 50 y 54 años';                    
+            case '8': r1 = 'Entre 50 y 54 años';
                 break;
-            case '9': r1 = 'Entre 55 y 59 años';                    
-                break;           
-            default: r1 = '65 años o más';                    
+            case '9': r1 = 'Entre 55 y 59 años';
+                break;
+            default: r1 = '65 años o más';
                 break;
         }
-        if(resultado['valor_respuesta2'] == 1){
+        if (resultado['valor_respuesta2'] == 1) {
             r2 = 'Sí';
         }
         switch (resultado['valor_respuesta3']) {
-            case 0: r3 = 'Afro';                
+            case 0: r3 = 'Afro';
                 break;
-            case 1: r3 = 'Indígena';               
+            case 1: r3 = 'Indígena';
                 break;
-            case 2: r3 = 'Mestizo';                
+            case 2: r3 = 'Mestizo';
                 break;
         }
-        if(resultado['valor_respuesta4'] == 1){
+        if (resultado['valor_respuesta4'] == 1) {
             r4 = 'Sí';
         }
-        if(resultado['valor_respuesta5'] == 1){
+        if (resultado['valor_respuesta5'] == 1) {
             r5 = 'Sí';
         }
-        if(resultado['valor_respuesta6'] == 1){
+        if (resultado['valor_respuesta6'] == 1) {
             r6 = 'Sí';
         }
-        
-        let data =  {
-            'riesgo' : resultado['riesgo'],
-            'p1' : '¿Cuantos años tienes?',
-            'r1'      : r1,
-            'text1' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
-            'p2' : '¿Vives en una zona urbana?',
-            'r2'      : r2,
-            'text2' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
-            'p3' : '¿A qué grupo étnico pertences?',
-            'r3'      : r3,
-            'text3' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
-            'p4' : '¿Has tenido 3 o más compañeros sexuales en los últimos 5 años?',
-            'r4'      : r4,
-            'text4' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
-            'p5' : '¿Tienes 5 o más hijos?',
-            'r5'      : r5,
-            'text5' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
-            'p6' : '¿Tienes cónyuge o pareja estable?',
-            'r6'      : r6,
-            'text6' : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
+
+        let data = {
+            'riesgo': resultado['riesgo'],
+            'p1': '¿Cuantos años tienes?',
+            'r1': r1,
+            'text1': "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p2': '¿Vives en una zona urbana?',
+            'r2': r2,
+            'text2': "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p3': '¿A qué grupo étnico pertences?',
+            'r3': r3,
+            'text3': "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p4': '¿Has tenido 3 o más compañeros sexuales en los últimos 5 años?',
+            'r4': r4,
+            'text4': "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p5': '¿Tienes 5 o más hijos?',
+            'r5': r5,
+            'text5': "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'p6': '¿Tienes cónyuge o pareja estable?',
+            'r6': r6,
+            'text6': "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
         };
-        return data;        
+        return data;
     }
 
     changeIdEstimacion = (index) => {
-        
+
         this.formatRespuesta(this.state.resultados_emf[index]);
         this.setState({
             estimacion_selected: this.formatRespuesta(this.state.resultados_emf[index])
         });
+    }
+
+    GenerateClick(state, elementMenu) {
+        /*
+        this.setState({
+            gblState: this.props.globalStateComponent,
+        })
+        */
+        this.setState({
+            componentChange: state
+        })
+        this.props.scroolComponent(elementMenu)
+
+        //console.log(element);
+        //console.log(this.props.changeComptStateMain);
+        //$("#"+context).trigger("click");
     }
 
     render() {
@@ -425,7 +440,7 @@ class Perfil extends Component {
                 </tr>
             })
 
-            tableDataEmf = this.state.resultados_emf.map( (e, index) => {
+            tableDataEmf = this.state.resultados_emf.map((e, index) => {
                 strUrl = "https://emmafig.com/api1/pdf?id=" + e.id_estimacion;
                 return <tr>
                     <td>
@@ -456,12 +471,12 @@ class Perfil extends Component {
                     <td>
                         <a target="_blank" href={strUrl} className="btn-small btn-op">Ver </a>
                     </td>
-                    <td>                        
+                    <td>
                     </td>
                 </tr>
             })
         } else if (this.state.resultados == null && this.state.resultados_emf != null) {
-            tableDataEmf = this.state.resultados_emf.map( (e, index) => {
+            tableDataEmf = this.state.resultados_emf.map((e, index) => {
                 /*strUrl = "https://fig.org.co/atlanticv2/pdf/" + e.abreviatura_servicio + "/" + e.id_atencion + "?emmafig=true";*/
                 strUrl = "https://emmafig.com/api1/pdf?id=" + e.id_estimacion;
                 return <tr>
@@ -486,11 +501,11 @@ class Perfil extends Component {
 
             <div className="Perfil">
 
-                <ModalResultado resultado={this.state.estimacion_selected} resultadoGotoCita={this.props.resultadoGotoCita} scroolComponent={this.props.scroolComponent} updateStateComponent={this.props.updateStateComponent} simulateClickFunction={this.props.activateScrollCalculadora}/>
+                <ModalResultado resultado={this.state.estimacion_selected} resultadoGotoCita={this.props.resultadoGotoCita} scroolComponent={this.props.scroolComponent} updateStateComponent={this.props.updateStateComponent} simulateClickFunction={this.props.activateScrollCalculadora} />
                 <div className="container emp-profile">
                     <div className="row">
                         <div className="col l5 m5">
-                           <div id="loaderphoto" className="preloader-wrapper big active">
+                            <div id="loaderphoto" className="preloader-wrapper big active">
                                 <div className="spinner-layer spinner-green-only" >
                                     <div className="circle-clipper left">
                                         <div className="circle"></div>
@@ -509,7 +524,7 @@ class Perfil extends Component {
                                     </div>
                                 </div>
                                 <div className="file btn btn-lg btn-primary">
-                                    Cambiar Foto
+                                    Cambia tu foto
                                         <form id="form_img_profile" onChange={this.onChange} >
 
                                         <input type="file" id="foto_perfil" name="file" />
@@ -526,27 +541,31 @@ class Perfil extends Component {
                                 <h6>
                                     {this.state.tipo_identificacion} {this.state.no_identificacion}
                                 </h6>
+                                {/*Barra de progreso para perfil*/}
+                                <div className="row" id="div_porcentaje_perfil">
+                                    <div className="col l12 m12 s12">
+                                        <div className="row">
+                                            <h6 className="col s10 left-align">Información de perfil</h6>
+                                            <h6 className="col s2 right-align">{this.state.porcentaje_perfil}%</h6>
+                                            {/*<a  className="btn-small buttonSmall" onClick={this.props.simulateClickFunction}>Calcula tu riesgo</a>*/}
+                                        </div>
+                                        <div className="progress">
+                                            <div className="determinate" id="barraPerfil"></div>
+                                        </div>
+                                        <h7 className="col s12">Completa tu perfil y obtén un <b>bono de descuento</b> para ser redimido en tu próxima cita!</h7>
+                                        <a target="_blank" onClick={() => { this.props.updateStateComponent(2); this.GenerateClick(2) }} className="edit-perfil btn-small btn-op">Edita tu perfil</a>
+                                  
+                                    </div>
+                                </div>
+                                {/*Fin barra de progreso para perfil */}
+
                             </div>
                         </div>
                     </div>
-                     {/*Barra de progreso para perfil*/}
-                    <div className="row" id="div_porcentaje_perfil">
-                        <div className="col l12 m12 s12">
-                            <div className="row">
-                                <h5 className="col s10 left-align">Información de perfil</h5>
-                                <h5 className="col s2 right-align">{this.state.porcentaje_perfil}%</h5>
-                                <h7 className="col s12 left-align">{/*<a href="#" >Completa tu perfíl</a> */} Completa tu perfil y obtén un bono de descuento para ser redimido en la Fundación InnovaGen.</h7>
-                                {/*<a  className="btn-small buttonSmall" onClick={this.props.simulateClickFunction}>Calcula tu riesgo</a>*/}
-                            </div>                           
-                            <div className="progress">
-                                <div className="determinate" id="barraPerfil"></div>                                
-                            </div>
-                        </div>
-                    </div>
-                    {/*Fin barra de progreso para perfil */}
+
                     <div className="row">
                         <div className="col l12 m12 s12">
-                            <h3>HISTORIAL DE RESULTADOS</h3>
+                            <h5>HISTORIAL DE RESULTADOS</h5>
                             <div className="filtroGroup">
                                 <div className="row rowFiltroGroup">
                                     <div className="col s12 m4 l4">
