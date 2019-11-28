@@ -47,7 +47,7 @@ class Testimonios extends Component {
 
 
   countTestimonials(){
-    let  primero =  $("div[data-index ='0']");
+    let  primero =  $(".espaciado2 div[data-index ='0']");
     console.log(primero)
     let next = primero.next();
     next.addClass('slick-slide slick-active slick-center slick-cloned slick-current')
