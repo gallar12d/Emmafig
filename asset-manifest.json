@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Emmafig/static/css/main.e9c7ee14.chunk.css",
-    "main.js": "/Emmafig/static/js/main.061439fb.chunk.js",
-    "main.js.map": "/Emmafig/static/js/main.061439fb.chunk.js.map",
+    "main.css": "/Emmafig/static/css/main.7aeeb043.chunk.css",
+    "main.js": "/Emmafig/static/js/main.0bf1f2e6.chunk.js",
+    "main.js.map": "/Emmafig/static/js/main.0bf1f2e6.chunk.js.map",
     "runtime~main.js": "/Emmafig/static/js/runtime~main.f3466225.js",
     "runtime~main.js.map": "/Emmafig/static/js/runtime~main.f3466225.js.map",
     "static/css/2.fd5e56be.chunk.css": "/Emmafig/static/css/2.fd5e56be.chunk.css",
     "static/js/2.a8bafb95.chunk.js": "/Emmafig/static/js/2.a8bafb95.chunk.js",
     "static/js/2.a8bafb95.chunk.js.map": "/Emmafig/static/js/2.a8bafb95.chunk.js.map",
     "index.html": "/Emmafig/index.html",
-    "precache-manifest.df4d832c58195d95851e64ff64687e35.js": "/Emmafig/precache-manifest.df4d832c58195d95851e64ff64687e35.js",
+    "precache-manifest.6357ccd11eb5fdc8691fe7f81479af49.js": "/Emmafig/precache-manifest.6357ccd11eb5fdc8691fe7f81479af49.js",
     "service-worker.js": "/Emmafig/service-worker.js",
     "static/css/2.fd5e56be.chunk.css.map": "/Emmafig/static/css/2.fd5e56be.chunk.css.map",
-    "static/css/main.e9c7ee14.chunk.css.map": "/Emmafig/static/css/main.e9c7ee14.chunk.css.map",
+    "static/css/main.7aeeb043.chunk.css.map": "/Emmafig/static/css/main.7aeeb043.chunk.css.map",
     "static/media/materialize.css": "/Emmafig/static/media/Roboto-Thin.dfe56a87.eot",
     "static/media/font-awesome.min.css": "/Emmafig/static/media/fontawesome-webfont.fee66e71.woff",
     "static/media/slick-theme.css": "/Emmafig/static/media/slick.f97e3bbf.svg"
