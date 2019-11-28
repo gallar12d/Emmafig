@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-scroll";
 
 import Footer from '../footer/Footer';
-
+import Menu from '../menu/Menu';
 
 import '../menu/Menu.css'
 import './Somos.css';
@@ -27,7 +27,7 @@ class Somos extends Component {
         return (
 
             <div className="terminos_condiciones">
-                <div className="navbar-fixed">
+                {/*<div className="navbar-fixed">
 
                     <nav>
                         <div className="nav-wrapper">
@@ -57,12 +57,12 @@ class Somos extends Component {
                     </nav>
 
 
-                </div>
+        </div>*/}
 
 
 
 
-
+                <Menu />
                 <div  className="container justi">
                     <h4>QUIENES SOMOS</h4>
                     <div className="row">

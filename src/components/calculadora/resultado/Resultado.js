@@ -22,6 +22,8 @@ class Resultado extends Component {
             },
             img_emma: process.env.PUBLIC_URL + "/img/emmasection1espejo.svg",
             logo_emma: process.env.PUBLIC_URL + "/img/logortv.png",
+            logo_emma_movil: process.env.PUBLIC_URL + "/img/logo-mariposa1.png",
+            porcentaje: 0
         };
 
         this.masHandleMouseOver = this.masHandleMouseOver.bind(this);
@@ -54,7 +56,9 @@ class Resultado extends Component {
                 }
             });
         this.formatRespuestas();
+        this.changeDecimal();
         setTimeout(this.mountStyle, 10) //call the into animiation
+        //this.showIndicador();
     }
 
     masHandleClick() {
@@ -120,9 +124,9 @@ class Resultado extends Component {
             </div>
         }*/
         if (this.props.login) {
-            opcion = <a id="btn_mas_detalles" onClick={this.props.toPerfil}>Más detalles del resultado</a>
+            opcion = <a id="btn_mas_detalles" onClick={this.props.toPerfil}>presiona aquí</a>
         } else {
-            opcion = <a id="btn_mas_detalles" className="modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Más detalles del resultado</a>
+            opcion = <a id="btn_mas_detalles" className="modal-trigger" href='#modal1' onClick={this.props.changeLoginCalculadora}>Presiona aquí</a>
         }
         return opcion;
     }
@@ -183,13 +187,55 @@ class Resultado extends Component {
     }
     changeDecimal() {
         let num = this.props.result * 100;
-        return parseFloat(num).toFixed(2);
+        // this.showIndicador(parseFloat(num).toFixed(2));
+        //return parseFloat(num).toFixed(2);
+        this.setState({
+            porcentaje: parseFloat(num).toFixed(2)
+        });
     }
+
+    /*function NumberList(props) {
+        const numbers = props.numbers;
+        const listItems = numbers.map((number) =>
+          <li key={number.toString()}>
+            {number}
+          </li>
+        );
+        return (
+          <ul>{listItems}</ul>
+        );
+      }*/
+
+    showIndicador() {
+        let porcentaje = parseFloat(this.props.result * 100).toFixed(2);
+        const indicador_full = <div class="cont_indicador">
+            <h6 id="r1" className="porcentaje">{parseFloat(this.props.result * 100).toFixed(2)}%</h6>
+            <div id="ind1" className='indicador irojo'></div>
+        </div>
+        const indicador_empty = <div className="cont_indicador"></div>
+        const items_indicadores = [indicador_empty, indicador_empty, indicador_empty, indicador_empty, indicador_empty];
+        if (porcentaje < 20) {
+            items_indicadores[4] = indicador_full;
+        } else if (porcentaje > 20 && porcentaje < 40) {
+            items_indicadores[3] = indicador_full;
+        } else if (porcentaje > 40 && porcentaje < 60) {
+            items_indicadores[2] = indicador_full;
+        } else if (porcentaje > 60 && porcentaje < 80) {
+            items_indicadores[1] = indicador_full;
+        } else {
+            items_indicadores[0] = indicador_full;
+        }
+        const barra = <div>
+            {items_indicadores}
+        </div>;
+        return barra;
+    }
+
     render() {
 
         return (
 
-            <div style={this.state.style} id="contenedor-resultado">
+            <div style={this.state.style} id="contenedor-resultado" >
                 <div id="contenedor-detalles" className="row">
                     {/*<div id="contenedor-emma" className="hide-on-small-only">
                         <img id="img-emma" src={this.state.img_emma} />
@@ -202,17 +248,49 @@ class Resultado extends Component {
                             <h1 id="contenido-res" className="flow-text right-align">{this.changeDecimal()} %</h1>
                             <p id="detalle-res" className="left-align detalles">Sed ut perspiciatis unde omnis iste natus error . . . {this.showOpcion()}</p>
                         </div>*/}
-                        <div className="col l6">
-                            <img id="logo_emmafig" src={this.state.logo_emma} />
+                        <div className="col l6 s6">
+                            <img id="logo_emmafig_res" src={this.state.logo_emma} className="hide-on-small-only"/>
+                            <img id="logo_emmafig_res" src={this.state.logo_emma_movil} className="show-on-small hide-on-med-and-up"/>
                         </div>
-                        <div id="contenedor-titulo-ins" className="right-align col l6">
+                        <div id="contenedor-titulo-ins" className="right-align col l4 col s6">
                             <h1 id="titulo-res" className="flow-text right-align">Estimación</h1>
                             <h6 id="subtitulo-res" className="flow-text right-align">Tu nivel de riesgo es </h6>
-                            <h1 id="contenido-res" className="flow-text right-align">{this.changeDecimal()} %</h1>
+                            {/*<h1 id="contenido-res" className="flow-text right-align">this.changeDecimal()</h1>*/}
+
+                            <div id="barra_colores" class="right">
+                                {this.showIndicador()}
+                                <div>
+                                    <div id="cont_rojo_dark" class="cont_color">                                        
+                                        <div id='rojo_dark' class="color">
+                                            50%                                           
+                                    </div>
+                                    </div>
+                                    <div id="cont_rojo" class="cont_color">                                        
+                                        <div id='rojo' class="color">
+                                            40%                                            
+                                   </div>
+                                    </div>
+                                    <div id="cont_naranja" class="cont_color">                                        
+                                        <div id='naranja' class="color">    
+                                          30%                                        
+                                    </div>
+                                    </div>
+                                    <div id="cont_amarillo" class="cont_color">                                        
+                                        <div id='amarillo' class="color">   
+                                        20%                                         
+                                    </div>
+                                    </div>
+                                    <div id="cont_verde" class="cont_color">                                       
+                                        <div id='verde' class="color">   
+                                        10%                                        
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="row row-resultado">                            
+                        <div className="row row-resultado">
                             <div className="col l12">
-                            <p id="detalle-res" className="left-align detalles">Sed ut perspiciatis unde omnis iste natus error . . . {this.showOpcion()}</p>
+                                <p id="detalle-res" className="left-align detalles">Si deseas conocer mas detalles de tu resultado. . . {this.showOpcion()}</p>
                                 <table className="centered" className="hide-on-small-only">
                                     <thead>
                                         <tr>
@@ -304,7 +382,7 @@ class Resultado extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
 
         );
 
