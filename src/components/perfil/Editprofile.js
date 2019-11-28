@@ -34,15 +34,14 @@ class Editprofile extends Component {
         }
         if ($("#fecha_nacimiento").val().toLowerCase() !== null && $("#fecha_nacimiento").val().toLowerCase() != "") {
             porcentajePerfil = porcentajePerfil + 25;
-            alert($("#fecha_nacimiento").val());
         }
         if ($("#email").val().toLowerCase() !== undefined && $("#email").val().toLowerCase() !== null && $("#email").val().toLowerCase() !== "") {
             porcentajePerfil = porcentajePerfil + 25;
         }
         document.getElementById("barraPerfil").style.width = porcentajePerfil + "%";
-       /* this.setState({
+        this.setState({
             porcentaje_perfil: this.formatNumber(porcentajePerfil) // Adicionar porcentaje de perfil a state
-        })*/
+        })
     }
 
     componentDidMount() {
@@ -94,7 +93,6 @@ class Editprofile extends Component {
             }
             if ($("#fecha_nacimiento").val().toLowerCase() !== null && $("#fecha_nacimiento").val().toLowerCase() != "") {
                 porcentajePerfil = porcentajePerfil + 25;
-                alert($("#fecha_nacimiento").val());
             }
             if ($("#email").val().toLowerCase() !== undefined && $("#email").val().toLowerCase() !== null && $("#email").val().toLowerCase() !== "") {
                 porcentajePerfil = porcentajePerfil + 25;
@@ -285,31 +283,31 @@ class Editprofile extends Component {
 
                                 <div className="input-field col s12 ">
 
-                                    <input id="primer_nombre" type="text" className="validate" name="primer_nombre" onChange={this.handleOptionChange} required maxLength="10" />
+                                    <input id="primer_nombre" type="text" className="validate" name="primer_nombre" onChange={() =>this.handleOptionChange()} required maxLength="10" />
                                     <label id="label_primer_nombre" htmlFor="primer_nombre">Primer nombre *</label>
                                 </div>
                                 <div className="input-field col s12 ">
-                                    <input id="segundo_nombre" type="text" className="validate" onChange={this.handleOptionChange} maxLength="10" />
+                                    <input id="segundo_nombre" type="text" className="validate" onChange={() =>this.handleOptionChange()} maxLength="10" />
                                     <label id="label_segundo_nombre" htmlFor="segundo_nombre">Segundo nombre</label>
                                 </div>
                                 <div className="input-field col s12 ">
-                                    <input id="primer_apellido" type="text" className="validate" onChange={this.handleOptionChange} required maxLength="10" />
+                                    <input id="primer_apellido" type="text" className="validate" onChange={() =>this.handleOptionChange()} required maxLength="10" />
                                     <label id="label_primer_apellido" htmlFor="primer_apellido">Primer apellido *</label>
                                 </div>
                                 <div className="input-field col s12 ">
-                                    <input id="segundo_apellido" type="text" className="validate" onChange={this.handleOptionChange} maxLength="10" />
+                                    <input id="segundo_apellido" type="text" className="validate" onChange={() =>this.handleOptionChange()} maxLength="10" />
                                     <label id="label_segundo_apellido" htmlFor="segundo_apellido">Segundo apellido</label>
                                 </div>
                                 <div className="input-field col s12 ">
-                                    <input id="fecha_nacimiento" type="date" className="validate" onChange={this.handleOptionChange} />
+                                    <input id="fecha_nacimiento" type="date" className="validate" onChange={() =>this.handleOptionChange()} />
                                     <label id="label_fecha_nacimiento" htmlFor="fecha_nacimiento">Fecha nacimiento</label>
                                 </div>
                                 <div className="input-field col s12 ">
-                                    <input id="numeroTelefono" type="number" className="validate" onChange={this.handleOptionChange} maxLength="9" />
+                                    <input id="numeroTelefono" type="number" className="validate" onChange={() =>this.handleOptionChange()} maxLength="9" />
                                     <label id="labelTel" htmlFor="numeroTelefono">Numero de telefono</label>
                                 </div>
                                 <div className="input-field col s12 ">
-                                    <input id="email" type="email" className="validate" onChange={this.handleOptionChange} />
+                                    <input id="email" type="email" className="validate" onChange= {() =>this.handleOptionChange()} />
                                     <label id="labelEmail" htmlFor="email">Email</label>
                                 </div>
 
