@@ -533,7 +533,7 @@ class Cuestionario extends Component {
                         </div>
                     </div>
                     <div id="opc-respuesta-pregunta1" className="row" oprindex="1">
-                        <div className="col l4 s4 offset-s4 offset-l4">
+                        <div className="col l4 s6 offset-s3 offset-l4">
                             <select id="op11" className="browser-default selectEdad" onChange={this.handleOptionChange} defaultValue={0}>
                                 <option value="0">Seleccione una opción</option>
                                 <option value="1">Menor de 25 años</option>

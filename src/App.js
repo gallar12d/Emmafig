@@ -39,30 +39,23 @@ function App(props) {
   return (
  
     <div className="App">
-      {/* 
+       
       
-      <Menu></Menu>      
+      {/*<Menu></Menu>      
       <Seccion1 ></Seccion1>
       <Calculadora></Calculadora>
       <Citas></Citas>
       <Testimonios></Testimonios> 
       <Contacto></Contacto> 
-      <Footer></Footer> 
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <img src={img}></img>
-      
-      
-      */}
+      <Footer></Footer> */}
       
       <ComponentMaster ancla = {ancla}></ComponentMaster>
       
-      
-      
-      
-    
+      {/*<br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <img src={img}></img>*/}
     </div>
    
   );

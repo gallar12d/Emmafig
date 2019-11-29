@@ -44,6 +44,16 @@ class Testimonios extends Component {
 
     };
   }
+
+
+  countTestimonials(){
+    let  primero =  $(".espaciado2 div[data-index ='0']");
+    console.log(primero)
+    let next = primero.next();
+    next.addClass('slick-slide slick-active slick-center slick-cloned slick-current')
+
+    
+  }
   componentDidMount() {
 
     var elems = document.querySelectorAll('.parallax');
@@ -58,6 +68,7 @@ class Testimonios extends Component {
           this.setState({
             testimonios: result
           });
+          this.countTestimonials();
         },
 
         (error) => {
@@ -73,9 +84,10 @@ class Testimonios extends Component {
       infinite: true,
       speed: 500,
       centerMode: true,
-      slidesToShow: 3,
-      slidesToScroll: 3,
+      slidesToShow:3,
+      slidesToScroll: 0,
       centerPadding: '0px',
+      initialSlide: 2,
       responsive: [
         {
           breakpoint: 1000,
@@ -105,7 +117,7 @@ class Testimonios extends Component {
             dots: true,
             infinite: true,
             speed: 500,
-            centerMode: false,
+            centerMode: true,
             slidesToShow: 1,
             slidesToScroll: 1,
           }
