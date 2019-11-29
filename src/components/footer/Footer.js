@@ -125,10 +125,7 @@ class Footer extends Component {
                     <div className="col s5 m6 l3 ">
                         <div className="row">
                             <div className="col">
-                                <h5 className="titulo_footer">DESARROLLADO POR</h5> 
-                                <p className="grey-text text-lighten-4">
-                                    Fundación InnovaGen
-                                </p>                         
+                                <h5 className="titulo_footer">DESARROLLADO POR</h5>                                                      
                                 <div id="cont_logos" className="row">
                                     <a target="_blank" href = "http://www.fig.org.co/"><img id="logoInnovagen"  src={this.state.logoInnovagen} className="col l8 s11"></img></a>
                                 </div>
@@ -139,10 +136,7 @@ class Footer extends Component {
                     <div className="col s5 m6 l3">
                         <div className="row">
                             <div className="col">
-                                <h5 className="titulo_footer">CON EL APOYO DE</h5>                           
-                                <p className="grey-text text-lighten-4">
-                                    SENA seccional Popayán
-                                </p>
+                                <h5 className="titulo_footer">CON EL APOYO DE</h5>                                                     
                                 <div id="cont_logos" className="row">
                                 <img id="logoSena" src={this.state.logoSena} className="col l4 s6"></img>
                                 </div>

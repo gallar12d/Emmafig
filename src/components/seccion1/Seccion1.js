@@ -37,7 +37,7 @@ class CustomSlide extends Component {
                     <div className="content" dangerouslySetInnerHTML={{ __html: textoppal }}></div>
                   </h4>
                   <div id="PosicionButton">
-                    <a className="btn-floating btn-small buttonSmall pulse" href="http://blog.emmafig.com/" target="_blank">Conoce más</a>
+                    <a className="btn-floating btn-small buttonSmall pulse" href={url_ver_mas} target="_blank">Conoce más</a>
                     <div>
                       <br />
                     </div>
@@ -49,7 +49,7 @@ class CustomSlide extends Component {
                   <div className="espacioVacio">
                   <div className=""><h2 className="texto-encima"><b>{titulo}</b></h2></div>
                   <div className="PosicionButtonMovil">
-                    <a className="btn-floating btn-small buttonSmall pulse" href="http://blog.emmafig.com/" target="_blank">Conoce más</a>
+                    <a className="btn-floating btn-small buttonSmall pulse" href={url_ver_mas} target="_blank">Conoce más</a>
                     {/*<a hidden className="btn-small buttonSmall" onClick={this.props.simulateClickFunction}>Calcula tu riesgo</a>*/}
                   </div>
                     </div>
