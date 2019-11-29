@@ -8,11 +8,13 @@ import Citas from './citas/Citas';
 import Contacto from './contacto/Contacto';
 import Perfil from './perfil/Perfil';
 import EditPerfil from './perfil/Editprofile';
+import Somos from './quienes_somos/Somos';
 import $ from "jquery";
 import { thisTypeAnnotation } from '@babel/types';
 import M from 'materialize-css';
 import axios from "axios";
 import swal from 'sweetalert2';
+import Terminos from './terminos_condiciones/Terminos';
 
 let elementMenu;
 var btnMenu;
@@ -338,7 +340,7 @@ class ComponentMaster extends Component {
                             resultadoGotoCita={this.resultadoGotoCita.bind(this)}
                             showPreloader={this.showPreloader}
                             hidePreloader={this.hidePreloader}
-                            toPerfil={this.toPerfil.bind(this)}
+                            toPerfil={this.toPerfil.bind(this)}                            
                         />
                         <Citas  origen =  {this.state.origen} changeOrigen = {this.changeOrigen.bind(this)} id_usuario = {this.state.id} logCitas = {this.state.loginCitas} loginCitas={this.changeLoginCitas.bind(this)} changeLogin={this.changeLogin.bind(this)} login={this.state.login} />
 
@@ -353,6 +355,8 @@ class ComponentMaster extends Component {
                 return <Perfil resultadoGotoCita={this.resultadoGotoCita.bind(this)} scroolComponent={this.scroolComponent.bind(this)} updateStateComponent={this.changeComponente.bind(this)}/>
             case 2:
                 return <EditPerfil></EditPerfil>
+            case 3: 
+                return <Somos />                           
             default:
                 return false
 

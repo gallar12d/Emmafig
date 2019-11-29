@@ -62,7 +62,7 @@ class Somos extends Component {
 
 
 
-                <Menu />
+                
                 <div  className="container justi">
                     <h4>QUIENES SOMOS</h4>
                     <div className="row">
