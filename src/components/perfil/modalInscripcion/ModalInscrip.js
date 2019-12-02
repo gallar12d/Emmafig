@@ -156,7 +156,7 @@ class ModalInscrip extends Component {
                                             {this.props.resultado['p1']}
                                         </p>
                                         <p className="respuesta">
-                                            Tu respuesta fue : {this.props.resultado['r1']}
+                                            Tu respuesta fue: {this.props.resultado['r1']}
                                         </p>
                                         <p className="texto-resp">
                                             {this.props.resultado['text1']}
@@ -167,7 +167,7 @@ class ModalInscrip extends Component {
                                             {this.props.resultado['p2']}
                                         </p>
                                         <p className="respuesta">
-                                            Tu respuesta fue : {this.props.resultado['r2']}
+                                            Tu respuesta fue: {this.props.resultado['r2']}
                                         </p>
                                         <p className="texto-resp">
                                             {this.props.resultado['text2']}
@@ -180,7 +180,7 @@ class ModalInscrip extends Component {
                                             {this.props.resultado['p3']}
                                         </p>
                                         <p className="respuesta">
-                                            Tu respuesta fue : {this.props.resultado['r3']}
+                                            Tu respuesta fue: {this.props.resultado['r3']}
                                         </p>
                                         <p className="texto-resp">
                                             {this.props.resultado['text3']}
@@ -190,7 +190,7 @@ class ModalInscrip extends Component {
                                             {this.props.resultado['p4']}
                                         </p>
                                         <p className="respuesta">
-                                            Tu respuesta fue : {this.props.resultado['r4']}
+                                            Tu respuesta fue: {this.props.resultado['r4']}
                                         </p>
                                         <p className="texto-resp">
                                             {this.props.resultado['text4']}
@@ -203,7 +203,7 @@ class ModalInscrip extends Component {
                                             {this.props.resultado['p5']}
                                         </p>
                                         <p className="respuesta">
-                                            Tu respuesta fue : {this.props.resultado['r5']}
+                                            Tu respuesta fue: {this.props.resultado['r5']}
                                         </p>
                                         <p className="texto-resp">
                                             {this.props.resultado['text5']}

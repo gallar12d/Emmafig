@@ -375,22 +375,22 @@ class Perfil extends Component {
             'riesgo': resultado['riesgo'],
             'p1': '¿Cuantos años tienes?',
             'r1': r1,
-            'text1': "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'text1': "La curva de incidencia para la infección por el Virus del Papiloma Humano es bimodal, con picos altos en las mujeres entre los 25-30 años, que decrecen hasta los 50-55 años, y nuevamente incrementan entre los 60-65 años de edad",
             'p2': '¿Vives en una zona urbana?',
             'r2': r2,
-            'text2': "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'text2': "En nuestra región, las mujeres que viven en zonas urbanas presentan una mayor tasa de infección por el Virus del Papiloma Humano en comparación con aquellas que viven en zonas rurales, debido en parte a sus costumbres y conductas sexuales",
             'p3': '¿A qué grupo étnico pertences?',
             'r3': r3,
-            'text3': "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'text3': "En nuestra región, las mujeres afrodescendientes o indígenas presentan mayores tasas de infección por el Virus del Papiloma Humano en comparación con las mestizas, debido en parte a sus costumbres y conductas sexuales",
             'p4': '¿Has tenido 3 o más compañeros sexuales en los últimos 5 años?',
             'r4': r4,
-            'text4': "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'text4': "Independiente del método de planificación que utilices, en la medida que aumenta el numero de compañeros sexuales, incrementa la probabilidad de entrar en contacto y adquirir la infección por el Virus del Papiloma Humano",
             'p5': '¿Tienes 5 o más hijos?',
             'r5': r5,
-            'text5': "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+            'text5': "Aunque no se conoce la razón exacta, se cree que las mujeres multíparas son más susceptibles al Virus del Papiloma Humano, dado que sus cuellos uterinos son más débiles por los partos, situación que favorece el establecimiento de la infección",
             'p6': '¿Tienes cónyuge o pareja estable?',
             'r6': r6,
-            'text6': "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
+            'text6': "En nuestra región, las mujeres que no tienen cónyuge o una pareja estable presentan mayores tasas de infección, dado que tienen mayor probabilidad de entrar en contacto y adquirir el Virus del Papiloma Humano"
         };
         return data;
     }
