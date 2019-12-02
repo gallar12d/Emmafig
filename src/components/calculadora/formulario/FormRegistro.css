@@ -1,10 +1,15 @@
+#btn_ingresar{
+  display: block !important;
+}
 #btn_ingresar_a, 
 #btn_ingresar_r,
 #btn_aceptar_form_login,
 #btn_cancelar_f{
   background: #0ba7ad;
 }
-
+#btn_enviar_codigo{
+  display: block !important;
+}
 #btn_ingresar_a:hover, 
 #btn_ingresar_r:hover,
 #btn_aceptar_form_login:hover,
@@ -39,6 +44,9 @@
 }
 #cont_opciones{
   margin-top: 2em;  
+}
+#cont_password{
+  display: block !important;
 }
 #cont_terminos{
   margin-bottom: 2em;  
