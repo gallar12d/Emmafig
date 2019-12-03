@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Emmafig/static/css/main.caa34ec4.chunk.css",
-    "main.js": "/Emmafig/static/js/main.9343e00b.chunk.js",
-    "main.js.map": "/Emmafig/static/js/main.9343e00b.chunk.js.map",
-    "runtime~main.js": "/Emmafig/static/js/runtime~main.f3466225.js",
-    "runtime~main.js.map": "/Emmafig/static/js/runtime~main.f3466225.js.map",
-    "static/css/2.fd5e56be.chunk.css": "/Emmafig/static/css/2.fd5e56be.chunk.css",
-    "static/js/2.5bac10bc.chunk.js": "/Emmafig/static/js/2.5bac10bc.chunk.js",
-    "static/js/2.5bac10bc.chunk.js.map": "/Emmafig/static/js/2.5bac10bc.chunk.js.map",
-    "index.html": "/Emmafig/index.html",
-    "precache-manifest.91dbf9402f3fd52ae5e248d970a0c054.js": "/Emmafig/precache-manifest.91dbf9402f3fd52ae5e248d970a0c054.js",
-    "service-worker.js": "/Emmafig/service-worker.js",
-    "static/css/2.fd5e56be.chunk.css.map": "/Emmafig/static/css/2.fd5e56be.chunk.css.map",
-    "static/css/main.caa34ec4.chunk.css.map": "/Emmafig/static/css/main.caa34ec4.chunk.css.map",
-    "static/media/materialize.css": "/Emmafig/static/media/Roboto-Thin.dfe56a87.eot",
-    "static/media/font-awesome.min.css": "/Emmafig/static/media/fontawesome-webfont.fee66e71.woff",
-    "static/media/slick-theme.css": "/Emmafig/static/media/slick.f97e3bbf.svg"
+    "main.css": "/web/static/css/main.65f82aa9.chunk.css",
+    "main.js": "/web/static/js/main.f8881997.chunk.js",
+    "main.js.map": "/web/static/js/main.f8881997.chunk.js.map",
+    "runtime~main.js": "/web/static/js/runtime~main.c75ffd02.js",
+    "runtime~main.js.map": "/web/static/js/runtime~main.c75ffd02.js.map",
+    "static/css/2.a68b8cf2.chunk.css": "/web/static/css/2.a68b8cf2.chunk.css",
+    "static/js/2.a873666f.chunk.js": "/web/static/js/2.a873666f.chunk.js",
+    "static/js/2.a873666f.chunk.js.map": "/web/static/js/2.a873666f.chunk.js.map",
+    "index.html": "/web/index.html",
+    "precache-manifest.7a9ea8576e58c0e14ffd6c8213f226ea.js": "/web/precache-manifest.7a9ea8576e58c0e14ffd6c8213f226ea.js",
+    "service-worker.js": "/web/service-worker.js",
+    "static/css/2.a68b8cf2.chunk.css.map": "/web/static/css/2.a68b8cf2.chunk.css.map",
+    "static/css/main.65f82aa9.chunk.css.map": "/web/static/css/main.65f82aa9.chunk.css.map",
+    "static/media/materialize.css": "/web/static/media/Roboto-Thin.dfe56a87.eot",
+    "static/media/font-awesome.min.css": "/web/static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/slick-theme.css": "/web/static/media/slick.f97e3bbf.svg"
   }
 }
