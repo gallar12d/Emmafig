@@ -128,8 +128,8 @@ class Editprofile extends Component {
                     dataUpdate.append("email", document.getElementById("email").value)
                     dataUpdate.append("telefono", document.getElementById("numeroTelefono").value);
                     dataUpdate.append("fecha_nacimiento", document.getElementById("fecha_nacimiento").value);
-                    axios.post("https://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
-                        //axios.post("http://localhost/atlanticv3/usuarios/updateUserEmmafig", dataUpdate)
+                    //axios.post("https://fig.org.co/atlanticv2/usuarios/updateUserEmmafig", dataUpdate)
+                        axios.post("http://localhost/atlantic4/usuarios/updateUserEmmafig", dataUpdate)
                         .then(res => {
                             if (document.getElementById("primer_nombre").value != 'USUARIO' && document.getElementById("primer_apellido").value !== 'USUARIO' && document.getElementById("numeroTelefono").value !== '' && document.getElementById("fecha_nacimiento").value != '') {
                                 var dataForm = new FormData();
