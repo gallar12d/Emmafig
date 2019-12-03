@@ -211,13 +211,13 @@ class FormRegistro extends Component {
                     if (res.data.status == 202) {
                         alert(res.data.msg)
                         this.setState({
-                            registro: -1,
-                            showOptions: 1,
-                            showButtons: 0,
+                            registro: 0,
+                            showOptions: 0,
+                            showButtons: 1,
                             showConfirmation: 0
                         })
                         this.showFields();
-                        this.showOptions();
+                        //this.showOptions();
                         this.showButtons();
                         this.showConfirmation();
                         /*this.setState({
@@ -677,6 +677,7 @@ class FormRegistro extends Component {
                 </div>
             )
         } else if (this.state.registro == 0) {
+            
             let alertLogin = document.getElementById('login_failed');
             if (alertLogin) {
                 alertLogin.style.display = 'none';
@@ -701,13 +702,15 @@ class FormRegistro extends Component {
             )
         }
         else if (this.state.registro === 2) {
-
+            
             return (
-                <div id="cont_login">
+                <div id="cont_recovery">                    
                     <CamposPorDefecto text='proceso de recuperación' />
                     <div id="btn_enviar_codigo" className="row">
-                        <a className=" waves-light btn col s10 offset-s1" id="btn_recovery" onClick={this.recoveryPhone}>Enviar código</a>
+                        <a className="waves-light btn col s10 offset-s1" id="btn_recovery" onClick={this.recoveryPhone}>Enviar código</a>
                     </div>
+                    {this.changeOption()}                    
+                    
                 </div>
             )
 
@@ -766,6 +769,8 @@ class FormRegistro extends Component {
 
     }
     changeOption() {
+        console.log('changelogin');
+
         if (this.state.registro == 0) {
             return (
                 <div id="btn_registro" className="row">
@@ -804,7 +809,7 @@ class FormRegistro extends Component {
             showButtons: 0
         });
         //this.showFields();
-        this.showOptions()
+        //this.showOptions()
         this.showButtons()
 
     }
@@ -905,12 +910,12 @@ function CamposPorDefecto(props) {
                 </select>*/}
                 <div className="input-field">
                     <i className="material-icons prefix icon-select">assignment_ind</i>
-                    <select id="tipo_identificacion"  defaultValue='1' required>
+                    <select id="tipo_identificacion" defaultValue='1' required>
                         <option value="" disabled>Tipo de Identifcación *</option>
                         <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
                         <option value="Tarjeta de identidad">Tarjeta de identidad</option>
                         <option value="Cédula de extranjería">Cédula de extranjería</option>
-                    </select>                   
+                    </select>
                 </div>
                 <p id="tipo_iden_error" className="center cel-error">Por favor Escoja un tipo de Identifcación</p>
             </div>
