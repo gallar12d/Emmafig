@@ -59,19 +59,26 @@ class Paquete extends Component {
         var whatis;
         var word = this.props.titulo + '?'
         var word2 = this.props.titulo;
-        word = word.replace('|', '');
-        word = word.toLowerCase()
-        word2 = word2.replace('|', '');
-        word = word.replace('adn-vph', 'ADN-VPH');
+        
 
         // word = word.replace('adn-vph', 'ADN-VPH');
 
         if (this.props.id == 1 || this.props.id == 2) {
+            word = word.replace('|', '');
+            word = word.toLowerCase()
+            word2 = word2.replace('|', '');
+            word = word.replace('adn-vph', 'ADN-VPH');
             word = 'Qué es la ' + word
             whatis = <h4 style={{'color': '#492c51', 'fontWeith': 'bolder'}}>{word} </h4>
         }
         else {
-            word = 'Qué es el ' + word
+            let res = word.split("|");
+            word =res[0];
+            //word = word.replace('|', ':');
+            word = word.toLowerCase()
+            //word2 = word2.replace('|', ':');
+            word = word.replace('adn-vph', 'ADN-VPH');
+            word = 'Qué es el ' + word.slice(0, -1) +'?'
             whatis = <h4 style={{'color': '#492c51', 'fontWeith': 'bolder'}}>{word} </h4>
 
         }

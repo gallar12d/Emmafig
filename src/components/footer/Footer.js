@@ -99,7 +99,7 @@ class Footer extends Component {
                             <div className="col">
                                 <h5 className="titulo_footer">REDES SOCIALES</h5>
                                 <p className="grey-text text-lighten-4">
-                                    Has parte de nuestra comunidad
+                                    Haz parte de nuestra comunidad
                                 </p>
                             </div>
                         </div>
