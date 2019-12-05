@@ -73,7 +73,7 @@ class ModalInscrip extends Component {
             <div id='modal2' className="modal modal-fixed-footer">
                 <div className="modal-content">
                     <div id="encabezado" className="row">
-                        <img src={process.env.PUBLIC_URL + "/img/arribasoporte_1-100.jpg"} className="encabezado" />
+                        <img src={process.env.PUBLIC_URL + "/img/CALCULATURIESGO1-01.jpg"} className="encabezado" />
                     </div>
                     <div id="contenido" className="row">
                         {/*<img src={process.env.PUBLIC_URL + "/img/marcadeaguaconguias-100.jpg"} className="grilla hide-on-small-only" alt="" />*/}
@@ -226,7 +226,7 @@ class ModalInscrip extends Component {
                         </table>
                     </div>
                     <div id="footer">
-                        <img src={process.env.PUBLIC_URL + "/img/Soporte-Abajo-100.jpg"} className="footer" />
+                        <img src={process.env.PUBLIC_URL + "/img/CALCULATURIESGO3-01.jpg"} className="footer" />
                     </div>
                 </div>
                 <div id="modalFooter" class="modal-footer">
