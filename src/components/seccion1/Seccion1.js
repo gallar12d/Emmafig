@@ -14,11 +14,6 @@ class CustomSlide extends Component {
     this.state = {};
   }
 
-
-
-
-
-
   render() {
     const { id, imagen, textoppal, textosec, url_ver_mas, url_sec_boton, titulo, alineacion, ...props } = this.props;
 

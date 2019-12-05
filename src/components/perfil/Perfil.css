@@ -204,7 +204,17 @@ tbody::-webkit-scrollbar{
 tbody::-webkit-scrollbar-thumb{
     background-color: #0ba7ad;
 }
+/*Quitar las flechas de tipo number */
+input[type=number]::-webkit-outer-spin-button,
 
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
 
 
 

@@ -150,7 +150,7 @@ class Menu extends Component {
                                         duration={500}
                                     >
                                         {/*<a href='#/somos'>Quienes somos</a>*/}
-                                        Quienes somos
+                                        Quiénes somos
                                     </Link>
                                 </li>
                                     <li id="citas_li">
@@ -325,7 +325,7 @@ class Menu extends Component {
                         <li id="citas_li_sm">
 
                             <li >
-                                <a href='#/somos'>Quienes somos</a>
+                                <a href='#/somos'>Quiénes somos</a>
                             </li>
 
                         </li>
