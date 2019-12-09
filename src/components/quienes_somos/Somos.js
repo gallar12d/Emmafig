@@ -12,7 +12,8 @@ class Somos extends Component {
 
         super(props);
         this.state = {
-            logo: process.env.PUBLIC_URL + "/img/logo-Emmafig4.png"
+            logo: process.env.PUBLIC_URL + "/img/logo-Emmafig4.png",
+            imagen: process.env.PUBLIC_URL + "/img/logoinnovagen2.png",
 
         }
 
@@ -64,10 +65,19 @@ class Somos extends Component {
 
                 
                 <div  className="container justi">
-                    <h4>QUIENES SOMOS</h4>
+                    
+                <div className="row">
+                        <div className=" col m12">
+                        <img className="" width="250px" src={ this.state.imagen }></img>
+                        </div> 
+                        
+                        
+                    </div>
+
+                    <h5><strong className="quienesTitle">Quiénes somos</strong></h5>
                     <div className="row">
                         <div className=" col m12">
-                            En la Fundación InnovaGen con más de 8 años en el mercado del cauca y vale del cauca, buscamos contribuir a la generación de nuevo conocimiento científico y tecnológico a través de la gestión y ejecución de investigación básica y aplicada en biología molecular, medicina y ciencias afines; así como promover, desarrollar y prestar servicios de salud a la población, soportados en tecnologías de punta para el mejoramiento de la calidad de vida y la salud pública de la región y el país. Por tal razón, queremos seguir comunicándonos con Usted para informarle sobre las novedades de nuestros productos y servicios, así como de las promociones y/o campañas sobre los mismos, realizar encuestas de satisfacción y fortalecer nuestros canales de servicio al cliente.
+                        La Fundación InnovaGen es una organización privada de utilidad común, que surge como iniciativa de un grupo de docentes-investigadores en ciencias biomédicas de la Universidad del Cauca, con el objeto de influir positivamente en el sector salud y contribuir a la calidad de vida y el bienestar de los individuos y la sociedad en general.
                         </div> 
                         
                         
@@ -75,20 +85,35 @@ class Somos extends Component {
                     
                     <div className="row">
                         <div className=" col m12">
-                            La recolección de datos personales y el tratamiento de éstos, que realiza <b>FUNDACIÓN INNOVAGEN</b> se hace de forma responsable y legal en cumplimiento del derecho a la intimidad, el habeas data y la protección de datos personales, conforme con las normas, procedimientos e instructivos adoptados por <b>FUNDACIÓN INNOVAGEN</b> así como también conforme al mandato de la Constitución Política de Colombia, ley 1581 de 2012, decreto 1377 de 2013 y demás normas vigentes sobre la materia. <b>FUNDACIÓN INNOVAGEN</b> por varios años ha recolectado, almacenado y utilizado información con datos personales y por su naturaleza desea continuar con dicho tratamiento a futuro. Para ello y para realizar el manejo adecuado que dispone la ley la fundación ha definido la siguiente política, disponible para toda la comunidad interna y externa. Para ello, <b>FUNDACIÓN INNOVAGEN</b> requiere obtener la autorización para que de manera libre, previa, expresa, voluntaria, y debidamente informada, los usuarios, clientes y cualquier persona permitan a la institución recolectar, recaudar, almacenar, usar, procesar, compilar, dar tratamiento, actualizar y disponer de los datos generales, particulares y/o sensibles, que han sido suministrados y que se han incorporado en distintas bases o bancos de datos, o en repositorios electrónicos de todo tipo con que cuenta la fundacion. Esta información es y será utilizada en el desarrollo de las funciones propias de la <b>FUNDACIÓN INNOVAGEN</b>, para fines administrativos, comerciales, de promoción y contacto frente a los titulares de los mismos.
+                        Desde su creación, el 26 de enero del 2012, la Fundación InnovaGen se concibe como una empresa sin ánimo de lucro, de carácter permanente, independiente y autónomo, que reinvierte la totalidad de sus excedentes en el desarrollo de su talento humano y de su infraestructura física y tecnológica para garantizar el cumplimiento de su objeto social.
                         </div> 
                         
                         
                     </div>
                     <div className="row">
                         <div className=" col m12">
-                            Para ejercer su derecho como titular de los datos, Usted podrá acceder a la verificación, rectificación, actualización, cancelación y oposición del procesamiento de los mismos, comunicándose al correo electrónico contacto@fundacioninnovagen.org, a las líneas de atención al usuario 8372935 – 8382135 – 3174412170 o dirigiéndose a las instalaciones de la Fundación ubicada en la Calle 11N # 7-12 de la ciudad de Popayán. Si en el término de treinta (30) días hábiles contados a partir de ésta comunicación, no hemos recibido alguna sugerencia para el tratamiento de sus datos, la Fundación podrá seguir haciendo realizando el uso de los mismos para los fines antes descritos.
+                        Hoy, la Fundación InnovaGen cuenta con un excelente equipo humano, quienes con un fuerte sentido de responsabilidad social asumen los retos del entorno y prestan servicios a nuestros beneficiarios con los mayores estándares de calidad humana, científica y ética.
+                        </div> 
+                        
+                        
+                    </div>
+                    <div className="row">
+                        <div className=" col m12">
+                        Visítanos y conoce más acerca de nuestros servicios <a href="http://fig.org.co/pgnafig/" target="_blank">aquí</a> 
+                        </div> 
+                        
+                        
+                    </div>
+                    <div className="row">
+                        <div className=" col m12">
+                        <span className="text-terminos"><a href="#/terminos_condiciones" target="_blank"> Política de Tratamiento de Datos</a></span>
                         </div> 
                         
                         
                     </div>
 
                 </div>
+                
                 <Footer />
 
 

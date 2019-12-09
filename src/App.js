@@ -51,11 +51,13 @@ function App(props) {
       
       <ComponentMaster ancla = {ancla}></ComponentMaster>
       
+     
+      
       {/*<br></br>
       <br></br>
       <br></br>
       <br></br>
-      <img src={img}></img>*/}
+      <img src={img}></img> */}
     </div>
    
   );
