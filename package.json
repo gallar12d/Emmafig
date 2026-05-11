@@ -11,7 +11,7 @@
     "ember-cp-validations": "^4.0.0-beta.10",
     "font-awesome": "^4.7.0",
     "google-map-react": "^1.1.5",
-    "jquery": "^3.4.1",
+    "jquery": "^3.7.1",
     "materialize-css": "^1.0.0",
     "materialize-social": "^1.0.3",
     "react": "^16.11.0",
